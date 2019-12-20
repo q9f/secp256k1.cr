@@ -1,0 +1,9 @@
+name: secp256k1
+version: 0.1.0
+
+authors:
+  - /raw PONG _GHMoaCXLT <58883403+q9f@users.noreply.github.com>
+
+crystal: 0.32.0
+
+license: APLv2
