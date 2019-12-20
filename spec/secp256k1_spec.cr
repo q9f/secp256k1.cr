@@ -98,7 +98,7 @@ describe Secp256k1 do
     # ref: https://github.com/wobine/blackboard101/blob/e991ea0b98fd26059bf3806e5749b5e5f737e791/EllipticCurvesPart4-PrivateKeyToPublicKey.py#L14
     priv = BigInt.new "a0dc65ffca799873cbea0ac274015b9526505daaaed385155425f7337704883e", 16
     priv.should eq BigInt.new "72759466100064397073952777052424474334519735946222029294952053344302920927294"
-    p = Secp256k1.pub_key_from_private priv
+    p = Secp256k1.public_key_from_private priv
 
     # python: print EccMultiply(GPoint, privKey)
     # > (3423904187495496827825042940737875085827330420143621346629173781207857376010L, 75711134420273723792089656449854389054866833762486990555172221523628676983696L)
@@ -107,12 +107,12 @@ describe Secp256k1 do
 
     # > the uncompressed public key (hex):
     # > 040791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0aa762fbc6ac0921b8f17025bb8458b92794ae87a133894d70d7995fc0b6b5ab90
-    uncm = Secp256k1.pub_key_uncompressed_prefix p
+    uncm = Secp256k1.public_key_uncompressed_prefix p
     uncm.should eq "040791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0aa762fbc6ac0921b8f17025bb8458b92794ae87a133894d70d7995fc0b6b5ab90"
 
     # > the official public key - compressed:
     # > 020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a
-    publ = Secp256k1.pub_key_compressed_prefix p
+    publ = Secp256k1.public_key_compressed_prefix p
     publ.should eq "020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
   end
 end
