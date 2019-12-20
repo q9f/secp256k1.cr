@@ -1,11 +1,11 @@
 # Copyright 2019 @q9f
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +15,6 @@
 require "./spec_helper"
 
 describe Secp256k1 do
-
   it "verifies constants" do
     # a couple of sanity check that ensures the parsed hex values represent the correct decimal numbers
     Secp256k1::EC_PARAM_PRIME.should eq BigInt.new "115792089237316195423570985008687907853269984665640564039457584007908834671663"
@@ -35,7 +34,7 @@ describe Secp256k1 do
     a.should eq "0000000000000000000000000000000000000000000000000000000000000000"
     b = Secp256k1.to_padded_hex_32 Secp256k1::EC_FACTOR_B
     b.should eq "0000000000000000000000000000000000000000000000000000000000000007"
-    
+
     # no padding required for the max possible value
     n = Secp256k1.to_padded_hex_32 Secp256k1::EC_ORDER_N
     n.should eq Secp256k1::EC_ORDER_N.to_s 16
@@ -45,10 +44,10 @@ describe Secp256k1 do
     # using 32 random bytes for a
     a = BigInt.new "5d5c75e7a6cd4b7fd7fbbf3fe78d97695b59c02a6c1c6a25d052fc736d9f07e6", 16
     a.should eq BigInt.new "42228458597839933933186074561522669313020758244811500203476962190108286453734"
-    
+
     # passing them to ec mod_inv
     i = Secp256k1.ec_mod_inv a
-    
+
     # python: `print modinv(42228458597839933933186074561522669313020758244811500203476962190108286453734)`
     # > 22252956326688633405392632421204971006307850186723512069020209708471515620360
     # ref: https://github.com/wobine/blackboard101/blob/e991ea0b98fd26059bf3806e5749b5e5f737e791/EllipticCurvesPart4-PrivateKeyToPublicKey.py#L16
@@ -58,7 +57,7 @@ describe Secp256k1 do
   it "computes ec addition of p and q" do
     # using the generator point
     p = Secp256k1::EC_Point.new Secp256k1::EC_BASE_G_X, Secp256k1::EC_BASE_G_Y
-    
+
     # adding the generator point to generator point
     r = Secp256k1.ec_add p, p
 
@@ -67,7 +66,7 @@ describe Secp256k1 do
     # ref: https://github.com/wobine/blackboard101/blob/e991ea0b98fd26059bf3806e5749b5e5f737e791/EllipticCurvesPart4-PrivateKeyToPublicKey.py#L25
     r.x.should eq BigInt.new "5659563192761508084413547218350839200768777758085375688457209287130601213183"
     r.y.should eq BigInt.new "83121579216557378445487899878180864668798711284981320763518679672151497189239"
-    
+
     # adding the generator point to a reverse generator point
     q = Secp256k1::EC_Point.new Secp256k1::EC_BASE_G_Y, Secp256k1::EC_BASE_G_X
     s = Secp256k1.ec_add p, q
