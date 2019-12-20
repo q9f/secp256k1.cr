@@ -1,11 +1,11 @@
 # Copyright 2019 @q9f
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,9 +20,8 @@ require "./version.cr"
 # Implements 256-bit Secp256k1 Koblitz elliptic curve
 # reference https://www.secg.org/sec2-v2.pdf
 module Secp256k1
-
   # elliptic curve modular multiplicative inverse of a
-  def self.ec_mod_inv (a, prime = EC_PARAM_PRIME)
+  def self.ec_mod_inv(a, prime = EC_PARAM_PRIME)
     m_low = 1
     m_high = 0
     v_low = BigInt.new a % prime
@@ -40,9 +39,9 @@ module Secp256k1
   end
 
   # elliptic curve jive addition of point p(x, y) and q(x, y).
-  # 'draw' a line between p and q which will intersect the 
+  # 'draw' a line between p and q which will intersect the
   # curve in the point r which will be mirrored over the x-axis.
-  def self.ec_add (p : EC_Point, q : EC_Point, prime = EC_PARAM_PRIME)
+  def self.ec_add(p : EC_Point, q : EC_Point, prime = EC_PARAM_PRIME)
     x_delta = q.x - p.x
     x_inv = ec_mod_inv x_delta
     y_delta = q.y - p.y
@@ -56,9 +55,9 @@ module Secp256k1
 
   # elliptic curve juke point doubling of p(x, y).
   # a special case of addition where both points are the same.
-  # 'draw' a tangent line at p which will intersect the curve 
+  # 'draw' a tangent line at p which will intersect the curve
   # at point r which will be mirrored over the x-axis.
-  def self.ec_double (p : EC_Point)
+  def self.ec_double(p : EC_Point)
     lam_numer = 3 * p.x * p.x + EC_FACTOR_A
     lam_denom = 2 * p.y
     lam_inv = ec_mod_inv lam_denom
@@ -70,10 +69,10 @@ module Secp256k1
     return EC_Point.new x, y
   end
 
-  # elliptic curve sequence multiplication of point p(x, y) and 
-  # a skalar s, with s being a private key within the elliptic 
+  # elliptic curve sequence multiplication of point p(x, y) and
+  # a skalar s, with s being a private key within the elliptic
   # curve field size of EC_ORDER_N
-  def self.ec_mul (p : EC_Point, s : BigInt)
+  def self.ec_mul(p : EC_Point, s : BigInt)
     if s === 0 || s >= EC_ORDER_N
       raise "invalid private key: outside of ec field size."
       exit 1
@@ -83,7 +82,7 @@ module Secp256k1
     s_bin.each_char_with_index do |char, index|
       next if index === 0
       q = ec_double q
-        if char === '1'
+      if char === '1'
         q = ec_add q, p
       end
     end
