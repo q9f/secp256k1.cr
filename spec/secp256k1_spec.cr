@@ -14,11 +14,12 @@
 
 require "./spec_helper"
 
+# tests for the Secp256k1 module
 describe Secp256k1 do
+  # a couple of sanity check that ensures the parsed hex values represent the correct decimal numbers
   it "verifies constants" do
-    # a couple of sanity check that ensures the parsed hex values represent the correct decimal numbers
     Secp256k1::EC_PARAM_PRIME.should eq BigInt.new "115792089237316195423570985008687907853269984665640564039457584007908834671663"
-    Secp256k1::EC_BASE_G.should eq BigInt.new "286650441496909734516720688912544350032790572785058722254415355376215376009112"
+    Secp256k1::EC_BASE_G_COMPRESSED.should eq BigInt.new "286650441496909734516720688912544350032790572785058722254415355376215376009112"
     Secp256k1::EC_BASE_G_UNCOMPRESSED.should eq BigInt.new "60007469361611451595808076307103981948066675035911483428688400614800034609601690612527903279981446538331562636035761922566837056280671244382574348564747448"
     Secp256k1::EC_BASE_G_X.should eq BigInt.new "55066263022277343669578718895168534326250603453777594175500187360389116729240"
     Secp256k1::EC_BASE_G_Y.should eq BigInt.new "32670510020758816978083085130507043184471273380659243275938904335757337482424"
@@ -28,10 +29,13 @@ describe Secp256k1 do
     Secp256k1::EC_COFACTOR_H.should eq BigInt.new "1"
   end
 
+  # tests the correct pedding for hex keys to ensure they are always 32 bytes in size
   it "pads 32 byte hex strings with leading zeros" do
     # maximum padding for 32 zero bytes
     a = Secp256k1.to_padded_hex_32 Secp256k1::EC_FACTOR_A
     a.should eq "0000000000000000000000000000000000000000000000000000000000000000"
+
+    # high padding for 0x7
     b = Secp256k1.to_padded_hex_32 Secp256k1::EC_FACTOR_B
     b.should eq "0000000000000000000000000000000000000000000000000000000000000007"
 
@@ -40,6 +44,7 @@ describe Secp256k1 do
     n.should eq Secp256k1::EC_ORDER_N.to_s 16
   end
 
+  # tests the ec mod_inv against the referenced python implementation
   it "computes modular multiplicative inverse of a" do
     # using 32 random bytes for a
     a = BigInt.new "5d5c75e7a6cd4b7fd7fbbf3fe78d97695b59c02a6c1c6a25d052fc736d9f07e6", 16
@@ -54,12 +59,10 @@ describe Secp256k1 do
     i.should eq BigInt.new "22252956326688633405392632421204971006307850186723512069020209708471515620360"
   end
 
+  # tests the ec add against the referenced python implementation
   it "computes ec addition of p and q" do
-    # using the generator point
-    p = Secp256k1::EC_Point.new Secp256k1::EC_BASE_G_X, Secp256k1::EC_BASE_G_Y
-
     # adding the generator point to generator point
-    r = Secp256k1.ec_add p, p
+    r = Secp256k1.ec_add Secp256k1::EC_BASE_G, Secp256k1::EC_BASE_G
 
     # python: `print ECadd(GPoint, GPoint)`
     # > (5659563192761508084413547218350839200768777758085375688457209287130601213183L, 83121579216557378445487899878180864668798711284981320763518679672151497189239L)
@@ -67,9 +70,9 @@ describe Secp256k1 do
     r.x.should eq BigInt.new "5659563192761508084413547218350839200768777758085375688457209287130601213183"
     r.y.should eq BigInt.new "83121579216557378445487899878180864668798711284981320763518679672151497189239"
 
-    # adding the generator point to a reverse generator point
+    # adding the generator point to a reverse generator point x, y = y, x
     q = Secp256k1::EC_Point.new Secp256k1::EC_BASE_G_Y, Secp256k1::EC_BASE_G_X
-    s = Secp256k1.ec_add p, q
+    s = Secp256k1.ec_add Secp256k1::EC_BASE_G, q
 
     # python: `print ECadd((Gx, Gy), (Gy, Gx))`
     # > (28055316194280034775909180983012330342548107831203726588018492311762380460000L, 56110632388560069551818361966024660685096215662407453176036984623524760919999L)
@@ -78,12 +81,10 @@ describe Secp256k1 do
     s.y.should eq BigInt.new "56110632388560069551818361966024660685096215662407453176036984623524760919999"
   end
 
+  # tests the ec double against the referenced python implementation
   it "computes ec doubling of p" do
-    # using the generator point
-    p = Secp256k1::EC_Point.new Secp256k1::EC_BASE_G_X, Secp256k1::EC_BASE_G_Y
-
     # doubling the generator point
-    r = Secp256k1.ec_double p
+    r = Secp256k1.ec_double Secp256k1::EC_BASE_G
 
     # python: `print ECdouble(GPoint)`
     # > (89565891926547004231252920425935692360644145829622209833684329913297188986597L, 12158399299693830322967808612713398636155367887041628176798871954788371653930L)
@@ -92,6 +93,7 @@ describe Secp256k1 do
     r.y.should eq BigInt.new "12158399299693830322967808612713398636155367887041628176798871954788371653930"
   end
 
+  # tests the ec mul operation to retrieve a valid public key from a known private key
   it "generates valid public key" do
     # taking the private key from the python blackboard 101
     # ref: https://github.com/wobine/blackboard101/blob/e991ea0b98fd26059bf3806e5749b5e5f737e791/EllipticCurvesPart4-PrivateKeyToPublicKey.py#L14

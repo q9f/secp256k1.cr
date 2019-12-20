@@ -13,9 +13,12 @@
 # limitations under the License.
 
 module Secp256k1
-  # A point on the elliptic curve y^2 = x^3 + 7
+  # A point in the two-dimensional space
   class EC_Point
+    # the position on the x-axis
     property x : BigInt
+
+    # the position on the y-axis
     property y : BigInt
 
     def initialize(@x : BigInt, @y : BigInt)
