@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# a collection of utilities for secp256k1 key management
 module Secp256k1
   # utility tool to ensure hex keys are always 32 bytes
   # it pads the number with leading zeros if not
@@ -54,7 +55,6 @@ module Secp256k1
   # wrapper function to perform an ec multiplication with
   # the generator point and a provided private key
   def self.public_key_from_private(priv : BigInt)
-    g = EC_Point.new EC_BASE_G_X, EC_BASE_G_Y
-    return ec_mul g, priv
+    return ec_mul EC_BASE_G, priv
   end
 end

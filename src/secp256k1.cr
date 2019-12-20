@@ -21,20 +21,27 @@ require "./version.cr"
 # reference https://www.secg.org/sec2-v2.pdf
 module Secp256k1
   # elliptic curve modular multiplicative inverse of a
-  def self.ec_mod_inv(a, prime = EC_PARAM_PRIME)
+  def self.ec_mod_inv(a : BigInt, prime = EC_PARAM_PRIME)
     m_low = 1
     m_high = 0
-    v_low = BigInt.new a % prime
+    v_low = a % prime
     v_high = prime
+
     while v_low > 1
+      # one of the rare cases where you actually want to do integer division
       v_ratio = (v_high / v_low).to_i
-      m = m_high - BigInt.new m_low * v_ratio
-      v = v_high - BigInt.new v_low * v_ratio
+
+      # explicitly casting a bigint as this easily overflows
+      m_low_r = BigInt.new m_low * v_ratio
+      v_low_r = BigInt.new v_low * v_ratio
+      m = m_high - m_low_r
+      v = v_high - v_low_r
       m_high = m_low
       v_high = v_low
       m_low = m
       v_low = v
     end
+
     return m_low % prime
   end
 
@@ -57,13 +64,13 @@ module Secp256k1
   # a special case of addition where both points are the same.
   # 'draw' a tangent line at p which will intersect the curve
   # at point r which will be mirrored over the x-axis.
-  def self.ec_double(p : EC_Point)
+  def self.ec_double(p : EC_Point, prime = EC_PARAM_PRIME)
     lam_numer = 3 * p.x * p.x + EC_FACTOR_A
     lam_denom = 2 * p.y
     lam_inv = ec_mod_inv lam_denom
-    lam = (lam_numer * lam_inv) % EC_PARAM_PRIME
-    x = (lam * lam - 2 * p.x) % EC_PARAM_PRIME
-    y = (lam * (p.x - x) - p.y) % EC_PARAM_PRIME
+    lam = (lam_numer * lam_inv) % prime
+    x = (lam * lam - 2 * p.x) % prime
+    y = (lam * (p.x - x) - p.y) % prime
     x = BigInt.new x
     y = BigInt.new y
     return EC_Point.new x, y
@@ -73,6 +80,7 @@ module Secp256k1
   # a skalar s, with s being a private key within the elliptic
   # curve field size of EC_ORDER_N
   def self.ec_mul(p : EC_Point, s : BigInt)
+    # catch skalars outside of the ec field size and exit
     if s === 0 || s >= EC_ORDER_N
       raise "invalid private key: outside of ec field size."
       exit 1

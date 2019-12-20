@@ -13,5 +13,6 @@
 # limitations under the License.
 
 module Secp256k1
+  # the version of the module
   VERSION = "0.1.0"
 end

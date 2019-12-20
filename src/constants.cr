@@ -28,16 +28,17 @@ module Secp256k1
   EC_FACTOR_A = BigInt.new "0000000000000000000000000000000000000000000000000000000000000000", 16
   EC_FACTOR_B = BigInt.new "0000000000000000000000000000000000000000000000000000000000000007", 16
 
-  # The base point G in compressed form is:
-  EC_BASE_G = BigInt.new "0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798", 16
-
-  # The base point G in uncompressed form is:
-  EC_BASE_G_UNCOMPRESSED = BigInt.new "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8", 16
-
   # The commonly used base point G coordinates x, y;
   # any other point that satisfies y^2 = x^3 + 7 would also do:
   EC_BASE_G_X = BigInt.new "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798", 16
   EC_BASE_G_Y = BigInt.new "483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8", 16
+  EC_BASE_G   = EC_Point.new EC_BASE_G_X, EC_BASE_G_Y
+
+  # The base point G in compressed form is:
+  EC_BASE_G_COMPRESSED = BigInt.new (public_key_compressed_prefix EC_BASE_G), 16
+
+  # The base point G in uncompressed form is:
+  EC_BASE_G_UNCOMPRESSED = BigInt.new (public_key_uncompressed_prefix EC_BASE_G), 16
 
   # Finally, the order n of G and the cofactor h are:
   EC_ORDER_N    = BigInt.new "fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141", 16
