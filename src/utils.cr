@@ -37,7 +37,7 @@ module Secp256k1
   # exports the compressed public key from an ec point with prefix 02 or 03
   def self.public_key_compressed_prefix (p : EC_Point)
     prefix = p.y % 2 === 1 ? "03" : "02"
-    return "#{prefix}#{pub_key_compressed p}"
+    return "#{prefix}#{public_key_compressed p}"
   end
 
   # exports the uncompressed public key from an ec point without prefix
@@ -49,7 +49,7 @@ module Secp256k1
 
   # exports the uncompressed public key from an ec point with prefix 04
   def self.public_key_uncompressed_prefix (p : EC_Point)
-    return "04#{pub_key_uncompressed p}"
+    return "04#{public_key_uncompressed p}"
   end
 
   # wrapper function to perform an ec multiplication with
