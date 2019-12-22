@@ -26,7 +26,11 @@ module Secp256k1
 
   # a helper to generate 32 pseudo-random bytes
   def self.new_private_key
-    return Random::Secure.hex 32
+    key = -999
+    until key > 0
+      key = BigInt.new Random::Secure.hex 32, 16
+    end
+    return key % EC_ORDER_N
   end
 
   # exports the compressed public key from an ec point without prefix
