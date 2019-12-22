@@ -28,12 +28,9 @@ module Secp256k1
     v_high = prime
 
     while v_low > 1
-      # one of the rare cases where you actually want to do integer division
-      v_ratio = (v_high / v_low).to_i
-
-      # explicitly casting a bigint as this easily overflows
-      m_low_r = BigInt.new m_low * v_ratio
-      v_low_r = BigInt.new v_low * v_ratio
+      v_ratio = v_high // v_low
+      m_low_r = m_low * v_ratio
+      v_low_r = v_low * v_ratio
       m = m_high - m_low_r
       v = v_high - v_low_r
       m_high = m_low
