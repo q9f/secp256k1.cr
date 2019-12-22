@@ -116,4 +116,24 @@ describe Secp256k1 do
     publ = Secp256k1.public_key_compressed_prefix p
     publ.should eq "020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
   end
+
+  # makes sure no ec multiplication is done with invalid private keys
+  it "does not allow invalid private keys" do
+    key_too_low = BigInt.new 0
+    key_too_high = BigInt.new "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16
+
+    # zero or greater field size should raise an exception
+    expect_raises(Exception, "invalid private key: outside of ec field size.") do
+      Secp256k1.public_key_from_private key_too_low
+      Secp256k1.public_key_from_private key_too_high
+    end
+
+    # some securely random generated keys should pass
+    iter = 0
+    while iter < 100
+      key_random = Secp256k1.new_private_key
+      Secp256k1.public_key_from_private key_random
+      iter += 1
+    end
+  end
 end

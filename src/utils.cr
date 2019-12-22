@@ -28,7 +28,8 @@ module Secp256k1
   def self.new_private_key
     key = -999
     until key > 0
-      key = BigInt.new Random::Secure.hex 32, 16
+      key = Random::Secure.hex 32
+      key = BigInt.new key, 16
     end
     return key % EC_ORDER_N
   end
