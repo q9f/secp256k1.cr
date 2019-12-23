@@ -35,7 +35,7 @@ module Secp256k1
   end
 
   # exports the compressed public key from an ec point without prefix
-  def self.public_key_compressed(p : EC_Point)
+  private def self.public_key_compressed(p : EC_Point)
     return to_padded_hex_32 p.x
   end
 
@@ -46,7 +46,7 @@ module Secp256k1
   end
 
   # exports the uncompressed public key from an ec point without prefix
-  def self.public_key_uncompressed(p : EC_Point)
+  private def self.public_key_uncompressed(p : EC_Point)
     x = to_padded_hex_32 p.x
     y = to_padded_hex_32 p.y
     return "#{x}#{y}"
@@ -55,6 +55,69 @@ module Secp256k1
   # exports the uncompressed public key from an ec point with prefix 04
   def self.public_key_uncompressed_prefix(p : EC_Point)
     return "04#{public_key_uncompressed p}"
+  end
+
+  # decodes a public key as ec point from a compressed public key string
+  private def self.decode_compressed_public_key(pub : String, prime = EC_PARAM_PRIME)
+    # only proceed if we have 1 prefix byte and 32 coordinate bytes
+    if pub.size === 66
+      # the prefix is used to restore the y-coordinate
+      prefix = pub[0, 2]
+      if prefix === "02" || prefix === "03"
+        # x is simply the coordinate
+        x = BigInt.new pub[2, 64], 16
+
+        # y is on our curve (x^3 + 7) ^ ((p + 1) / 4) % p
+        a = x ** 3 % prime
+        a = (a + 7) % prime
+        e = ((prime + 1) // 4) % prime
+        y = a ** e % prime
+
+        # check which of the two possible y values is to be used
+        parity = prefix.to_i - 2
+        if y % 2 != parity
+          y = -y % prime
+        end
+        return EC_Point.new x, y
+      else
+        raise "invalid prefix for compressed public key: #{prefix}"
+      end
+    else
+      raise "malformed compressed public key (invalid key size: #{pub.size})"
+    end
+    i = BigInt.new -999
+    return EC_Point.new i, i
+  end
+
+  # decodes a public key as ec point from an uncompressed public key string
+  private def self.decode_uncompressed_public_key(pub : String)
+    # remove the prefix as it's always `04` for uncompressed keys
+    pub = pub[2, 128] if pub.size === 130
+
+    # only proceed if we have 2 x 32 bytes
+    if pub.size === 128
+      x = BigInt.new pub[0, 64], 16
+      y = BigInt.new pub[64, 64], 16
+      return EC_Point.new x, y
+    else
+      raise "malformed uncompressed public key (invalid key size: #{pub.size})"
+    end
+    i = BigInt.new -999
+    return EC_Point.new i, i
+  end
+
+  # detects public key type and tries to restore the ec point from it
+  def self.restore_public_key(pub : String)
+    case pub.size
+    when 130, 128
+      return decode_uncompressed_public_key pub
+    when 66
+      return decode_compressed_public_key pub
+    else
+      raise "unknown public key format (invalid key size: #{pub.size})"
+    end
+    i = BigInt.new -999
+    return EC_Point.new i, i
   end
 
   # wrapper function to perform an ec multiplication with
