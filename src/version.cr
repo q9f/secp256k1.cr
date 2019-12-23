@@ -14,5 +14,5 @@
 
 module Secp256k1
   # the version of the module
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 end
