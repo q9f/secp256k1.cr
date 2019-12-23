@@ -10,7 +10,7 @@ add the `secp256k1` library to your `shard.yml`
 dependencies:
   secp256k1:
     github: q9f/secp256k1.cr
-    version: "~> 0.1.1"
+    version: "~> 0.1.2"
 ```
 
 # usage
@@ -31,7 +31,5 @@ puts Secp256k1.public_key_compressed_prefix public_key
 
 create a pull request, and make sure tests and linter passes.
 
-this pure crystal implementation is based on the python implementation [wobine/blackboard101](https://github.com/wobine/blackboard101) which is also used as reference to write tests against.
-
-it's a complete rewrite of the abandoned [packetzero/bitcoinutils](https://github.com/packetzero/bitcoinutils) for educational purposes.
+this pure crystal implementation is based on the python implementation [wobine/blackboard101](https://github.com/wobine/blackboard101) which is also used as reference to write tests against. it's a complete rewrite of the abandoned [packetzero/bitcoinutils](https://github.com/packetzero/bitcoinutils) for educational purposes. should not be used in production without proper auditing.
 
