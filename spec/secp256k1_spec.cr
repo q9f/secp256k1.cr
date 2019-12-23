@@ -106,15 +106,30 @@ describe Secp256k1 do
     p.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
     p.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
 
-    # > the uncompressed public key (hex):
+    # the uncompressed public key (hex):
     # > 040791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0aa762fbc6ac0921b8f17025bb8458b92794ae87a133894d70d7995fc0b6b5ab90
     uncm = Secp256k1.public_key_uncompressed_prefix p
     uncm.should eq "040791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0aa762fbc6ac0921b8f17025bb8458b92794ae87a133894d70d7995fc0b6b5ab90"
 
-    # > the official public key - compressed:
+    # the official public key - compressed:
     # > 020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a
     publ = Secp256k1.public_key_compressed_prefix p
     publ.should eq "020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
+
+    # taking the private key from bitcointalk
+    # ref: https://bitcointalk.org/index.php?topic=644919.msg7205689#msg7205689
+    priv = BigInt.new "55255657523dd1c65a77d3cb53fcd050bf7fc2c11bb0bb6edabdbd41ea51f641", 16
+    priv.should eq BigInt.new "38512561375336666218975019341699212961293425532484539208601808874461264475713"
+    p = Secp256k1.public_key_from_private priv
+
+    # > compressed_key = '0314fc03b8df87cd7b872996810db8458d61da8448e531569c8517b469a119d267'
+    publ = Secp256k1.public_key_compressed_prefix p
+    publ.should eq "0314fc03b8df87cd7b872996810db8458d61da8448e531569c8517b469a119d267"
+
+    # > uncompressed_key = '04{:x}{:x}'.format(x, y)
+    # > 0414fc03b8df87cd7b872996810db8458d61da8448e531569c8517b469a119d267be5645686309c6e6736dbd93940707cc9143d3cf29f1b877ff340e2cb2d259cf
+    uncm = Secp256k1.public_key_uncompressed_prefix p
+    uncm.should eq "0414fc03b8df87cd7b872996810db8458d61da8448e531569c8517b469a119d267be5645686309c6e6736dbd93940707cc9143d3cf29f1b877ff340e2cb2d259cf"
   end
 
   # makes sure no ec multiplication is done with invalid private keys
