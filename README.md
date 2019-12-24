@@ -2,6 +2,7 @@
 
 
 [![Badge](https://github.com/q9f/secp256k1.cr/workflows/Nightly/badge.svg)](https://github.com/q9f/secp256k1.cr/actions)
+[![Language](https://img.shields.io/github/languages/top/q9f/secp256k1.cr?color=black)](https://github.com/q9f/secp256k1.cr/search?l=crystal)
 [![License](https://img.shields.io/github/license/q9f/secp256k1.cr.svg)](LICENSE)
 
 a native library implementing secp256k1 purely for the crystal language. `secp256k1` is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.
