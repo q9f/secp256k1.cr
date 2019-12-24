@@ -43,6 +43,10 @@ describe Crypto do
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
     sha2 = Crypto.sha256 "0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352"
     sha2.should eq "0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98"
+
+    # hash the previous hash again as string input instead of a bytes array
+    sha2 = Crypto.sha256_string sha2
+    sha2.should eq "996db65b7f53189aa426cb8166859988d44b4e89eb4305951ababcf79ea3afe0"
   end
 
   it "can hash ripemd-160 correctly" do
@@ -68,6 +72,21 @@ describe Bitcoin do
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
     adr = Bitcoin.address_from_private "18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725"
     adr.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+  end
+
+  # generates a mini private key and checks it's attributes
+  it "can generate valid mini private keys" do
+    mini = Bitcoin.new_mini_private_key
+
+    # should start with capital "S"
+    mini[0, 1].should eq "S"
+
+    # should be 30 characters long
+    mini.size.should eq 30
+
+    # the hash of the mini key with question mark should start with "00"
+    sha2 = Crypto.sha256_string "#{mini}?"
+    sha2[0, 2].should eq "00"
   end
 end
 

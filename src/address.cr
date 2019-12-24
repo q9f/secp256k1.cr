@@ -14,6 +14,30 @@
 
 # implements the bitcoin address space
 module Bitcoin
+  # generates a new mini private key (30 characters, base-57)
+  def self.new_mini_private_key
+    valid = false
+    key = String.new
+    until valid
+      i = 1
+
+      # mini keys always start with a capital s
+      key = "S"
+
+      # add 29 random chars from the base-57 alphabet
+      while i < 30
+        i += 1
+        r = Random.rand 57
+        key += Crypto.base57_char r
+      end
+
+      # it's only a valid mini key if the hash of "key?" starts with "00"
+      check = Crypto.sha256_string "#{key}?"
+      valid = check[0, 2] === "00"
+    end
+    return key
+  end
+
   # generates a bitcoin address for any public key; compressed and uncompressed
   # version 0x00 = btc mainnet; pass different versions for different networks
   def self.address_from_public_key(pub : String, version = "00")

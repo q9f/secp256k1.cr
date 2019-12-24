@@ -3,6 +3,14 @@ require "./src/*"
 # everything starts with a random number
 private_key = Secp256k1.new_private_key
 
+# if you feel fancy, you can use a mini private key
+fancy = true
+if fancy
+  private_mini = Bitcoin.new_mini_private_key
+  private_key = Crypto.sha256_string private_mini
+  private_key = BigInt.new private_key, 16
+end
+
 # the point on the elliptic curve is our public key
 public_key = Secp256k1.public_key_from_private private_key
 
@@ -24,19 +32,20 @@ dog_uncompr = Bitcoin.address_from_public_key public_uncompr_4, "1e"
 
 # let's have a look
 puts "
-          New private key: #{private_key}
-                         :
+          New private key:   #{private_key.to_s 16}"
+puts "         Mini private key:   #{private_mini}" if fancy
+puts "                         :
     Compressed public key: #{public_compr}
    Unompressed public key: #{public_uncompr_4}
     Unprefixed public key:   #{public_uncompr}
                          :
-   Compressed BTC address: #{btc_compr}
- Uncompressed BTC address: #{btc_uncompr}
+   Compressed BTC address:   #{btc_compr}
+ Uncompressed BTC address:   #{btc_uncompr}
                          :
-  Checksummed ETH address: #{eth}
+  Checksummed ETH address:   #{eth}
                          :
-  Compressed DOGE address: #{dog_compr}
-Uncompressed DOGE address: #{dog_uncompr}
+  Compressed DOGE address:   #{dog_compr}
+Uncompressed DOGE address:   #{dog_uncompr}
                          :
                          ^ All from the same private key.
 "
