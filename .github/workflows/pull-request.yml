@@ -15,3 +15,4 @@ jobs:
         shards build --verbose
         crystal tool format --check
         crystal spec --verbose
+        crystal run ./try.cr
