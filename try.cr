@@ -7,8 +7,7 @@ private_key = Secp256k1.new_private_key
 fancy = true
 if fancy
   private_mini = Bitcoin.new_mini_private_key
-  private_key = Crypto.sha256_string private_mini
-  private_key = BigInt.new private_key, 16
+  private_key = Bitcoin.private_key_from_mini private_mini
 end
 
 # the point on the elliptic curve is our public key
