@@ -46,7 +46,7 @@ module Secp256k1
   end
 
   # exports the uncompressed public key from an ec point without prefix
-  private def self.public_key_uncompressed(p : EC_Point)
+  def self.public_key_uncompressed(p : EC_Point)
     x = to_padded_hex_32 p.x
     y = to_padded_hex_32 p.y
     return "#{x}#{y}"
@@ -58,7 +58,7 @@ module Secp256k1
   end
 
   # decodes a public key as ec point from a compressed public key string
-  private def self.decode_compressed_public_key(pub : String, prime = EC_PARAM_PRIME)
+  def self.decode_compressed_public_key(pub : String, prime = EC_PARAM_PRIME)
     # only proceed if we have 1 prefix byte and 32 coordinate bytes
     if pub.size === 66
       # the prefix is used to restore the y-coordinate
