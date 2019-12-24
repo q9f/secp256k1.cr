@@ -1,0 +1,93 @@
+# Copyright 2019 @q9f
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require "openssl"
+require "sha3"
+
+# wraps various hasing functions for convenience
+module Crypto
+  # the base-58 alphabet
+  BASE_58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+  # operating a sha3-256 hash on the byte array
+  def self.sha3(h : String)
+    sha3 = Digest::SHA3.new(256)
+    b = hex_to_bin h
+    return sha3.update(b).hexdigest
+  end
+
+  # operating a sha3-256 hash on the actual string literal
+  def self.sha3_string(h : String)
+    sha3 = Digest::SHA3.new(256)
+    return sha3.update(h).hexdigest
+  end
+
+  # operating a keccak-256 hash on the byte array
+  def self.keccak256(h : String)
+    keccak = Digest::Keccak3.new(256)
+    b = hex_to_bin h
+    return keccak.update(b).hexdigest
+  end
+
+  # operating a keccak-256 hash on the actual string literal
+  def self.keccak256_string(h : String)
+    keccak = Digest::Keccak3.new(256)
+    return keccak.update(h).hexdigest
+  end
+
+  # operating a sha2-256 hash on the byte array
+  def self.sha256(h : String)
+    b = hex_to_bin h
+    return OpenSSL::Digest.new("SHA256").update(b).hexdigest
+  end
+
+  # operating a ripemd-160 hash on the byte array
+  def self.ripemd160(h : String)
+    b = hex_to_bin h
+    return OpenSSL::Digest.new("RIPEMD160").update(b).hexdigest
+  end
+
+  # encode a string as base-58
+  def self.base58(h : String)
+    # do a base58 mapping for the hash
+    pub = BigInt.new h, 16
+    adr = String.new
+    while pub > 0
+      pub, rem = pub.divmod 58
+      adr += BASE_58[rem]
+    end
+
+    # replace leading zero bytes with 1
+    i, s = 0, 2
+    current_byte = h[i, s]
+    while current_byte.to_i(16) === 0
+      adr = "#{adr}1"
+      i += s
+      current_byte = h[i, s]
+    end
+
+    # reverse because we did the entire conversion backwards
+    return adr.reverse
+  end
+
+  # helper function to convert byte arrays to hex strings
+  def self.bin_to_hex(b : Bytes)
+    return b.hexstring
+  end
+
+  # helper function to convert hex strings to byte arrays
+  def self.hex_to_bin(s : String)
+    return s.hexbytes
+  end
+end
