@@ -32,6 +32,8 @@ dependencies:
 
 # usage
 
+_tl;dr,_ check out [`crystal run ./try.cr`](./try.cr)!
+
 this library exposes the following modules:
 
 * `Secp256k1`: the entire handling of private-public key-pairs
