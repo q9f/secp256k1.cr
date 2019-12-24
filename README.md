@@ -6,13 +6,13 @@
 
 a native library implementing secp256k1 purely for the crystal language. `secp256k1` is the elliptic curved used in the public-private-key cryptography required by bitcoin and ethereum.
 
-this library allows for key generation
+this library allows for key generation of:
 * private keys (from secure random within the elliptic curve field size)
 * public keys, prefixed, compressed (from private)
 * public keys, unprefixed and prefixed, uncompressed (from private)
 * conversion between the different public key formats
 
-this library allows for address generation
+this library allows for address generation of:
 * bitcoin address, compressed and uncompressed (from private or public key)
 * any other bitcoin-based address by passing a `version` byte
 * ethereum address, checksummed and unchecksummed (from private or public key)
@@ -33,10 +33,10 @@ dependencies:
 
 this library exposes the following modules:
 
-* `Secp256k1`: The entire handling of private-public key-pairs
-* `Crypto`: Implementation of various hashing algorithms
-* `Bitcoin`: For the generation of Bitcoin addresses
-* `Ethereum`: For the generation of Ethereum addresses
+* `Secp256k1`: the entire handling of private-public key-pairs
+* `Crypto`: implementation of various hashing algorithms
+* `Bitcoin`: for the generation of bitcoin addresses
+* `Ethereum`: for the generation of ethereum addresses
 
 basic usage:
 
@@ -48,7 +48,7 @@ require "secp256k1"
 private_key = Secp256k1.new_private_key
 public_key = Secp256k1.public_key_from_private private_key
 
-# display the compressed public key
+# display the compressed public key with prefix
 puts Secp256k1.public_key_compressed_prefix public_key
 ```
 
@@ -60,7 +60,7 @@ private_key = Secp256k1.new_private_key
 public_key = Secp256k1.public_key_from_private private_key
 compressed = Secp256k1.public_key_compressed_prefix public_key
 
-# display the bitcoin address ("00" => bitcoin mainnet)
+# display the bitcoin address (version "00" for bitcoin mainnet)
 puts Bitcoin.address_from_point compressed, "00"
 
 # > "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
@@ -80,6 +80,14 @@ puts Ethereum.address_from_point uncompressed
 # > "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
 ```
 
+# testing
+
+the library is entirely specified through tests in `./spec`; run:
+
+```bash
+crystal spec --verbose
+```
+
 # understand
 
 private keys are just scalars and public keys are points with `x` and `y` coordinates.
@@ -94,7 +102,7 @@ neither bitcoin nor ethereum allow for recovering public keys from an address un
 
 _note: this library should not be used in production without proper auditing._
 
-* this library is not constant time and might be suspect to side-channel attacks. [#4](https://github.com/q9f/secp256k1.cr/issues/4)
+* this library is not constant time and might be subject to side-channel attacks. [#4](https://github.com/q9f/secp256k1.cr/issues/4)
 * this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field [#5](https://github.com/q9f/secp256k1.cr/issues/5)
 * crystal language currently does not support modular expontiation for big integers. this basically blocks decoding of compressed public keys. [#8](https://github.com/q9f/secp256k1.cr/issues/8) [crystal-lang/crystal#8612](https://github.com/crystal-lang/crystal/issues/8612)
 
@@ -106,6 +114,6 @@ create a pull request, and make sure tests and linter passes.
 
 this pure crystal implementation is based on the python implementation [wobine/blackboard101](https://github.com/wobine/blackboard101) which is also used as reference to write tests against. it's a complete rewrite of the abandoned [packetzero/bitcoinutils](https://github.com/packetzero/bitcoinutils) for educational purposes.
 
-honerable mention for the [bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page) and the [ethereum stackexchange](https://ethereum.stackexchange.com/) for providing so many in-depth resources the supported this project in reimplementing everything.
+honerable mention for the [bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page) and the [ethereum stackexchange](https://ethereum.stackexchange.com/) for providing so many in-depth resources that supported this project in reimplementing everything.
 
 license: apache license v2.0
