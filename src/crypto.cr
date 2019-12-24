@@ -17,8 +17,11 @@ require "sha3"
 
 # wraps various hasing functions for convenience
 module Crypto
-  # the base-58 alphabet
+  # the base-58 alphabet (for bitcoin)
   BASE_58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+  # the base-57 alphabet (for mini private keys)
+  BASE_57 = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
   # operating a sha3-256 hash on the byte array
   def self.sha3(h : String)
@@ -52,6 +55,11 @@ module Crypto
     return OpenSSL::Digest.new("SHA256").update(b).hexdigest
   end
 
+  # operating a sha2-256 hash on the actual string literal
+  def self.sha256_string(h : String)
+    return OpenSSL::Digest.new("SHA256").update(h).hexdigest
+  end
+
   # operating a ripemd-160 hash on the byte array
   def self.ripemd160(h : String)
     b = hex_to_bin h
@@ -79,6 +87,12 @@ module Crypto
 
     # reverse because we did the entire conversion backwards
     return adr.reverse
+  end
+
+  # get a character from the base-57 alphabet
+  def self.base57_char(i : Int32)
+    i = i % 57
+    return BASE_57[i]
   end
 
   # helper function to convert byte arrays to hex strings
