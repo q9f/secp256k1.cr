@@ -49,6 +49,33 @@ module Bitcoin
     return BigInt.new private_key, 16
   end
 
+  # gets a base-58 wif from private key
+  def self.wallet_import_format_from_private(k : BigInt, version = "80", compr = "")
+    # take the private key
+    priv = Secp256k1.to_padded_hex_32 k
+
+    # prepend the version byte
+    versioned = "#{version}#{priv}#{compr}"
+
+    # perform sha-256 hash on the extended key
+    # perform sha-256 hash on result of sha-256 hash
+    hashed = Crypto.sha256 versioned
+    hashed_twice = Crypto.sha256 hashed
+
+    # take the first 4 bytes of the second sha-256 hash, this is the checksum
+    # add the 4 checksum bytes from point at the end of the versioned key
+    binary = "#{versioned}#{hashed_twice[0, 8]}"
+
+    # convert the result from a byte string into a base58 string
+    # this is the wallet import format
+    return Crypto.base58 binary
+  end
+
+  # to indicate a compressed key to be used, the WIF appends a "01" byte
+  def self.wallet_import_format_compressed_from_private(k : BigInt, version = "80")
+    return wallet_import_format_from_private k, version, "01"
+  end
+
   # generates a bitcoin address for any public key; compressed and uncompressed
   # version 0x00 = btc mainnet; pass different versions for different networks
   def self.address_from_public_key(pub : String, version = "00")

@@ -10,6 +10,7 @@ a native library implementing secp256k1 purely for the crystal language. `secp25
 this library allows for key generation of:
 * private keys (from secure random within the elliptic curve field size)
 * mini private keys (short 30-char base-57 keys)
+* wallet import format (checksummed private keys)
 * public keys, prefixed, compressed (from private)
 * public keys, unprefixed and prefixed, uncompressed (from private)
 * conversion between the different public key formats
