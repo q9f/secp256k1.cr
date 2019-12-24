@@ -99,6 +99,16 @@ describe Bitcoin do
     sha2 = Crypto.sha256_string "#{mini}?"
     sha2[0, 2].should eq "00"
   end
+
+  # tests the wallet import format with the keys from the bitcoin wiki
+  # ref: https://en.bitcoin.it/wiki/Wallet_import_format
+  it "can provide the correct wallet import format" do
+    priv = BigInt.new "0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d", 16
+    wif = Bitcoin.wallet_import_format_from_private priv
+    wif.should eq "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
+    wif_compr = Bitcoin.wallet_import_format_compressed_from_private priv
+    wif_compr.should eq "KwdMAjGmerYanjeui5SHS7JkmpZvVipYvB2LJGU1ZxJwYvP98617"
+  end
 end
 
 # tests for the Ethereum module
