@@ -9,6 +9,7 @@ a native library implementing secp256k1 purely for the crystal language. `secp25
 
 this library allows for key generation of:
 * private keys (from secure random within the elliptic curve field size)
+* mini private keys (short 30-char base-57 keys)
 * public keys, prefixed, compressed (from private)
 * public keys, unprefixed and prefixed, uncompressed (from private)
 * conversion between the different public key formats
@@ -34,6 +35,12 @@ dependencies:
 
 _tl;dr,_ check out [`crystal run ./try.cr`](./try.cr)!
 
+
+```crystal
+# import secp256k1
+require "secp256k1"
+```
+
 this library exposes the following modules:
 
 * `Secp256k1`: the entire handling of private-public key-pairs
@@ -44,15 +51,14 @@ this library exposes the following modules:
 basic usage:
 
 ```crystal
-# import secp256k1
-require "secp256k1"
-
 # generate a keypair
 private_key = Secp256k1.new_private_key
 public_key = Secp256k1.public_key_from_private private_key
 
 # display the compressed public key with prefix
 puts Secp256k1.public_key_compressed_prefix public_key
+
+# > 02b3c141fba20c129806290f04cee097305fb7391abfde01b3bb3affcd935332a1
 ```
 
 generate a compressed bitcoin mainnet address:
