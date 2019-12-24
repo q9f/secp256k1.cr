@@ -138,7 +138,7 @@ describe Secp256k1 do
     key_too_high = BigInt.new "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", 16
 
     # zero or greater field size should raise an exception
-    expect_raises(Exception, "invalid private key: outside of ec field size.") do
+    expect_raises Exception, "invalid private key: outside of ec field size." do
       Secp256k1.public_key_from_private key_too_low
       Secp256k1.public_key_from_private key_too_high
     end
@@ -160,47 +160,37 @@ describe Secp256k1 do
     p = Secp256k1.restore_public_key uncompressed_with_prefix
     q = Secp256k1.restore_public_key uncompressed_without_prefix
 
-    # this nil? check is required to circumvent a compiler bug
-    # ref: https://github.com/crystal-lang/crystal/issues/6002
-    if p.nil? || q.nil?
-      raise "public key ec point restauration failed"
-    else
-      # testing against the same key from the python blackboard 101
-      p.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
-      p.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
-      q.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
-      q.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
-    end
+    # testing against the same key from the python blackboard 101
+    p.not_nil!.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
+    p.not_nil!.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
+    q.not_nil!.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
+    q.not_nil!.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
 
     # compressed keys can only be restored with prefix
     compressed_with_prefix = "020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
-    r = Secp256k1.restore_public_key compressed_with_prefix
-
-    # this nil? check is required to circumvent a compiler bug
-    # ref: https://github.com/crystal-lang/crystal/issues/6002
-    if r.nil?
-      raise "public key ec point restauration failed"
-    else
-      # testing against the same key from the python blackboard 101
-      r.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
-      r.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
+    expect_raises Exception, "this is not possible in crystal yet (#8612)" do
+      # @TODO remove this raise once #8612 is fixed
+      r = Secp256k1.restore_public_key compressed_with_prefix
+      # # testing against the same key from the python blackboard 101
+      # r.not_nil!.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
+      # r.not_nil!.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
     end
 
     # compressed without prefix should raise an exception
     compressed_without_prefix = "0791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
-    expect_raises(Exception, "unknown public key format (invalid key size: 64)") do
+    expect_raises Exception, "unknown public key format (invalid key size: 64)" do
       Secp256k1.restore_public_key compressed_without_prefix
     end
 
     # invalid key (cut off) should raise an exception
     uncompressed_invalid = "040791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0aa762fbc6ac0921b8f17025bb"
-    expect_raises(Exception, "unknown public key format (invalid key size: 90)") do
+    expect_raises Exception, "unknown public key format (invalid key size: 90)" do
       Secp256k1.restore_public_key uncompressed_invalid
     end
 
     # invalid key (invalid prefix) should raise an exception
     compressed_invalid = "080791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
-    expect_raises(Exception, "invalid prefix for compressed public key: 08") do
+    expect_raises Exception, "invalid prefix for compressed public key: 08" do
       Secp256k1.restore_public_key compressed_invalid
     end
   end
