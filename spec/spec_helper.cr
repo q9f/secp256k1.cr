@@ -13,4 +13,6 @@
 # limitations under the License.
 
 require "spec"
+require "../src/address"
+require "../src/crypto"
 require "../src/secp256k1"

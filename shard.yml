@@ -1,5 +1,5 @@
 name: secp256k1
-version: 0.1.2
+version: 0.1.3
 description: "a native library implementing secp256k1 for the crystal language"
 
 authors:
@@ -8,3 +8,8 @@ authors:
 crystal: 0.32.1
 
 license: APLv2
+
+dependencies:
+  sha3:
+    github: OscarBarrett/crystal-sha3
+    version: ~> 0.3
