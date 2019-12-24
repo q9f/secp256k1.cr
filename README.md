@@ -104,7 +104,6 @@ _note: this library should not be used in production without proper auditing._
 
 * this library is not constant time and might be subject to side-channel attacks. [#4](https://github.com/q9f/secp256k1.cr/issues/4)
 * this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field [#5](https://github.com/q9f/secp256k1.cr/issues/5)
-* crystal language currently does not support modular expontiation for big integers. this basically blocks decoding of compressed public keys. [#8](https://github.com/q9f/secp256k1.cr/issues/8) [crystal-lang/crystal#8612](https://github.com/crystal-lang/crystal/issues/8612)
 
 found another issue? report it: https://github.com/q9f/secp256k1.cr/issues
 
