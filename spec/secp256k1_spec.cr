@@ -168,13 +168,11 @@ describe Secp256k1 do
 
     # compressed keys can only be restored with prefix
     compressed_with_prefix = "020791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
-    expect_raises Exception, "this is not possible in crystal yet (#8612)" do
-      # @TODO remove this raise once #8612 is fixed
-      r = Secp256k1.restore_public_key compressed_with_prefix
-      # # testing against the same key from the python blackboard 101
-      # r.not_nil!.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
-      # r.not_nil!.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
-    end
+    r = Secp256k1.restore_public_key compressed_with_prefix
+
+    # testing against the same key from the python blackboard 101
+    r.not_nil!.x.should eq BigInt.new "3423904187495496827825042940737875085827330420143621346629173781207857376010"
+    r.not_nil!.y.should eq BigInt.new "75711134420273723792089656449854389054866833762486990555172221523628676983696"
 
     # compressed without prefix should raise an exception
     compressed_without_prefix = "0791dc70b75aa995213244ad3f4886d74d61ccd3ef658243fcad14c9ccee2b0a"
