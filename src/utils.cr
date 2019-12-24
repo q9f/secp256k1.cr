@@ -67,6 +67,10 @@ module Secp256k1
         # x is simply the coordinate
         x = BigInt.new pub[2, 64], 16
 
+        # note: this is not possible yet due to lack of mod_exp support in Crystal
+        # ref: https://github.com/crystal-lang/crystal/issues/8612
+        raise "this is not possible in crystal yet (#8612)"
+
         # y is on our curve (x^3 + 7) ^ ((p + 1) / 4) % p
         a = x ** 3 % prime
         a = (a + 7) % prime
