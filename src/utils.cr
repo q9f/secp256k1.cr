@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# link gmp to directly leverage integer exponentiation
+@[Link("gmp")]
+lib LibGMP
+  fun mpz_powm_sec = __gmpz_powm_sec(rop : MPZ*, base : MPZ*, exp : MPZ*, mod : MPZ*)
+end
+
 # a collection of utilities for secp256k1 key management
 module Secp256k1
   # utility tool to ensure hex keys are always 32 bytes
@@ -67,15 +73,12 @@ module Secp256k1
         # x is simply the coordinate
         x = BigInt.new pub[2, 64], 16
 
-        # note: this is not possible yet due to lack of mod_exp support in Crystal
-        # ref: https://github.com/crystal-lang/crystal/issues/8612
-        raise "this is not possible in crystal yet (#8612)"
-
         # y is on our curve (x^3 + 7) ^ ((p + 1) / 4) % p
         a = x ** 3 % prime
         a = (a + 7) % prime
         e = ((prime + 1) // 4) % prime
-        y = a ** e % prime
+        y = BigInt.new
+        LibGMP.mpz_powm_sec(y, a, e, prime)
 
         # check which of the two possible y values is to be used
         parity = prefix.to_i - 2
