@@ -61,7 +61,7 @@ public_key = Secp256k1.public_key_from_private private_key
 compressed = Secp256k1.public_key_compressed_prefix public_key
 
 # display the bitcoin address (version "00" for bitcoin mainnet)
-puts Bitcoin.address_from_point compressed, "00"
+puts Bitcoin.address_from_public_key compressed, "00"
 
 # > "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
 ```
@@ -75,7 +75,7 @@ public_key = Secp256k1.public_key_from_private private_key
 uncompressed = Secp256k1.public_key_uncompressed public_key
 
 # display the ethereum address
-puts Ethereum.address_from_point uncompressed
+puts Ethereum.address_from_public_key uncompressed
 
 # > "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
 ```

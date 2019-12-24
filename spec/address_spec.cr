@@ -62,6 +62,7 @@ end
 
 # tests for the Bitcoin module
 describe Bitcoin do
+  # tests a known bitcoin address from a known private key
   it "can generate a valid bitcoin address" do
     # private key and address taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
@@ -72,10 +73,37 @@ end
 
 # tests for the Ethereum module
 describe Ethereum do
+  # tests a known ethereum address from a known private key
   it "can generate a valid ethereum address" do
     # private key and address taken from nick's edgeware tweet-storm
     # ref: https://twitter.com/nicksdjohnson/status/1146018827685126144
     adr = Ethereum.address_from_private "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51"
     adr.should eq "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
+  end
+
+  # implements the eip-55 test cases
+  # ref: https://eips.ethereum.org/EIPS/eip-55
+  it "passes eip-55 ethereum address mix-case checksums" do
+    chk_0 = Ethereum.address_checksum "0x52908400098527886e0f7030069857d2e4169ee7"
+    chk_1 = Ethereum.address_checksum "8617e340b3d01fa5f11f306f4090fd50e238070d"
+    chk_2 = Ethereum.address_checksum "0xDE709F2102306220921060314715629080E2FB77"
+    chk_3 = Ethereum.address_checksum "27B1FDB04752BBC536007A920D24ACB045561C26"
+    chk_4 = Ethereum.address_checksum "0x5AaEB6053f3e94c9B9a09F33669435e7eF1bEaED"
+    chk_5 = Ethereum.address_checksum "0xFb6916095CA1DF60Bb79cE92Ce3eA74C37C5D359"
+    chk_6 = Ethereum.address_checksum "DBf03b407C01e7Cd3cbEA99509D93F8dddc8c6fb"
+    chk_7 = Ethereum.address_checksum "d1220a0CF47C7b9bE7a2e6ba89f429762E7B9AdB"
+    chk_0.should eq "0x52908400098527886E0F7030069857D2E4169EE7"
+    chk_1.should eq "0x8617E340B3D01FA5F11F306F4090FD50E238070D"
+    chk_2.should eq "0xde709f2102306220921060314715629080e2fb77"
+    chk_3.should eq "0x27b1fdb04752bbc536007a920d24acb045561c26"
+    chk_4.should eq "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed"
+    chk_5.should eq "0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359"
+    chk_6.should eq "0xdbF03B407c01E7cD3CBea99509d93f8DDDC8C6FB"
+    chk_7.should eq "0xD1220A0cf47c7B9Be7A2E6BA89F429762e7b9aDb"
+
+    # passing a private key should raise
+    expect_raises Exception, "malformed ethereum address (invalid size: 64)" do
+      Ethereum.address_checksum "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51"
+    end
   end
 end
