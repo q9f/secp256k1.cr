@@ -10,7 +10,7 @@ add the `secp256k1` library to your `shard.yml`
 dependencies:
   secp256k1:
     github: q9f/secp256k1.cr
-    version: "~> 0.1.2"
+    version: "~> 0.1"
 ```
 
 # usage
