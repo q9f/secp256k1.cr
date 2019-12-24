@@ -32,10 +32,21 @@ module Bitcoin
       end
 
       # it's only a valid mini key if the hash of "key?" starts with "00"
-      check = Crypto.sha256_string "#{key}?"
-      valid = check[0, 2] === "00"
+      checksum = Crypto.sha256_string "#{key}?"
+      valid = checksum[0, 2] === "00"
+
+      # it's only valid if the private key is within the ec field size
+      priv = private_key_from_mini key
+      valid = valid && priv > 0
+      valid = valid && priv === priv % Secp256k1::EC_ORDER_N
     end
     return key
+  end
+
+  # gets a private key from a mini key
+  def self.private_key_from_mini(m : String)
+    private_key = Crypto.sha256_string m
+    return BigInt.new private_key, 16
   end
 
   # generates a bitcoin address for any public key; compressed and uncompressed

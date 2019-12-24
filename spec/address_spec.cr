@@ -74,8 +74,19 @@ describe Bitcoin do
     adr.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
   end
 
-  # generates a mini private key and checks it's attributes
-  it "can generate valid mini private keys" do
+  # tests the mini key from the bitcoin wiki
+  # ref: https://en.bitcoin.it/wiki/Mini_private_key_format
+  it "can generate a valid private key from mini key" do
+    mini = "S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy"
+    priv = Bitcoin.private_key_from_mini mini
+    priv.should eq BigInt.new "4c7a9640c72dc2099f23715d0c8a0d8a35f8906e3cab61dd3f78b67bf887c9ab", 16
+    sha2 = Crypto.sha256_string "#{mini}?"
+    sha2.should eq "000f2453798ad4f951eecced2242eaef3e1cbc8a7c813c203ac7ffe57060355d"
+  end
+
+  # generates a mini private key and checks its attributes
+  # ref: https://en.bitcoin.it/wiki/Mini_private_key_format
+  it "can generate a valid mini private key" do
     mini = Bitcoin.new_mini_private_key
 
     # should start with capital "S"
