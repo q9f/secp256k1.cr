@@ -21,6 +21,10 @@ describe Crypto do
     # ref: https://github.com/OscarBarrett/crystal-sha3/blob/7b6f6e02196b106ecf0be01da207dbf1e269009b/README.md
     sha3 = Crypto.sha3_string "abc123"
     sha3.should eq "f58fa3df820114f56e1544354379820cff464c9c41cb3ca0ad0b0843c9bb67ee"
+
+    # hash the previous hash again as bytes array instead of a string input
+    sha3 = Crypto.sha3 sha3
+    sha3.should eq "fb6123314cfb14af7a38a1d6a86a78598a204d7423e25810dad1ec8a8ef5094c"
   end
 
   it "can hash keccak-256 correctly" do
@@ -28,6 +32,10 @@ describe Crypto do
     # ref: https://github.com/OscarBarrett/crystal-sha3/blob/7b6f6e02196b106ecf0be01da207dbf1e269009b/README.md
     keccak = Crypto.keccak256_string "abc123"
     keccak.should eq "719accc61a9cc126830e5906f9d672d06eab6f8597287095a2c55a8b775e7016"
+
+    # hash the previous hash again as bytes array instead of a string input
+    keccak = Crypto.keccak256 keccak
+    keccak.should eq "438a3f652b00153f899189d56c7a70d0b3906b5a6ca4f585de47ac159b630bc0"
   end
 
   it "can hash sha-256 correctly" do
