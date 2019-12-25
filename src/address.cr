@@ -71,6 +71,11 @@ module Bitcoin
     return Crypto.base58_encode binary
   end
 
+  # to indicate a compressed key to be used, append a "01" byte
+  def self.wif_compressed_from_private(k : BigInt, version = "80")
+    return wif_from_private k, version, "01"
+  end
+
   # gets a private key from a wallet import format
   def self.private_key_from_wif(w : String)
     # decoding base58 contains the checksummed private key
@@ -87,9 +92,40 @@ module Bitcoin
     end
   end
 
-  # to indicate a compressed key to be used, append a "01" byte
-  def self.wif_compressed_from_private(k : BigInt, version = "80")
-    return wif_from_private k, version, "01"
+  # validates wether a wif has a correct checksum
+  def self.wif_is_valid?(w : String)
+    # decoding base58 contains the checksummed private key
+    checksum_key = Crypto.base58_decode w
+
+    # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
+    valid = checksum_key.size === 74 || checksum_key.size === 76
+
+    # only proceed if wif is valid
+    if valid
+      # ensure the private key is valid
+      private_key = private_key_from_wif w
+      valid = valid && private_key != "-999" && private_key.size === 64
+
+      # drop the checksum bytes
+      versioned = checksum_key[0, 66]
+      wif_checksum = checksum_key[66, 8]
+
+      # make sure to honor the compression byte
+      if checksum_key.size === 76
+        versioned = checksum_key[0, 68]
+        wif_checksum = checksum_key[68, 8]
+      end
+
+      # perform sha-256 hash on the versioned key
+      # perform sha-256 hash on result of sha-256 hash
+      hashed = Crypto.sha256 versioned
+      hashed_twice = Crypto.sha256 hashed
+
+      # check the wif checksum against the private key checksum
+      pk_checksum = hashed_twice[0, 8]
+      valid = valid && wif_checksum === pk_checksum
+    end
+    return valid
   end
 
   # generates a bitcoin address for any public key; compressed and uncompressed
