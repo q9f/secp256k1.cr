@@ -92,6 +92,21 @@ module Bitcoin
     end
   end
 
+  # gets the version byte from a wallet import format
+  def self.version_byte_from_wif(w : String)
+    # decoding base58 contains the versioned private key
+    versioned = Crypto.base58_decode w
+
+    # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
+    if versioned.size == 74 || versioned.size == 76
+      # extract the version byte
+      return versioned[0, 2]
+    else
+      raise "invalid wallet import format (invalid wif size: #{versioned.size})"
+      return "-999"
+    end
+  end
+
   # validates wether a wif has a correct checksum
   def self.wif_is_valid?(w : String)
     # decoding base58 contains the checksummed private key
@@ -166,6 +181,38 @@ module Bitcoin
     # take the corresponding public key generated with it
     pub = Secp256k1.public_key_compressed_prefix p
     return address_from_public_key pub, version
+  end
+
+  # gets a bitcoin address from a wif key
+  def self.address_from_wif(wif : String)
+    if wif_is_valid? wif
+      # gets the version byte from wif
+      vers = version_byte_from_wif wif
+      vers = vers.to_i 16
+
+      # the version byte of the public address is offset by -128
+      vers -= 128
+      vers = vers.to_s 16
+
+      # make sure the version byte is properly padded
+      while vers.size < 2
+        vers = "0#{vers}"
+      end
+
+      puts ""
+      puts ""
+      puts vers
+
+      # gets the private key from the wif
+      priv = private_key_from_wif wif
+
+      puts priv
+
+      return address_from_private priv, vers
+    else
+      raise "invalid wallet import format (invalid wif: #{wif})"
+      return "-999"
+    end
   end
 
   # generates a bitcoin address from a private key
