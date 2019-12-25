@@ -37,6 +37,12 @@ dog_uncompr = Bitcoin.address_from_public_key public_uncompr_4, "1e"
 dog_wif = Bitcoin.wif_from_private private_key, "9e"
 dog_wif_compr = Bitcoin.wif_compressed_from_private private_key, "9e"
 
+# do not proceed if the wallet import format checksum does not pass
+exit 101 if !Bitcoin.wif_is_valid? wif
+exit 102 if !Bitcoin.wif_is_valid? wif_compr
+exit 103 if !Bitcoin.wif_is_valid? dog_wif
+exit 104 if !Bitcoin.wif_is_valid? dog_wif_compr
+
 # let's have a look
 puts "
                  New private key :   #{private_key.to_s 16}"
