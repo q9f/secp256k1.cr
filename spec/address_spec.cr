@@ -162,6 +162,27 @@ describe Bitcoin do
     inv0.should eq false
     inv1.should eq false
   end
+
+  # tests address generation from wif with keys found on the interwebs
+  # ref: https://allprivatekeys.com/what-is-wif
+  it "should generate valid address from wif" do
+    # 8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18
+    wif = "6KCMKj71s2X7vT8N8XHgh3CZsbwS5uVUxTEuAFZCNapyZbCbm6L"
+    adr = Bitcoin.address_from_wif wif
+    adr.should eq "DDh3RAMeWnTWfH6q11uWkF74vMbMxqxa8X"
+    wif = "QTK6heqYoohwYvKWGCgeBii46MDFiegiPkpMDqF7CGJkeVEDqVWg"
+    adr = Bitcoin.address_from_wif wif
+    adr.should eq "DP9Q6DP1GVjUAtcJcaCeR1psedXoC12Jtu"
+
+    # 0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d
+    wif = "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
+    adr = Bitcoin.address_from_wif wif
+    adr.should eq "1GAehh7TsJAHuUAeKZcXf5CnwuGuGgyX2S"
+
+    wif = "5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF"
+    adr = Bitcoin.address_from_wif wif
+    adr.should eq "1CC3X2gu58d6wXUWMffpuzN9JAfTUWu4Kj"
+  end
 end
 
 # tests for the Ethereum module
