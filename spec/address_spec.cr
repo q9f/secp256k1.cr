@@ -140,6 +140,26 @@ describe Bitcoin do
       inv = Bitcoin.private_key_from_wif "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
     end
   end
+
+  # tests the wallet import format with the keys from the bitcoin wiki
+  # ref: https://en.bitcoin.it/wiki/Wallet_import_format
+  # ref: https://bitcoin.stackexchange.com/questions/68065/private-key-to-wif-compressed-which-one-is-correct
+  it "can detect invalid wallet import formats" do
+    uncm0 = Bitcoin.wif_is_valid? "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
+    comp0 = Bitcoin.wif_is_valid? "KwdMAjGmerYanjeui5SHS7JkmpZvVipYvB2LJGU1ZxJwYvP98617"
+    uncm1 = Bitcoin.wif_is_valid? "5HpHgWkLaovGWySEFpng1XQ6pdG1TzNWR7SrETvfTRVdKHNXZh8"
+    comp1 = Bitcoin.wif_is_valid? "KwDidQJHSE67VJ6MWRvbBKAxhD3F48DvqRT6JRqrjd7MHLBjGF7V"
+
+    # all keys should be valid
+    uncm0.should eq true
+    comp0.should eq true
+    uncm1.should eq true
+    comp1.should eq true
+
+    # invalid wif should not pass
+    inv = Bitcoin.wif_is_valid? "2SaK8jfqHYLmZdtSdWu1XrXCxpU8u2nt4civAPveeX8P2X5ceivrpf"
+    inv.should eq false
+  end
 end
 
 # tests for the Ethereum module
