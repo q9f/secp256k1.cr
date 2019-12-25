@@ -56,11 +56,23 @@ describe Crypto do
     ripe.should eq "f54a5851e9372b87810a8e60cdd2e7cfd80b6e31"
   end
 
-  it "can generate base58 representation" do
+  it "can encode a valid base58 representation" do
     # base58 encoding example taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
-    bs58 = Crypto.base58 "00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31c7f18fe8"
+    bs58 = Crypto.base58_encode "00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31c7f18fe8"
     bs58.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+  end
+
+  it "can decode a valid string from base58" do
+    # base58 encoding example taken from the bitcoin wiki
+    # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
+    adr = Crypto.base58_decode "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+    adr.should eq "00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31c7f18fe8"
+
+    # invalid base58 should raise
+    expect_raises Exception, "cannot decode, invalid base58 character: 'l'" do
+      inv = Crypto.base58_decode "1PMycacnJaSqwwJqjawXBErnlsZ7RkXUAs"
+    end
   end
 end
 
