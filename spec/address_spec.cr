@@ -157,8 +157,10 @@ describe Bitcoin do
     comp1.should eq true
 
     # invalid wif should not pass
-    inv = Bitcoin.wif_is_valid? "2SaK8jfqHYLmZdtSdWu1XrXCxpU8u2nt4civAPveeX8P2X5ceivrpf"
-    inv.should eq false
+    inv0 = Bitcoin.wif_is_valid? "2SaK8jfqHYLmZdtSdWu1XrXCxpU8u2nt4civAPveeX8P2X5ceivrpf"
+    inv1 = Bitcoin.wif_is_valid? "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+    inv0.should eq false
+    inv1.should eq false
   end
 end
 
