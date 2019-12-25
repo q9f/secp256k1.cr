@@ -66,8 +66,35 @@ module Crypto
     return OpenSSL::Digest.new("RIPEMD160").update(b).hexdigest
   end
 
+  # decode a string from base-58
+  def self.base58_decode(s : String)
+    # cycle through each character of string
+    index = 0
+    decimal = BigInt.new 0
+    while index < s.size
+      b58_char = s[index]
+      position = BASE_58.index(b58_char)
+      if !position.nil?
+        decimal = decimal * 58 + position
+        index += 1
+      else
+        raise "cannot decode, invalid base58 character: '#{s[index]}'"
+        return "-999"
+      end
+    end
+
+    # count leading 1s and pad with "00" bytes
+    hex = decimal.to_s 16
+    leading = 0
+    while s[leading] === '1'
+      leading += 1
+      hex = "00#{hex}"
+    end
+    return hex
+  end
+
   # encode a string as base-58
-  def self.base58(h : String)
+  def self.base58_encode(h : String)
     # do a base58 mapping for the hash
     pub = BigInt.new h, 16
     adr = String.new
@@ -89,7 +116,7 @@ module Crypto
     return adr.reverse
   end
 
-  # get a character from the base-57 alphabet
+  # get a character from the base-57 alphabet at position i
   def self.base57_char(i : Int32)
     i = i % 57
     return BASE_57[i]
