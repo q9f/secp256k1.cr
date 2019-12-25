@@ -66,7 +66,7 @@ module Crypto
     return OpenSSL::Digest.new("RIPEMD160").update(b).hexdigest
   end
 
-  # decode a string from base-58
+  # decode a hex string from base-58
   def self.base58_decode(s : String)
     # cycle through each character of string
     index = 0
@@ -93,7 +93,7 @@ module Crypto
     return hex
   end
 
-  # encode a string as base-58
+  # encode a hex string as base-58
   def self.base58_encode(h : String)
     # do a base58 mapping for the hash
     pub = BigInt.new h, 16
