@@ -63,7 +63,7 @@ describe Crypto do
     bs58.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
   end
 
-  it "can decode a valid string from base58" do
+  it "can decode a valid hex string from base58" do
     # base58 encoding example taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
     adr = Crypto.base58_decode "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
@@ -86,16 +86,6 @@ describe Bitcoin do
     adr.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
   end
 
-  # tests the mini key from the bitcoin wiki
-  # ref: https://en.bitcoin.it/wiki/Mini_private_key_format
-  it "can generate a valid private key from mini key" do
-    mini = "S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy"
-    priv = Bitcoin.private_key_from_mini mini
-    priv.should eq BigInt.new "4c7a9640c72dc2099f23715d0c8a0d8a35f8906e3cab61dd3f78b67bf887c9ab", 16
-    sha2 = Crypto.sha256_string "#{mini}?"
-    sha2.should eq "000f2453798ad4f951eecced2242eaef3e1cbc8a7c813c203ac7ffe57060355d"
-  end
-
   # generates a mini private key and checks its attributes
   # ref: https://en.bitcoin.it/wiki/Mini_private_key_format
   it "can generate a valid mini private key" do
@@ -112,14 +102,43 @@ describe Bitcoin do
     sha2[0, 2].should eq "00"
   end
 
+  # tests the mini key from the bitcoin wiki
+  # ref: https://en.bitcoin.it/wiki/Mini_private_key_format
+  it "can generate a valid private key from mini key" do
+    mini = "S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy"
+    priv = Bitcoin.private_key_from_mini mini
+    priv.should eq BigInt.new "4c7a9640c72dc2099f23715d0c8a0d8a35f8906e3cab61dd3f78b67bf887c9ab", 16
+    sha2 = Crypto.sha256_string "#{mini}?"
+    sha2.should eq "000f2453798ad4f951eecced2242eaef3e1cbc8a7c813c203ac7ffe57060355d"
+  end
+
   # tests the wallet import format with the keys from the bitcoin wiki
   # ref: https://en.bitcoin.it/wiki/Wallet_import_format
   it "can provide the correct wallet import format" do
     priv = BigInt.new "0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d", 16
-    wif = Bitcoin.wallet_import_format_from_private priv
+    wif = Bitcoin.wif_from_private priv
     wif.should eq "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
-    wif_compr = Bitcoin.wallet_import_format_compressed_from_private priv
+    wif_compr = Bitcoin.wif_compressed_from_private priv
     wif_compr.should eq "KwdMAjGmerYanjeui5SHS7JkmpZvVipYvB2LJGU1ZxJwYvP98617"
+  end
+
+  # tests the wallet import format with the keys from the bitcoin wiki
+  # ref: https://en.bitcoin.it/wiki/Wallet_import_format
+  it "can extract private keys from wallet import format" do
+    uncm = "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
+    comp = "KwdMAjGmerYanjeui5SHS7JkmpZvVipYvB2LJGU1ZxJwYvP98617"
+    priv_uncm = Bitcoin.private_key_from_wif uncm
+    priv_comp = Bitcoin.private_key_from_wif comp
+
+    # both should map to the same private key
+    priv_uncm.should eq "0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d"
+    priv_comp.should eq "0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d"
+    priv_comp.should eq priv_uncm
+
+    # should not allow invalid wif
+    expect_raises Exception, "invalid wallet import format (invalid wif size: 50)" do
+      inv = Bitcoin.private_key_from_wif "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+    end
   end
 end
 

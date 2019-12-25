@@ -50,7 +50,7 @@ module Bitcoin
   end
 
   # gets a base-58 wallet import format from private key
-  def self.wallet_import_format_from_private(k : BigInt, version = "80", compr = "")
+  def self.wif_from_private(k : BigInt, version = "80", compr = "")
     # take the private key
     priv = Secp256k1.to_padded_hex_32 k
 
@@ -71,9 +71,25 @@ module Bitcoin
     return Crypto.base58_encode binary
   end
 
+  # gets a private key from a wallet import format
+  def self.private_key_from_wif(w : String)
+    # decoding base58 contains the checksummed private key
+    checksum_key = Crypto.base58_decode w
+
+    # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
+    if checksum_key.size == 74 || checksum_key.size == 76
+      # drop the version byte, checksum, and compressed byte
+      private_key = BigInt.new checksum_key[2, 64], 16
+      return Secp256k1.to_padded_hex_32 private_key
+    else
+      raise "invalid wallet import format (invalid wif size: #{checksum_key.size})"
+      return "-999"
+    end
+  end
+
   # to indicate a compressed key to be used, append a "01" byte
-  def self.wallet_import_format_compressed_from_private(k : BigInt, version = "80")
-    return wallet_import_format_from_private k, version, "01"
+  def self.wif_compressed_from_private(k : BigInt, version = "80")
+    return wif_from_private k, version, "01"
   end
 
   # generates a bitcoin address for any public key; compressed and uncompressed

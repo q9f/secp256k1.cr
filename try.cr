@@ -11,10 +11,10 @@ if fancy
 end
 
 # private keys in bitcoin's wallet import format
-wif = Bitcoin.wallet_import_format_from_private private_key, "80"
+wif = Bitcoin.wif_from_private private_key, "80"
 
 # private keys in bitcoin's wallet import format (compressed)
-wif_compr = Bitcoin.wallet_import_format_compressed_from_private private_key, "80"
+wif_compr = Bitcoin.wif_compressed_from_private private_key, "80"
 
 # the point on the elliptic curve is our public key
 public_key = Secp256k1.public_key_from_private private_key
@@ -34,8 +34,8 @@ eth = Ethereum.address_from_public_key public_uncompr
 # pass a different version byte to get a DOGE address
 dog_compr = Bitcoin.address_from_public_key public_compr, "1e"
 dog_uncompr = Bitcoin.address_from_public_key public_uncompr_4, "1e"
-dog_wif = Bitcoin.wallet_import_format_from_private private_key, "9e"
-dog_wif_compr = Bitcoin.wallet_import_format_compressed_from_private private_key, "9e"
+dog_wif = Bitcoin.wif_from_private private_key, "9e"
+dog_wif_compr = Bitcoin.wif_compressed_from_private private_key, "9e"
 
 # let's have a look
 puts "
