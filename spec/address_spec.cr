@@ -84,6 +84,15 @@ describe Bitcoin do
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
     adr = Bitcoin.address_from_private "18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725"
     adr.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+
+    # uncompressed dogecoin address with version byte "1e"
+    # doge: http://coinok.pw/wallet/doge/
+    dog = Bitcoin.address_from_private "8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18", "1e", false
+    dog.should eq "DDh3RAMeWnTWfH6q11uWkF74vMbMxqxa8X"
+
+    # compressed dogecoin address
+    dog = Bitcoin.address_from_private "8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18", "1e"
+    dog.should eq "DP9Q6DP1GVjUAtcJcaCeR1psedXoC12Jtu"
   end
 
   # generates a mini private key and checks its attributes
@@ -165,6 +174,7 @@ describe Bitcoin do
 
   # tests address generation from wif with keys found on the interwebs
   # ref: https://allprivatekeys.com/what-is-wif
+  # doge: http://coinok.pw/wallet/doge/
   it "should generate valid address from wif" do
     # 8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18
     wif = "6KCMKj71s2X7vT8N8XHgh3CZsbwS5uVUxTEuAFZCNapyZbCbm6L"

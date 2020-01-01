@@ -98,9 +98,24 @@ module Bitcoin
     versioned = Crypto.base58_decode w
 
     # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
-    if versioned.size == 74 || versioned.size == 76
+    if versioned.size === 74 || versioned.size === 76
       # extract the version byte
       return versioned[0, 2]
+    else
+      raise "invalid wallet import format (invalid wif size: #{versioned.size})"
+      return "-999"
+    end
+  end
+
+  # checks if it's compressed or uncompressed wallet import format
+  def self.is_wif_compressed?(w : String)
+    # decoding base58 contains the versioned private key
+    versioned = Crypto.base58_decode w
+
+    # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
+    if versioned.size === 74 || versioned.size === 76
+      # true if compressed
+      return versioned.size === 76
     else
       raise "invalid wallet import format (invalid wif size: #{versioned.size})"
       return "-999"
@@ -177,9 +192,12 @@ module Bitcoin
   end
 
   # generates a bitcoin address from an public key ec point
-  def self.address_from_public_point(p : Secp256k1::EC_Point, version = "00")
+  def self.address_from_public_point(p : Secp256k1::EC_Point, version = "00", compressed = true)
     # take the corresponding public key generated with it
-    pub = Secp256k1.public_key_compressed_prefix p
+    pub = Secp256k1.public_key_uncompressed_prefix p
+
+    # generate a compressed address if specified
+    pub = Secp256k1.public_key_compressed_prefix p if compressed
     return address_from_public_key pub, version
   end
 
@@ -199,16 +217,13 @@ module Bitcoin
         vers = "0#{vers}"
       end
 
-      puts ""
-      puts ""
-      puts vers
-
       # gets the private key from the wif
       priv = private_key_from_wif wif
 
-      puts priv
+      # checks wether we want compressed or uncompressed address
+      comp = is_wif_compressed? wif
 
-      return address_from_private priv, vers
+      return address_from_private priv, vers, comp
     else
       raise "invalid wallet import format (invalid wif: #{wif})"
       return "-999"
@@ -216,12 +231,12 @@ module Bitcoin
   end
 
   # generates a bitcoin address from a private key
-  def self.address_from_private(priv : String, version = "00")
+  def self.address_from_private(priv : String, version = "00", compressed = true)
     # having a private ecdsa key
     # take the corresponding public key generated with it
     priv = BigInt.new priv, 16
     p = Secp256k1.public_key_from_private priv
-    return address_from_public_point p, version
+    return address_from_public_point p, version, compressed
   end
 end
 
