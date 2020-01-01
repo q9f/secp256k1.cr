@@ -180,6 +180,8 @@ describe Bitcoin do
     wif = "6KCMKj71s2X7vT8N8XHgh3CZsbwS5uVUxTEuAFZCNapyZbCbm6L"
     adr = Bitcoin.address_from_wif wif
     adr.should eq "DDh3RAMeWnTWfH6q11uWkF74vMbMxqxa8X"
+
+    # same but compressed
     wif = "QTK6heqYoohwYvKWGCgeBii46MDFiegiPkpMDqF7CGJkeVEDqVWg"
     adr = Bitcoin.address_from_wif wif
     adr.should eq "DP9Q6DP1GVjUAtcJcaCeR1psedXoC12Jtu"
@@ -189,6 +191,7 @@ describe Bitcoin do
     adr = Bitcoin.address_from_wif wif
     adr.should eq "1GAehh7TsJAHuUAeKZcXf5CnwuGuGgyX2S"
 
+    # same but compressed
     wif = "5Kb8kLf9zgWQnogidDA76MzPL6TsZZY36hWXMssSzNydYXYB9KF"
     adr = Bitcoin.address_from_wif wif
     adr.should eq "1CC3X2gu58d6wXUWMffpuzN9JAfTUWu4Kj"
