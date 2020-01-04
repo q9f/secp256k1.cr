@@ -16,6 +16,7 @@ require "./address.cr"
 require "./constants.cr"
 require "./crypto.cr"
 require "./ec_point.cr"
+require "./signature.cr"
 require "./utils.cr"
 require "./version.cr"
 
