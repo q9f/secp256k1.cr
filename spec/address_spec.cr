@@ -121,14 +121,21 @@ describe Bitcoin do
     sha2.should eq "000f2453798ad4f951eecced2242eaef3e1cbc8a7c813c203ac7ffe57060355d"
   end
 
-  # tests the wallet import format with the keys from the bitcoin wiki
-  # ref: https://en.bitcoin.it/wiki/Wallet_import_format
+  # tests the wallet import format with the keys from the bitcoin wiki and stack exchange
   it "can provide the correct wallet import format" do
+    # ref: https://en.bitcoin.it/wiki/Wallet_import_format
     priv = BigInt.new "0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d", 16
     wif = Bitcoin.wif_from_private priv
     wif.should eq "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
     wif_compr = Bitcoin.wif_compressed_from_private priv
     wif_compr.should eq "KwdMAjGmerYanjeui5SHS7JkmpZvVipYvB2LJGU1ZxJwYvP98617"
+
+    # ref: https://bitcoin.stackexchange.com/questions/68065/private-key-to-wif-compressed-which-one-is-correct
+    priv = BigInt.new "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f", 16
+    wif = Bitcoin.wif_from_private priv
+    wif.should eq "5HpHgWkLaovGWySEFpng1XQ6pdG1TzNWR7SrETvfTRVdKHNXZh8"
+    wif_compr = Bitcoin.wif_compressed_from_private priv
+    wif_compr.should eq "KwDidQJHSE67VJ6MWRvbBKAxhD3F48DvqRT6JRqrjd7MHLBjGF7V"
   end
 
   # tests the wallet import format with the keys from the bitcoin wiki
@@ -150,7 +157,7 @@ describe Bitcoin do
     end
   end
 
-  # tests the wallet import format with the keys from the bitcoin wiki
+  # tests the wallet import format with the keys from the bitcoin wiki and stack exchange
   # ref: https://en.bitcoin.it/wiki/Wallet_import_format
   # ref: https://bitcoin.stackexchange.com/questions/68065/private-key-to-wif-compressed-which-one-is-correct
   it "can detect invalid wallet import formats" do
@@ -174,7 +181,7 @@ describe Bitcoin do
 
   # tests address generation from wif with keys found on the interwebs
   # ref: https://allprivatekeys.com/what-is-wif
-  # doge: http://coinok.pw/wallet/doge/
+  # ref: http://coinok.pw/wallet/doge/ (doge)
   it "should generate valid address from wif" do
     # 8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18
     wif = "6KCMKj71s2X7vT8N8XHgh3CZsbwS5uVUxTEuAFZCNapyZbCbm6L"
