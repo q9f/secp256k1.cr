@@ -210,12 +210,9 @@ module Bitcoin
 
       # the version byte of the public address is offset by -128
       vers -= 128
-      vers = vers.to_s 16
 
       # make sure the version byte is properly padded
-      while vers.size < 2
-        vers = "0#{vers}"
-      end
+      vers = Secp256k1.to_padded_hex_01 vers
 
       # gets the private key from the wif
       priv = private_key_from_wif wif

@@ -41,7 +41,7 @@ describe Secp256k1 do
 
     # no padding required for the max possible value
     n = Secp256k1.to_padded_hex_32 Secp256k1::EC_ORDER_N
-    n.should eq Secp256k1::EC_ORDER_N.to_s 16
+    n.should eq Secp256k1.to_padded_hex_32 Secp256k1::EC_ORDER_N
   end
 
   # tests the ec mod_inv against the referenced python implementation

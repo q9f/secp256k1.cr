@@ -20,6 +20,15 @@ end
 
 # a collection of utilities for secp256k1 key management
 module Secp256k1
+  # generic tool to encode single hex bytes as strings, e.g., "07"
+  def self.to_padded_hex_01(i : Int32)
+    hex = i.to_s 16
+    while hex.size < 2
+      hex = '0' + hex
+    end
+    return hex
+  end
+
   # utility tool to ensure hex keys are always 32 bytes
   # it pads the number with leading zeros if not
   def self.to_padded_hex_32(i : BigInt)
