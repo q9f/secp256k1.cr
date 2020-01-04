@@ -145,7 +145,7 @@ describe Secp256k1 do
 
     # some securely random generated keys should pass
     iter = 0
-    while iter < 100
+    while iter < 10
       key_random = Secp256k1.new_private_key
       Secp256k1.public_key_from_private key_random
       iter += 1
@@ -201,8 +201,8 @@ describe Secp256k1 do
     sig = Secp256k1.sign msg, priv
     iter = 0
 
-    # generate 100 random signatures for the same message and key
-    while iter < 100
+    # generate 10 random signatures for the same message and key
+    while iter < 10
       sig = Secp256k1.sign msg, priv
       pub = Secp256k1.public_key_from_private priv
       valid = Secp256k1.verify msg, sig, pub
@@ -224,7 +224,7 @@ describe Secp256k1 do
     # > s = 93539716883975436131751270446270238300906572229893209404647676230869395610336
     r = BigInt.new "108450790312736419148091503336190989867379581793003243037811027177541631669413"
     s = BigInt.new "93539716883975436131751270446270238300906572229893209404647676230869395610336"
-    sig = Secp256k1::EC_Signature.new s, r
+    sig = Secp256k1::EC_Signature.new r, s
     hash = BigInt.new "86032112319101611046176971828093669637772856272773459297323797145286374828050"
 
     # should be valid

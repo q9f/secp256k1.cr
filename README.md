@@ -22,7 +22,7 @@ this library allows for address generation of:
 * any other ethereum-based address
 
 furthermore, this library allows for:
-* signing and verification of arbitrary messages and message-hashes (with key pairs)
+* signing `(r, s)` and verification of arbitrary messages and message-hashes (with key pairs)
 
 # installation
 

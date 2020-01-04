@@ -75,6 +75,6 @@ Compr. DOGE Wallet Import Format :   #{dog_wif_compr}
 Crypto Magic
 ------------
                      New Message : #{msg}
-                       Signature : #{Secp256k1.to_padded_hex_32 sig.s}
-                  Good Signature : #{valid}
+                       Signature : r=#{Secp256k1.to_padded_hex_32 sig.r}, s=#{Secp256k1.to_padded_hex_32 sig.s}
+                 Valid Signature : #{valid}
 "
