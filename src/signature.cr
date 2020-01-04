@@ -54,7 +54,11 @@ module Secp256k1
   def self.verify(msg : String, sig : EC_Signature, pub : EC_Point)
     # calculate the message hash, with the same hash function used during the signing
     hash = BigInt.new Crypto.sha256_string(msg), 16
+    return verify_hash hash, sig, pub
+  end
 
+  # same as self.verify, just using the hashed message directly
+  def self.verify_hash(hash : BigInt, sig : EC_Signature, pub : EC_Point)
     # calculate the modular inverse of the signature proof: s1 = s^{-1} % n
     s_inv = ec_mod_inv sig.s, EC_ORDER_N
 
