@@ -192,4 +192,43 @@ describe Secp256k1 do
       Secp256k1.restore_public_key compressed_invalid
     end
   end
+
+  # signs and verifies a message using the private key from the python blackboard 101
+  # ref: https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py#L11
+  it "can sign a message" do
+    priv = BigInt.new "75263518707598184987916378021939673586055614731957507592904438851787542395619"
+    msg = "Hello, World!"
+    sig = Secp256k1.sign msg, priv
+    iter = 0
+
+    # generate 100 random signatures for the same message and key
+    while iter < 100
+      sig = Secp256k1.sign msg, priv
+      pub = Secp256k1.public_key_from_private priv
+      valid = Secp256k1.verify msg, sig, pub
+      valid.should eq true
+      iter += 1
+    end
+  end
+
+  # verifies the hash from the python blackboard 101
+  # ref: https://www.youtube.com/watch?v=U2bw_N6kQL8
+  # ref: https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py#L13
+  it "can verify a public signature" do
+    priv = BigInt.new "75263518707598184987916378021939673586055614731957507592904438851787542395619"
+    pub = Secp256k1.public_key_from_private priv
+
+    # Python:
+    # > ******* Signature Generation *********
+    # > r = 108450790312736419148091503336190989867379581793003243037811027177541631669413
+    # > s = 93539716883975436131751270446270238300906572229893209404647676230869395610336
+    r = BigInt.new "108450790312736419148091503336190989867379581793003243037811027177541631669413"
+    s = BigInt.new "93539716883975436131751270446270238300906572229893209404647676230869395610336"
+    sig = Secp256k1::EC_Signature.new s, r
+    hash = BigInt.new "86032112319101611046176971828093669637772856272773459297323797145286374828050"
+
+    # should be valid
+    valid = Secp256k1.verify_hash hash, sig, pub
+    valid.should eq true
+  end
 end
