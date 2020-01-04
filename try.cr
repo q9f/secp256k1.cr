@@ -43,26 +43,38 @@ exit 102 if !Bitcoin.wif_is_valid? wif_compr
 exit 103 if !Bitcoin.wif_is_valid? dog_wif
 exit 104 if !Bitcoin.wif_is_valid? dog_wif_compr
 
+# let's sign a message
+msg = "Hello, World; I am #{btc_compr}!"
+sig = Secp256k1.sign(msg, private_key)
+valid = Secp256k1.verify(msg, sig, public_key)
+
 # let's have a look
-puts "
-                 New private key :   #{private_key.to_s 16}"
+puts "Key Magic
+---------
+                 New private key :   #{Secp256k1.to_padded_hex_32 private_key}"
 puts "                Mini private key :   #{private_mini}" if fancy
-puts "                                 :
+puts "
            Compressed public key : #{public_compr}
           Unompressed public key : #{public_uncompr_4}
            Unprefixed public key :   #{public_uncompr}
-                                 :
+
+Address Magic (all from the same private key)
+-------------
           Compressed BTC address :   #{btc_compr}
         Uncompressed BTC address :   #{btc_uncompr}
  Compr. BTC Wallet Import Format :   #{wif_compr}
         BTC Wallet Import Format :   #{wif}
-                                 :
+
          Checksummed ETH address : #{eth}
-                                 :
+
          Compressed DOGE address :   #{dog_compr}
        Uncompressed DOGE address :   #{dog_uncompr}
 Compr. DOGE Wallet Import Format :   #{dog_wif_compr}
        DOGE Wallet Import Format :   #{dog_wif}
-                                 :
-                                 ^ All from the same private key.
+
+Crypto Magic
+------------
+                     New Message : #{msg}
+                       Signature : #{Secp256k1.to_padded_hex_32 sig.s}
+                  Good Signature : #{valid}
 "
