@@ -21,6 +21,9 @@ this library allows for address generation of:
 * ethereum address, checksummed and unchecksummed (from private or public key)
 * any other ethereum-based address
 
+furthermore, this library allows for:
+* signing and verification of arbitrary messages and message-hashes (with key pairs)
+
 # installation
 
 add the `secp256k1` library to your `shard.yml`
