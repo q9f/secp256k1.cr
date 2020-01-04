@@ -17,7 +17,7 @@
 module Secp256k1
   # an ecdsa signature
   class EC_Signature
-    # the signature of a message
+    # the signature proof of a message
     property s : BigInt
 
     # the x coordinate of a random point
@@ -39,15 +39,31 @@ module Secp256k1
     k = new_private_key
 
     # calculate the random point r = k * g and take its x-coordinate: r = r.x
-    r = ec_mul(EC_BASE_G, k).x % EC_PARAM_PRIME
+    r = ec_mul(EC_BASE_G, k).x % EC_ORDER_N
 
     # calculate the signature proof s = k^-1 * (h + r * priv) % n
-    k_inv = ec_mod_inv k
-    s = ((hash + r * priv) * k_inv) % EC_PARAM_PRIME
-    sig = EC_Signature.new s, k
+    k_inv = ec_mod_inv k, EC_ORDER_N
+    s = ((hash + r * priv) * k_inv) % EC_ORDER_N
+    sig = EC_Signature.new s, r
     return sig
   end
 
+  # the algorithm to verify an ecdsa signature takes as input the signed message `msg`
+  # and the signature `(r, s)` produced from self.sign and the public key `pub`,
+  # corresponding to the signer's private key. The result is boolean.
   def self.verify(msg : String, sig : EC_Signature, pub : EC_Point)
+    # calculate the message hash, with the same hash function used during the signing
+    hash = BigInt.new Crypto.sha256_string(msg), 16
+
+    # calculate the modular inverse of the signature proof: s1 = s^{-1} % n
+    s_inv = ec_mod_inv sig.s, EC_ORDER_N
+
+    # recover the random point used during the signing: R' = (h * s1) * g + (r * s1) * pub
+    p0 = ec_mul EC_BASE_G, (hash * s_inv) % EC_ORDER_N
+    p1 = ec_mul pub, (sig.r * s_inv) % EC_ORDER_N
+    p = ec_add p0, p1
+
+    # calculate the signature validation result by comparing whether r' == r
+    return sig.r === p.x
   end
 end
