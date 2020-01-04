@@ -17,19 +17,19 @@
 module Secp256k1
   # an ecdsa signature
   class EC_Signature
-    # the signature proof of a message
-    property s : BigInt
-
     # the x coordinate of a random point
     property r : BigInt
 
-    def initialize(@s : BigInt, @r : BigInt)
+    # the signature proof of a message
+    property s : BigInt
+
+    def initialize(@r : BigInt, @s : BigInt)
     end
   end
 
   # the ecdsa signing algorithm (rfc 6979) takes as input a message `msg`
   # and a private key `priv`. It produces as output a signature, which
-  # consists of pair of integers {r, s}.
+  # consists of pair of integers `(r, s)`.
   def self.sign(msg : String, priv : BigInt)
     # calculate the message hash, using the cryptographic hash function sha-256
     hash = BigInt.new Crypto.sha256_string(msg), 16
@@ -44,7 +44,7 @@ module Secp256k1
     # calculate the signature proof s = k^-1 * (h + r * priv) % n
     k_inv = ec_mod_inv k, EC_ORDER_N
     s = ((hash + r * priv) * k_inv) % EC_ORDER_N
-    sig = EC_Signature.new s, r
+    sig = EC_Signature.new r, s
     return sig
   end
 
