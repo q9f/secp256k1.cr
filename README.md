@@ -98,7 +98,7 @@ puts Secp256k1::Ethereum.address_from_public_key uncompressed
 
 # documentation
 
-can be found here: https://q9f.github.io/secp256k1.cr/
+the full library documentation can be found here: [q9f.github.io/secp256k1.cr](https://q9f.github.io/secp256k1.cr/)
 
 generate a local copy with:
 
