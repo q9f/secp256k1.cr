@@ -44,9 +44,12 @@ exit 103 if !Secp256k1::Bitcoin.wif_is_valid? dog_wif
 exit 104 if !Secp256k1::Bitcoin.wif_is_valid? dog_wif_compr
 
 # let's sign a message
-msg = "Hello, World; I am #{btc_compr}!"
+msg = "Hello, World; I am #{btc_compr} and #{eth}!"
 sig = Secp256k1::Signature.sign(msg, private_key)
 valid = Secp256k1::Signature.verify(msg, sig, public_key)
+
+# do not proceed if the signature does not verify
+exit 105 if !valid
 
 # let's have a look
 puts "Key Magic
