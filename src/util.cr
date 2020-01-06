@@ -73,7 +73,7 @@ module Secp256k1::Util
   end
 
   # decodes a public key as ec point from a compressed public key string
-  def self.decode_compressed_public_key(pub : String, prime = EC_PARAM_PRIME)
+  def self.decode_compressed_public_key(pub : String, prime = EC_PRIME_P)
     # only proceed if we have 1 prefix byte and 32 coordinate bytes
     if pub.size === 66
       # the prefix is used to restore the y-coordinate

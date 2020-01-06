@@ -12,11 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Implements 256-bit Secp256k1 Koblitz elliptic curve
-# reference https://www.secg.org/sec2-v2.pdf
+
+# Implements 256-bit Secp256k1 Koblitz elliptic curve.
+# Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
+# 
+# Secp256k1 has the characteristic p, it is defined over the prime field ℤ_p.
+# Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1::Core
   # elliptic curve modular multiplicative inverse of a
-  def self.ec_mod_inv(a : BigInt, prime = EC_PARAM_PRIME)
+  def self.ec_mod_inv(a : BigInt, prime = EC_PRIME_P)
     m_low = 1
     m_high = 0
     v_low = a % prime
@@ -40,7 +44,7 @@ module Secp256k1::Core
   # elliptic curve jive addition of point p(x, y) and q(x, y).
   # 'draw' a line between p and q which will intersect the
   # curve in the point r which will be mirrored over the x-axis.
-  def self.ec_add(p : EC_Point, q : EC_Point, prime = EC_PARAM_PRIME)
+  def self.ec_add(p : EC_Point, q : EC_Point, prime = EC_PRIME_P)
     x_delta = q.x - p.x
     x_inv = ec_mod_inv x_delta
     y_delta = q.y - p.y
@@ -56,7 +60,7 @@ module Secp256k1::Core
   # a special case of addition where both points are the same.
   # 'draw' a tangent line at p which will intersect the curve
   # at point r which will be mirrored over the x-axis.
-  def self.ec_double(p : EC_Point, prime = EC_PARAM_PRIME)
+  def self.ec_double(p : EC_Point, prime = EC_PRIME_P)
     lam_numer = 3 * p.x * p.x + EC_FACTOR_A
     lam_denom = 2 * p.y
     lam_inv = ec_mod_inv lam_denom
