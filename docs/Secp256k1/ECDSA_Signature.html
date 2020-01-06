@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.32.0">
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="github.com/q9f/secp256k1.cr">
+  <title>Secp256k1::ECDSA_Signature - github.com/q9f/secp256k1.cr</title>
+  <script type="text/javascript">
+    CrystalDoc.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
+      <a href="../Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+      <a href="../Secp256k1/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Core" data-name="secp256k1::core">
+      <a href="../Secp256k1/Core.html">Core</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
+      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
+      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+      <a href="../Secp256k1/Ethereum.html">Ethereum</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
+      <a href="../Secp256k1/Hash.html">Hash</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="../Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="../Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Secp256k1::ECDSA_Signature
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Secp256k1/ECDSA_Signature.html">Secp256k1::ECDSA_Signature</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>an ecdsa signature</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/structs.cr#L30" target="_blank">
+        structs.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(r:BigInt,s:BigInt)-class-method" class="signature"><strong>.new</strong>(r : BigInt, s : BigInt)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#r:BigInt-instance-method" class="signature"><strong>#r</strong> : BigInt</a>
+        
+          <div class="summary"><p>the x coordinate of a random point</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#r=(r:BigInt)-instance-method" class="signature"><strong>#r=</strong>(r : BigInt)</a>
+        
+          <div class="summary"><p>the x coordinate of a random point</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#s:BigInt-instance-method" class="signature"><strong>#s</strong> : BigInt</a>
+        
+          <div class="summary"><p>the signature proof of a message</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#s=(s:BigInt)-instance-method" class="signature"><strong>#s=</strong>(s : BigInt)</a>
+        
+          <div class="summary"><p>the signature proof of a message</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(r:BigInt,s:BigInt)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(r : BigInt, s : BigInt)
+
+        <a class="method-permalink" href="#new(r:BigInt,s:BigInt)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/structs.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="r:BigInt-instance-method">
+      <div class="signature">
+        
+        def <strong>r</strong> : BigInt
+
+        <a class="method-permalink" href="#r:BigInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>the x coordinate of a random point</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/structs.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="r=(r:BigInt)-instance-method">
+      <div class="signature">
+        
+        def <strong>r=</strong>(r : BigInt)
+
+        <a class="method-permalink" href="#r=(r:BigInt)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>the x coordinate of a random point</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/structs.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="s:BigInt-instance-method">
+      <div class="signature">
+        
+        def <strong>s</strong> : BigInt
+
+        <a class="method-permalink" href="#s:BigInt-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>the signature proof of a message</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/structs.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="s=(s:BigInt)-instance-method">
+      <div class="signature">
+        
+        def <strong>s=</strong>(s : BigInt)
+
+        <a class="method-permalink" href="#s=(s:BigInt)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>the signature proof of a message</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/structs.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

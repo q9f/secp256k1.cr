@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.32.0">
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="github.com/q9f/secp256k1.cr">
+  <title>Secp256k1::Bitcoin - github.com/q9f/secp256k1.cr</title>
+  <script type="text/javascript">
+    CrystalDoc.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
+      <a href="../Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+      <a href="../Secp256k1/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Core" data-name="secp256k1::core">
+      <a href="../Secp256k1/Core.html">Core</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
+      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
+      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+      <a href="../Secp256k1/Ethereum.html">Ethereum</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
+      <a href="../Secp256k1/Hash.html">Hash</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="../Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="../Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Secp256k1::Bitcoin
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>implements the bitcoin address space</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L16" target="_blank">
+        bitcoin.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#address_from_private(priv:String,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_private</strong>(priv : String, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
+        
+          <div class="summary"><p>generates a bitcoin address from a private key</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#address_from_public_key(pub:String,version=&quot;00&quot;)-class-method" class="signature"><strong>.address_from_public_key</strong>(pub : String, version = <span class="s">&quot;00&quot;</span>)</a>
+        
+          <div class="summary"><p>generates a bitcoin address for any public key; compressed and uncompressed version 0x00 = btc mainnet; pass different versions for different networks</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#address_from_public_point(p:Secp256k1::EC_Point,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::EC_Point, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
+        
+          <div class="summary"><p>generates a bitcoin address from an public key ec point</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#address_from_wif(wif:String)-class-method" class="signature"><strong>.address_from_wif</strong>(wif : String)</a>
+        
+          <div class="summary"><p>gets a bitcoin address from a wif key</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#is_wif_compressed?(w:String)-class-method" class="signature"><strong>.is_wif_compressed?</strong>(w : String)</a>
+        
+          <div class="summary"><p>checks if it's compressed or uncompressed wallet import format</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new_mini_private_key-class-method" class="signature"><strong>.new_mini_private_key</strong></a>
+        
+          <div class="summary"><p>generates a new mini private key (30 characters, base-57)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#private_key_from_mini(m:String)-class-method" class="signature"><strong>.private_key_from_mini</strong>(m : String)</a>
+        
+          <div class="summary"><p>gets a private key from a mini key</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#private_key_from_wif(w:String)-class-method" class="signature"><strong>.private_key_from_wif</strong>(w : String)</a>
+        
+          <div class="summary"><p>gets a private key from a wallet import format</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#version_byte_from_wif(w:String)-class-method" class="signature"><strong>.version_byte_from_wif</strong>(w : String)</a>
+        
+          <div class="summary"><p>gets the version byte from a wallet import format</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif_compressed_from_private(k:BigInt,version=&quot;80&quot;)-class-method" class="signature"><strong>.wif_compressed_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)</a>
+        
+          <div class="summary"><p>to indicate a compressed key to be used, append a "01" byte</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif_from_private(k:BigInt,version=&quot;80&quot;,compr=&quot;&quot;)-class-method" class="signature"><strong>.wif_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>, compr = <span class="s">&quot;&quot;</span>)</a>
+        
+          <div class="summary"><p>gets a base-58 wallet import format from private key</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif_is_valid?(w:String)-class-method" class="signature"><strong>.wif_is_valid?</strong>(w : String)</a>
+        
+          <div class="summary"><p>validates wether a wif has a correct checksum</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="address_from_private(priv:String,version=&amp;quot;00&amp;quot;,compressed=true)-class-method">
+      <div class="signature">
+        
+        def self.<strong>address_from_private</strong>(priv : String, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)
+
+        <a class="method-permalink" href="#address_from_private(priv:String,version=&quot;00&quot;,compressed=true)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>generates a bitcoin address from a private key</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L231" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="address_from_public_key(pub:String,version=&amp;quot;00&amp;quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>address_from_public_key</strong>(pub : String, version = <span class="s">&quot;00&quot;</span>)
+
+        <a class="method-permalink" href="#address_from_public_key(pub:String,version=&quot;00&quot;)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>generates a bitcoin address for any public key; compressed and uncompressed
+version 0x00 = btc mainnet; pass different versions for different networks</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L163" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="address_from_public_point(p:Secp256k1::EC_Point,version=&amp;quot;00&amp;quot;,compressed=true)-class-method">
+      <div class="signature">
+        
+        def self.<strong>address_from_public_point</strong>(p : <a href="../Secp256k1/EC_Point.html">Secp256k1::EC_Point</a>, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)
+
+        <a class="method-permalink" href="#address_from_public_point(p:Secp256k1::EC_Point,version=&quot;00&quot;,compressed=true)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>generates a bitcoin address from an public key ec point</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L195" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="address_from_wif(wif:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>address_from_wif</strong>(wif : String)
+
+        <a class="method-permalink" href="#address_from_wif(wif:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>gets a bitcoin address from a wif key</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L205" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="is_wif_compressed?(w:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>is_wif_compressed?</strong>(w : String)
+
+        <a class="method-permalink" href="#is_wif_compressed?(w:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>checks if it's compressed or uncompressed wallet import format</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new_mini_private_key-class-method">
+      <div class="signature">
+        
+        def self.<strong>new_mini_private_key</strong>
+
+        <a class="method-permalink" href="#new_mini_private_key-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>generates a new mini private key (30 characters, base-57)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="private_key_from_mini(m:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>private_key_from_mini</strong>(m : String)
+
+        <a class="method-permalink" href="#private_key_from_mini(m:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>gets a private key from a mini key</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L47" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="private_key_from_wif(w:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>private_key_from_wif</strong>(w : String)
+
+        <a class="method-permalink" href="#private_key_from_wif(w:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>gets a private key from a wallet import format</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L80" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="version_byte_from_wif(w:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>version_byte_from_wif</strong>(w : String)
+
+        <a class="method-permalink" href="#version_byte_from_wif(w:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>gets the version byte from a wallet import format</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L96" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif_compressed_from_private(k:BigInt,version=&amp;quot;80&amp;quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>wif_compressed_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)
+
+        <a class="method-permalink" href="#wif_compressed_from_private(k:BigInt,version=&quot;80&quot;)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>to indicate a compressed key to be used, append a "01" byte</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L75" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif_from_private(k:BigInt,version=&amp;quot;80&amp;quot;,compr=&amp;quot;&amp;quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>wif_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>, compr = <span class="s">&quot;&quot;</span>)
+
+        <a class="method-permalink" href="#wif_from_private(k:BigInt,version=&quot;80&quot;,compr=&quot;&quot;)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>gets a base-58 wallet import format from private key</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L53" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif_is_valid?(w:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>wif_is_valid?</strong>(w : String)
+
+        <a class="method-permalink" href="#wif_is_valid?(w:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>validates wether a wif has a correct checksum</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/bitcoin.cr#L126" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

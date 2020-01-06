@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.32.0">
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="github.com/q9f/secp256k1.cr">
+  <title>README - github.com/q9f/secp256k1.cr</title>
+  <script type="text/javascript">
+  CrystalDoc.base_path = "";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
+      <a href="Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+      <a href="Secp256k1/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Core" data-name="secp256k1::core">
+      <a href="Secp256k1/Core.html">Core</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
+      <a href="Secp256k1/EC_Point.html">EC_Point</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
+      <a href="Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+      <a href="Secp256k1/Ethereum.html">Ethereum</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
+      <a href="Secp256k1/Hash.html">Hash</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1><a id="secp256k1.cr" class="anchor" href="#secp256k1.cr">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>secp256k1.cr</h1>
+
+<p><a href="https://github.com/q9f/secp256k1.cr/actions" target="_blank"><img src="https://github.com/q9f/secp256k1.cr/workflows/Nightly/badge.svg" alt="Badge"/></a>
+<a href="https://github.com/q9f/secp256k1.cr/search?l=crystal" target="_blank"><img src="https://img.shields.io/github/languages/top/q9f/secp256k1.cr?color=black" alt="Language"/></a>
+<a href="LICENSE" target="_blank"><img src="https://img.shields.io/github/license/q9f/secp256k1.cr.svg" alt="License"/></a></p>
+
+<p>a native library implementing secp256k1 purely for the crystal language. <code>secp256k1</code> is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.</p>
+
+<p>this library allows for key generation of:</p>
+
+<ul><li>private keys (from secure random within the elliptic curve field size)</li><li>mini private keys (short 30-char base-57 keys)</li><li>wallet import format (checksummed private keys)</li><li>public keys, prefixed, compressed (from private)</li><li>public keys, unprefixed and prefixed, uncompressed (from private)</li><li>conversion between the different public key formats</li></ul>
+
+<p>this library allows for address generation of:</p>
+
+<ul><li>bitcoin address, compressed and uncompressed (from private or public key)</li><li>any other bitcoin-based address by passing a <code>version</code> byte</li><li>ethereum address, checksummed and unchecksummed (from private or public key)</li><li>any other ethereum-based address</li></ul>
+
+<p>furthermore, this library allows for:</p>
+
+<ul><li>signing <code>(r, s)</code> and verification of arbitrary messages and message-hashes (with key pairs)</li></ul>
+
+<h1><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>installation</h1>
+
+<p>add the <code>secp256k1</code> library to your <code>shard.yml</code></p>
+
+<pre><code class="language-yaml">dependencies:
+  secp256k1:
+    github: q9f/secp256k1.cr
+    version: "~> 0.2"</code></pre>
+
+<h1><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>usage</h1>
+
+<p><em>tl;dr,</em> check out <a href="./try.cr" target="_blank"><code>crystal run ./try.cr</code></a>!</p>
+
+<pre><code class="language-crystal"><span class="c"># import secp256k1</span>
+<span class="k">require</span> <span class="s">&quot;secp256k1&quot;</span></code></pre>
+
+<p>this library exposes the following modules (in logical order):</p>
+
+<ul><li><code><a href="Secp256k1.html">Secp256k1</a></code>: necessary constants and data structures</li><li><code><a href="Secp256k1/Core.html">Secp256k1::Core</a></code>: the entire core mathematics behind the elliptic curve cryptography</li><li><code><a href="Secp256k1/Util.html">Secp256k1::Util</a></code>: all tools for the handling of private-public key-pairs</li><li><code><a href="Secp256k1/Hash.html">Secp256k1::Hash</a></code>: implementation of various hashing algorithms for convenience</li><li><code><a href="Secp256k1/Signature.html">Secp256k1::Signature</a></code>: allows for signing messages and verifying signatures</li><li><code><a href="Secp256k1/Bitcoin.html">Secp256k1::Bitcoin</a></code>: for the generation of bitcoin addresses</li><li><code><a href="Secp256k1/Ethereum.html">Secp256k1::Ethereum</a></code>: for the generation of ethereum addresses</li></ul>
+
+<p>basic usage:</p>
+
+<pre><code class="language-crystal"><span class="c"># generate a keypair</span>
+private_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
+public_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private private_key
+
+<span class="c"># display the compressed public key with prefix</span>
+puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix public_key
+
+<span class="c"># &gt; 02b3c141fba20c129806290f04cee097305fb7391abfde01b3bb3affcd935332a1</span></code></pre>
+
+<p>generate a compressed bitcoin mainnet address:</p>
+
+<pre><code class="language-crystal"><span class="c"># generate a keypair</span>
+private_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
+public_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private private_key
+compressed <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix public_key
+
+<span class="c"># display the bitcoin address (version &quot;00&quot; for bitcoin mainnet)</span>
+puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.address_from_public_key compressed, <span class="s">&quot;00&quot;</span>
+
+<span class="c"># &gt; &quot;1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs&quot;</span></code></pre>
+
+<p>generate a checksummed ethereum address:</p>
+
+<pre><code class="language-crystal"><span class="c"># generate a keypair</span>
+private_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
+public_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private private_key
+uncompressed <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_uncompressed public_key
+
+<span class="c"># display the ethereum address</span>
+puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span>.address_from_public_key uncompressed
+
+<span class="c"># &gt; &quot;0x2Ef1f605AF5d03874eE88773f41c1382ac71C239&quot;</span></code></pre>
+
+<h1><a id="testing" class="anchor" href="#testing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>testing</h1>
+
+<p>the library is entirely specified through tests in <code>./spec</code>; run:</p>
+
+<pre><code class="language-bash">crystal spec --verbose</code></pre>
+
+<h1><a id="understand" class="anchor" href="#understand">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>understand</h1>
+
+<p>private keys are just scalars and public keys are points with <code>x</code> and <code>y</code> coordinates.</p>
+
+<p>bitcoin public keys can be uncompressed <code>#{p}#{x}#{y}</code> or compressed <code>#{p}#{x}</code>. both come with a prefix <code>p</code> which is useless for uncompressed keys but necessary for compressed keys to recover the <code>y</code> coordinate on the <code>secp256k1</code> elliptic curve.</p>
+
+<p>ethereum public keys are uncompressed <code>#{x}#{y}</code> without any prefix. the last 20 bytes slice of the <code>y</code> coordinate is actually used as address without any checksum. a checksum was later added in eip-55 using a <code>keccak256</code> hash and indicating character capitalization.</p>
+
+<p>neither bitcoin nor ethereum allow for recovering public keys from an address unless there exists a transaction with a valid signature on the blockchain.</p>
+
+<h1><a id="known-issues" class="anchor" href="#known-issues">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>known issues</h1>
+
+<p><em>note: this library should not be used in production without proper auditing.</em></p>
+
+<ul><li>this library is not constant time and might be subject to side-channel attacks. <a href="https://github.com/q9f/secp256k1.cr/issues/4" target="_blank">#4</a></li><li>this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field <a href="https://github.com/q9f/secp256k1.cr/issues/5" target="_blank">#5</a></li></ul>
+
+<p>found another issue? report it: https://github.com/q9f/secp256k1.cr/issues</p>
+
+<h1><a id="contribute" class="anchor" href="#contribute">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>contribute</h1>
+
+<p>create a pull request, and make sure tests and linter passes.</p>
+
+<p>this pure crystal implementation is based on the python implementation <a href="https://github.com/wobine/blackboard101" target="_blank">wobine/blackboard101</a> which is also used as reference to write tests against. it's a complete rewrite of the abandoned <a href="https://github.com/packetzero/bitcoinutils" target="_blank">packetzero/bitcoinutils</a> for educational purposes.</p>
+
+<p>honerable mention for the <a href="https://en.bitcoin.it/wiki/Main_Page" target="_blank">bitcoin wiki</a> and the <a href="https://ethereum.stackexchange.com/" target="_blank">ethereum stackexchange</a> for providing so many in-depth resources that supported this project in reimplementing everything.</p>
+
+<p>license: apache license v2.0</p>
+</div>
+</body>
+</html>
