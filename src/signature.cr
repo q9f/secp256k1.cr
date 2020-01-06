@@ -20,7 +20,7 @@ module Secp256k1::Signature
   # consists of pair of integers `(r, s)`.
   def self.sign(msg : String, priv : BigInt)
     # calculate the message hash, using the cryptographic hash function sha-256
-    hash = BigInt.new Crypto.sha256_string(msg), 16
+    hash = BigInt.new Hash.sha256_string(msg), 16
 
     # generate securely a random number k in the range [1..n-1]
     # here: a new private key is the exact implementation of this requirement
@@ -41,7 +41,7 @@ module Secp256k1::Signature
   # corresponding to the signer's private key. The result is boolean.
   def self.verify(msg : String, sig : ECDSA_Signature, pub : EC_Point)
     # calculate the message hash, with the same hash function used during the signing
-    hash = BigInt.new Crypto.sha256_string(msg), 16
+    hash = BigInt.new Hash.sha256_string(msg), 16
     return verify_hash hash, sig, pub
   end
 

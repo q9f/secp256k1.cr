@@ -28,11 +28,11 @@ module Secp256k1::Bitcoin
       while i < 30
         i += 1
         r = Random.rand 57
-        key += Crypto.base57_char r
+        key += Hash.base57_char r
       end
 
       # it's only a valid mini key if the hash of "key?" starts with "00"
-      checksum = Crypto.sha256_string "#{key}?"
+      checksum = Hash.sha256_string "#{key}?"
       valid = checksum[0, 2] === "00"
 
       # it's only valid if the private key is within the ec field size
@@ -45,7 +45,7 @@ module Secp256k1::Bitcoin
 
   # gets a private key from a mini key
   def self.private_key_from_mini(m : String)
-    private_key = Crypto.sha256_string m
+    private_key = Hash.sha256_string m
     return BigInt.new private_key, 16
   end
 
@@ -59,8 +59,8 @@ module Secp256k1::Bitcoin
 
     # perform sha-256 hash on the extended key
     # perform sha-256 hash on result of sha-256 hash
-    hashed = Crypto.sha256 versioned
-    hashed_twice = Crypto.sha256 hashed
+    hashed = Hash.sha256 versioned
+    hashed_twice = Hash.sha256 hashed
 
     # take the first 4 bytes of the second sha-256 hash, this is the checksum
     # add the 4 checksum bytes from point at the end of the versioned key
@@ -68,7 +68,7 @@ module Secp256k1::Bitcoin
 
     # convert the result from a byte string into a base58 string
     # this is the wallet import format
-    return Crypto.base58_encode binary
+    return Hash.base58_encode binary
   end
 
   # to indicate a compressed key to be used, append a "01" byte
@@ -79,7 +79,7 @@ module Secp256k1::Bitcoin
   # gets a private key from a wallet import format
   def self.private_key_from_wif(w : String)
     # decoding base58 contains the checksummed private key
-    checksum_key = Crypto.base58_decode w
+    checksum_key = Hash.base58_decode w
 
     # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
     if checksum_key.size == 74 || checksum_key.size == 76
@@ -95,7 +95,7 @@ module Secp256k1::Bitcoin
   # gets the version byte from a wallet import format
   def self.version_byte_from_wif(w : String)
     # decoding base58 contains the versioned private key
-    versioned = Crypto.base58_decode w
+    versioned = Hash.base58_decode w
 
     # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
     if versioned.size === 74 || versioned.size === 76
@@ -110,7 +110,7 @@ module Secp256k1::Bitcoin
   # checks if it's compressed or uncompressed wallet import format
   def self.is_wif_compressed?(w : String)
     # decoding base58 contains the versioned private key
-    versioned = Crypto.base58_decode w
+    versioned = Hash.base58_decode w
 
     # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
     if versioned.size === 74 || versioned.size === 76
@@ -125,7 +125,7 @@ module Secp256k1::Bitcoin
   # validates wether a wif has a correct checksum
   def self.wif_is_valid?(w : String)
     # decoding base58 contains the checksummed private key
-    checksum_key = Crypto.base58_decode w
+    checksum_key = Hash.base58_decode w
 
     # the key must be 37 bytes (uncompressed) or 38 bytes (compressed)
     valid = checksum_key.size === 74 || checksum_key.size === 76
@@ -148,8 +148,8 @@ module Secp256k1::Bitcoin
 
       # perform sha-256 hash on the versioned key
       # perform sha-256 hash on result of sha-256 hash
-      hashed = Crypto.sha256 versioned
-      hashed_twice = Crypto.sha256 hashed
+      hashed = Hash.sha256 versioned
+      hashed_twice = Hash.sha256 hashed
 
       # check the wif checksum against the private key checksum
       pk_checksum = hashed_twice[0, 8]
@@ -164,18 +164,18 @@ module Secp256k1::Bitcoin
     # ensure uncompressed or compressed public keys with prefix
     if pub.size === 130 || pub.size === 66
       # perform sha-256 hashing on the public key
-      sha2 = Crypto.sha256 pub
+      sha2 = Hash.sha256 pub
 
       # perform ripemd-160 hashing on the result of sha-256
-      ripe = Crypto.ripemd160 sha2
+      ripe = Hash.ripemd160 sha2
 
       # add version byte in front of ripemd-160 hash
       ripe_versioned = "#{version}#{ripe}"
 
       # perform sha-256 hash on the extended ripemd-160 result
       # perform sha-256 hash on the result of the previous sha-256 hash
-      hashed = Crypto.sha256 ripe_versioned
-      hashed_twice = Crypto.sha256 hashed
+      hashed = Hash.sha256 ripe_versioned
+      hashed_twice = Hash.sha256 hashed
 
       # take the first 4 bytes of the second sha-256 hash; this is the address checksum
       # add the 4 checksum bytes at the end of extended ripemd-160 hash
@@ -184,7 +184,7 @@ module Secp256k1::Bitcoin
 
       # convert the result from a byte string into a base58 string
       # this is the most commonly used bitcoin address format
-      return Crypto.base58_encode binary
+      return Hash.base58_encode binary
     else
       raise "malformed public key (invalid key size: #{pub.size})"
     end
@@ -251,7 +251,7 @@ module Ethereum
 
     if adr.size === 40
       # get a keccak-256 to operate on according to eip-55
-      keccak = Crypto.keccak256_string adr
+      keccak = Hash.keccak256_string adr
 
       # prefix the address with `0x`
       address = "0x"
@@ -279,7 +279,7 @@ module Ethereum
     # ensure uncompressed public keys
     if pub.size === 128
       # hashes the uncompressed public key with keccak-256
-      keccak = Crypto.keccak256 pub
+      keccak = Hash.keccak256 pub
 
       # take the last 20 bytes from the hash
       return address_checksum keccak[24, 40]
