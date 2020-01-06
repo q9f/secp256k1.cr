@@ -14,19 +14,7 @@
 
 # implements ecdsa signature generation and verification for secp256k1
 # ref: https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages
-module Secp256k1
-  # an ecdsa signature
-  class EC_Signature
-    # the x coordinate of a random point
-    property r : BigInt
-
-    # the signature proof of a message
-    property s : BigInt
-
-    def initialize(@r : BigInt, @s : BigInt)
-    end
-  end
-
+module Secp256k1::Signature
   # the ecdsa signing algorithm (rfc 6979) takes as input a message `msg`
   # and a private key `priv`. It produces as output a signature, which
   # consists of pair of integers `(r, s)`.

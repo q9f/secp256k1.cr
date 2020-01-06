@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# custom data types for the secp256k1 module
 module Secp256k1
   # A point in the two-dimensional space
   class EC_Point
@@ -22,6 +23,18 @@ module Secp256k1
     property y : BigInt
 
     def initialize(@x : BigInt, @y : BigInt)
+    end
+  end
+
+  # an ecdsa signature
+  class ECDSA_Signature
+    # the x coordinate of a random point
+    property r : BigInt
+
+    # the signature proof of a message
+    property s : BigInt
+
+    def initialize(@r : BigInt, @s : BigInt)
     end
   end
 end

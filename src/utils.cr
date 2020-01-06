@@ -19,7 +19,7 @@ lib LibGMP
 end
 
 # a collection of utilities for secp256k1 key management
-module Secp256k1
+module Secp256k1::Utils
   # generic tool to encode single hex bytes as strings, e.g., "07"
   def self.to_padded_hex_01(i : Int32)
     hex = i.to_s 16
