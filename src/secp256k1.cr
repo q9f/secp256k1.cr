@@ -15,14 +15,12 @@
 require "./bitcoin.cr"
 require "./constants.cr"
 require "./core.cr"
+require "./crypto.cr"
 require "./ethereum.cr"
+require "./signature.cr"
 require "./structs.cr"
 require "./utils.cr"
 require "./version.cr"
-
-require "./crypto.cr"
-require "./ec_point.cr"
-require "./signature.cr"
 
 # expose the secp256k1 module
 module Secp256k1

@@ -35,10 +35,10 @@ module Secp256k1
   EC_BASE_G   = EC_Point.new EC_BASE_G_X, EC_BASE_G_Y
 
   # The base point G in compressed form is:
-  EC_BASE_G_COMPRESSED = BigInt.new (public_key_compressed_prefix EC_BASE_G), 16
+  EC_BASE_G_COMPRESSED = BigInt.new (Secp256k1::Utils.public_key_compressed_prefix EC_BASE_G), 16
 
   # The base point G in uncompressed form is:
-  EC_BASE_G_UNCOMPRESSED = BigInt.new (public_key_uncompressed_prefix EC_BASE_G), 16
+  EC_BASE_G_UNCOMPRESSED = BigInt.new (Secp256k1::Utils.public_key_uncompressed_prefix EC_BASE_G), 16
 
   # Finally, the order n of G and the cofactor h are:
   EC_ORDER_N    = BigInt.new "fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141", 16

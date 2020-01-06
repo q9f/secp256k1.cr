@@ -13,6 +13,12 @@
 # limitations under the License.
 
 require "spec"
-require "../src/address"
-require "../src/crypto"
-require "../src/secp256k1"
+require "../src/bitcoin.cr"
+require "../src/constants.cr"
+require "../src/core.cr"
+require "../src/crypto.cr"
+require "../src/ethereum.cr"
+require "../src/signature.cr"
+require "../src/structs.cr"
+require "../src/utils.cr"
+require "../src/version.cr"

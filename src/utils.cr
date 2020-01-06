@@ -139,6 +139,6 @@ module Secp256k1::Utils
   # wrapper function to perform an ec multiplication with
   # the generator point and a provided private key
   def self.public_key_from_private(priv : BigInt)
-    return ec_mul EC_BASE_G, priv
+    return Core.ec_mul EC_BASE_G, priv
   end
 end

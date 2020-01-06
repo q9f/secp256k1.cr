@@ -24,36 +24,36 @@ module Secp256k1::Signature
 
     # generate securely a random number k in the range [1..n-1]
     # here: a new private key is the exact implementation of this requirement
-    k = new_private_key
+    k = Utils.new_private_key
 
     # calculate the random point r = k * g and take its x-coordinate: r = r.x
-    r = ec_mul(EC_BASE_G, k).x % EC_ORDER_N
+    r = Core.ec_mul(EC_BASE_G, k).x % EC_ORDER_N
 
     # calculate the signature proof s = k^-1 * (h + r * priv) % n
-    k_inv = ec_mod_inv k, EC_ORDER_N
+    k_inv = Core.ec_mod_inv k, EC_ORDER_N
     s = ((hash + r * priv) * k_inv) % EC_ORDER_N
-    sig = EC_Signature.new r, s
+    sig = ECDSA_Signature.new r, s
     return sig
   end
 
   # the algorithm to verify an ecdsa signature takes as input the signed message `msg`
   # and the signature `(r, s)` produced from self.sign and the public key `pub`,
   # corresponding to the signer's private key. The result is boolean.
-  def self.verify(msg : String, sig : EC_Signature, pub : EC_Point)
+  def self.verify(msg : String, sig : ECDSA_Signature, pub : EC_Point)
     # calculate the message hash, with the same hash function used during the signing
     hash = BigInt.new Crypto.sha256_string(msg), 16
     return verify_hash hash, sig, pub
   end
 
   # same as self.verify, just using the hashed message directly
-  def self.verify_hash(hash : BigInt, sig : EC_Signature, pub : EC_Point)
+  def self.verify_hash(hash : BigInt, sig : ECDSA_Signature, pub : EC_Point)
     # calculate the modular inverse of the signature proof: s1 = s^{-1} % n
-    s_inv = ec_mod_inv sig.s, EC_ORDER_N
+    s_inv = Core.ec_mod_inv sig.s, EC_ORDER_N
 
     # recover the random point used during the signing: R' = (h * s1) * g + (r * s1) * pub
-    p0 = ec_mul EC_BASE_G, (hash * s_inv) % EC_ORDER_N
-    p1 = ec_mul pub, (sig.r * s_inv) % EC_ORDER_N
-    p = ec_add p0, p1
+    p0 = Core.ec_mul EC_BASE_G, (hash * s_inv) % EC_ORDER_N
+    p1 = Core.ec_mul pub, (sig.r * s_inv) % EC_ORDER_N
+    p = Core.ec_add p0, p1
 
     # calculate the signature validation result by comparing whether r' == r
     return sig.r === p.x
