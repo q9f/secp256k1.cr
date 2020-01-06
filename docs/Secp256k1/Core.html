@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.32.0">
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="github.com/q9f/secp256k1.cr">
+  <title>Secp256k1::Core - github.com/q9f/secp256k1.cr</title>
+  <script type="text/javascript">
+    CrystalDoc.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="../index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
+      <a href="../Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+      <a href="../Secp256k1/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/q9f/secp256k1.cr/Secp256k1/Core" data-name="secp256k1::core">
+      <a href="../Secp256k1/Core.html">Core</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
+      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
+      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+      <a href="../Secp256k1/Ethereum.html">Ethereum</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
+      <a href="../Secp256k1/Hash.html">Hash</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="../Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="../Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Secp256k1::Core
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Implements 256-bit Secp256k1 Koblitz elliptic curve
+reference https://www.secg.org/sec2-v2.pdf</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/core.cr#L17" target="_blank">
+        core.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.ec_add</strong>(p : EC_Point, q : EC_Point, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
+        
+          <div class="summary"><p>elliptic curve jive addition of point p(x, y) and q(x, y).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ec_double(p:EC_Point,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.ec_double</strong>(p : EC_Point, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
+        
+          <div class="summary"><p>elliptic curve juke point doubling of p(x, y).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ec_mod_inv(a:BigInt,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.ec_mod_inv</strong>(a : BigInt, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
+        
+          <div class="summary"><p>elliptic curve modular multiplicative inverse of a</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ec_mul(p:EC_Point,s:BigInt)-class-method" class="signature"><strong>.ec_mul</strong>(p : EC_Point, s : BigInt)</a>
+        
+          <div class="summary"><p>elliptic curve sequence multiplication of point p(x, y) and a skalar s, with s being a private key within the elliptic curve field size of EC_ORDER_N</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="ec_add(p:EC_Point,q:EC_Point,prime=EC_PARAM_PRIME)-class-method">
+      <div class="signature">
+        
+        def self.<strong>ec_add</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, q : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PARAM_PRIME</span>)
+
+        <a class="method-permalink" href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PARAM_PRIME)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>elliptic curve jive addition of point p(x, y) and q(x, y).
+'draw' a line between p and q which will intersect the
+curve in the point r which will be mirrored over the x-axis.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/core.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ec_double(p:EC_Point,prime=EC_PARAM_PRIME)-class-method">
+      <div class="signature">
+        
+        def self.<strong>ec_double</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PARAM_PRIME</span>)
+
+        <a class="method-permalink" href="#ec_double(p:EC_Point,prime=EC_PARAM_PRIME)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>elliptic curve juke point doubling of p(x, y).
+a special case of addition where both points are the same.
+'draw' a tangent line at p which will intersect the curve
+at point r which will be mirrored over the x-axis.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/core.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ec_mod_inv(a:BigInt,prime=EC_PARAM_PRIME)-class-method">
+      <div class="signature">
+        
+        def self.<strong>ec_mod_inv</strong>(a : BigInt, prime = <span class="t">EC_PARAM_PRIME</span>)
+
+        <a class="method-permalink" href="#ec_mod_inv(a:BigInt,prime=EC_PARAM_PRIME)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>elliptic curve modular multiplicative inverse of a</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/core.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ec_mul(p:EC_Point,s:BigInt)-class-method">
+      <div class="signature">
+        
+        def self.<strong>ec_mul</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, s : BigInt)
+
+        <a class="method-permalink" href="#ec_mul(p:EC_Point,s:BigInt)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>elliptic curve sequence multiplication of point p(x, y) and
+a skalar s, with s being a private key within the elliptic
+curve field size of EC_ORDER_N</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1b7e8eabb5f6dec531dc293313285b6d5ea60f77/src/core.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
