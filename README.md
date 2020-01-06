@@ -96,6 +96,16 @@ puts Secp256k1::Ethereum.address_from_public_key uncompressed
 # > "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
 ```
 
+# documentation
+
+can be found here: https://q9f.github.io/secp256k1.cr/
+
+generate a local copy with:
+
+```
+crystal docs
+```
+
 # testing
 
 the library is entirely specified through tests in `./spec`; run:
