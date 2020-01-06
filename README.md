@@ -1,16 +1,18 @@
 # secp256k1.cr
 
 
-[![Badge](https://github.com/q9f/secp256k1.cr/workflows/Nightly/badge.svg)](https://github.com/q9f/secp256k1.cr/actions)
+[![Build Status](https://img.shields.io/github/workflow/status/q9f/secp256k1.cr/Nightly)](https://github.com/q9f/secp256k1.cr/actions)
+[![Documentation](https://img.shields.io/badge/docs-html-black)](https://q9f.github.io/secp256k1.cr/)
+[![Release](https://img.shields.io/github/v/release/q9f/secp256k1.cr?include_prereleases&color=black)](https://github.com/q9f/secp256k1.cr/releases/latest)
 [![Language](https://img.shields.io/github/languages/top/q9f/secp256k1.cr?color=black)](https://github.com/q9f/secp256k1.cr/search?l=crystal)
-[![License](https://img.shields.io/github/license/q9f/secp256k1.cr.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/q9f/secp256k1.cr.svg?color=black)](LICENSE)
 
-a native library implementing secp256k1 purely for the crystal language. `secp256k1` is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.
+a native library implementing `secp256k1` purely for the crystal language. `secp256k1` is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.
 
 this library allows for key generation of:
 * private keys (from secure random within the elliptic curve field size)
 * mini private keys (short 30-char base-57 keys)
-* wallet import format (checksummed private keys)
+* wallet import format (checksummed base-58 private keys)
 * public keys, prefixed, compressed (from private)
 * public keys, unprefixed and prefixed, uncompressed (from private)
 * conversion between the different public key formats
@@ -128,10 +130,10 @@ neither bitcoin nor ethereum allow for recovering public keys from an address un
 
 _note: this library should not be used in production without proper auditing._
 
-* this library is not constant time and might be subject to side-channel attacks. [#4](https://github.com/q9f/secp256k1.cr/issues/4)
-* this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field [#5](https://github.com/q9f/secp256k1.cr/issues/5)
+* this library is not constant time and might be subject to side-channel attacks. ([#4](https://github.com/q9f/secp256k1.cr/issues/4))
+* this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field ([#5](https://github.com/q9f/secp256k1.cr/issues/5))
 
-found another issue? report it: https://github.com/q9f/secp256k1.cr/issues
+found another issue? report it: [github.com/q9f/secp256k1.cr/issues](https://github.com/q9f/secp256k1.cr/issues)
 
 # contribute
 
@@ -142,3 +144,5 @@ this pure crystal implementation is based on the python implementation [wobine/b
 honerable mention for the [bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page) and the [ethereum stackexchange](https://ethereum.stackexchange.com/) for providing so many in-depth resources that supported this project in reimplementing everything.
 
 license: apache license v2.0
+
+contributors: [**@q9f**](https://github.com/q9f/)
