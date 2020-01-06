@@ -15,8 +15,8 @@
 require "openssl"
 require "sha3"
 
-# wraps various hasing functions for convenience
-module Secp256k1::Crypto
+# wraps various hashing functions for convenience
+module Secp256k1::Hash
   # the base-58 alphabet (for bitcoin)
   BASE_58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 

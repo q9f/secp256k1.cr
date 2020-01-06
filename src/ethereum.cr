@@ -26,7 +26,7 @@ module Secp256k1::Ethereum
 
     if adr.size === 40
       # get a keccak-256 to operate on according to eip-55
-      keccak = Crypto.keccak256_string adr
+      keccak = Hash.keccak256_string adr
 
       # prefix the address with `0x`
       address = "0x"
@@ -54,7 +54,7 @@ module Secp256k1::Ethereum
     # ensure uncompressed public keys
     if pub.size === 128
       # hashes the uncompressed public key with keccak-256
-      keccak = Crypto.keccak256 pub
+      keccak = Hash.keccak256 pub
 
       # take the last 20 bytes from the hash
       return address_checksum keccak[24, 40]
