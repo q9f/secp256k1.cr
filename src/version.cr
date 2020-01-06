@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# the version of the module
 module Secp256k1
-  # the version of the module
   VERSION = "0.2.0"
 end
