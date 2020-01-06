@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # implements the bitcoin address space
-module Bitcoin
+module Secp256k1::Bitcoin
   # generates a new mini private key (30 characters, base-57)
   def self.new_mini_private_key
     valid = false
@@ -52,7 +52,7 @@ module Bitcoin
   # gets a base-58 wallet import format from private key
   def self.wif_from_private(k : BigInt, version = "80", compr = "")
     # take the private key
-    priv = Secp256k1.to_padded_hex_32 k
+    priv = Secp256k1::Utils.to_padded_hex_32 k
 
     # prepend the version byte
     versioned = "#{version}#{priv}#{compr}"
@@ -85,7 +85,7 @@ module Bitcoin
     if checksum_key.size == 74 || checksum_key.size == 76
       # drop the version byte, checksum, and compressed byte
       private_key = BigInt.new checksum_key[2, 64], 16
-      return Secp256k1.to_padded_hex_32 private_key
+      return Secp256k1::Utils.to_padded_hex_32 private_key
     else
       raise "invalid wallet import format (invalid wif size: #{checksum_key.size})"
       return "-999"
@@ -194,10 +194,10 @@ module Bitcoin
   # generates a bitcoin address from an public key ec point
   def self.address_from_public_point(p : Secp256k1::EC_Point, version = "00", compressed = true)
     # take the corresponding public key generated with it
-    pub = Secp256k1.public_key_uncompressed_prefix p
+    pub = Secp256k1::Utils.public_key_uncompressed_prefix p
 
     # generate a compressed address if specified
-    pub = Secp256k1.public_key_compressed_prefix p if compressed
+    pub = Secp256k1::Utils.public_key_compressed_prefix p if compressed
     return address_from_public_key pub, version
   end
 
@@ -212,7 +212,7 @@ module Bitcoin
       vers -= 128
 
       # make sure the version byte is properly padded
-      vers = Secp256k1.to_padded_hex_01 vers
+      vers = Secp256k1::Utils.to_padded_hex_01 vers
 
       # gets the private key from the wif
       priv = private_key_from_wif wif
@@ -232,7 +232,7 @@ module Bitcoin
     # having a private ecdsa key
     # take the corresponding public key generated with it
     priv = BigInt.new priv, 16
-    p = Secp256k1.public_key_from_private priv
+    p = Secp256k1::Utils.public_key_from_private priv
     return address_from_public_point p, version, compressed
   end
 end
@@ -301,7 +301,7 @@ module Ethereum
     # having a private ecdsa key
     # take the corresponding public key generated with it
     priv = BigInt.new priv, 16
-    p = Secp256k1.public_key_from_private priv
+    p = Secp256k1::Utils.public_key_from_private priv
     return address_from_public_point p
   end
 end

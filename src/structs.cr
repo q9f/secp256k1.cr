@@ -14,7 +14,7 @@
 
 # custom data types for the secp256k1 module
 module Secp256k1
-  # A point in the two-dimensional space
+  # A point in the two-dimensional space of an elliptic curve
   class EC_Point
     # the position on the x-axis
     property x : BigInt
