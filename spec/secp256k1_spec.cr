@@ -28,22 +28,10 @@ describe Secp256k1 do
     Secp256k1::EC_ORDER_N.should eq BigInt.new "115792089237316195423570985008687907852837564279074904382605163141518161494337"
     Secp256k1::EC_COFACTOR_H.should eq BigInt.new "1"
   end
+end
 
-  # tests the correct pedding for hex keys to ensure they are always 32 bytes in size
-  it "pads 32 byte hex strings with leading zeros" do
-    # maximum padding for 32 zero bytes
-    a = Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_FACTOR_A
-    a.should eq "0000000000000000000000000000000000000000000000000000000000000000"
-
-    # high padding for 0x7
-    b = Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_FACTOR_B
-    b.should eq "0000000000000000000000000000000000000000000000000000000000000007"
-
-    # no padding required for the max possible value
-    n = Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_ORDER_N
-    n.should eq Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_ORDER_N
-  end
-
+# tests for the Secp256k1::Core module
+describe Secp256k1::Core do
   # tests the ec mod_inv against the referenced python implementation
   it "computes modular multiplicative inverse of a" do
     # using 32 random bytes for a
@@ -91,6 +79,24 @@ describe Secp256k1 do
     # ref: https://github.com/wobine/blackboard101/blob/e991ea0b98fd26059bf3806e5749b5e5f737e791/EllipticCurvesPart4-PrivateKeyToPublicKey.py#L31
     r.x.should eq BigInt.new "89565891926547004231252920425935692360644145829622209833684329913297188986597"
     r.y.should eq BigInt.new "12158399299693830322967808612713398636155367887041628176798871954788371653930"
+  end
+end
+
+# tests for the Secp256k1::Utils module
+describe Secp256k1::Utils do
+  # tests the correct pedding for hex keys to ensure they are always 32 bytes in size
+  it "pads 32 byte hex strings with leading zeros" do
+    # maximum padding for 32 zero bytes
+    a = Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_FACTOR_A
+    a.should eq "0000000000000000000000000000000000000000000000000000000000000000"
+
+    # high padding for 0x7
+    b = Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_FACTOR_B
+    b.should eq "0000000000000000000000000000000000000000000000000000000000000007"
+
+    # no padding required for the max possible value
+    n = Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_ORDER_N
+    n.should eq Secp256k1::Utils.to_padded_hex_32 Secp256k1::EC_ORDER_N
   end
 
   # tests the ec mul operation to retrieve a valid public key from a known private key
@@ -192,8 +198,10 @@ describe Secp256k1 do
       Secp256k1::Utils.restore_public_key compressed_invalid
     end
   end
+end
 
-  # signs and verifies a message using the private key from the python blackboard 101
+# tests for the Secp256k1::Signature module
+describe Secp256k1::Signature do # signs and verifies a message using the private key from the python blackboard 101
   # ref: https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py#L11
   it "can sign a message" do
     priv = BigInt.new "75263518707598184987916378021939673586055614731957507592904438851787542395619"
