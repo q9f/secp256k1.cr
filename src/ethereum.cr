@@ -67,7 +67,7 @@ module Secp256k1::Ethereum
   # generates an ethereum address from an public key ec point
   def self.address_from_public_point(p : Secp256k1::EC_Point)
     # take the corresponding public key generated with it
-    pub = Secp256k1::Utils.public_key_uncompressed p
+    pub = Secp256k1::Util.public_key_uncompressed p
     return address_from_public_key pub
   end
 
@@ -76,7 +76,7 @@ module Secp256k1::Ethereum
     # having a private ecdsa key
     # take the corresponding public key generated with it
     priv = BigInt.new priv, 16
-    p = Secp256k1::Utils.public_key_from_private priv
+    p = Secp256k1::Util.public_key_from_private priv
     return address_from_public_point p
   end
 end

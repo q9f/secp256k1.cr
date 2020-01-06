@@ -1,7 +1,7 @@
 require "./src/*"
 
 # everything starts with a random number
-private_key = Secp256k1::Utils.new_private_key
+private_key = Secp256k1::Util.new_private_key
 
 # if you feel fancy, you can use a mini private key
 fancy = true
@@ -17,18 +17,18 @@ wif = Secp256k1::Bitcoin.wif_from_private private_key, "80"
 wif_compr = Secp256k1::Bitcoin.wif_compressed_from_private private_key, "80"
 
 # the point on the elliptic curve is our public key
-public_key = Secp256k1::Utils.public_key_from_private private_key
+public_key = Secp256k1::Util.public_key_from_private private_key
 
 # compressed public keys for compressed bitcoin addresses
-public_compr = Secp256k1::Utils.public_key_compressed_prefix public_key
+public_compr = Secp256k1::Util.public_key_compressed_prefix public_key
 btc_compr = Secp256k1::Bitcoin.address_from_public_key public_compr, "00"
 
 # prefixed uncompressed public keys for normal bitcoin addresses
-public_uncompr_4 = Secp256k1::Utils.public_key_uncompressed_prefix public_key
+public_uncompr_4 = Secp256k1::Util.public_key_uncompressed_prefix public_key
 btc_uncompr = Secp256k1::Bitcoin.address_from_public_key public_uncompr_4, "00"
 
 # uncompressed public keys for ethereum addresses
-public_uncompr = Secp256k1::Utils.public_key_uncompressed public_key
+public_uncompr = Secp256k1::Util.public_key_uncompressed public_key
 eth = Secp256k1::Ethereum.address_from_public_key public_uncompr
 
 # pass a different version byte to get a DOGE address
@@ -51,7 +51,7 @@ valid = Secp256k1::Signature.verify(msg, sig, public_key)
 # let's have a look
 puts "Key Magic
 ---------
-                 New private key :   #{Secp256k1::Utils.to_padded_hex_32 private_key}"
+                 New private key :   #{Secp256k1::Util.to_padded_hex_32 private_key}"
 puts "                Mini private key :   #{private_mini}" if fancy
 puts "
            Compressed public key : #{public_compr}
@@ -75,6 +75,6 @@ Compr. DOGE Wallet Import Format :   #{dog_wif_compr}
 Crypto Magic
 ------------
                      New Message : #{msg}
-                       Signature : r=#{Secp256k1::Utils.to_padded_hex_32 sig.r}, s=#{Secp256k1::Utils.to_padded_hex_32 sig.s}
+                       Signature : r=#{Secp256k1::Util.to_padded_hex_32 sig.r}, s=#{Secp256k1::Util.to_padded_hex_32 sig.s}
                  Valid Signature : #{valid}
 "

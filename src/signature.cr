@@ -24,7 +24,7 @@ module Secp256k1::Signature
 
     # generate securely a random number k in the range [1..n-1]
     # here: a new private key is the exact implementation of this requirement
-    k = Utils.new_private_key
+    k = Util.new_private_key
 
     # calculate the random point r = k * g and take its x-coordinate: r = r.x
     r = Core.ec_mul(EC_BASE_G, k).x % EC_ORDER_N

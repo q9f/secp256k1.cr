@@ -49,7 +49,7 @@ this library exposes the following modules (in logical order):
 
 * `Secp256k1`: necessary constants and data structures
 * `Secp256k1::Core`: the entire core mathematics behind the elliptic curve cryptography
-* `Secp256k1::Utils`: all tools for the handling of private-public key-pairs
+* `Secp256k1::Util`: all tools for the handling of private-public key-pairs
 * `Secp256k1::Hash`: implementation of various hashing algorithms for convenience
 * `Secp256k1::Signature`: allows for signing messages and verifying signatures
 * `Secp256k1::Bitcoin`: for the generation of bitcoin addresses
@@ -59,11 +59,11 @@ basic usage:
 
 ```crystal
 # generate a keypair
-private_key = Secp256k1::Utils.new_private_key
-public_key = Secp256k1::Utils.public_key_from_private private_key
+private_key = Secp256k1::Util.new_private_key
+public_key = Secp256k1::Util.public_key_from_private private_key
 
 # display the compressed public key with prefix
-puts Secp256k1::Utils.public_key_compressed_prefix public_key
+puts Secp256k1::Util.public_key_compressed_prefix public_key
 
 # > 02b3c141fba20c129806290f04cee097305fb7391abfde01b3bb3affcd935332a1
 ```
@@ -72,9 +72,9 @@ generate a compressed bitcoin mainnet address:
 
 ```crystal
 # generate a keypair
-private_key = Secp256k1::Utils.new_private_key
-public_key = Secp256k1::Utils.public_key_from_private private_key
-compressed = Secp256k1::Utils.public_key_compressed_prefix public_key
+private_key = Secp256k1::Util.new_private_key
+public_key = Secp256k1::Util.public_key_from_private private_key
+compressed = Secp256k1::Util.public_key_compressed_prefix public_key
 
 # display the bitcoin address (version "00" for bitcoin mainnet)
 puts Secp256k1::Bitcoin.address_from_public_key compressed, "00"
@@ -86,9 +86,9 @@ generate a checksummed ethereum address:
 
 ```crystal
 # generate a keypair
-private_key = Secp256k1::Utils.new_private_key
-public_key = Secp256k1::Utils.public_key_from_private private_key
-uncompressed = Secp256k1::Utils.public_key_uncompressed public_key
+private_key = Secp256k1::Util.new_private_key
+public_key = Secp256k1::Util.public_key_from_private private_key
+uncompressed = Secp256k1::Util.public_key_uncompressed public_key
 
 # display the ethereum address
 puts Secp256k1::Ethereum.address_from_public_key uncompressed

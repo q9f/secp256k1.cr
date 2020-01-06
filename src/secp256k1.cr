@@ -19,7 +19,7 @@ require "./ethereum.cr"
 require "./hash.cr"
 require "./signature.cr"
 require "./structs.cr"
-require "./utils.cr"
+require "./util.cr"
 require "./version.cr"
 
 # expose the secp256k1 module

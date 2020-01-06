@@ -26,7 +26,7 @@ describe Secp256k1::Signature do # signs and verifies a message using the privat
     # generate 10 random signatures for the same message and key
     while iter < 10
       sig = Secp256k1::Signature.sign msg, priv
-      pub = Secp256k1::Utils.public_key_from_private priv
+      pub = Secp256k1::Util.public_key_from_private priv
       valid = Secp256k1::Signature.verify msg, sig, pub
       valid.should eq true
       iter += 1
@@ -38,7 +38,7 @@ describe Secp256k1::Signature do # signs and verifies a message using the privat
   # ref: https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py#L13
   it "can verify a public signature" do
     priv = BigInt.new "75263518707598184987916378021939673586055614731957507592904438851787542395619"
-    pub = Secp256k1::Utils.public_key_from_private priv
+    pub = Secp256k1::Util.public_key_from_private priv
 
     # Python:
     # > ******* Signature Generation *********
