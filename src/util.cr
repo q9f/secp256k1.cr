@@ -96,7 +96,7 @@ module Secp256k1::Util
   # prefix `"02"` or `"03"`.
   #
   # The prefix can be later used to recover the `y` coordinate of the public key,
-  # see `decode_compressed_public_key`. `Secp256k1::Bitcoin` uses this format
+  # see `decode_compressed_public_key`. `Bitcoin` uses this format
   # to generate shorter addresses as compared to using uncompressed keys.
   #
   # Parameters:
@@ -113,7 +113,7 @@ module Secp256k1::Util
 
   # Exports the uncompressed public key from an `EC_Point` without prefix.
   #
-  # `Secp256k1::Ethereum` uses this format to generate addresses. For prefixed
+  # `Ethereum` uses this format to generate addresses. For prefixed
   # uncompressed public keys, see `public_key_uncompressed_prefix`.
   #
   # Parameters:
@@ -131,7 +131,7 @@ module Secp256k1::Util
 
   # Exports the uncompressed public key from an `EC_Point` with prefix `"04"`.
   #
-  # `Secp256k1::Bitcoin` uses this format to generate uncompressed addresses.
+  # `Bitcoin` uses this format to generate uncompressed addresses.
   # For unprefixed public keys, see `public_key_uncompressed`.
   #
   # Parameters:

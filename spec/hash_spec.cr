@@ -23,7 +23,7 @@ describe Secp256k1::Hash do
     sha3.should eq "f58fa3df820114f56e1544354379820cff464c9c41cb3ca0ad0b0843c9bb67ee"
 
     # hash the previous hash again as bytes array instead of a string input
-    sha3 = Secp256k1::Hash.sha3 sha3
+    sha3 = Secp256k1::Hash.sha3 Secp256k1::Hash.hex_to_bin sha3
     sha3.should eq "fb6123314cfb14af7a38a1d6a86a78598a204d7423e25810dad1ec8a8ef5094c"
   end
 
@@ -34,14 +34,14 @@ describe Secp256k1::Hash do
     keccak.should eq "719accc61a9cc126830e5906f9d672d06eab6f8597287095a2c55a8b775e7016"
 
     # hash the previous hash again as bytes array instead of a string input
-    keccak = Secp256k1::Hash.keccak256 keccak
+    keccak = Secp256k1::Hash.keccak256 Secp256k1::Hash.hex_to_bin keccak
     keccak.should eq "438a3f652b00153f899189d56c7a70d0b3906b5a6ca4f585de47ac159b630bc0"
   end
 
   it "can hash sha-256 correctly" do
     # sha-256 hashes taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
-    sha2 = Secp256k1::Hash.sha256 "0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352"
+    sha2 = Secp256k1::Hash.sha256 Secp256k1::Hash.hex_to_bin "0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352"
     sha2.should eq "0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98"
 
     # hash the previous hash again as string input instead of a bytes array
@@ -52,8 +52,12 @@ describe Secp256k1::Hash do
   it "can hash ripemd-160 correctly" do
     # ripemd-160 hashes taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
-    ripe = Secp256k1::Hash.ripemd160 "0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98"
+    ripe = Secp256k1::Hash.ripemd160 Secp256k1::Hash.hex_to_bin "0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98"
     ripe.should eq "f54a5851e9372b87810a8e60cdd2e7cfd80b6e31"
+
+    # hash the previous hash again as string input instead of a bytes array
+    ripe = Secp256k1::Hash.ripemd160_string ripe
+    ripe.should eq "a653c746b9df6f1f21196bf6f80da734073cdc03"
   end
 
   it "can encode a valid base58 representation" do
