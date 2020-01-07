@@ -54,7 +54,7 @@ module Secp256k1::Ethereum
     # ensure uncompressed public keys
     if pub.size === 128
       # hashes the uncompressed public key with keccak-256
-      keccak = Hash.keccak256 pub
+      keccak = Hash.keccak256 Hash.hex_to_bin pub
 
       # take the last 20 bytes from the hash
       return address_checksum keccak[24, 40]

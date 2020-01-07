@@ -48,7 +48,7 @@ module Secp256k1
   # A basic ECDSA Signature containing a random point `r` and the
   # signature proof `s`.
   #
-  # See: `Secp256k1::Signature` for signature generation.
+  # See: `Signature` for signature generation.
   #
   # Properties:
   # * `r` (`BigInt`): the `x` coordinate of a random point `R`.
