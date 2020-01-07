@@ -12,14 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-# Implements 256-bit Secp256k1 Koblitz elliptic curve.
+# Implements 256-bit `Secp256k1` Koblitz elliptic curve.
 # Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
-# 
-# Secp256k1 has the characteristic p, it is defined over the prime field ℤ_p.
+#
+# `Secp256k1` has the characteristic prime `p`, it is defined over the prime field ℤ_p.
 # Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1::Core
-  # elliptic curve modular multiplicative inverse of a
+  # Computes the elliptic curve modular multiplicative inverse of `a`.
+  #
+  # Paremeters:
+  # * `a` (`BigInt`): the integer that we want the modular inverse of.
+  # * `prime` (`BigInt`): the prime number that shapes the field, default: `EC_PRIME_P`.
+  #
+  # Returns a `BigInt` value as result.
   def self.ec_mod_inv(a : BigInt, prime = EC_PRIME_P)
     m_low = 1
     m_high = 0
@@ -41,9 +46,17 @@ module Secp256k1::Core
     return m_low % prime
   end
 
-  # elliptic curve jive addition of point p(x, y) and q(x, y).
-  # 'draw' a line between p and q which will intersect the
-  # curve in the point r which will be mirrored over the x-axis.
+  # The elliptic curve jive addition of point `p(x, y)` and `q(x, y)`.
+  #
+  # We basically _draw_ a line between `p` and `q` which will intersect the
+  # curve in the point `r` which will be mirrored over the `x`-axis.
+  #
+  # Paramters:
+  # * `p` (`EC_Point`): the point `p(x, y)` to be used in the jive addition.
+  # * `q` (`EC_Point`): the point `q(x, y)` to be used in the jive addition.
+  # * `prime` (`BigInt`): the prime number that shapes the field, default: `EC_PRIME_P`.
+  #
+  # Returns another `EC_Point` as result.
   def self.ec_add(p : EC_Point, q : EC_Point, prime = EC_PRIME_P)
     x_delta = q.x - p.x
     x_inv = ec_mod_inv x_delta
@@ -56,10 +69,17 @@ module Secp256k1::Core
     return EC_Point.new x, y
   end
 
-  # elliptic curve juke point doubling of p(x, y).
-  # a special case of addition where both points are the same.
-  # 'draw' a tangent line at p which will intersect the curve
-  # at point r which will be mirrored over the x-axis.
+  # The elliptic curve juke point doubling of `p(x, y)`.
+  #
+  # This is a special case of addition where both points are the same.
+  # We _draw_ a tangent line at `p` which will intersect the curve
+  # at point `r` which will be mirrored over the `x`-axis.
+  #
+  # Paramters:
+  # * `p` (`EC_Point`): the point `p(x, y)` to be used in the juke doubling.
+  # * `prime` (`BigInt`): the prime number that shapes the field, default: `EC_PRIME_P`.
+  #
+  # Returns another `EC_Point` as result.
   def self.ec_double(p : EC_Point, prime = EC_PRIME_P)
     lam_numer = 3 * p.x * p.x + EC_FACTOR_A
     lam_denom = 2 * p.y
@@ -72,9 +92,16 @@ module Secp256k1::Core
     return EC_Point.new x, y
   end
 
-  # elliptic curve sequence multiplication of point p(x, y) and
-  # a skalar s, with s being a private key within the elliptic
-  # curve field size of EC_ORDER_N
+  # The elliptic curve sequence multiplication of point `p(x, y)` and
+  # a skalar `s`.
+  #
+  # With `s` being a private key within the elliptic curve field size of `EC_ORDER_N`.
+  #
+  # Paramters:
+  # * `p` (`EC_Point`): the point `p(x, y)` to be used in the sequencing.
+  # * `s` (`BigInt`): a skalar, in most cases a private key.
+  #
+  # Returns another `EC_Point` as result, in most cases a public key.
   def self.ec_mul(p : EC_Point, s : BigInt)
     # catch skalars outside of the ec field size and exit
     if s === 0 || s >= EC_ORDER_N

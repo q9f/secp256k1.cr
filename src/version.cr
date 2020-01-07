@@ -12,13 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-# Implements 256-bit Secp256k1 Koblitz elliptic curve.
+# Implements 256-bit `Secp256k1` Koblitz elliptic curve.
 # Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
-# 
-# Secp256k1 has the characteristic p, it is defined over the prime field ℤ_p.
+#
+# `Secp256k1` has the characteristic prime `p`, it is defined over the prime field ℤ_p.
 # Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1
-# the version of the module
+  # The `VERSION` of the `Secp256k1` module.
   VERSION = "0.2.1"
 end
