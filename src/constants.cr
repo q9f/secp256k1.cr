@@ -25,7 +25,7 @@ module Secp256k1
   # field `F_p` is defined by the prime `p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1`.
   EC_PRIME_P = BigInt.new "fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f", 16
 
-  # The curve `E`: `y^2 = x^3 + ax + b` over `F_p` is defined by `a = 0`. 
+  # The curve `E`: `y^2 = x^3 + ax + b` over `F_p` is defined by `a = 0`.
   # As the `a` constant is zero, the `ax` term in the curve equation is always zero,
   # hence the curve equation becomes `y^2 = x^3 + b`.
   EC_FACTOR_A = BigInt.new "00", 16
