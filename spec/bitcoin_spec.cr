@@ -20,16 +20,18 @@ describe Secp256k1::Bitcoin do
   it "can generate a valid bitcoin address" do
     # private key and address taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
-    adr = Secp256k1::Bitcoin.address_from_private "18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725"
+    priv = BigInt.new "18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725", 16
+    adr = Secp256k1::Bitcoin.address_from_private priv
     adr.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
 
     # uncompressed dogecoin address with version byte "1e"
     # doge: http://coinok.pw/wallet/doge/
-    dog = Secp256k1::Bitcoin.address_from_private "8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18", "1e", false
+    priv = BigInt.new "8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18", 16
+    dog = Secp256k1::Bitcoin.address_from_private priv, "1e", false
     dog.should eq "DDh3RAMeWnTWfH6q11uWkF74vMbMxqxa8X"
 
     # compressed dogecoin address
-    dog = Secp256k1::Bitcoin.address_from_private "8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18", "1e"
+    dog = Secp256k1::Bitcoin.address_from_private priv, "1e"
     dog.should eq "DP9Q6DP1GVjUAtcJcaCeR1psedXoC12Jtu"
   end
 
@@ -63,16 +65,16 @@ describe Secp256k1::Bitcoin do
   it "can provide the correct wallet import format" do
     # ref: https://en.bitcoin.it/wiki/Wallet_import_format
     priv = BigInt.new "0c28fca386c7a227600b2fe50b7cae11ec86d3bf1fbe471be89827e19d72aa1d", 16
-    wif = Secp256k1::Bitcoin.wif_from_private priv
+    wif = Secp256k1::Bitcoin.wif_from_private_uncompressed priv
     wif.should eq "5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ"
-    wif_compr = Secp256k1::Bitcoin.wif_compressed_from_private priv
+    wif_compr = Secp256k1::Bitcoin.wif_from_private_compressed priv
     wif_compr.should eq "KwdMAjGmerYanjeui5SHS7JkmpZvVipYvB2LJGU1ZxJwYvP98617"
 
     # ref: https://bitcoin.stackexchange.com/questions/68065/private-key-to-wif-compressed-which-one-is-correct
     priv = BigInt.new "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f", 16
-    wif = Secp256k1::Bitcoin.wif_from_private priv
+    wif = Secp256k1::Bitcoin.wif_from_private_uncompressed priv
     wif.should eq "5HpHgWkLaovGWySEFpng1XQ6pdG1TzNWR7SrETvfTRVdKHNXZh8"
-    wif_compr = Secp256k1::Bitcoin.wif_compressed_from_private priv
+    wif_compr = Secp256k1::Bitcoin.wif_from_private_compressed priv
     wif_compr.should eq "KwDidQJHSE67VJ6MWRvbBKAxhD3F48DvqRT6JRqrjd7MHLBjGF7V"
   end
 
