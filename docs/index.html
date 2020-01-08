@@ -103,15 +103,17 @@
   </svg>
 </a>secp256k1.cr</h1>
 
-<p><a href="https://github.com/q9f/secp256k1.cr/actions" target="_blank"><img src="https://github.com/q9f/secp256k1.cr/workflows/Nightly/badge.svg" alt="Badge"/></a>
+<p><a href="https://github.com/q9f/secp256k1.cr/actions" target="_blank"><img src="https://img.shields.io/github/workflow/status/q9f/secp256k1.cr/Nightly" alt="Build Status"/></a>
+<a href="https://q9f.github.io/secp256k1.cr/" target="_blank"><img src="https://img.shields.io/badge/docs-html-black" alt="Documentation"/></a>
+<a href="https://github.com/q9f/secp256k1.cr/releases/latest" target="_blank"><img src="https://img.shields.io/github/v/release/q9f/secp256k1.cr?include_prereleases&color=black" alt="Release"/></a>
 <a href="https://github.com/q9f/secp256k1.cr/search?l=crystal" target="_blank"><img src="https://img.shields.io/github/languages/top/q9f/secp256k1.cr?color=black" alt="Language"/></a>
-<a href="LICENSE" target="_blank"><img src="https://img.shields.io/github/license/q9f/secp256k1.cr.svg" alt="License"/></a></p>
+<a href="LICENSE" target="_blank"><img src="https://img.shields.io/github/license/q9f/secp256k1.cr.svg?color=black" alt="License"/></a></p>
 
-<p>a native library implementing secp256k1 purely for the crystal language. <code>secp256k1</code> is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.</p>
+<p>a native library implementing <code>secp256k1</code> purely for the crystal language. <code>secp256k1</code> is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.</p>
 
 <p>this library allows for key generation of:</p>
 
-<ul><li>private keys (from secure random within the elliptic curve field size)</li><li>mini private keys (short 30-char base-57 keys)</li><li>wallet import format (checksummed private keys)</li><li>public keys, prefixed, compressed (from private)</li><li>public keys, unprefixed and prefixed, uncompressed (from private)</li><li>conversion between the different public key formats</li></ul>
+<ul><li>private keys (from secure random within the elliptic curve field size)</li><li>mini private keys (short 30-char base-57 keys)</li><li>wallet import format (checksummed base-58 private keys)</li><li>public keys, prefixed, compressed (from private)</li><li>public keys, unprefixed and prefixed, uncompressed (from private)</li><li>conversion between the different public key formats</li></ul>
 
 <p>this library allows for address generation of:</p>
 
@@ -190,7 +192,7 @@ puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Et
   </svg>
 </a>documentation</h1>
 
-<p>can be found here: https://q9f.github.io/secp256k1.cr/</p>
+<p>the full library documentation can be found here: <a href="https://q9f.github.io/secp256k1.cr/" target="_blank">q9f.github.io/secp256k1.cr</a></p>
 
 <p>generate a local copy with:</p>
 
@@ -228,9 +230,9 @@ puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Et
 
 <p><em>note: this library should not be used in production without proper auditing.</em></p>
 
-<ul><li>this library is not constant time and might be subject to side-channel attacks. <a href="https://github.com/q9f/secp256k1.cr/issues/4" target="_blank">#4</a></li><li>this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field <a href="https://github.com/q9f/secp256k1.cr/issues/5" target="_blank">#5</a></li></ul>
+<ul><li>this library is not constant time and might be subject to side-channel attacks. (<a href="https://github.com/q9f/secp256k1.cr/issues/4" target="_blank">#4</a>)</li><li>this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field (<a href="https://github.com/q9f/secp256k1.cr/issues/5" target="_blank">#5</a>)</li></ul>
 
-<p>found another issue? report it: https://github.com/q9f/secp256k1.cr/issues</p>
+<p>found another issue? report it: <a href="https://github.com/q9f/secp256k1.cr/issues" target="_blank">github.com/q9f/secp256k1.cr/issues</a></p>
 
 <h1><a id="contribute" class="anchor" href="#contribute">
   <svg class="octicon-link" aria-hidden="true">
@@ -245,6 +247,8 @@ puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Et
 <p>honerable mention for the <a href="https://en.bitcoin.it/wiki/Main_Page" target="_blank">bitcoin wiki</a> and the <a href="https://ethereum.stackexchange.com/" target="_blank">ethereum stackexchange</a> for providing so many in-depth resources that supported this project in reimplementing everything.</p>
 
 <p>license: apache license v2.0</p>
+
+<p>contributors: <a href="https://github.com/q9f/" target="_blank"><strong>@q9f</strong></a></p>
 </div>
 </body>
 </html>

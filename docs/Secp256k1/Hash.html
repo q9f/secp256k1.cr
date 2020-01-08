@@ -116,7 +116,8 @@
     Overview
   </h2>
 
-  <p>wraps various hashing functions for convenience</p>
+  <p>The <code><a href="../Secp256k1/Hash.html">Secp256k1::Hash</a></code> module wraps various hashing functions for convenience
+and exposes them for general use.</p>
 
 
 
@@ -141,7 +142,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L19" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L20" target="_blank">
         hash.cr
       </a>
     
@@ -162,12 +163,13 @@
   
   <dl>
     
-      <dt class="entry-const" id="BASE_57">
-        <strong>BASE_57</strong> = <code><span class="s">&quot;23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span></code>
+      <dt class="entry-const" id="BASE_56">
+        <strong>BASE_56</strong> = <code><span class="s">&quot;23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz&quot;</span></code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>the base-57 alphabet (for mini private keys)</p>
+        <p>The Base-56 alphabet for <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> mini-private keys is a Base-58 alphabet
+without <code>1</code> and <code>o</code> to additionally omit more similar-looking letters.</p>
       </dd>
       
     
@@ -176,7 +178,8 @@
       </dt>
       
       <dd class="entry-const-doc">
-        <p>the base-58 alphabet (for bitcoin)</p>
+        <p>The Base-58 alphabet for <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> addresses is a Base-64 alphabet without
+<code>0</code>, <code>O</code>, <code>I</code>, and <code>l</code> to omit similar-looking letters.</p>
       </dd>
       
     
@@ -197,86 +200,100 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#base57_char(i:Int32)-class-method" class="signature"><strong>.base57_char</strong>(i : Int32)</a>
+        <a href="#base56_char(i:Int32)-class-method" class="signature"><strong>.base56_char</strong>(i : Int32)</a>
         
-          <div class="summary"><p>get a character from the base-57 alphabet at position i</p></div>
+          <div class="summary"><p>Gets a character from the Base-56 alphabet at position <code>i</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#base58_char(i:Int32)-class-method" class="signature"><strong>.base58_char</strong>(i : Int32)</a>
+        
+          <div class="summary"><p>Gets a character from the Base-58 alphabet at position <code>i</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#base58_decode(s:String)-class-method" class="signature"><strong>.base58_decode</strong>(s : String)</a>
         
-          <div class="summary"><p>decode a hex string from base-58</p></div>
+          <div class="summary"><p>Decodes a hexadecimal string from a Base-58 encoded string.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#base58_encode(h:String)-class-method" class="signature"><strong>.base58_encode</strong>(h : String)</a>
         
-          <div class="summary"><p>encode a hex string as base-58</p></div>
+          <div class="summary"><p>Encodes a Base-58 string from a hexadecimal string.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#bin_to_hex(b:Bytes)-class-method" class="signature"><strong>.bin_to_hex</strong>(b : Bytes)</a>
         
-          <div class="summary"><p>helper function to convert byte arrays to hex strings</p></div>
+          <div class="summary"><p>Helper function to convert byte arrays to hexadecimal strings.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#hex_to_bin(s:String)-class-method" class="signature"><strong>.hex_to_bin</strong>(s : String)</a>
+        <a href="#hex_to_bin(h:String)-class-method" class="signature"><strong>.hex_to_bin</strong>(h : String)</a>
         
-          <div class="summary"><p>helper function to convert hex strings to byte arrays</p></div>
+          <div class="summary"><p>Helper function to convert hexadecimal strings to byte arrays.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#keccak256(h:String)-class-method" class="signature"><strong>.keccak256</strong>(h : String)</a>
+        <a href="#keccak256(b:Bytes)-class-method" class="signature"><strong>.keccak256</strong>(b : Bytes)</a>
         
-          <div class="summary"><p>operating a keccak-256 hash on the byte array</p></div>
+          <div class="summary"><p>Operating a Keccak-256 hash on a byte array.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#keccak256_string(h:String)-class-method" class="signature"><strong>.keccak256_string</strong>(h : String)</a>
         
-          <div class="summary"><p>operating a keccak-256 hash on the actual string literal</p></div>
+          <div class="summary"><p>Operating a Keccak-256 hash on an actual string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ripemd160(h:String)-class-method" class="signature"><strong>.ripemd160</strong>(h : String)</a>
+        <a href="#ripemd160(b:Bytes)-class-method" class="signature"><strong>.ripemd160</strong>(b : Bytes)</a>
         
-          <div class="summary"><p>operating a ripemd-160 hash on the byte array</p></div>
+          <div class="summary"><p>Operating a RIPEMD-160 hash on a byte array.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sha256(h:String)-class-method" class="signature"><strong>.sha256</strong>(h : String)</a>
+        <a href="#ripemd160_string(h:String)-class-method" class="signature"><strong>.ripemd160_string</strong>(h : String)</a>
         
-          <div class="summary"><p>operating a sha2-256 hash on the byte array</p></div>
+          <div class="summary"><p>Operating a RIPEMD-160 hash on an actual string literal.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sha256(b:Bytes)-class-method" class="signature"><strong>.sha256</strong>(b : Bytes)</a>
+        
+          <div class="summary"><p>Operating a SHA2-256 hash on a byte array.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#sha256_string(h:String)-class-method" class="signature"><strong>.sha256_string</strong>(h : String)</a>
         
-          <div class="summary"><p>operating a sha2-256 hash on the actual string literal</p></div>
+          <div class="summary"><p>Operating a SHA2-256 hash on an actual string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sha3(h:String)-class-method" class="signature"><strong>.sha3</strong>(h : String)</a>
+        <a href="#sha3(b:Bytes)-class-method" class="signature"><strong>.sha3</strong>(b : Bytes)</a>
         
-          <div class="summary"><p>operating a sha3-256 hash on the byte array</p></div>
+          <div class="summary"><p>Operating a SHA3-256 hash on a byte array.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#sha3_string(h:String)-class-method" class="signature"><strong>.sha3_string</strong>(h : String)</a>
         
-          <div class="summary"><p>operating a sha3-256 hash on the actual string literal</p></div>
+          <div class="summary"><p>Operating a SHA3-256 hash on an actual string literal.</p></div>
         
       </li>
     
@@ -304,23 +321,58 @@
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="base57_char(i:Int32)-class-method">
+    <div class="entry-detail" id="base56_char(i:Int32)-class-method">
       <div class="signature">
         
-        def self.<strong>base57_char</strong>(i : Int32)
+        def self.<strong>base56_char</strong>(i : Int32)
 
-        <a class="method-permalink" href="#base57_char(i:Int32)-class-method">#</a>
+        <a class="method-permalink" href="#base56_char(i:Int32)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>get a character from the base-57 alphabet at position i</p>
+          <p>Gets a character from the Base-56 alphabet at position <code>i</code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>i</code> (<code>Int32</code>): the position in the Base-56 alphabet.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.base56_char <span class="n">13</span>
+<span class="c"># =&gt; &#39;F&#39;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L120" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L212" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="base58_char(i:Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>base58_char</strong>(i : Int32)
+
+        <a class="method-permalink" href="#base58_char(i:Int32)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Gets a character from the Base-58 alphabet at position <code>i</code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>i</code> (<code>Int32</code>): the position in the Base-58 alphabet.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.base58_char <span class="n">13</span>
+<span class="c"># =&gt; &#39;E&#39;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L226" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -335,13 +387,20 @@
       
         <div class="doc">
           
-          <p>decode a hex string from base-58</p>
+          <p>Decodes a hexadecimal string from a Base-58 encoded string.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>s</code> (<code>String</code>): The Base-58 encoded string to be decoded.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.base58_decode <span class="s">&quot;1CSSfnxKnQK1GDWSaWqNpYXSdfPTtSooHt&quot;</span>
+<span class="c"># =&gt; &quot;007d7935bde6c9341de87a4d64588783033e23472d7322c46b&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L70" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L146" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -356,13 +415,20 @@
       
         <div class="doc">
           
-          <p>encode a hex string as base-58</p>
+          <p>Encodes a Base-58 string from a hexadecimal string.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>h</code> (<code>String</code>): The hexadecimal string to be encoded.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.base58_encode <span class="s">&quot;007d7935bde6c9341de87a4d64588783033e23472d7322c46b&quot;</span>
+<span class="c"># =&gt; &quot;1CSSfnxKnQK1GDWSaWqNpYXSdfPTtSooHt&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L181" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -377,55 +443,76 @@
       
         <div class="doc">
           
-          <p>helper function to convert byte arrays to hex strings</p>
+          <p>Helper function to convert byte arrays to hexadecimal strings.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>b</code> (<code>Bytes</code>): the byte array to be converted.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.bin_to_hex <span class="t">Bytes</span>[<span class="n">183</span>, <span class="n">149</span>, <span class="n">205</span>, <span class="n">44</span>, <span class="n">92</span>, <span class="n">224</span>, <span class="n">204</span>, <span class="n">99</span>, <span class="n">44</span>, <span class="n">161</span>, <span class="n">246</span>, <span class="n">94</span>, <span class="n">146</span>, <span class="n">27</span>, <span class="n">156</span>, <span class="n">117</span>, <span class="n">27</span>, <span class="n">54</span>, <span class="n">62</span>, <span class="n">151</span>, <span class="n">252</span>, <span class="n">174</span>, <span class="n">236</span>, <span class="n">129</span>, <span class="n">192</span>, <span class="n">42</span>, <span class="n">133</span>, <span class="n">183</span>, <span class="n">99</span>, <span class="n">68</span>, <span class="n">130</span>, <span class="n">104</span>]
+=> <span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L240" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="hex_to_bin(s:String)-class-method">
+    <div class="entry-detail" id="hex_to_bin(h:String)-class-method">
       <div class="signature">
         
-        def self.<strong>hex_to_bin</strong>(s : String)
+        def self.<strong>hex_to_bin</strong>(h : String)
 
-        <a class="method-permalink" href="#hex_to_bin(s:String)-class-method">#</a>
+        <a class="method-permalink" href="#hex_to_bin(h:String)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>helper function to convert hex strings to byte arrays</p>
+          <p>Helper function to convert hexadecimal strings to byte arrays.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>h</code> (<code>String</code>): the hexadecimal string to be converted.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.hex_to_bin <span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>
+=> <span class="t">Bytes</span>[<span class="n">183</span>, <span class="n">149</span>, <span class="n">205</span>, <span class="n">44</span>, <span class="n">92</span>, <span class="n">224</span>, <span class="n">204</span>, <span class="n">99</span>, <span class="n">44</span>, <span class="n">161</span>, <span class="n">246</span>, <span class="n">94</span>, <span class="n">146</span>, <span class="n">27</span>, <span class="n">156</span>, <span class="n">117</span>, <span class="n">27</span>, <span class="n">54</span>, <span class="n">62</span>, <span class="n">151</span>, <span class="n">252</span>, <span class="n">174</span>, <span class="n">236</span>, <span class="n">129</span>, <span class="n">192</span>, <span class="n">42</span>, <span class="n">133</span>, <span class="n">183</span>, <span class="n">99</span>, <span class="n">68</span>, <span class="n">130</span>, <span class="n">104</span>]</code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L131" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L253" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="keccak256(h:String)-class-method">
+    <div class="entry-detail" id="keccak256(b:Bytes)-class-method">
       <div class="signature">
         
-        def self.<strong>keccak256</strong>(h : String)
+        def self.<strong>keccak256</strong>(b : Bytes)
 
-        <a class="method-permalink" href="#keccak256(h:String)-class-method">#</a>
+        <a class="method-permalink" href="#keccak256(b:Bytes)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>operating a keccak-256 hash on the byte array</p>
+          <p>Operating a Keccak-256 hash on a byte array.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>b</code> (<code>Bytes</code>): the byte array to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.keccak256 <span class="t">Bytes</span>[<span class="n">183</span>, <span class="n">149</span>, <span class="n">205</span>, <span class="n">44</span>, <span class="n">92</span>, <span class="n">224</span>, <span class="n">204</span>, <span class="n">99</span>, <span class="n">44</span>, <span class="n">161</span>, <span class="n">246</span>, <span class="n">94</span>, <span class="n">146</span>, <span class="n">27</span>, <span class="n">156</span>, <span class="n">117</span>, <span class="n">27</span>, <span class="n">54</span>, <span class="n">62</span>, <span class="n">151</span>, <span class="n">252</span>, <span class="n">174</span>, <span class="n">236</span>, <span class="n">129</span>, <span class="n">192</span>, <span class="n">42</span>, <span class="n">133</span>, <span class="n">183</span>, <span class="n">99</span>, <span class="n">68</span>, <span class="n">130</span>, <span class="n">104</span>]
+<span class="c"># =&gt; &quot;fcb41efa0456ba9f27e573422d6b5898c61da6f2137d07e4dae618eddd72e003&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -440,55 +527,104 @@
       
         <div class="doc">
           
-          <p>operating a keccak-256 hash on the actual string literal</p>
+          <p>Operating a Keccak-256 hash on an actual string literal.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>h</code> (<code>String</code>): the string literal to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.keccak256_string <span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>
+<span class="c"># =&gt; &quot;99cfa79866ec88f87f8e25a98a4b9873f3f8ee82482a317a5494572b00f51cec&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L80" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="ripemd160(h:String)-class-method">
+    <div class="entry-detail" id="ripemd160(b:Bytes)-class-method">
       <div class="signature">
         
-        def self.<strong>ripemd160</strong>(h : String)
+        def self.<strong>ripemd160</strong>(b : Bytes)
 
-        <a class="method-permalink" href="#ripemd160(h:String)-class-method">#</a>
+        <a class="method-permalink" href="#ripemd160(b:Bytes)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>operating a ripemd-160 hash on the byte array</p>
+          <p>Operating a RIPEMD-160 hash on a byte array.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>b</code> (<code>Bytes</code>): the byte array to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.ripemd160 <span class="t">Bytes</span>[<span class="n">183</span>, <span class="n">149</span>, <span class="n">205</span>, <span class="n">44</span>, <span class="n">92</span>, <span class="n">224</span>, <span class="n">204</span>, <span class="n">99</span>, <span class="n">44</span>, <span class="n">161</span>, <span class="n">246</span>, <span class="n">94</span>, <span class="n">146</span>, <span class="n">27</span>, <span class="n">156</span>, <span class="n">117</span>, <span class="n">27</span>, <span class="n">54</span>, <span class="n">62</span>, <span class="n">151</span>, <span class="n">252</span>, <span class="n">174</span>, <span class="n">236</span>, <span class="n">129</span>, <span class="n">192</span>, <span class="n">42</span>, <span class="n">133</span>, <span class="n">183</span>, <span class="n">99</span>, <span class="n">68</span>, <span class="n">130</span>, <span class="n">104</span>]
+<span class="c"># =&gt; &quot;5f3455f9ac58e25be08c99a7090108751b4796b9&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L120" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sha256(h:String)-class-method">
+    <div class="entry-detail" id="ripemd160_string(h:String)-class-method">
       <div class="signature">
         
-        def self.<strong>sha256</strong>(h : String)
+        def self.<strong>ripemd160_string</strong>(h : String)
 
-        <a class="method-permalink" href="#sha256(h:String)-class-method">#</a>
+        <a class="method-permalink" href="#ripemd160_string(h:String)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>operating a sha2-256 hash on the byte array</p>
+          <p>Operating a RIPEMD-160 hash on an actual string literal.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>h</code> (<code>String</code>): the string literal to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.ripemd160_string <span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>
+<span class="c"># =&gt; &quot;46dff6cd5666c8e67db26ac0dfaf685bf71fc5f6&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L133" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sha256(b:Bytes)-class-method">
+      <div class="signature">
+        
+        def self.<strong>sha256</strong>(b : Bytes)
+
+        <a class="method-permalink" href="#sha256(b:Bytes)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Operating a SHA2-256 hash on a byte array.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>b</code> (<code>Bytes</code>): the byte array to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.sha256 <span class="t">Bytes</span>[<span class="n">183</span>, <span class="n">149</span>, <span class="n">205</span>, <span class="n">44</span>, <span class="n">92</span>, <span class="n">224</span>, <span class="n">204</span>, <span class="n">99</span>, <span class="n">44</span>, <span class="n">161</span>, <span class="n">246</span>, <span class="n">94</span>, <span class="n">146</span>, <span class="n">27</span>, <span class="n">156</span>, <span class="n">117</span>, <span class="n">27</span>, <span class="n">54</span>, <span class="n">62</span>, <span class="n">151</span>, <span class="n">252</span>, <span class="n">174</span>, <span class="n">236</span>, <span class="n">129</span>, <span class="n">192</span>, <span class="n">42</span>, <span class="n">133</span>, <span class="n">183</span>, <span class="n">99</span>, <span class="n">68</span>, <span class="n">130</span>, <span class="n">104</span>]
+<span class="c"># =&gt; &quot;2739cc5f45c0e05236527e4e687dc54f0d5e88be64b9a90e5264a6721c0c71f2&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L94" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -503,34 +639,48 @@
       
         <div class="doc">
           
-          <p>operating a sha2-256 hash on the actual string literal</p>
+          <p>Operating a SHA2-256 hash on an actual string literal.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>h</code> (<code>String</code>): the string literal to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.sha256_string <span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>
+<span class="c"># =&gt; &quot;452a41c28c9981faebb402095a5d553de28dc212338057aed27081110dfb907a&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L107" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="sha3(h:String)-class-method">
+    <div class="entry-detail" id="sha3(b:Bytes)-class-method">
       <div class="signature">
         
-        def self.<strong>sha3</strong>(h : String)
+        def self.<strong>sha3</strong>(b : Bytes)
 
-        <a class="method-permalink" href="#sha3(h:String)-class-method">#</a>
+        <a class="method-permalink" href="#sha3(b:Bytes)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>operating a sha3-256 hash on the byte array</p>
+          <p>Operating a SHA3-256 hash on a byte array.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>b</code> (<code>Bytes</code>): the byte array to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.sha3 <span class="t">Bytes</span>[<span class="n">183</span>, <span class="n">149</span>, <span class="n">205</span>, <span class="n">44</span>, <span class="n">92</span>, <span class="n">224</span>, <span class="n">204</span>, <span class="n">99</span>, <span class="n">44</span>, <span class="n">161</span>, <span class="n">246</span>, <span class="n">94</span>, <span class="n">146</span>, <span class="n">27</span>, <span class="n">156</span>, <span class="n">117</span>, <span class="n">27</span>, <span class="n">54</span>, <span class="n">62</span>, <span class="n">151</span>, <span class="n">252</span>, <span class="n">174</span>, <span class="n">236</span>, <span class="n">129</span>, <span class="n">192</span>, <span class="n">42</span>, <span class="n">133</span>, <span class="n">183</span>, <span class="n">99</span>, <span class="n">68</span>, <span class="n">130</span>, <span class="n">104</span>]
+<span class="c"># =&gt; &quot;66bb65180108362a3e25ba8282f7b96bfe840ce34a2e5dbc421aa8a590cc5f2e&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -545,13 +695,20 @@
       
         <div class="doc">
           
-          <p>operating a sha3-256 hash on the actual string literal</p>
+          <p>Operating a SHA3-256 hash on an actual string literal.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>h</code> (<code>String</code>): the string literal to be hashed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Hash</span>.sha3_string <span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>
+<span class="c"># =&gt; &quot;aedc012933679615eb93fb0063f53010e6f0034e92aaccf97dacc46e338037e9&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/hash.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/hash.cr#L52" target="_blank">View source</a>]
         
       </div>
     </div>
