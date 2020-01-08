@@ -116,8 +116,11 @@
     Overview
   </h2>
 
-  <p>Implements 256-bit Secp256k1 Koblitz elliptic curve
-reference https://www.secg.org/sec2-v2.pdf</p>
+  <p>Implements 256-bit <code><a href="../Secp256k1.html">Secp256k1</a></code> Koblitz elliptic curve.
+Ref: <a href="https://www.secg.org/sec2-v2.pdf" target="_blank">secg.org/sec2-v2.pdf</a></p>
+
+<p><code><a href="../Secp256k1.html">Secp256k1</a></code> has the characteristic prime <code>p</code>, it is defined over the prime field ℤ_p.
+Ref: <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">en.bitcoin.it/wiki/Secp256k1</a></p>
 
 
 
@@ -142,7 +145,7 @@ reference https://www.secg.org/sec2-v2.pdf</p>
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/core.cr#L17" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/core.cr#L20" target="_blank">
         core.cr
       </a>
     
@@ -166,30 +169,30 @@ reference https://www.secg.org/sec2-v2.pdf</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.ec_add</strong>(p : EC_Point, q : EC_Point, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
+        <a href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_add</strong>(p : EC_Point, q : EC_Point, prime = <span class="t">EC_PRIME_P</span>)</a>
         
-          <div class="summary"><p>elliptic curve jive addition of point p(x, y) and q(x, y).</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#ec_double(p:EC_Point,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.ec_double</strong>(p : EC_Point, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
-        
-          <div class="summary"><p>elliptic curve juke point doubling of p(x, y).</p></div>
+          <div class="summary"><p>The elliptic curve jive addition of point <code>p(x, y)</code> and <code>q(x, y)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ec_mod_inv(a:BigInt,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.ec_mod_inv</strong>(a : BigInt, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
+        <a href="#ec_double(p:EC_Point,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_double</strong>(p : EC_Point, prime = <span class="t">EC_PRIME_P</span>)</a>
         
-          <div class="summary"><p>elliptic curve modular multiplicative inverse of a</p></div>
+          <div class="summary"><p>The elliptic curve juke point doubling of <code>p(x, y)</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ec_mod_inv(a:BigInt,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_mod_inv</strong>(a : BigInt, prime = <span class="t">EC_PRIME_P</span>)</a>
+        
+          <div class="summary"><p>Computes the elliptic curve modular multiplicative inverse of <code>a</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#ec_mul(p:EC_Point,s:BigInt)-class-method" class="signature"><strong>.ec_mul</strong>(p : EC_Point, s : BigInt)</a>
         
-          <div class="summary"><p>elliptic curve sequence multiplication of point p(x, y) and a skalar s, with s being a private key within the elliptic curve field size of EC_ORDER_N</p></div>
+          <div class="summary"><p>The elliptic curve sequence multiplication of point <code>p(x, y)</code> and a skalar <code>s</code>.</p></div>
         
       </li>
     
@@ -217,70 +220,90 @@ reference https://www.secg.org/sec2-v2.pdf</p>
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="ec_add(p:EC_Point,q:EC_Point,prime=EC_PARAM_PRIME)-class-method">
+    <div class="entry-detail" id="ec_add(p:EC_Point,q:EC_Point,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>ec_add</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, q : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PARAM_PRIME</span>)
+        def self.<strong>ec_add</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, q : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PARAM_PRIME)-class-method">#</a>
+        <a class="method-permalink" href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>elliptic curve jive addition of point p(x, y) and q(x, y).
-'draw' a line between p and q which will intersect the
-curve in the point r which will be mirrored over the x-axis.</p>
+          <p>The elliptic curve jive addition of point <code>p(x, y)</code> and <code>q(x, y)</code>.</p>
+
+<p>We basically <em>draw</em> a line between <code>p</code> and <code>q</code> which will intersect the
+curve in the point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
+
+<p>Paramters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>p(x, y)</code> to be used in the jive addition.</li><li><code>q</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>q(x, y)</code> to be used in the jive addition.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+
+<p>Returns another <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> as result.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/core.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/core.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="ec_double(p:EC_Point,prime=EC_PARAM_PRIME)-class-method">
+    <div class="entry-detail" id="ec_double(p:EC_Point,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>ec_double</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PARAM_PRIME</span>)
+        def self.<strong>ec_double</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#ec_double(p:EC_Point,prime=EC_PARAM_PRIME)-class-method">#</a>
+        <a class="method-permalink" href="#ec_double(p:EC_Point,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>elliptic curve juke point doubling of p(x, y).
-a special case of addition where both points are the same.
-'draw' a tangent line at p which will intersect the curve
-at point r which will be mirrored over the x-axis.</p>
+          <p>The elliptic curve juke point doubling of <code>p(x, y)</code>.</p>
+
+<p>This is a special case of addition where both points are the same.
+We <em>draw</em> a tangent line at <code>p</code> which will intersect the curve
+at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
+
+<p>Paramters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>p(x, y)</code> to be used in the juke doubling.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+
+<p>Returns another <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> as result.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/core.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/core.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="ec_mod_inv(a:BigInt,prime=EC_PARAM_PRIME)-class-method">
+    <div class="entry-detail" id="ec_mod_inv(a:BigInt,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>ec_mod_inv</strong>(a : BigInt, prime = <span class="t">EC_PARAM_PRIME</span>)
+        def self.<strong>ec_mod_inv</strong>(a : BigInt, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#ec_mod_inv(a:BigInt,prime=EC_PARAM_PRIME)-class-method">#</a>
+        <a class="method-permalink" href="#ec_mod_inv(a:BigInt,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>elliptic curve modular multiplicative inverse of a</p>
+          <p>Computes the elliptic curve modular multiplicative inverse of <code>a</code>.</p>
+
+<p>Paremeters:</p>
+
+<ul><li><code>a</code> (<code>BigInt</code>): the integer that we want the modular inverse of.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+
+<p>Returns a <code>BigInt</code> value as result.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/core.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/core.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -295,15 +318,22 @@ at point r which will be mirrored over the x-axis.</p>
       
         <div class="doc">
           
-          <p>elliptic curve sequence multiplication of point p(x, y) and
-a skalar s, with s being a private key within the elliptic
-curve field size of EC_ORDER_N</p>
+          <p>The elliptic curve sequence multiplication of point <code>p(x, y)</code> and
+a skalar <code>s</code>.</p>
+
+<p>With <code>s</code> being a private key within the elliptic curve field size of <code><a href="../Secp256k1.html#EC_ORDER_N">EC_ORDER_N</a></code>.</p>
+
+<p>Paramters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>p(x, y)</code> to be used in the sequencing.</li><li><code>s</code> (<code>BigInt</code>): a skalar, in most cases a private key.</li></ul>
+
+<p>Returns another <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> as result, in most cases a public key.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/core.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/core.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>

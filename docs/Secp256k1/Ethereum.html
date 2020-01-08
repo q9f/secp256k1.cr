@@ -116,7 +116,7 @@
     Overview
   </h2>
 
-  <p>implements the Ethereum address space</p>
+  <p>Implements the <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address space for the <code><a href="../Secp256k1.html">Secp256k1</a></code> library.</p>
 
 
 
@@ -141,7 +141,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/ethereum.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/ethereum.cr#L16" target="_blank">
         ethereum.cr
       </a>
     
@@ -167,28 +167,28 @@
       <li class="entry-summary">
         <a href="#address_checksum(adr:String)-class-method" class="signature"><strong>.address_checksum</strong>(adr : String)</a>
         
-          <div class="summary"><p>returns a checksummed ethereum address as per eip-55</p></div>
+          <div class="summary"><p>Returns a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address as per EIP-55.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#address_from_private(priv:String)-class-method" class="signature"><strong>.address_from_private</strong>(priv : String)</a>
+        <a href="#address_from_private(priv:BigInt)-class-method" class="signature"><strong>.address_from_private</strong>(priv : BigInt)</a>
         
-          <div class="summary"><p>generates an ethereum address from a private key</p></div>
+          <div class="summary"><p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from a private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#address_from_public_key(pub:String)-class-method" class="signature"><strong>.address_from_public_key</strong>(pub : String)</a>
         
-          <div class="summary"><p>generates an ethereum address for an uncompressed public key</p></div>
+          <div class="summary"><p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address for an uncompressed public key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#address_from_public_point(p:Secp256k1::EC_Point)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::EC_Point)</a>
         
-          <div class="summary"><p>generates an ethereum address from an public key ec point</p></div>
+          <div class="summary"><p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p></div>
         
       </li>
     
@@ -226,34 +226,54 @@
       
         <div class="doc">
           
-          <p>returns a checksummed ethereum address as per eip-55</p>
+          <p>Returns a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address as per EIP-55.</p>
+
+<p>Reference: <a href="https://eips.ethereum.org/EIPS/eip-55" target="_blank">eips.ethereum.org/EIPS/eip-55</a></p>
+
+<p>Parameters:</p>
+
+<ul><li><code>adr</code> (<code>String</code>): an unchecked <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span>.address_checksum <span class="s">&quot;0x7598c0fbaeb021161ce2e598f45ddee90fe5c6f7&quot;</span>
+<span class="c"># =&gt; &quot;0x7598c0FBAEB021161ce2E598F45dDEe90FE5C6f7&quot;</span></code></pre>
+
+<p>Raises if address is malformed.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/ethereum.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/ethereum.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="address_from_private(priv:String)-class-method">
+    <div class="entry-detail" id="address_from_private(priv:BigInt)-class-method">
       <div class="signature">
         
-        def self.<strong>address_from_private</strong>(priv : String)
+        def self.<strong>address_from_private</strong>(priv : BigInt)
 
-        <a class="method-permalink" href="#address_from_private(priv:String)-class-method">#</a>
+        <a class="method-permalink" href="#address_from_private(priv:BigInt)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>generates an ethereum address from a private key</p>
+          <p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from a private key.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>priv</code> (<code>BigInt</code>): a private key as number.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span>.address_from_private <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>, <span class="n">16</span>)
+<span class="c"># =&gt; &quot;0x7598c0FBAEB021161ce2E598F45dDEe90FE5C6f7&quot;</span></code></pre>
+
+<p>Note, that the returned <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address is already checksummed.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/ethereum.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/ethereum.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -268,13 +288,24 @@
       
         <div class="doc">
           
-          <p>generates an ethereum address for an uncompressed public key</p>
+          <p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address for an uncompressed public key.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>pub</code> (<code>String</code>): an uncompressed public key string.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span>.address_from_public_key <span class="s">&quot;d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span>
+<span class="c"># =&gt; &quot;0x7598c0FBAEB021161ce2E598F45dDEe90FE5C6f7&quot;</span></code></pre>
+
+<p>Note, that the returned <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address is already checksummed.</p>
+
+<p>Raises if the public key is malformed.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/ethereum.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/ethereum.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -289,13 +320,19 @@
       
         <div class="doc">
           
-          <p>generates an ethereum address from an public key ec point</p>
+          <p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): a public key point with <code>x</code> and <code>y</code> coordinates.</li></ul>
+
+<p>See <code><a href="../Secp256k1/Ethereum.html#address_from_public_key(pub:String)-class-method">.address_from_public_key</a></code> and <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> for usage instructions.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/ethereum.cr#L68" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/ethereum.cr#L102" target="_blank">View source</a>]
         
       </div>
     </div>

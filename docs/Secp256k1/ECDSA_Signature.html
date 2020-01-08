@@ -118,7 +118,16 @@
     Overview
   </h2>
 
-  <p>an ecdsa signature</p>
+  <p>A basic ECDSA Signature containing a random point <code><a href="../Secp256k1/ECDSA_Signature.html#r:BigInt-instance-method">#r</a></code> and the
+signature proof <code><a href="../Secp256k1/ECDSA_Signature.html#s:BigInt-instance-method">#s</a></code>.</p>
+
+<p>See: <code><a href="../Secp256k1/Signature.html">Signature</a></code> for signature generation.</p>
+
+<p>Properties:</p>
+
+<ul><li><code><a href="../Secp256k1/ECDSA_Signature.html#r:BigInt-instance-method">#r</a></code> (<code>BigInt</code>): the <code>x</code> coordinate of a random point <code>R</code>.</li><li><code><a href="../Secp256k1/ECDSA_Signature.html#s:BigInt-instance-method">#s</a></code> (<code>BigInt</code>): the signature proof of a message.</li></ul>
+
+<pre><code>sig <span class="o">=</span> <span class="t">ECDSA_Signature</span>.<span class="k">new</span> r.x, proof</code></pre>
 
 
 
@@ -143,7 +152,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L30" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L62" target="_blank">
         structs.cr
       </a>
     
@@ -167,6 +176,8 @@
       <li class="entry-summary">
         <a href="#new(r:BigInt,s:BigInt)-class-method" class="signature"><strong>.new</strong>(r : BigInt, s : BigInt)</a>
         
+          <div class="summary"><p>A signature always requires the random point <code><a href="../Secp256k1/ECDSA_Signature.html#r:BigInt-instance-method">#r</a></code> and the signature proof <code><a href="../Secp256k1/ECDSA_Signature.html#s:BigInt-instance-method">#s</a></code>.</p></div>
+        
       </li>
     
   </ul>
@@ -188,28 +199,28 @@
       <li class="entry-summary">
         <a href="#r:BigInt-instance-method" class="signature"><strong>#r</strong> : BigInt</a>
         
-          <div class="summary"><p>the x coordinate of a random point</p></div>
+          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#r=(r:BigInt)-instance-method" class="signature"><strong>#r=</strong>(r : BigInt)</a>
         
-          <div class="summary"><p>the x coordinate of a random point</p></div>
+          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#s:BigInt-instance-method" class="signature"><strong>#s</strong> : BigInt</a>
         
-          <div class="summary"><p>the signature proof of a message</p></div>
+          <div class="summary"><p>The signature proof of a message.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#s=(s:BigInt)-instance-method" class="signature"><strong>#s=</strong>(s : BigInt)</a>
         
-          <div class="summary"><p>the signature proof of a message</p></div>
+          <div class="summary"><p>The signature proof of a message.</p></div>
         
       </li>
     
@@ -261,10 +272,19 @@
         <a class="method-permalink" href="#new(r:BigInt,s:BigInt)-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>A signature always requires the random point <code><a href="../Secp256k1/ECDSA_Signature.html#r:BigInt-instance-method">#r</a></code> and the signature proof <code><a href="../Secp256k1/ECDSA_Signature.html#s:BigInt-instance-method">#s</a></code>.</p>
+
+<p>Properties:</p>
+
+<ul><li><code><a href="../Secp256k1/ECDSA_Signature.html#r:BigInt-instance-method">#r</a></code> (<code>BigInt</code>): the <code>x</code> coordinate of a random point <code>R</code>.</li><li><code><a href="../Secp256k1/ECDSA_Signature.html#s:BigInt-instance-method">#s</a></code> (<code>BigInt</code>): the signature proof of a message.</li></ul>
+        </div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -293,13 +313,13 @@
       
         <div class="doc">
           
-          <p>the x coordinate of a random point</p>
+          <p>The <code>x</code> coordinate of a random point <code>R</code>.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -314,13 +334,13 @@
       
         <div class="doc">
           
-          <p>the x coordinate of a random point</p>
+          <p>The <code>x</code> coordinate of a random point <code>R</code>.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L64" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -335,13 +355,13 @@
       
         <div class="doc">
           
-          <p>the signature proof of a message</p>
+          <p>The signature proof of a message.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -356,13 +376,13 @@
       
         <div class="doc">
           
-          <p>the signature proof of a message</p>
+          <p>The signature proof of a message.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L35" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L67" target="_blank">View source</a>]
         
       </div>
     </div>

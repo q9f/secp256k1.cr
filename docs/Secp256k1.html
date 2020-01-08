@@ -116,7 +116,11 @@
     Overview
   </h2>
 
-  <p>expose the secp256k1 module</p>
+  <p>Implements 256-bit <code><a href="Secp256k1.html">Secp256k1</a></code> Koblitz elliptic curve.
+Ref: <a href="https://www.secg.org/sec2-v2.pdf" target="_blank">secg.org/sec2-v2.pdf</a></p>
+
+<p><code><a href="Secp256k1.html">Secp256k1</a></code> has the characteristic prime <code>p</code>, it is defined over the prime field ℤ_p.
+Ref: <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">en.bitcoin.it/wiki/Secp256k1</a></p>
 
 
 
@@ -141,35 +145,35 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L16" target="_blank">
         bitcoin.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/constants.cr#L19" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/constants.cr#L22" target="_blank">
         constants.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/structs.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/structs.cr#L20" target="_blank">
         structs.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/version.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/version.cr#L20" target="_blank">
         version.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/secp256k1.cr#L26" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/secp256k1.cr#L30" target="_blank">
         secp256k1.cr
       </a>
     
@@ -194,13 +198,18 @@
         <strong>EC_BASE_G</strong> = <code><span class="t">EC_Point</span>.<span class="k">new</span>(<span class="t">EC_BASE_G_X</span>, <span class="t">EC_BASE_G_Y</span>)</code>
       </dt>
       
+      <dd class="entry-const-doc">
+        <p>The commonly used base point <code>G</code> coordinates <code>x</code>, <code>y</code>;
+any other point that satisfies <code>y^2 = x^3 + 7</code> would also do.</p>
+      </dd>
+      
     
       <dt class="entry-const" id="EC_BASE_G_COMPRESSED">
         <strong>EC_BASE_G_COMPRESSED</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>((<span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix(<span class="t">EC_BASE_G</span>)), <span class="n">16</span>)</code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>The base point G in compressed form is:</p>
+        <p>The base point <code>G</code> in compressed form.</p>
       </dd>
       
     
@@ -209,7 +218,7 @@
       </dt>
       
       <dd class="entry-const-doc">
-        <p>The base point G in uncompressed form is:</p>
+        <p>The base point <code>G</code> in uncompressed form.</p>
       </dd>
       
     
@@ -218,8 +227,7 @@
       </dt>
       
       <dd class="entry-const-doc">
-        <p>The commonly used base point G coordinates x, y;
-any other point that satisfies y^2 = x^3 + 7 would also do:</p>
+        <p>The <code>x</code>-coordinate of the base point <code>G</code>.</p>
       </dd>
       
     
@@ -227,26 +235,39 @@ any other point that satisfies y^2 = x^3 + 7 would also do:</p>
         <strong>EC_BASE_G_Y</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8&quot;</span>, <span class="n">16</span>)</code>
       </dt>
       
+      <dd class="entry-const-doc">
+        <p>The <code>y</code>-coordinate of the base point <code>G</code>.</p>
+      </dd>
+      
     
       <dt class="entry-const" id="EC_COFACTOR_H">
         <strong>EC_COFACTOR_H</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;01&quot;</span>, <span class="n">16</span>)</code>
       </dt>
       
+      <dd class="entry-const-doc">
+        <p>The elliptic curve cofactor <code>h</code>.</p>
+      </dd>
+      
     
       <dt class="entry-const" id="EC_FACTOR_A">
-        <strong>EC_FACTOR_A</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;0000000000000000000000000000000000000000000000000000000000000000&quot;</span>, <span class="n">16</span>)</code>
+        <strong>EC_FACTOR_A</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;00&quot;</span>, <span class="n">16</span>)</code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>The curve E: y^2 = x^3 + ax + b over F_p is defined by a, b:
-As the a constant is zero, the ax term in the curve equation is always zero,
-hence the curve equation becomes y^2 = x^3 + 7.</p>
+        <p>The curve <code>E</code>: <code>y^2 = x^3 + ax + b</code> over <code>F_p</code> is defined by <code>a = 0</code>.
+As the <code>a</code> constant is zero, the <code>ax</code> term in the curve equation is always zero,
+hence the curve equation becomes <code>y^2 = x^3 + b</code>.</p>
       </dd>
       
     
       <dt class="entry-const" id="EC_FACTOR_B">
-        <strong>EC_FACTOR_B</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;0000000000000000000000000000000000000000000000000000000000000007&quot;</span>, <span class="n">16</span>)</code>
+        <strong>EC_FACTOR_B</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;07&quot;</span>, <span class="n">16</span>)</code>
       </dt>
+      
+      <dd class="entry-const-doc">
+        <p>The curve <code>E</code>: <code>y^2 = x^3 + b</code> over <code>F_p</code> is defined by <code>b = 7</code>,
+hence the curve equation becomes <code>y^2 = x^3 + 7</code>.</p>
+      </dd>
       
     
       <dt class="entry-const" id="EC_ORDER_N">
@@ -254,24 +275,28 @@ hence the curve equation becomes y^2 = x^3 + 7.</p>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>Finally, the order n of G and the cofactor h are:</p>
+        <p>The order <code>n</code> of <code>G</code> defines the finite size of the Secp256k1 field <code>E</code>.</p>
       </dd>
       
     
-      <dt class="entry-const" id="EC_PARAM_PRIME">
-        <strong>EC_PARAM_PRIME</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f&quot;</span>, <span class="n">16</span>)</code>
+      <dt class="entry-const" id="EC_PRIME_P">
+        <strong>EC_PRIME_P</strong> = <code><span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f&quot;</span>, <span class="n">16</span>)</code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>The elliptic curve domain parameters over F_p associated with a Koblitz curve
-Secp256k1 are specified by the sextuple T = (p, a, b, G, n, h) where the finite
-field F_p is defined by p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1:</p>
+        <p>The elliptic curve domain parameters over <code>F_p</code> associated with a Koblitz curve
+Secp256k1 are specified by the sextuple <code>T = (p, a, b, G, n, h)</code> where the finite
+field <code>F_p</code> is defined by the prime <code>p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1</code>.</p>
       </dd>
       
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.2.0&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.2.1&quot;</span></code>
       </dt>
+      
+      <dd class="entry-const-doc">
+        <p>The <code><a href="Secp256k1.html#VERSION">VERSION</a></code> of the <code><a href="Secp256k1.html">Secp256k1</a></code> module.</p>
+      </dd>
       
     
   </dl>

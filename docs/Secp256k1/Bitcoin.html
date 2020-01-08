@@ -116,7 +116,7 @@
     Overview
   </h2>
 
-  <p>implements the bitcoin address space</p>
+  <p>Implements the <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address space for the <code><a href="../Secp256k1.html">Secp256k1</a></code> library.</p>
 
 
 
@@ -141,7 +141,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L16" target="_blank">
         bitcoin.cr
       </a>
     
@@ -165,86 +165,93 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#address_from_private(priv:String,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_private</strong>(priv : String, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
+        <a href="#address_from_private(priv:BigInt,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_private</strong>(priv : BigInt, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
         
-          <div class="summary"><p>generates a bitcoin address from a private key</p></div>
+          <div class="summary"><p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from a private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#address_from_public_key(pub:String,version=&quot;00&quot;)-class-method" class="signature"><strong>.address_from_public_key</strong>(pub : String, version = <span class="s">&quot;00&quot;</span>)</a>
         
-          <div class="summary"><p>generates a bitcoin address for any public key; compressed and uncompressed version 0x00 = btc mainnet; pass different versions for different networks</p></div>
+          <div class="summary"><p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address for any public key, compressed or uncompressed.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#address_from_public_point(p:Secp256k1::EC_Point,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::EC_Point, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
         
-          <div class="summary"><p>generates a bitcoin address from an public key ec point</p></div>
+          <div class="summary"><p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#address_from_wif(wif:String)-class-method" class="signature"><strong>.address_from_wif</strong>(wif : String)</a>
         
-          <div class="summary"><p>gets a bitcoin address from a wif key</p></div>
+          <div class="summary"><p>Gets a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from a Base-58 Wallet-Import Format (WIF).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#is_wif_compressed?(w:String)-class-method" class="signature"><strong>.is_wif_compressed?</strong>(w : String)</a>
+        <a href="#is_wif_compressed?(wif:String)-class-method" class="signature"><strong>.is_wif_compressed?</strong>(wif : String)</a>
         
-          <div class="summary"><p>checks if it's compressed or uncompressed wallet import format</p></div>
+          <div class="summary"><p>Checks if it's a compressed or an uncompressed Wallet-Import Format (WIF).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new_mini_private_key-class-method" class="signature"><strong>.new_mini_private_key</strong></a>
         
-          <div class="summary"><p>generates a new mini private key (30 characters, base-57)</p></div>
+          <div class="summary"><p>Generates a new mini-private key (30 characters length, Base-56 encoded).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#private_key_from_mini(m:String)-class-method" class="signature"><strong>.private_key_from_mini</strong>(m : String)</a>
         
-          <div class="summary"><p>gets a private key from a mini key</p></div>
+          <div class="summary"><p>Gets a private key from a mini-private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#private_key_from_wif(w:String)-class-method" class="signature"><strong>.private_key_from_wif</strong>(w : String)</a>
+        <a href="#private_key_from_wif(wif:String)-class-method" class="signature"><strong>.private_key_from_wif</strong>(wif : String)</a>
         
-          <div class="summary"><p>gets a private key from a wallet import format</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#version_byte_from_wif(w:String)-class-method" class="signature"><strong>.version_byte_from_wif</strong>(w : String)</a>
-        
-          <div class="summary"><p>gets the version byte from a wallet import format</p></div>
+          <div class="summary"><p>Gets a private key from a Base-58 Wallet-Import Format (WIF).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#wif_compressed_from_private(k:BigInt,version=&quot;80&quot;)-class-method" class="signature"><strong>.wif_compressed_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)</a>
+        <a href="#version_byte_from_wif(wif:String)-class-method" class="signature"><strong>.version_byte_from_wif</strong>(wif : String)</a>
         
-          <div class="summary"><p>to indicate a compressed key to be used, append a "01" byte</p></div>
+          <div class="summary"><p>Gets the version byte from a Base-58 Wallet-Import Format (WIF).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#wif_from_private(k:BigInt,version=&quot;80&quot;,compr=&quot;&quot;)-class-method" class="signature"><strong>.wif_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>, compr = <span class="s">&quot;&quot;</span>)</a>
         
-          <div class="summary"><p>gets a base-58 wallet import format from private key</p></div>
+          <div class="summary"><p>Gets a Base-58 Wallet-Import Format (WIF) from a private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#wif_is_valid?(w:String)-class-method" class="signature"><strong>.wif_is_valid?</strong>(w : String)</a>
+        <a href="#wif_from_private_compressed(k:BigInt,version=&quot;80&quot;)-class-method" class="signature"><strong>.wif_from_private_compressed</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)</a>
         
-          <div class="summary"><p>validates wether a wif has a correct checksum</p></div>
+          <div class="summary"><p>Gets a compressed Base-58 Wallet-Import Format (WIF) from a private key.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif_from_private_uncompressed(k:BigInt,version=&quot;80&quot;)-class-method" class="signature"><strong>.wif_from_private_uncompressed</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)</a>
+        
+          <div class="summary"><p>Gets an uncompressed Base-58 Wallet-Import Format (WIF) from a private key.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif_is_valid?(wif:String)-class-method" class="signature"><strong>.wif_is_valid?</strong>(wif : String)</a>
+        
+          <div class="summary"><p>Validates wether a Wallet-Import Format (WIF) has a correct checksum and formatting.</p></div>
         
       </li>
     
@@ -272,23 +279,30 @@
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="address_from_private(priv:String,version=&amp;quot;00&amp;quot;,compressed=true)-class-method">
+    <div class="entry-detail" id="address_from_private(priv:BigInt,version=&amp;quot;00&amp;quot;,compressed=true)-class-method">
       <div class="signature">
         
-        def self.<strong>address_from_private</strong>(priv : String, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)
+        def self.<strong>address_from_private</strong>(priv : BigInt, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)
 
-        <a class="method-permalink" href="#address_from_private(priv:String,version=&quot;00&quot;,compressed=true)-class-method">#</a>
+        <a class="method-permalink" href="#address_from_private(priv:BigInt,version=&quot;00&quot;,compressed=true)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>generates a bitcoin address from a private key</p>
+          <p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from a private key.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>priv</code> (<code>BigInt</code>): the private key as number.</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"00"</code> (Bitcoin).</li><li><code>compressed</code> (<code>Bool</code>): indicator if address should be compressed or not, default: <code>true</code> (compressed).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.address_from_private <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
+<span class="c"># =&gt; &quot;1Q1zbmPZtS2chwxpviqz6qHgoM8UUuviGN&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L231" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L368" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -303,14 +317,25 @@
       
         <div class="doc">
           
-          <p>generates a bitcoin address for any public key; compressed and uncompressed
-version 0x00 = btc mainnet; pass different versions for different networks</p>
+          <p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address for any public key, compressed or uncompressed.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>pub</code> (<code>String</code>): the public key, compressed or uncompressed.</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"00"</code> (Bitcoin).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.address_from_public_key <span class="s">&quot;03e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b&quot;</span>
+<span class="c"># =&gt; &quot;1Q1zbmPZtS2chwxpviqz6qHgoM8UUuviGN&quot;</span></code></pre>
+
+<p>Note, compressed public keys generate compressed addresses, whereas
+uncompressed keys generate uncompressed addresses.</p>
+
+<p>Raises if the public key is malformed.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L163" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L270" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -325,13 +350,19 @@ version 0x00 = btc mainnet; pass different versions for different networks</p>
       
         <div class="doc">
           
-          <p>generates a bitcoin address from an public key ec point</p>
+          <p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key as point with <code>x</code> and <code>y</code> coordinates.</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"00"</code> (Bitcoin).</li><li><code>compressed</code> (<code>Bool</code>): indicator if address should be compressed or not, default: <code>true</code> (compressed).</li></ul>
+
+<p>See <code><a href="../Secp256k1/Bitcoin.html#address_from_public_key(pub:String,version=&quot;00&quot;)-class-method">.address_from_public_key</a></code> and <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> for usage instructions.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L195" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L310" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -346,34 +377,54 @@ version 0x00 = btc mainnet; pass different versions for different networks</p>
       
         <div class="doc">
           
-          <p>gets a bitcoin address from a wif key</p>
+          <p>Gets a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from a Base-58 Wallet-Import Format (WIF).</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>wif</code> (<code>String</code>): the Base-58 Wallet-Import Format (WIF).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.address_from_wif <span class="s">&quot;5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1&quot;</span>
+<span class="c"># =&gt; &quot;1Gbxhju13BpwpzzFRgNr2TDYCRTg94kgFC&quot;</span></code></pre>
+
+<p>Raises if Wallet-Import Format (WIF) is invalid.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L205" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L330" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="is_wif_compressed?(w:String)-class-method">
+    <div class="entry-detail" id="is_wif_compressed?(wif:String)-class-method">
       <div class="signature">
         
-        def self.<strong>is_wif_compressed?</strong>(w : String)
+        def self.<strong>is_wif_compressed?</strong>(wif : String)
 
-        <a class="method-permalink" href="#is_wif_compressed?(w:String)-class-method">#</a>
+        <a class="method-permalink" href="#is_wif_compressed?(wif:String)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>checks if it's compressed or uncompressed wallet import format</p>
+          <p>Checks if it's a compressed or an uncompressed Wallet-Import Format (WIF).</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>wif</code> (<code>String</code>): the Base-58 Wallet-Import Format (WIF).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.is_wif_compressed? <span class="s">&quot;5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1&quot;</span>
+<span class="c"># =&gt; false</span></code></pre>
+
+<p>Returns <em>true</em> if the key is compressed.</p>
+
+<p>Raises if Wallet-Import Format (WIF) is invalid.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L194" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -388,13 +439,16 @@ version 0x00 = btc mainnet; pass different versions for different networks</p>
       
         <div class="doc">
           
-          <p>generates a new mini private key (30 characters, base-57)</p>
+          <p>Generates a new mini-private key (30 characters length, Base-56 encoded).</p>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.new_mini_private_key
+<span class="c"># =&gt; S7qq5k98DAvee6mtQgpg4xAJatT9mR</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -409,76 +463,76 @@ version 0x00 = btc mainnet; pass different versions for different networks</p>
       
         <div class="doc">
           
-          <p>gets a private key from a mini key</p>
+          <p>Gets a private key from a mini-private key.</p>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.private_key_from_mini <span class="s">&quot;S7qq5k98DAvee6mtQgpg4xAJatT9mR&quot;</span>
+<span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L57" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="private_key_from_wif(w:String)-class-method">
+    <div class="entry-detail" id="private_key_from_wif(wif:String)-class-method">
       <div class="signature">
         
-        def self.<strong>private_key_from_wif</strong>(w : String)
+        def self.<strong>private_key_from_wif</strong>(wif : String)
 
-        <a class="method-permalink" href="#private_key_from_wif(w:String)-class-method">#</a>
+        <a class="method-permalink" href="#private_key_from_wif(wif:String)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>gets a private key from a wallet import format</p>
+          <p>Gets a private key from a Base-58 Wallet-Import Format (WIF).</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>wif</code> (<code>String</code>): the Base-58 Wallet-Import Format (WIF).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.private_key_from_wif <span class="s">&quot;Kz2grUzxEAxNopiREbNpVbjoitAGQVXnUZY4n8pNdmWdVqub99qu&quot;</span>
+<span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span></code></pre>
+
+<p>Raises if Wallet-Import Format (WIF) is invalid.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L80" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L141" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="version_byte_from_wif(w:String)-class-method">
+    <div class="entry-detail" id="version_byte_from_wif(wif:String)-class-method">
       <div class="signature">
         
-        def self.<strong>version_byte_from_wif</strong>(w : String)
+        def self.<strong>version_byte_from_wif</strong>(wif : String)
 
-        <a class="method-permalink" href="#version_byte_from_wif(w:String)-class-method">#</a>
+        <a class="method-permalink" href="#version_byte_from_wif(wif:String)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>gets the version byte from a wallet import format</p>
+          <p>Gets the version byte from a Base-58 Wallet-Import Format (WIF).</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>wif</code> (<code>String</code>): the Base-58 Wallet-Import Format (WIF).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.version_byte_from_wif <span class="s">&quot;5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1&quot;</span>
+<span class="c"># =&gt; &quot;80&quot;</span></code></pre>
+
+<p>Raises if Wallet-Import Format (WIF) is invalid.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L96" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="wif_compressed_from_private(k:BigInt,version=&amp;quot;80&amp;quot;)-class-method">
-      <div class="signature">
-        
-        def self.<strong>wif_compressed_from_private</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)
-
-        <a class="method-permalink" href="#wif_compressed_from_private(k:BigInt,version=&quot;80&quot;)-class-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>to indicate a compressed key to be used, append a "01" byte</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L75" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L167" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -493,34 +547,109 @@ version 0x00 = btc mainnet; pass different versions for different networks</p>
       
         <div class="doc">
           
-          <p>gets a base-58 wallet import format from private key</p>
+          <p>Gets a Base-58 Wallet-Import Format (WIF) from a private key.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>k</code> (<code>BigInt</code>): the private key.</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"80"</code> (Bitcoin).</li><li><code>compr</code> (<code>String</code>): the compression byte, default: <code>""</code> (uncompressed).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.wif_from_private <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
+<span class="c"># =&gt; &quot;5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1&quot;</span></code></pre>
+
+<p>Note, the compression byte <code>compr</code> is either empty <code>""</code> for uncompressed keys or
+<code>"01"</code> for compressed keys. See also <code><a href="../Secp256k1/Bitcoin.html#wif_from_private_compressed(k:BigInt,version=&quot;80&quot;)-class-method">.wif_from_private_compressed</a></code> and  <code><a href="../Secp256k1/Bitcoin.html#wif_from_private_uncompressed(k:BigInt,version=&quot;80&quot;)-class-method">.wif_from_private_uncompressed</a></code>.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="wif_is_valid?(w:String)-class-method">
+    <div class="entry-detail" id="wif_from_private_compressed(k:BigInt,version=&amp;quot;80&amp;quot;)-class-method">
       <div class="signature">
         
-        def self.<strong>wif_is_valid?</strong>(w : String)
+        def self.<strong>wif_from_private_compressed</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)
 
-        <a class="method-permalink" href="#wif_is_valid?(w:String)-class-method">#</a>
+        <a class="method-permalink" href="#wif_from_private_compressed(k:BigInt,version=&quot;80&quot;)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>validates wether a wif has a correct checksum</p>
+          <p>Gets a compressed Base-58 Wallet-Import Format (WIF) from a private key.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>k</code> (<code>BigInt</code>): the private key</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"80"</code> (Bitcoin)</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.wif_from_private_compressed <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
+<span class="c"># =&gt; &quot;Kz2grUzxEAxNopiREbNpVbjoitAGQVXnUZY4n8pNdmWdVqub99qu&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/bitcoin.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L110" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif_from_private_uncompressed(k:BigInt,version=&amp;quot;80&amp;quot;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>wif_from_private_uncompressed</strong>(k : BigInt, version = <span class="s">&quot;80&quot;</span>)
+
+        <a class="method-permalink" href="#wif_from_private_uncompressed(k:BigInt,version=&quot;80&quot;)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Gets an uncompressed Base-58 Wallet-Import Format (WIF) from a private key.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>k</code> (<code>BigInt</code>): the private key</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"80"</code> (Bitcoin)</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.wif_from_private_uncompressed <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
+<span class="c"># =&gt; &quot;5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif_is_valid?(wif:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>wif_is_valid?</strong>(wif : String)
+
+        <a class="method-permalink" href="#wif_is_valid?(wif:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Validates wether a Wallet-Import Format (WIF) has a correct checksum and formatting.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>wif</code> (<code>String</code>): the Base-58 Wallet-Import Format (WIF).</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.wif_is_valid? <span class="s">&quot;5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1&quot;</span>
+<span class="c"># =&gt; true</span></code></pre>
+
+<p>Returns <em>true</em> if the key contains a valid checksum and is formatted correctly.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L219" target="_blank">View source</a>]
         
       </div>
     </div>

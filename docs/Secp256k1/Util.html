@@ -116,7 +116,8 @@
     Overview
   </h2>
 
-  <p>a collection of utilities for secp256k1 key management</p>
+  <p>A collection of utilities for <code><a href="../Secp256k1.html">Secp256k1</a></code> key management, e.g., private key
+generation, public key conversions, key formatting, or hex padding.</p>
 
 
 
@@ -141,7 +142,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L22" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L23" target="_blank">
         util.cr
       </a>
     
@@ -165,65 +166,65 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#decode_compressed_public_key(pub:String,prime=EC_PARAM_PRIME)-class-method" class="signature"><strong>.decode_compressed_public_key</strong>(pub : String, prime = <span class="t">EC_PARAM_PRIME</span>)</a>
+        <a href="#decode_compressed_public_key(pub:String,prime=EC_PRIME_P)-class-method" class="signature"><strong>.decode_compressed_public_key</strong>(pub : String, prime = <span class="t">EC_PRIME_P</span>)</a>
         
-          <div class="summary"><p>decodes a public key as ec point from a compressed public key string</p></div>
+          <div class="summary"><p>Decodes a public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from a compressed public key string.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new_private_key-class-method" class="signature"><strong>.new_private_key</strong></a>
         
-          <div class="summary"><p>a helper to generate 32 pseudo-random bytes</p></div>
+          <div class="summary"><p>A helper function to generate 32 pseudo-random bytes within the elliptic curve field size of <code><a href="../Secp256k1.html#EC_ORDER_N">EC_ORDER_N</a></code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#public_key_compressed_prefix(p:EC_Point)-class-method" class="signature"><strong>.public_key_compressed_prefix</strong>(p : EC_Point)</a>
         
-          <div class="summary"><p>exports the compressed public key from an ec point with prefix 02 or 03</p></div>
+          <div class="summary"><p>Exports the compressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with either the prefix <code>"02"</code> or <code>"03"</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#public_key_from_private(priv:BigInt)-class-method" class="signature"><strong>.public_key_from_private</strong>(priv : BigInt)</a>
         
-          <div class="summary"><p>wrapper function to perform an ec multiplication with the generator point and a provided private key</p></div>
+          <div class="summary"><p>Gets a public key from a private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#public_key_uncompressed(p:EC_Point)-class-method" class="signature"><strong>.public_key_uncompressed</strong>(p : EC_Point)</a>
         
-          <div class="summary"><p>exports the uncompressed public key from an ec point without prefix</p></div>
+          <div class="summary"><p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> without prefix.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#public_key_uncompressed_prefix(p:EC_Point)-class-method" class="signature"><strong>.public_key_uncompressed_prefix</strong>(p : EC_Point)</a>
         
-          <div class="summary"><p>exports the uncompressed public key from an ec point with prefix 04</p></div>
+          <div class="summary"><p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with prefix <code>"04"</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#restore_public_key(pub:String)-class-method" class="signature"><strong>.restore_public_key</strong>(pub : String)</a>
+        <a href="#restore_public_key(pub:String,prime=EC_PRIME_P)-class-method" class="signature"><strong>.restore_public_key</strong>(pub : String, prime = <span class="t">EC_PRIME_P</span>)</a>
         
-          <div class="summary"><p>detects public key type and tries to restore the ec point from it</p></div>
+          <div class="summary"><p>Detects public key type and tries to restore the <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from it.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_padded_hex_01(i:Int32)-class-method" class="signature"><strong>.to_padded_hex_01</strong>(i : Int32)</a>
         
-          <div class="summary"><p>generic tool to encode single hex bytes as strings, e.g., "07"</p></div>
+          <div class="summary"><p>A generic utility to encode single hex bytes as strings, e.g., "07"</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_padded_hex_32(i:BigInt)-class-method" class="signature"><strong>.to_padded_hex_32</strong>(i : BigInt)</a>
         
-          <div class="summary"><p>utility tool to ensure hex keys are always 32 bytes it pads the number with leading zeros if not</p></div>
+          <div class="summary"><p>An utility tool to ensure hex keys are always 32 bytes; it pads the number with leading zeros if it's shorter.</p></div>
         
       </li>
     
@@ -251,23 +252,35 @@
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="decode_compressed_public_key(pub:String,prime=EC_PARAM_PRIME)-class-method">
+    <div class="entry-detail" id="decode_compressed_public_key(pub:String,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>decode_compressed_public_key</strong>(pub : String, prime = <span class="t">EC_PARAM_PRIME</span>)
+        def self.<strong>decode_compressed_public_key</strong>(pub : String, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#decode_compressed_public_key(pub:String,prime=EC_PARAM_PRIME)-class-method">#</a>
+        <a class="method-permalink" href="#decode_compressed_public_key(pub:String,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>decodes a public key as ec point from a compressed public key string</p>
+          <p>Decodes a public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from a compressed public key string.</p>
+
+<p>If unsure, <code><a href="../Secp256k1/Util.html#restore_public_key(pub:String,prime=EC_PRIME_P)-class-method">.restore_public_key</a></code> should be used.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>pub</code> (<code>String</code>): the public key in prefixed compressed format.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.decode_compressed_public_key <span class="s">&quot;03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a&quot;</span></code></pre>
+
+<p>Returns an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> containing the public key.</p>
+
+<p>Raises if compressed public key is malformed or comes with invalid prefix.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -282,13 +295,17 @@
       
         <div class="doc">
           
-          <p>a helper to generate 32 pseudo-random bytes</p>
+          <p>A helper function to generate 32 pseudo-random bytes within the elliptic
+curve field size of <code><a href="../Secp256k1.html#EC_ORDER_N">EC_ORDER_N</a></code>.</p>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
+<span class="c"># =&gt; &quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -303,13 +320,25 @@
       
         <div class="doc">
           
-          <p>exports the compressed public key from an ec point with prefix 02 or 03</p>
+          <p>Exports the compressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with either the
+prefix <code>"02"</code> or <code>"03"</code>.</p>
+
+<p>The prefix can be later used to recover the <code>y</code> coordinate of the public key,
+see <code><a href="../Secp256k1/Util.html#decode_compressed_public_key(pub:String,prime=EC_PRIME_P)-class-method">.decode_compressed_public_key</a></code>. <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> uses this format
+to generate shorter addresses as compared to using uncompressed keys.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key point which shall be compressed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix my_public_key
+<span class="c"># =&gt; &quot;03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -324,14 +353,24 @@
       
         <div class="doc">
           
-          <p>wrapper function to perform an ec multiplication with
-the generator point and a provided private key</p>
+          <p>Gets a public key from a private key.</p>
+
+<p>This is basically a wrapper function to perform an elliptic curve
+multiplication with the generator point <code>g</code> and a provided private key <code>priv</code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>priv</code> (<code>BigInt</code>): the private key to be used.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>, <span class="n">16</span>)</code></pre>
+
+<p>Returns an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> containing the public key.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L264" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -346,13 +385,23 @@ the generator point and a provided private key</p>
       
         <div class="doc">
           
-          <p>exports the uncompressed public key from an ec point without prefix</p>
+          <p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> without prefix.</p>
+
+<p><code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> uses this format to generate addresses. For prefixed
+uncompressed public keys, see <code><a href="../Secp256k1/Util.html#public_key_uncompressed_prefix(p:EC_Point)-class-method">.public_key_uncompressed_prefix</a></code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key point which shall be uncompressed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_uncompressed my_public_key
+<span class="c"># =&gt; &quot;d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L64" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -367,34 +416,54 @@ the generator point and a provided private key</p>
       
         <div class="doc">
           
-          <p>exports the uncompressed public key from an ec point with prefix 04</p>
+          <p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with prefix <code>"04"</code>.</p>
+
+<p><code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> uses this format to generate uncompressed addresses.
+For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key_uncompressed(p:EC_Point)-class-method">.public_key_uncompressed</a></code>.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key point which shall be uncompressed.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_uncompressed_prefix my_public_key
+<span class="c"># =&gt; &quot;04d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="restore_public_key(pub:String)-class-method">
+    <div class="entry-detail" id="restore_public_key(pub:String,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>restore_public_key</strong>(pub : String)
+        def self.<strong>restore_public_key</strong>(pub : String, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#restore_public_key(pub:String)-class-method">#</a>
+        <a class="method-permalink" href="#restore_public_key(pub:String,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>detects public key type and tries to restore the ec point from it</p>
+          <p>Detects public key type and tries to restore the <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from it.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>pub</code> (<code>String</code>): the public key in any format.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.restore_public_key <span class="s">&quot;d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span></code></pre>
+
+<p>Returns an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> containing the public key.</p>
+
+<p>Raises if public key format is unknown.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L238" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -409,13 +478,20 @@ the generator point and a provided private key</p>
       
         <div class="doc">
           
-          <p>generic tool to encode single hex bytes as strings, e.g., "07"</p>
+          <p>A generic utility to encode single hex bytes as strings, e.g., "07"</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>i</code> (<code>Int32</code>): the integer to be formatted as padded hex byte.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.to_padded_hex_01 <span class="n">7</span>
+<span class="c"># =&gt; &quot;07&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -430,14 +506,21 @@ the generator point and a provided private key</p>
       
         <div class="doc">
           
-          <p>utility tool to ensure hex keys are always 32 bytes
-it pads the number with leading zeros if not</p>
+          <p>An utility tool to ensure hex keys are always 32 bytes;
+it pads the number with leading zeros if it's shorter.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>i</code> (<code>BigInt</code>): the integer to be formatted as padded hex byte string.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.to_padded_hex_32 <span class="t">BigInt</span>.<span class="k">new</span> <span class="n">7</span>
+<span class="c"># =&gt; &quot;0000000000000000000000000000000000000000000000000000000000000007&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/util.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/util.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>

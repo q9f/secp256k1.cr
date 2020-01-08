@@ -116,8 +116,9 @@
     Overview
   </h2>
 
-  <p>implements ecdsa signature generation and verification for secp256k1
-ref: https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages</p>
+  <p>Implements <code><a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a></code> generation and verification for <code><a href="../Secp256k1.html">Secp256k1</a></code>
+elliptic curves.
+Ref: <a href="https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages" target="_blank">cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages</a></p>
 
 
 
@@ -142,7 +143,7 @@ ref: https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages<
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/signature.cr#L17" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/signature.cr#L18" target="_blank">
         signature.cr
       </a>
     
@@ -168,21 +169,21 @@ ref: https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages<
       <li class="entry-summary">
         <a href="#sign(msg:String,priv:BigInt)-class-method" class="signature"><strong>.sign</strong>(msg : String, priv : BigInt)</a>
         
-          <div class="summary"><p>the ecdsa signing algorithm (rfc 6979) takes as input a message <code>msg</code> and a private key <code>priv</code>.</p></div>
+          <div class="summary"><p>Signs a message and creates a signature proof using a private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method" class="signature"><strong>.verify</strong>(msg : String, sig : ECDSA_Signature, pub : EC_Point)</a>
         
-          <div class="summary"><p>the algorithm to verify an ecdsa signature takes as input the signed message <code>msg</code> and the signature <code>(r, s)</code> produced from self.sign and the public key <code>pub</code>, corresponding to the signer's private key.</p></div>
+          <div class="summary"><p>Verifies a signature of a message against a public key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#verify_hash(hash:BigInt,sig:ECDSA_Signature,pub:EC_Point)-class-method" class="signature"><strong>.verify_hash</strong>(hash : BigInt, sig : ECDSA_Signature, pub : EC_Point)</a>
         
-          <div class="summary"><p>same as self.verify, just using the hashed message directly</p></div>
+          <div class="summary"><p>Verifies a signature of a message hash against a public key.</p></div>
         
       </li>
     
@@ -220,15 +221,28 @@ ref: https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages<
       
         <div class="doc">
           
-          <p>the ecdsa signing algorithm (rfc 6979) takes as input a message <code>msg</code>
+          <p>Signs a message and creates a signature proof using a private key.</p>
+
+<p>The ECDSA signing algorithm (RFC-6979) takes as input a message <code>msg</code>
 and a private key <code>priv</code>. It produces as output a signature, which
-consists of pair of integers <code>(r, s)</code>.</p>
+consists of pair of integers <code>(r, s)</code>, where <code>r</code> is the <code>x</code>-coordinate
+of a random point on our curve and <code>s</code> is the signature proof.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>msg</code> (<code>String</code>): A message string to sign.</li><li><code>priv</code> (<code>BigInt</code>): A private key to sign with.</li></ul>
+
+<pre><code>sig <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Signature</span>.sign <span class="s">&quot;Hello, World!&quot;</span>, <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>, <span class="n">16</span>)
+sig.r
+<span class="c"># =&gt; &quot;63945398370917837063250848409972066837033757647691696776146735867163610886143&quot;</span>
+sig.s
+<span class="c"># =&gt; &quot;20291418537568297129028959685291490143232574306335372594306006819765182564103&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/signature.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/signature.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -243,15 +257,28 @@ consists of pair of integers <code>(r, s)</code>.</p>
       
         <div class="doc">
           
-          <p>the algorithm to verify an ecdsa signature takes as input the signed message <code>msg</code>
-and the signature <code>(r, s)</code> produced from self.sign and the public key <code>pub</code>,
+          <p>Verifies a signature of a message against a public key.</p>
+
+<p>The algorithm to verify an ECDSA signature takes as input the signed message <code>msg</code>
+and the signature <code>(r, s)</code> produced from <code><a href="../Secp256k1/Signature.html#sign(msg:String,priv:BigInt)-class-method">.sign</a></code> and the public key <code>pub</code>,
 corresponding to the signer's private key. The result is boolean.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>msg</code> (<code>String</code>): A message string to verify.</li><li><code>sig</code> (<code><a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a></code>): A signature to verify the message.</li><li><code>pub</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): A public key to verify the signature against.</li></ul>
+
+<pre><code>pub <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.restore_public_key <span class="s">&quot;03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a&quot;</span>
+msg <span class="o">=</span> <span class="s">&quot;Hello, World!&quot;</span>
+sig <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">ECDSA_Signature</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;63945398370917837063250848409972066837033757647691696776146735867163610886143&quot;</span>), <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;20291418537568297129028959685291490143232574306335372594306006819765182564103&quot;</span>)
+
+<span class="t">Secp256k1</span><span class="t">::</span><span class="t">Signature</span>.verify msg, sig, pub
+<span class="c"># =&gt; true</span></code></pre>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/signature.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/signature.cr#L76" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -266,13 +293,21 @@ corresponding to the signer's private key. The result is boolean.</p>
       
         <div class="doc">
           
-          <p>same as self.verify, just using the hashed message directly</p>
+          <p>Verifies a signature of a message hash against a public key.</p>
+
+<p>Same as <code><a href="../Secp256k1/Signature.html#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method">.verify</a></code>, just using the hashed message directly.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>hash</code> (<code>BigInt</code>): A SHA-256 hash of the message to verify.</li><li><code>sig</code> (<code><a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a></code>): A signature to verify the message.</li><li><code>pub</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): A public key to verify the signature against.</li></ul>
+
+<p>Returns <em>true</em> if signature is valid. See <code><a href="../Secp256k1/Signature.html#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method">.verify</a></code> for usage example.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/90277a931d1866de696bde9fe0ca31871b26b7c4/src/signature.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/signature.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>
