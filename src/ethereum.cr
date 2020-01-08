@@ -12,33 +12,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# implements the Ethereum address space
+# Implements the `Ethereum` address space for the `Secp256k1` library.
 module Secp256k1::Ethereum
-  # returns a checksummed ethereum address as per eip-55
+  # Returns a checksummed `Ethereum` address as per EIP-55.
+  #
+  # Reference: [eips.ethereum.org/EIPS/eip-55](https://eips.ethereum.org/EIPS/eip-55)
+  #
+  # Parameters:
+  # * `adr` (`String`): an unchecked `Ethereum` address.
+  #
+  # ```
+  # Secp256k1::Ethereum.address_checksum "0x7598c0fbaeb021161ce2e598f45ddee90fe5c6f7"
+  # # => "0x7598c0FBAEB021161ce2E598F45dDEe90FE5C6f7"
+  # ```
+  #
+  # Raises if address is malformed.
   def self.address_checksum(adr : String)
-    # make sure the address is downcase
+    # Makes sure the address is lower case.
     adr = adr.downcase
 
     if adr.size === 42
-      # trim a leading `0x`
+      # Trims a leading `"0x"`.
       adr = adr[2, 40]
     end
 
     if adr.size === 40
-      # get a keccak-256 to operate on according to eip-55
+      # Gets a Keccak-256 hash to operate on according to EIP-55.
       keccak = Hash.keccak256_string adr
 
-      # prefix the address with `0x`
+      # Prefixes the address with `"0x"`.
       address = "0x"
 
-      # iterate each character to determine capitalization
+      # Iterates each character to determine capitalization.
       i = 0
       while i < adr.size
         k = keccak[i].to_i 16
         if k >= 8
           address += "#{adr[i]}".upcase
         else
-          address += "#{adr[i]}"
+          address += "#{adr[i]}".downcase
         end
         i += 1
       end
@@ -49,14 +61,31 @@ module Secp256k1::Ethereum
     return "-999"
   end
 
-  # generates an ethereum address for an uncompressed public key
+  # Generates a checksummed `Ethereum` address for an uncompressed public key.
+  #
+  # Parameters:
+  # * `pub` (`String`): an uncompressed public key string.
+  #
+  # ```
+  # Secp256k1::Ethereum.address_from_public_key "d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5"
+  # # => "0x7598c0FBAEB021161ce2E598F45dDEe90FE5C6f7"
+  # ```
+  #
+  # Note, that the returned `Ethereum` address is already checksummed.
+  #
+  # Raises if the public key is malformed.
   def self.address_from_public_key(pub : String)
-    # ensure uncompressed public keys
+    if pub.size === 130
+      # Trims a leading prefix.
+      pub = pub[2, 128]
+    end
+
+    # Ensures to use uncompressed public keys.
     if pub.size === 128
-      # hashes the uncompressed public key with keccak-256
+      # Hashes the uncompressed public key with Keccak-256.
       keccak = Hash.keccak256 Hash.hex_to_bin pub
 
-      # take the last 20 bytes from the hash
+      # Takes the last 20 bytes from the hash
       return address_checksum keccak[24, 40]
     else
       raise "malformed public key (invalid key size: #{pub.size})"
@@ -64,18 +93,31 @@ module Secp256k1::Ethereum
     return "-999"
   end
 
-  # generates an ethereum address from an public key ec point
+  # Generates a checksummed `Ethereum` address from an public key as `EC_Point`.
+  #
+  # Parameters:
+  # * `p` (`EC_Point`): a public key point with `x` and `y` coordinates.
+  #
+  # See `address_from_public_key` and `EC_Point` for usage instructions.
   def self.address_from_public_point(p : Secp256k1::EC_Point)
-    # take the corresponding public key generated with it
+    # Takes the corresponding public key generated with it.
     pub = Secp256k1::Util.public_key_uncompressed p
     return address_from_public_key pub
   end
 
-  # generates an ethereum address from a private key
-  def self.address_from_private(priv : String)
-    # having a private ecdsa key
-    # take the corresponding public key generated with it
-    priv = BigInt.new priv, 16
+  # Generates a checksummed `Ethereum` address from a private key.
+  #
+  # Parameters:
+  # * `priv` (`BigInt`): a private key as number.
+  #
+  # ```
+  # Secp256k1::Ethereum.address_from_private BigInt.new("b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268", 16)
+  # # => "0x7598c0FBAEB021161ce2E598F45dDEe90FE5C6f7"
+  # ```
+  #
+  # Note, that the returned `Ethereum` address is already checksummed.
+  def self.address_from_private(priv : BigInt)
+    # Takes the corresponding public key generated with it.
     p = Secp256k1::Util.public_key_from_private priv
     return address_from_public_point p
   end

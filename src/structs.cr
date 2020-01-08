@@ -26,8 +26,10 @@ module Secp256k1
   #
   # ```
   # P = EC_Point.new BigInt.new(0), BigInt.new(0)
-  # p.x # => 0
-  # p.y # => 0
+  # p.x
+  # # => 0
+  # p.y
+  # # => 0
   # ```
   class EC_Point
     # The position on the x-axis.
