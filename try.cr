@@ -11,10 +11,10 @@ if fancy
 end
 
 # private keys in bitcoin's wallet import format
-wif = Secp256k1::Bitcoin.wif_from_private private_key, "80"
+wif = Secp256k1::Bitcoin.wif_from_private_uncompressed private_key, "80"
 
 # private keys in bitcoin's wallet import format (compressed)
-wif_compr = Secp256k1::Bitcoin.wif_compressed_from_private private_key, "80"
+wif_compr = Secp256k1::Bitcoin.wif_from_private_compressed private_key, "80"
 
 # the point on the elliptic curve is our public key
 public_key = Secp256k1::Util.public_key_from_private private_key
@@ -34,8 +34,8 @@ eth = Secp256k1::Ethereum.address_from_public_key public_uncompr
 # pass a different version byte to get a DOGE address
 dog_compr = Secp256k1::Bitcoin.address_from_public_key public_compr, "1e"
 dog_uncompr = Secp256k1::Bitcoin.address_from_public_key public_uncompr_4, "1e"
-dog_wif = Secp256k1::Bitcoin.wif_from_private private_key, "9e"
-dog_wif_compr = Secp256k1::Bitcoin.wif_compressed_from_private private_key, "9e"
+dog_wif = Secp256k1::Bitcoin.wif_from_private_uncompressed private_key, "9e"
+dog_wif_compr = Secp256k1::Bitcoin.wif_from_private_compressed private_key, "9e"
 
 # do not proceed if the wallet import format checksum does not pass
 exit 101 if !Secp256k1::Bitcoin.wif_is_valid? wif
