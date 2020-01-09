@@ -49,6 +49,15 @@ describe Secp256k1::Hash do
     sha2.should eq "996db65b7f53189aa426cb8166859988d44b4e89eb4305951ababcf79ea3afe0"
   end
 
+  it "can hash sha-512 correctly" do
+    sha2 = Secp256k1::Hash.sha512 Secp256k1::Hash.hex_to_bin "0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352"
+    sha2.should eq "aaa023acaf98be3624463baf58b78dfde25d94b48b81a7f30d0bd408ea9152e657c1d3885d49ed23fb5339c69e56488c13c238334485d8774c402656c88de679"
+
+    # hash the previous hash again as string input instead of a bytes array
+    sha2 = Secp256k1::Hash.sha512_string sha2
+    sha2.should eq "e6a4912c903ea5ad4d64a8aa349b87ef90798ef6f66949331b6f8d202755bd5a6d7ae72365c6e4183f950440964f7560b2b674e5b62bbbc1c1093ee077445727"
+  end
+
   it "can hash ripemd-160 correctly" do
     # ripemd-160 hashes taken from the bitcoin wiki
     # ref: https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses
