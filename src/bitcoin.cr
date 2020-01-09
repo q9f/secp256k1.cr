@@ -36,28 +36,60 @@ module Secp256k1::Bitcoin
         key += Hash.base56_char r
       end
 
-      # It's only a valid mini-private key if the hash of `#{key}?` starts with `"00"`.
-      checksum = Hash.sha256_string "#{key}?"
-      valid = checksum[0, 2] === "00"
-
-      # It's only valid if the private key is within the `Secp256k1` field size `n`.
-      priv = private_key_from_mini key
-      valid = valid && priv > 0
-      valid = valid && priv === priv % Secp256k1::EC_ORDER_N
+      # Makes sure the key's checksum passes.
+      valid = mini_is_valid? key
+      if valid
+        # It's only valid if the private key is within the `Secp256k1` field size `n`.
+        priv = private_key_from_mini key
+        valid = valid && priv > 0
+        valid = valid && priv === priv % Secp256k1::EC_ORDER_N
+      end
     end
     return key
   end
 
-  # Gets a private key from a mini-private key.
+  # Gets a private key from a mini-private key if the key is valid.
+  #
+  # Parameters:
+  # * `m` (`String`): the mini-private key.
   #
   # ```
   # Secp256k1::Bitcoin.private_key_from_mini "S7qq5k98DAvee6mtQgpg4xAJatT9mR"
   # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
   # ```
+  #
+  # Raises if the key is invalid.
   def self.private_key_from_mini(m : String)
-    # The private key is just the SHA-256 hash.
-    private_key = Hash.sha256_string m
-    return BigInt.new private_key, 16
+    if mini_is_valid? m
+      # The private key is just the SHA-256 hash.
+      private_key = Hash.sha256_string m
+      return BigInt.new private_key, 16
+    else
+      raise "mini private key is not valid (invalid checksum for: #{m})"
+    end
+    return BigInt.new "-999"
+  end
+
+  # Validates wether a mini-private key has a correct checksum and formatting.
+  #
+  # Parameters:
+  # * `m` (`String`): the mini-private key.
+  #
+  # ```
+  # Secp256k1::Bitcoin.mini_is_valid? "S7qq5k98DAvee6mtQgpg4xAJatT9mR"
+  # # => true
+  # ```
+  #
+  # Returns _true_ if the key contains a valid checksum and is formatted correctly.
+  def self.mini_is_valid?(m : String)
+    # It's only valid if it's 30 characters long and starts with a capital `S`.
+    valid = m.size === 30
+    valid = valid && m[0, 1] === "S"
+
+    # It's only a valid mini-private key if the hash of `#{key}?` starts with `"00"`.
+    checksum = Hash.sha256_string "#{m}?"
+    valid = valid && checksum[0, 2] === "00"
+    return valid
   end
 
   # Gets a Base-58 Wallet-Import Format (WIF) from a private key.
