@@ -141,7 +141,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L16" target="_blank">
         bitcoin.cr
       </a>
     
@@ -200,6 +200,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#mini_is_valid?(m:String)-class-method" class="signature"><strong>.mini_is_valid?</strong>(m : String)</a>
+        
+          <div class="summary"><p>Validates wether a mini-private key has a correct checksum and formatting.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#new_mini_private_key-class-method" class="signature"><strong>.new_mini_private_key</strong></a>
         
           <div class="summary"><p>Generates a new mini-private key (30 characters length, Base-56 encoded).</p></div>
@@ -209,7 +216,7 @@
       <li class="entry-summary">
         <a href="#private_key_from_mini(m:String)-class-method" class="signature"><strong>.private_key_from_mini</strong>(m : String)</a>
         
-          <div class="summary"><p>Gets a private key from a mini-private key.</p></div>
+          <div class="summary"><p>Gets a private key from a mini-private key if the key is valid.</p></div>
         
       </li>
     
@@ -302,7 +309,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L368" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L400" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -335,7 +342,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L270" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L302" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -362,7 +369,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L310" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L342" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -392,7 +399,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L330" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L362" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -424,7 +431,37 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L194" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L226" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mini_is_valid?(m:String)-class-method">
+      <div class="signature">
+        
+        def self.<strong>mini_is_valid?</strong>(m : String)
+
+        <a class="method-permalink" href="#mini_is_valid?(m:String)-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Validates wether a mini-private key has a correct checksum and formatting.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>m</code> (<code>String</code>): the mini-private key.</li></ul>
+
+<pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.mini_is_valid? <span class="s">&quot;S7qq5k98DAvee6mtQgpg4xAJatT9mR&quot;</span>
+<span class="c"># =&gt; true</span></code></pre>
+
+<p>Returns <em>true</em> if the key contains a valid checksum and is formatted correctly.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L84" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -448,7 +485,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L23" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -463,16 +500,22 @@ uncompressed keys generate uncompressed addresses.</p>
       
         <div class="doc">
           
-          <p>Gets a private key from a mini-private key.</p>
+          <p>Gets a private key from a mini-private key if the key is valid.</p>
+
+<p>Parameters:</p>
+
+<ul><li><code>m</code> (<code>String</code>): the mini-private key.</li></ul>
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.private_key_from_mini <span class="s">&quot;S7qq5k98DAvee6mtQgpg4xAJatT9mR&quot;</span>
 <span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span></code></pre>
+
+<p>Raises if the key is invalid.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L57" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -502,7 +545,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L173" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -532,7 +575,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L167" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L199" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -563,7 +606,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -591,7 +634,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L110" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L142" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -619,7 +662,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L157" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -649,7 +692,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/74ab83c5d3f91e1df45b16e61e56af6fa02eddff/src/bitcoin.cr#L219" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/bitcoin.cr#L251" target="_blank">View source</a>]
         
       </div>
     </div>
