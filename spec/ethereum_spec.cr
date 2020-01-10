@@ -21,8 +21,18 @@ describe Secp256k1::Ethereum do
     # private key and address taken from nick's edgeware tweet-storm
     # ref: https://twitter.com/nicksdjohnson/status/1146018827685126144
     priv = BigInt.new "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51", 16
-    adr = Secp256k1::Ethereum.address_from_private priv
-    adr.should eq "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
+    key = Secp256k1::Keypair.new priv
+    eth = Secp256k1::Ethereum::Account.new key
+    eth.address.should eq "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
+  end
+
+  it "can generate a valid enode address" do
+    priv = BigInt.new "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51", 16
+    key = Secp256k1::Keypair.new priv
+    enode = Secp256k1::Ethereum::Enode.new key, "127.0.0.1", 30303
+    enode.to_s.should eq "enode://bf0cf8c934bd3c57e962fdf2a47e99d6136b047f987ee2e0cb03110cafd92afc981974428f8162d3f8fce2f58d4e56341478e87d092aeb3a0edf8af97d638d04@127.0.0.1:30303"
+    enode = Secp256k1::Ethereum::Enode.new key, "192.168.1.37", 50000
+    enode.to_s.should eq "enode://bf0cf8c934bd3c57e962fdf2a47e99d6136b047f987ee2e0cb03110cafd92afc981974428f8162d3f8fce2f58d4e56341478e87d092aeb3a0edf8af97d638d04@192.168.1.37:50000"
   end
 
   # implements the eip-55 test cases
