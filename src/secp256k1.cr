@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require "./bip39.cr"
 require "./bitcoin.cr"
 require "./constants.cr"
 require "./core.cr"
@@ -21,6 +22,7 @@ require "./signature.cr"
 require "./structs.cr"
 require "./util.cr"
 require "./version.cr"
+require "./words.cr"
 
 # Implements 256-bit `Secp256k1` Koblitz elliptic curve.
 # Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
