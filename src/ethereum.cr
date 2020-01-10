@@ -18,23 +18,20 @@ require "socket"
 # Implements the `Ethereum` address space for the `Secp256k1` library.
 module Secp256k1::Ethereum
   class Account
-    private property private_key : BigInt
-    property public_key : EC_Point
+    property key_pair : Keypair
     property address : String
 
     def initialize
-      @private_key = Util.new_private_key
-      @public_key = Util.public_key_from_private @private_key
-      @address = Ethereum.address_from_private @private_key
+      @key_pair = Keypair.new
+      @address = Ethereum.address_from_private @key_pair.private_key
     end
 
-    def initialize(@private_key)
-      @public_key = Util.public_key_from_private @private_key
-      @address = Ethereum.address_from_private @private_key
+    def initialize(@key_pair)
+      @address = Ethereum.address_from_private @key_pair.private_key
     end
 
     def get_secret
-      return Util.to_padded_hex_32 @private_key
+      return Util.to_padded_hex_32 @key_pair.private_key
     end
 
     def to_s
@@ -43,32 +40,27 @@ module Secp256k1::Ethereum
   end
 
   class Enode
-    private property private_key : BigInt
-    property public_key : EC_Point
+    property key_pair : Keypair
     property address : Socket::IPAddress
 
     def initialize
-      @private_key = Util.new_private_key
+      @key_pair = Keypair.new
       @address = Socket::IPAddress.new(get_my_ip, 30303)
-      @public_key = Util.public_key_from_private @private_key
     end
 
-    def initialize(@private_key)
+    def initialize(@key_pair)
       @address = Socket::IPAddress.new(get_my_ip, 30303)
-      @public_key = Util.public_key_from_private @private_key
     end
 
-    def initialize(@private_key, port)
+    def initialize(@key_pair, port)
       @address = Socket::IPAddress.new(get_my_ip, port)
-      @public_key = Util.public_key_from_private @private_key
     end
 
-    def initialize(@private_key, host, port)
+    def initialize(@key_pair, host, port)
       @address = Socket::IPAddress.new(host, port)
-      @public_key = Util.public_key_from_private @private_key
     end
 
-    private def get_my_ip
+    def get_my_ip
       ip = nil
       begin
         ip = HTTP::Client.get("http://ident.me/").body.to_s
@@ -81,12 +73,11 @@ module Secp256k1::Ethereum
     end
 
     def get_secret
-      return Util.to_padded_hex_32 @private_key
+      return Util.to_padded_hex_32 @key_pair.private_key
     end
 
     def to_s
-      uncompressed = Util.public_key_uncompressed @public_key
-      return "enode://#{uncompressed}@#{@address.to_s}"
+      return "enode://#{@key_pair.to_s}@#{@address.to_s}"
     end
   end
 

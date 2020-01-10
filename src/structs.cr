@@ -19,7 +19,7 @@
 # Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1
   class Keypair
-    private property private_key : BigInt
+    property private_key : BigInt
     property public_key : EC_Point
 
     def initialize
