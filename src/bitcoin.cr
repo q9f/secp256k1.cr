@@ -15,51 +15,46 @@
 # Implements the `Bitcoin` address space for the `Secp256k1` library.
 module Secp256k1::Bitcoin
   class Account
-    private property private_key : BigInt
-    property public_key : EC_Point
+    property key_pair : Keypair
     property version : String
     property compressed : Bool
     property address : String
     property wif : String
 
     def initialize
-      @private_key = Util.new_private_key
-      @public_key = Util.public_key_from_private @private_key
+      @key_pair = Keypair.new
       @version = "00"
       @compressed = false
-      @address = Bitcoin.address_from_private @private_key, @version, @compressed
-      @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+      @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+      @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
     end
 
-    def initialize(@private_key)
-      @public_key = Util.public_key_from_private @private_key
+    def initialize(@key_pair)
       @version = "00"
       @compressed = false
-      @address = Bitcoin.address_from_private @private_key, @version, @compressed
-      @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+      @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+      @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
     end
 
-    def initialize(@private_key, @version)
+    def initialize(@key_pair, @version)
       v = @version.to_i 16
       if !v.nil? && v >= 0 && v < 128
-        @public_key = Util.public_key_from_private @private_key
         @compressed = false
-        @address = Bitcoin.address_from_private @private_key, @version, @compressed
-        @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+        @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+        @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
       else
         raise "invalid version byte provided (out of range: #{@version})"
       end
     end
 
-    def initialize(@private_key, @version, @compressed)
+    def initialize(@key_pair, @version, @compressed)
       v = @version.to_i 16
       if !v.nil? && v >= 0 && v < 128
-        @public_key = Util.public_key_from_private @private_key
-        @address = Bitcoin.address_from_private @private_key, @version, @compressed
+        @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
         if compressed
-          @wif = Bitcoin.wif_from_private_compressed @private_key, version_wif
+          @wif = Bitcoin.wif_from_private_compressed @key_pair.private_key, version_wif
         else
-          @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+          @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
         end
       else
         raise "invalid version byte provided (out of range: #{@version})"
@@ -70,12 +65,12 @@ module Secp256k1::Bitcoin
       return @compressed
     end
 
-    private def version_wif
+    def version_wif
       return Util.to_padded_hex_01(@version.to_i(16) + 128)
     end
 
     def get_secret
-      return Util.to_padded_hex_32 @private_key
+      return Util.to_padded_hex_32 @key_pair.private_key
     end
 
     def to_s
