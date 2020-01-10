@@ -12,8 +12,84 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require "http"
+require "socket"
+
 # Implements the `Ethereum` address space for the `Secp256k1` library.
 module Secp256k1::Ethereum
+  class Account
+    private property private_key : BigInt
+    property public_key : EC_Point
+    property address : String
+
+    def initialize
+      @private_key = Util.new_private_key
+      @public_key = Util.public_key_from_private @private_key
+      @address = Ethereum.address_from_private @private_key
+    end
+
+    def initialize(@private_key)
+      @public_key = Util.public_key_from_private @private_key
+      @address = Ethereum.address_from_private @private_key
+    end
+
+    def get_secret
+      return Util.to_padded_hex_32 @private_key
+    end
+
+    def to_s
+      return Ethereum.address_checksum @address
+    end
+  end
+
+  class Enode
+    private property private_key : BigInt
+    property public_key : EC_Point
+    property address : Socket::IPAddress
+
+    def initialize
+      @private_key = Util.new_private_key
+      @address = Socket::IPAddress.new(get_my_ip, 30303)
+      @public_key = Util.public_key_from_private @private_key
+    end
+
+    def initialize(@private_key)
+      @address = Socket::IPAddress.new(get_my_ip, 30303)
+      @public_key = Util.public_key_from_private @private_key
+    end
+
+    def initialize(@private_key, port)
+      @address = Socket::IPAddress.new(get_my_ip, port)
+      @public_key = Util.public_key_from_private @private_key
+    end
+
+    def initialize(@private_key, host, port)
+      @address = Socket::IPAddress.new(host, port)
+      @public_key = Util.public_key_from_private @private_key
+    end
+
+    private def get_my_ip
+      ip = nil
+      begin
+        ip = HTTP::Client.get("http://ident.me/").body.to_s
+      rescue
+        ip = "127.0.0.1"
+      ensure
+        ip = "127.0.0.1" if ip.nil? || ip.size < 2
+      end
+      return ip
+    end
+
+    def get_secret
+      return Util.to_padded_hex_32 @private_key
+    end
+
+    def to_s
+      uncompressed = Util.public_key_uncompressed @public_key
+      return "enode://#{uncompressed}@#{@address.to_s}"
+    end
+  end
+
   # Returns a checksummed `Ethereum` address as per EIP-55.
   #
   # Reference: [eips.ethereum.org/EIPS/eip-55](https://eips.ethereum.org/EIPS/eip-55)

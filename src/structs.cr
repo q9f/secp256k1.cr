@@ -18,6 +18,28 @@
 # `Secp256k1` has the characteristic prime `p`, it is defined over the prime field ℤ_p.
 # Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1
+  class Keypair
+    private property private_key : BigInt
+    property public_key : EC_Point
+
+    def initialize
+      @private_key = Util.new_private_key
+      @public_key = Util.public_key_from_private @private_key
+    end
+
+    def initialize(@private_key)
+      @public_key = Util.public_key_from_private @private_key
+    end
+
+    def get_secret
+      return Util.to_padded_hex_32 @private_key
+    end
+
+    def to_s
+      return Util.public_key_uncompressed @public_key
+    end
+  end
+
   # A point in the two-dimensional space of an elliptic curve.
   #
   # Properties:
@@ -31,7 +53,7 @@ module Secp256k1
   # p.y
   # # => 0
   # ```
-  class EC_Point
+  struct EC_Point
     # The position on the x-axis.
     property x : BigInt
 
@@ -59,7 +81,7 @@ module Secp256k1
   # ```
   # sig = ECDSA_Signature.new r.x, proof
   # ```
-  class ECDSA_Signature
+  struct ECDSA_Signature
     # The `x` coordinate of a random point `R`.
     property r : BigInt
 
