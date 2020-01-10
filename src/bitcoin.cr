@@ -14,6 +14,75 @@
 
 # Implements the `Bitcoin` address space for the `Secp256k1` library.
 module Secp256k1::Bitcoin
+  class Account
+    private property private_key : BigInt
+    property public_key : EC_Point
+    property version : String
+    property compressed : Bool
+    property address : String
+    property wif : String
+
+    def initialize
+      @private_key = Util.new_private_key
+      @public_key = Util.public_key_from_private @private_key
+      @version = "00"
+      @compressed = false
+      @address = Bitcoin.address_from_private @private_key, @version, @compressed
+      @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+    end
+
+    def initialize(@private_key)
+      @public_key = Util.public_key_from_private @private_key
+      @version = "00"
+      @compressed = false
+      @address = Bitcoin.address_from_private @private_key, @version, @compressed
+      @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+    end
+
+    def initialize(@private_key, @version)
+      v = @version.to_i 16
+      if !v.nil? && v >= 0 && v < 128
+        @public_key = Util.public_key_from_private @private_key
+        @compressed = false
+        @address = Bitcoin.address_from_private @private_key, @version, @compressed
+        @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+      else
+        raise "invalid version byte provided (out of range: #{@version})"
+      end
+    end
+
+    def initialize(@private_key, @version, @compressed)
+      v = @version.to_i 16
+      if !v.nil? && v >= 0 && v < 128
+        @public_key = Util.public_key_from_private @private_key
+        @address = Bitcoin.address_from_private @private_key, @version, @compressed
+        if compressed
+          @wif = Bitcoin.wif_from_private_compressed @private_key, version_wif
+        else
+          @wif = Bitcoin.wif_from_private_uncompressed @private_key, version_wif
+        end
+      else
+        raise "invalid version byte provided (out of range: #{@version})"
+      end
+    end
+
+    def is_compressed?
+      return @compressed
+    end
+
+    private def version_wif
+      return Util.to_padded_hex_01(@version.to_i(16) + 128)
+    end
+
+    def get_secret
+      return Util.to_padded_hex_32 @private_key
+    end
+
+    def to_s
+      return @address
+    end
+  end
+
   # Generates a new mini-private key (30 characters length, Base-56 encoded).
   #
   # ```
