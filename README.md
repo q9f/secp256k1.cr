@@ -1,6 +1,5 @@
 # secp256k1.cr
 
-
 [![Build Status](https://img.shields.io/github/workflow/status/q9f/secp256k1.cr/Nightly)](https://github.com/q9f/secp256k1.cr/actions)
 [![Documentation](https://img.shields.io/badge/docs-html-black)](https://q9f.github.io/secp256k1.cr/)
 [![Release](https://img.shields.io/github/v/release/q9f/secp256k1.cr?include_prereleases&color=black)](https://github.com/q9f/secp256k1.cr/releases/latest)
@@ -25,6 +24,7 @@ this library allows for address generation of:
 
 furthermore, this library allows for:
 * signing `(r, s)` and verification of arbitrary messages and message-hashes (with key pairs)
+* managing `enode` addresses as per `devp2p` specification for ethereum nodes
 
 # installation
 
@@ -60,42 +60,61 @@ this library exposes the following modules (in logical order):
 basic usage:
 
 ```crystal
-# generate a keypair
-private_key = Secp256k1::Util.new_private_key
-public_key = Secp256k1::Util.public_key_from_private private_key
+# generates a new keypair
+pair = Secp256k1::Keypair.new
+# => #<Secp256k1::Keypair:0x7f8be5611d80>
 
-# display the compressed public key with prefix
-puts Secp256k1::Util.public_key_compressed_prefix public_key
+# gets the private key
+pair.get_secret
+# => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
 
-# > 02b3c141fba20c129806290f04cee097305fb7391abfde01b3bb3affcd935332a1
+# gets the uncompressed public key string
+pair.to_s
+# => "e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f"
+
+# gets the compressed public key with prefix
+coompressed = Secp256k1::Util.public_key_compressed_prefix pair.public_key
+# => "03e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b"
 ```
 
 generate a compressed bitcoin mainnet address:
 
 ```crystal
-# generate a keypair
-private_key = Secp256k1::Util.new_private_key
-public_key = Secp256k1::Util.public_key_from_private private_key
-compressed = Secp256k1::Util.public_key_compressed_prefix public_key
+# generates a new keypair
+pair = Secp256k1::Keypair.new
+# => #<Secp256k1::Keypair:0x7f8be5611d80>
 
-# display the bitcoin address (version "00" for bitcoin mainnet)
-puts Secp256k1::Bitcoin.address_from_public_key compressed, "00"
+# generates a compressed bitcoin account from the keypair
+btc = Secp256k1::Bitcoin::Account.new pair, "00", true
+# => #<Secp256k1::Bitcoin::Account:0x7f81ef21ab80>
 
-# > "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+# gets the wallet-import format (checksummed private key)
+btc.wif
+# => "Kz2grUzxEAxNopiREbNpVbjoitAGQVXnUZY4n8pNdmWdVqub99qu"
+
+# gets the compressed bitcoin addresss
+btc.address
+# => "1Q1zbmPZtS2chwxpviqz6qHgoM8UUuviGN"
 ```
 
 generate a checksummed ethereum address:
 
 ```crystal
-# generate a keypair
-private_key = Secp256k1::Util.new_private_key
-public_key = Secp256k1::Util.public_key_from_private private_key
-uncompressed = Secp256k1::Util.public_key_uncompressed public_key
+# generates a new keypair
+pair = Secp256k1::Keypair.new
+# => #<Secp256k1::Keypair:0x7f81ef21ad00>
 
-# display the ethereum address
-puts Secp256k1::Ethereum.address_from_public_key uncompressed
+# generates an ethereum account from the keypair
+eth = Secp256k1::Ethereum::Account.new pair
+# => #<Secp256k1::Ethereum::Account:0x7f81ef1faac0>
 
-# > "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
+# gets the private key
+eth.get_secret
+# => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
+
+# gets the ethereum addresss
+eth.address
+# => "0x224008a0F3d3cB989c807F568c7f99Bf451328A6"
 ```
 
 # documentation
