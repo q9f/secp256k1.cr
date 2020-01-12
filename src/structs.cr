@@ -38,7 +38,7 @@ module Secp256k1
     # The point on the elliptic curve as known as the public key.
     property public_key : EC_Point
 
-    # Generates a new keypair using a random private key.
+    # Generates a new keypair using a fresh random private key.
     #
     # ```
     # key = Secp256k1::Keypair.new
