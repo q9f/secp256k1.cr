@@ -21,7 +21,7 @@ module Secp256k1::Bitcoin
   # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
   # * `version` (`String`): the version byte determining the used network encoding.
   # * `compressed` (`Bool`): an indicator whether a compressed format should be used.
-  # * `address` (`String`): the public Bitcoin address.
+  # * `address` (`String`): the public `Bitcoin` address.
   # * `wif` (`String`): the private Wallet-Import Format (WIF).
   #
   # ```
@@ -38,7 +38,7 @@ module Secp256k1::Bitcoin
     property version : String
     # An indicator whether a compressed format should be used.
     property compressed : Bool
-    # The public Bitcoin address.
+    # The public `Bitcoin` address.
     property address : String
     # The private Wallet-Import Format (WIF).
     property wif : String
@@ -59,7 +59,7 @@ module Secp256k1::Bitcoin
       @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
     end
 
-    # Generates a new `Bitcoin::Account` from a provided `Keypair`.
+    # Generates a `Bitcoin::Account` from a provided `Keypair`.
     #
     # Parameters:
     # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
@@ -78,7 +78,7 @@ module Secp256k1::Bitcoin
       @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
     end
 
-    # Generates a new `Bitcoin::Account` from a provided `Keypair` allowing for a custom
+    # Generates a `Bitcoin::Account` from a provided `Keypair` allowing for a custom
     # network version byte.
     #
     # Parameters:
@@ -107,7 +107,7 @@ module Secp256k1::Bitcoin
       end
     end
 
-    # Generates a new `Bitcoin::Account` from a provided `Keypair` allowing for a custom
+    # Generates a `Bitcoin::Account` from a provided `Keypair` allowing for a custom
     # network version byte and compression.
     #
     # Parameters:
