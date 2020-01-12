@@ -24,6 +24,9 @@ dog_compr = Secp256k1::Bitcoin::Account.new key_pair, "1e", true
 # creates an ethereum account from the key pair
 eth = Secp256k1::Ethereum::Account.new key_pair
 
+# creates a public devp2p enode address from the key pair
+p2p = Secp256k1::Ethereum::Enode.new key_pair
+
 # play around with different public key formats
 public_compr = Secp256k1::Util.public_key_compressed_prefix key_pair.public_key
 public_uncompr = Secp256k1::Util.public_key_uncompressed key_pair.public_key
@@ -61,6 +64,7 @@ Address Magic (all from the same private key)
         BTC Wallet-Import Format :   #{btc.wif}
 
          Checksummed ETH address : #{eth.address}
+        DevP2P ETH Enode address : #{p2p.to_s}
 
          Compressed DOGE address :   #{dog_compr.address}
        Uncompressed DOGE address :   #{dog.address}
