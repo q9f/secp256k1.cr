@@ -26,7 +26,10 @@ describe Secp256k1::Ethereum do
     eth.address.should eq "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
   end
 
+  # tests a known ethereum key to be used for an enode address
   it "can generate a valid enode address" do
+    # private key and address taken from nick's edgeware tweet-storm
+    # ref: https://twitter.com/nicksdjohnson/status/1146018827685126144
     priv = BigInt.new "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51", 16
     key = Secp256k1::Keypair.new priv
     enode = Secp256k1::Ethereum::Enode.new key, "127.0.0.1", 30303

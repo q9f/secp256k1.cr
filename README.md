@@ -61,19 +61,15 @@ basic usage:
 
 ```crystal
 # generates a new keypair
-pair = Secp256k1::Keypair.new
+key = Secp256k1::Keypair.new
 # => #<Secp256k1::Keypair:0x7f8be5611d80>
 
 # gets the private key
-pair.get_secret
+key.get_secret
 # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
 
-# gets the uncompressed public key string
-pair.to_s
-# => "e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f"
-
 # gets the compressed public key with prefix
-coompressed = Secp256k1::Util.public_key_compressed_prefix pair.public_key
+coompressed = Secp256k1::Util.public_key_compressed_prefix key.public_key
 # => "03e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b"
 ```
 
@@ -81,11 +77,11 @@ generate a compressed bitcoin mainnet address:
 
 ```crystal
 # generates a new keypair
-pair = Secp256k1::Keypair.new
+key = Secp256k1::Keypair.new
 # => #<Secp256k1::Keypair:0x7f8be5611d80>
 
 # generates a compressed bitcoin account from the keypair
-btc = Secp256k1::Bitcoin::Account.new pair, "00", true
+btc = Secp256k1::Bitcoin::Account.new key, "00", true
 # => #<Secp256k1::Bitcoin::Account:0x7f81ef21ab80>
 
 # gets the wallet-import format (checksummed private key)
@@ -101,11 +97,11 @@ generate a checksummed ethereum address:
 
 ```crystal
 # generates a new keypair
-pair = Secp256k1::Keypair.new
+key = Secp256k1::Keypair.new
 # => #<Secp256k1::Keypair:0x7f81ef21ad00>
 
 # generates an ethereum account from the keypair
-eth = Secp256k1::Ethereum::Account.new pair
+eth = Secp256k1::Ethereum::Account.new key
 # => #<Secp256k1::Ethereum::Account:0x7f81ef1faac0>
 
 # gets the private key
