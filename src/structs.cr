@@ -25,7 +25,7 @@ module Secp256k1
   # * `public_key` (`EC_Point`): the point on the elliptic curve as known as the public key.
   #
   # ```
-  # key = Keypair.new
+  # key = Secp256k1::Keypair.new
   # key.get_secret
   # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
   # key.to_s
@@ -41,7 +41,7 @@ module Secp256k1
     # Generates a new keypair using a random private key.
     #
     # ```
-    # key = Keypair.new
+    # key = Secp256k1::Keypair.new
     # # => #<Secp256k1::Keypair:0x7f8be5611d80>
     # ```
     def initialize
@@ -55,7 +55,7 @@ module Secp256k1
     # * `private_key` (`BigInt`): the secret as known as the private key.
     #
     # ```
-    # key = Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
+    # key = Secp256k1::Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
     # # => #<Secp256k1::Keypair:0x7f8be5611d80>
     # ```
     def initialize(@private_key)
