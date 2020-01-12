@@ -18,23 +18,66 @@
 # `Secp256k1` has the characteristic prime `p`, it is defined over the prime field ℤ_p.
 # Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1
+  # Implements a `Secp256k1` key pair containing a private and a public key.
+  #
+  # Properties:
+  # * `private_key` (`BigInt`): the secret as known as the private key.
+  # * `public_key` (`EC_Point`): the point on the elliptic curve as known as the public key.
+  #
+  # ```
+  # key = Keypair.new
+  # key.get_secret
+  # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
+  # key.to_s
+  # # => "e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f"
+  # ```
   class Keypair
+    # The secret as known as the private key.
     property private_key : BigInt
+
+    # The point on the elliptic curve as known as the public key.
     property public_key : EC_Point
 
+    # Generates a new keypair using a random private key.
+    #
+    # ```
+    # key = Keypair.new
+    # # => #<Secp256k1::Keypair:0x7f8be5611d80>
+    # ```
     def initialize
       @private_key = Util.new_private_key
       @public_key = Util.public_key_from_private @private_key
     end
 
+    # Generates a new keypair using a provided private key.
+    #
+    # Parameters:
+    # * `private_key` (`BigInt`): the secret as known as the private key.
+    #
+    # ```
+    # key = Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
+    # # => #<Secp256k1::Keypair:0x7f8be5611d80>
+    # ```
     def initialize(@private_key)
       @public_key = Util.public_key_from_private @private_key
     end
 
+    # Gets the private key as hexadecimal formatted string literal.
+    #
+    # ```
+    # key.get_secret
+    # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
+    # ```
     def get_secret
       return Util.to_padded_hex_32 @private_key
     end
 
+    # Gets the key formatted as uncompressed public key string.
+    #
+    # ```
+    # key.to_s
+    # # => "e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f"
+    # ```
     def to_s
       return Util.public_key_uncompressed @public_key
     end
@@ -47,7 +90,7 @@ module Secp256k1
   # * `y` (`BigInt`): the position on the y-axis.
   #
   # ```
-  # P = EC_Point.new BigInt.new(0), BigInt.new(0)
+  # p = EC_Point.new BigInt.new(0), BigInt.new(0)
   # p.x
   # # => 0
   # p.y
@@ -62,7 +105,7 @@ module Secp256k1
 
     # An EC_Point always requires two coordinates `x`, `y`.
     #
-    # Properties:
+    # Parameters:
     # * `x` (`BigInt`): the position on the x-axis.
     # * `y` (`BigInt`): the position on the y-axis.
     def initialize(@x : BigInt, @y : BigInt)
@@ -90,7 +133,7 @@ module Secp256k1
 
     # A signature always requires the random point `r` and the signature proof `s`.
     #
-    # Properties:
+    # Parameters:
     # * `r` (`BigInt`): the `x` coordinate of a random point `R`.
     # * `s` (`BigInt`): the signature proof of a message.
     def initialize(@r : BigInt, @s : BigInt)
