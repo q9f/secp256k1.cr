@@ -45,8 +45,18 @@
       
         <ul>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
       <a href="../Secp256k1/Bitcoin.html">Bitcoin</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin/Account" data-name="secp256k1::bitcoin::account">
+      <a href="../Secp256k1/Bitcoin/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -65,13 +75,33 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
       <a href="../Secp256k1/Ethereum.html">Ethereum</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum/Account" data-name="secp256k1::ethereum::account">
+      <a href="../Secp256k1/Ethereum/Account.html">Account</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum/Enode" data-name="secp256k1::ethereum::enode">
+      <a href="../Secp256k1/Ethereum/Enode.html">Enode</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
   <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
       <a href="../Secp256k1/Hash.html">Hash</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Keypair" data-name="secp256k1::keypair">
+      <a href="../Secp256k1/Keypair.html">Keypair</a>
       
     </li>
   
@@ -99,12 +129,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Secp256k1::EC_Point
+  <span class="kind">struct</span> Secp256k1::EC_Point
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Secp256k1/EC_Point.html">Secp256k1::EC_Point</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Secp256k1/EC_Point.html">Secp256k1::EC_Point</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -124,7 +154,7 @@
 
 <ul><li><code><a href="../Secp256k1/EC_Point.html#x:BigInt-instance-method">#x</a></code> (<code>BigInt</code>): the position on the x-axis.</li><li><code><a href="../Secp256k1/EC_Point.html#y:BigInt-instance-method">#y</a></code> (<code>BigInt</code>): the position on the y-axis.</li></ul>
 
-<pre><code><span class="t">P</span> <span class="o">=</span> <span class="t">EC_Point</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">0</span>), <span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">0</span>)
+<pre><code>p <span class="o">=</span> <span class="t">EC_Point</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">0</span>), <span class="t">BigInt</span>.<span class="k">new</span>(<span class="n">0</span>)
 p.x
 <span class="c"># =&gt; 0</span>
 p.y
@@ -153,7 +183,7 @@ p.y
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/structs.cr#L34" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/structs.cr#L99" target="_blank">
         structs.cr
       </a>
     
@@ -253,6 +283,16 @@ p.y
 
 
   
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
@@ -277,7 +317,7 @@ p.y
           
           <p>An EC_Point always requires two coordinates <code><a href="../Secp256k1/EC_Point.html#x:BigInt-instance-method">#x</a></code>, <code><a href="../Secp256k1/EC_Point.html#y:BigInt-instance-method">#y</a></code>.</p>
 
-<p>Properties:</p>
+<p>Parameters:</p>
 
 <ul><li><code><a href="../Secp256k1/EC_Point.html#x:BigInt-instance-method">#x</a></code> (<code>BigInt</code>): the position on the x-axis.</li><li><code><a href="../Secp256k1/EC_Point.html#y:BigInt-instance-method">#y</a></code> (<code>BigInt</code>): the position on the y-axis.</li></ul>
         </div>
@@ -285,7 +325,7 @@ p.y
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/structs.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/structs.cr#L111" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -320,7 +360,7 @@ p.y
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/structs.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/structs.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -341,7 +381,7 @@ p.y
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/structs.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/structs.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -362,7 +402,7 @@ p.y
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/structs.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/structs.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -383,7 +423,7 @@ p.y
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f336f7ca6a80757aa200c9ba34f51b6452ac3d65/src/structs.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/structs.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
