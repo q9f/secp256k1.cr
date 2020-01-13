@@ -1,3 +1,8 @@
+# Any copyright is dedicated to the Public Domain.
+# https://creativecommons.org/publicdomain/zero/1.0/
+#
+# Contributors: @q9f
+
 require "./src/*"
 
 # everything starts with a new key pair
