@@ -18,7 +18,7 @@ module Secp256k1::Bitcoin
   # and an address.
   #
   # Properties:
-  # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
+  # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
   # * `version` (`String`): the version byte determining the used network encoding.
   # * `compressed` (`Bool`): an indicator whether a compressed format should be used.
   # * `address` (`String`): the public `Bitcoin` address.
@@ -62,7 +62,7 @@ module Secp256k1::Bitcoin
     # Generates a `Bitcoin::Account` from a provided `Keypair`.
     #
     # Parameters:
-    # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
+    # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
     #
     # ```
     # key = Secp256k1::Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
@@ -82,7 +82,7 @@ module Secp256k1::Bitcoin
     # network version byte.
     #
     # Parameters:
-    # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
+    # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
     # * `version` (`String`): the version byte determining the used network encoding.
     #
     # ```
@@ -111,7 +111,7 @@ module Secp256k1::Bitcoin
     # network version byte and compression.
     #
     # Parameters:
-    # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
+    # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
     # * `version` (`String`): the version byte determining the used network encoding.
     # * `compressed` (`Bool`): an indicator whether a compressed format should be used.
     #
@@ -153,7 +153,7 @@ module Secp256k1::Bitcoin
     end
 
     # Computes the version byte for the private Wallet-Import Format which is
-    # offset by `+ 0x80` from the public address version byte.
+    # offset by `+ 0x80` from the public address `version` byte.
     #
     # ```
     # btc.version_wif
