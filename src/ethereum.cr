@@ -20,7 +20,7 @@ module Secp256k1::Ethereum
   # Implements an `Ethereum` account containing a `Keypair` and an address.
   #
   # Properties:
-  # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
+  # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
   # * `address` (`String`): the public checksummed `Ethereum` address.
   #
   # ```
@@ -31,7 +31,7 @@ module Secp256k1::Ethereum
   # # => "0x224008a0F3d3cB989c807F568c7f99Bf451328A6"
   # ```
   class Account
-    # The `Secp256k1::Keypair` containing the secret key.
+    # The `Keypair` containing the secret key.
     property key_pair : Keypair
     # The public checksummed `Ethereum` address.
     property address : String
@@ -82,7 +82,7 @@ module Secp256k1::Ethereum
   # Implements an `Ethereum` devp2p enode containing a `Keypair` and an IP address.
   #
   # Properties:
-  # * `key_pair` (`Keypair`): the `Secp256k1::Keypair` containing the secret key.
+  # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
   # * `address` (`Socket::IPAddress`): the public (or local) IP address with port.
   #
   # ```
@@ -90,10 +90,10 @@ module Secp256k1::Ethereum
   # p2p.get_secret
   # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
   # p2p.to_s
-  # # => "enode://e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f@@84.160.86.205:30303"
+  # # => "enode://e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f@84.160.86.205:30303"
   # ```
   class Enode
-    # The `Secp256k1::Keypair` containing the secret key.
+    # The `Keypair` containing the secret key.
     property key_pair : Keypair
     # The public (or local) IP address with port.
     property address : Socket::IPAddress
@@ -151,7 +151,7 @@ module Secp256k1::Ethereum
     # Tries to find out the public IP address for the node.
     #
     # It queries [ident.me](http://ident.me/) for a potential public IP and silently
-    # falls back to "127.0.0.1" if it fails without raising. Should be used with caution.
+    # falls back to "127.0.0.1" if it fails without raising. _Should be used with caution._
     #
     # ```
     # p2p.get_my_ip
@@ -187,7 +187,7 @@ module Secp256k1::Ethereum
     #
     # ```
     # p2p.to_s
-    # # => "enode://e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f@@84.160.86.205:30303"
+    # # => "enode://e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f@84.160.86.205:30303"
     # ```
     def to_s
       return "enode://#{@key_pair.to_s}@#{@address.to_s}"
