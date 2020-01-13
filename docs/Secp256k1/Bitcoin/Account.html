@@ -153,7 +153,7 @@ and an address.</p>
 
 <p>Properties:</p>
 
-<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Secp256k1::Keypair</a></code> containing the secret key.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> (<code>String</code>): the version byte determining the used network encoding.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#compressed:Bool-instance-method">#compressed</a></code> (<code>Bool</code>): an indicator whether a compressed format should be used.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#address:String-instance-method">#address</a></code> (<code>String</code>): the public <code><a href="../../Secp256k1/Bitcoin.html">Bitcoin</a></code> address.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#wif:String-instance-method">#wif</a></code> (<code>String</code>): the private Wallet-Import Format (WIF).</li></ul>
+<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Keypair</a></code> containing the secret key.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> (<code>String</code>): the version byte determining the used network encoding.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#compressed:Bool-instance-method">#compressed</a></code> (<code>Bool</code>): an indicator whether a compressed format should be used.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#address:String-instance-method">#address</a></code> (<code>String</code>): the public <code><a href="../../Secp256k1/Bitcoin.html">Bitcoin</a></code> address.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#wif:String-instance-method">#wif</a></code> (<code>String</code>): the private Wallet-Import Format (WIF).</li></ul>
 
 <pre><code>btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span>
 btc.wif
@@ -184,7 +184,7 @@ btc.address
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L34" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L34" target="_blank">
         bitcoin.cr
       </a>
     
@@ -329,7 +329,7 @@ btc.address
       <li class="entry-summary">
         <a href="#version_wif-instance-method" class="signature"><strong>#version_wif</strong></a>
         
-          <div class="summary"><p>Computes the version byte for the private Wallet-Import Format which is offset by <code>+ 0x80</code> from the public address version byte.</p></div>
+          <div class="summary"><p>Computes the version byte for the private Wallet-Import Format which is offset by <code>+ 0x80</code> from the public address <code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> byte.</p></div>
         
       </li>
     
@@ -402,7 +402,7 @@ network version byte and compression.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Secp256k1::Keypair</a></code> containing the secret key.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> (<code>String</code>): the version byte determining the used network encoding.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#compressed:Bool-instance-method">#compressed</a></code> (<code>Bool</code>): an indicator whether a compressed format should be used.</li></ul>
+<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Keypair</a></code> containing the secret key.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> (<code>String</code>): the version byte determining the used network encoding.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#compressed:Bool-instance-method">#compressed</a></code> (<code>Bool</code>): an indicator whether a compressed format should be used.</li></ul>
 
 <pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
 btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key, <span class="s">&quot;00&quot;</span>, <span class="n">true</span>
@@ -414,7 +414,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L125" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -434,7 +434,7 @@ network version byte.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Secp256k1::Keypair</a></code> containing the secret key.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> (<code>String</code>): the version byte determining the used network encoding.</li></ul>
+<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Keypair</a></code> containing the secret key.</li><li><code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> (<code>String</code>): the version byte determining the used network encoding.</li></ul>
 
 <pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
 btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key, <span class="s">&quot;1e&quot;</span>
@@ -448,7 +448,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L97" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -467,7 +467,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
 
 <p>Parameters:</p>
 
-<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Secp256k1::Keypair</a></code> containing the secret key.</li></ul>
+<ul><li><code><a href="../../Secp256k1/Bitcoin/Account.html#key_pair:Keypair-instance-method">#key_pair</a></code> (<code><a href="../../Secp256k1/Keypair.html">Keypair</a></code>): the <code><a href="../../Secp256k1/Keypair.html">Keypair</a></code> containing the secret key.</li></ul>
 
 <pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
 btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key
@@ -479,7 +479,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L74" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L74" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -505,7 +505,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L54" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -540,7 +540,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -561,7 +561,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -582,7 +582,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -603,7 +603,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L40" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L40" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -627,7 +627,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L172" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L172" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -653,7 +653,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L151" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L151" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -674,7 +674,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -695,7 +695,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -719,7 +719,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L182" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L182" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -740,7 +740,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -761,7 +761,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L38" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -777,7 +777,7 @@ btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
         <div class="doc">
           
           <p>Computes the version byte for the private Wallet-Import Format which is
-offset by <code>+ 0x80</code> from the public address version byte.</p>
+offset by <code>+ 0x80</code> from the public address <code><a href="../../Secp256k1/Bitcoin/Account.html#version:String-instance-method">#version</a></code> byte.</p>
 
 <pre><code>btc.version_wif
 <span class="c"># =&gt; &quot;80&quot;</span></code></pre>
@@ -786,7 +786,7 @@ offset by <code>+ 0x80</code> from the public address version byte.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L162" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L162" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -807,7 +807,7 @@ offset by <code>+ 0x80</code> from the public address version byte.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -828,7 +828,7 @@ offset by <code>+ 0x80</code> from the public address version byte.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/57ba8206444981b90f38253fdf7cdcee19c64ce8/src/bitcoin.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/1869a173bf873bc02c6e1559fbe64010afc57ef5/src/bitcoin.cr#L44" target="_blank">View source</a>]
         
       </div>
     </div>
