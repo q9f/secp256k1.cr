@@ -29,8 +29,7 @@ p2p = Secp256k1::Ethereum::Enode.new key_pair
 
 # play around with different public key formats
 public_compr = Secp256k1::Util.public_key_compressed_prefix key_pair.public_key
-public_uncompr = Secp256k1::Util.public_key_uncompressed key_pair.public_key
-public_uncompr_4 = Secp256k1::Util.public_key_uncompressed_prefix key_pair.public_key
+public_uncompr = Secp256k1::Util.public_key_uncompressed_prefix key_pair.public_key
 
 # do not proceed if the wallet import format checksum does not pass
 exit 101 if !Secp256k1::Bitcoin.wif_is_valid? btc.wif
@@ -53,8 +52,8 @@ puts "Key Magic
 puts "                Mini private key :   #{private_mini}" if fancy
 puts "
            Compressed public key : #{public_compr}
-          Unompressed public key : #{public_uncompr_4}
-           Unprefixed public key :   #{public_uncompr}
+          Unompressed public key : #{public_uncompr}
+           Unprefixed public key :   #{key_pair.to_s}
 
 Address Magic (all from the same private key)
 -------------
