@@ -49,13 +49,19 @@ require "secp256k1"
 
 this library exposes the following modules (in logical order):
 
-* `Secp256k1`: necessary constants and data structures
+* `Secp256k1`: necessary constants and data structures, including:
+  - `Secp256k1::Keypair`: for managing private-public key-pairs
+  - `Secp256k1::EC_Point`: for handling of secp256k1 elliptic curve points (public keys)
+  - `Secp256k1::ECDSA_Signature`: for secp256k1 ecdsa signatures
 * `Secp256k1::Core`: the entire core mathematics behind the elliptic curve cryptography
 * `Secp256k1::Util`: all tools for the handling of private-public key-pairs
 * `Secp256k1::Hash`: implementation of various hashing algorithms for convenience
 * `Secp256k1::Signature`: allows for signing messages and verifying signatures
-* `Secp256k1::Bitcoin`: for the generation of bitcoin addresses
-* `Secp256k1::Ethereum`: for the generation of ethereum addresses
+* `Secp256k1::Bitcoin`: for the generation of bitcoin addresses, including:
+  - `Secp256k1::Bitcoin::Account`: for bitcoin account management
+* `Secp256k1::Ethereum`: for the generation of ethereum addresses, including
+  - `Secp256k1::Ethereum::Account`: for ethereum account management
+  - `Secp256k1::Ethereum::Enode`: for devp2p enode address management
 
 basic usage:
 
@@ -69,7 +75,7 @@ key.get_secret
 # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
 
 # gets the compressed public key with prefix
-coompressed = Secp256k1::Util.public_key_compressed_prefix key.public_key
+compressed = Secp256k1::Util.public_key_compressed_prefix key.public_key
 # => "03e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b"
 ```
 
