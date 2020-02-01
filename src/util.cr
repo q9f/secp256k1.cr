@@ -35,7 +35,7 @@ module Secp256k1::Util
     while hex.size < 2
       hex = '0' + hex
     end
-    return hex
+    hex
   end
 
   # An utility tool to ensure hex keys are always 32 bytes;
@@ -53,7 +53,7 @@ module Secp256k1::Util
     while hex.size < 64
       hex = '0' + hex
     end
-    return hex
+    hex
   end
 
   # A helper function to generate 32 pseudo-random bytes within the elliptic
@@ -69,7 +69,7 @@ module Secp256k1::Util
       key = Random::Secure.hex 32
       key = BigInt.new key, 16
     end
-    return key % EC_ORDER_N
+    key % EC_ORDER_N
   end
 
   # Exports the compressed public key from an ec point without prefix.
@@ -82,17 +82,17 @@ module Secp256k1::Util
   # In most cases, you are looking for `public_key_compressed_prefix`.
   #
   # Parameters:
-  # * `p` (`EC_Point`): the public key point which shall be compressed.
+  # * `p` (`ECPoint`): the public key point which shall be compressed.
   #
   # ```
   # Secp256k1::Util.public_key_compressed my_public_key
   # # => "d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a"
   # ```
-  private def self.public_key_compressed(p : EC_Point)
-    return to_padded_hex_32 p.x
+  private def self.public_key_compressed(p : ECPoint)
+    to_padded_hex_32 p.x
   end
 
-  # Exports the compressed public key from an `EC_Point` with either the
+  # Exports the compressed public key from an `ECPoint` with either the
   # prefix `"02"` or `"03"`.
   #
   # The prefix can be later used to recover the `y` coordinate of the public key,
@@ -100,52 +100,52 @@ module Secp256k1::Util
   # to generate shorter addresses as compared to using uncompressed keys.
   #
   # Parameters:
-  # * `p` (`EC_Point`): the public key point which shall be compressed.
+  # * `p` (`ECPoint`): the public key point which shall be compressed.
   #
   # ```
   # Secp256k1::Util.public_key_compressed_prefix my_public_key
   # # => "03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a"
   # ```
-  def self.public_key_compressed_prefix(p : EC_Point)
+  def self.public_key_compressed_prefix(p : ECPoint)
     prefix = p.y % 2 === 1 ? "03" : "02"
-    return "#{prefix}#{public_key_compressed p}"
+    "#{prefix}#{public_key_compressed p}"
   end
 
-  # Exports the uncompressed public key from an `EC_Point` without prefix.
+  # Exports the uncompressed public key from an `ECPoint` without prefix.
   #
   # `Ethereum` uses this format to generate addresses. For prefixed
   # uncompressed public keys, see `public_key_uncompressed_prefix`.
   #
   # Parameters:
-  # * `p` (`EC_Point`): the public key point which shall be uncompressed.
+  # * `p` (`ECPoint`): the public key point which shall be uncompressed.
   #
   # ```
   # Secp256k1::Util.public_key_uncompressed my_public_key
   # # => "d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5"
   # ```
-  def self.public_key_uncompressed(p : EC_Point)
+  def self.public_key_uncompressed(p : ECPoint)
     x = to_padded_hex_32 p.x
     y = to_padded_hex_32 p.y
-    return "#{x}#{y}"
+    "#{x}#{y}"
   end
 
-  # Exports the uncompressed public key from an `EC_Point` with prefix `"04"`.
+  # Exports the uncompressed public key from an `ECPoint` with prefix `"04"`.
   #
   # `Bitcoin` uses this format to generate uncompressed addresses.
   # For unprefixed public keys, see `public_key_uncompressed`.
   #
   # Parameters:
-  # * `p` (`EC_Point`): the public key point which shall be uncompressed.
+  # * `p` (`ECPoint`): the public key point which shall be uncompressed.
   #
   # ```
   # Secp256k1::Util.public_key_uncompressed_prefix my_public_key
   # # => "04d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5"
   # ```
-  def self.public_key_uncompressed_prefix(p : EC_Point)
-    return "04#{public_key_uncompressed p}"
+  def self.public_key_uncompressed_prefix(p : ECPoint)
+    "04#{public_key_uncompressed p}"
   end
 
-  # Decodes a public key as `EC_Point` from a compressed public key string.
+  # Decodes a public key as `ECPoint` from a compressed public key string.
   #
   # If unsure, `restore_public_key` should be used.
   #
@@ -157,7 +157,7 @@ module Secp256k1::Util
   # Secp256k1::Util.decode_compressed_public_key "03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a"
   # ```
   #
-  # Returns an `EC_Point` containing the public key.
+  # Returns an `ECPoint` containing the public key.
   #
   # Raises if compressed public key is malformed or comes with invalid prefix.
   def self.decode_compressed_public_key(pub : String, prime = EC_PRIME_P)
@@ -181,18 +181,16 @@ module Secp256k1::Util
         if y % 2 != parity
           y = -y % prime
         end
-        return EC_Point.new x, y
+        ECPoint.new x, y
       else
         raise "invalid prefix for compressed public key: #{prefix}"
       end
     else
       raise "malformed compressed public key (invalid key size: #{pub.size})"
     end
-    i = BigInt.new -999
-    return EC_Point.new i, i
   end
 
-  # Decodes a public key as `EC_Point` from an uncompressed public key string.
+  # Decodes a public key as `ECPoint` from an uncompressed public key string.
   #
   # If unsure, `restore_public_key` should be used.
   #
@@ -203,7 +201,7 @@ module Secp256k1::Util
   # Secp256k1::Util.decode_uncompressed_public_key "04d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5"
   # ```
   #
-  # Returns an `EC_Point` containing the public key.
+  # Returns an `ECPoint` containing the public key.
   #
   # Raises if uncompressed public key is malformed.
   private def self.decode_uncompressed_public_key(pub : String)
@@ -214,15 +212,13 @@ module Secp256k1::Util
     if pub.size === 128
       x = BigInt.new pub[0, 64], 16
       y = BigInt.new pub[64, 64], 16
-      return EC_Point.new x, y
+      ECPoint.new x, y
     else
       raise "malformed uncompressed public key (invalid key size: #{pub.size})"
     end
-    i = BigInt.new -999
-    return EC_Point.new i, i
   end
 
-  # Detects public key type and tries to restore the `EC_Point` from it.
+  # Detects public key type and tries to restore the `ECPoint` from it.
   #
   # Parameters:
   # * `pub` (`String`): the public key in any format.
@@ -232,20 +228,18 @@ module Secp256k1::Util
   # Secp256k1::Util.restore_public_key "d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5"
   # ```
   #
-  # Returns an `EC_Point` containing the public key.
+  # Returns an `ECPoint` containing the public key.
   #
   # Raises if public key format is unknown.
   def self.restore_public_key(pub : String, prime = EC_PRIME_P)
     case pub.size
     when 130, 128
-      return decode_uncompressed_public_key pub
+      decode_uncompressed_public_key pub
     when 66
-      return decode_compressed_public_key pub, prime
+      decode_compressed_public_key pub, prime
     else
       raise "unknown public key format (invalid key size: #{pub.size})"
     end
-    i = BigInt.new -999
-    return EC_Point.new i, i
   end
 
   # Gets a public key from a private key.
@@ -260,8 +254,8 @@ module Secp256k1::Util
   # Secp256k1::Util.public_key_from_private BigInt.new("b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268", 16)
   # ```
   #
-  # Returns an `EC_Point` containing the public key.
+  # Returns an `ECPoint` containing the public key.
   def self.public_key_from_private(priv : BigInt)
-    return Core.ec_mul EC_BASE_G, priv
+    Core.ec_mul EC_BASE_G, priv
   end
 end

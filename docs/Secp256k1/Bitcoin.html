@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.32.0">
+<meta name="generator" content="Crystal Docs 0.31.1">
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
@@ -65,13 +65,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
-      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+      <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
-      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+      <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
@@ -171,7 +171,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L16" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L16" target="_blank">
         bitcoin.cr
       </a>
     
@@ -209,9 +209,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#address_from_public_point(p:Secp256k1::EC_Point,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::EC_Point, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
+        <a href="#address_from_public_point(p:Secp256k1::ECPoint,version=&quot;00&quot;,compressed=true)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::ECPoint, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)</a>
         
-          <div class="summary"><p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p></div>
+          <div class="summary"><p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from an public key as <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>.</p></div>
         
       </li>
     
@@ -339,7 +339,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L570" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L563" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -372,34 +372,34 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L472" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L467" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="address_from_public_point(p:Secp256k1::EC_Point,version=&amp;quot;00&amp;quot;,compressed=true)-class-method">
+    <div class="entry-detail" id="address_from_public_point(p:Secp256k1::ECPoint,version=&amp;quot;00&amp;quot;,compressed=true)-class-method">
       <div class="signature">
         
-        def self.<strong>address_from_public_point</strong>(p : <a href="../Secp256k1/EC_Point.html">Secp256k1::EC_Point</a>, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)
+        def self.<strong>address_from_public_point</strong>(p : <a href="../Secp256k1/ECPoint.html">Secp256k1::ECPoint</a>, version = <span class="s">&quot;00&quot;</span>, compressed = <span class="n">true</span>)
 
-        <a class="method-permalink" href="#address_from_public_point(p:Secp256k1::EC_Point,version=&quot;00&quot;,compressed=true)-class-method">#</a>
+        <a class="method-permalink" href="#address_from_public_point(p:Secp256k1::ECPoint,version=&quot;00&quot;,compressed=true)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p>
+          <p>Generates a <code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> address from an public key as <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key as point with <code>x</code> and <code>y</code> coordinates.</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"00"</code> (Bitcoin).</li><li><code>compressed</code> (<code>Bool</code>): indicator if address should be compressed or not, default: <code>true</code> (compressed).</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the public key as point with <code>x</code> and <code>y</code> coordinates.</li><li><code>version</code> (<code>String</code>): the version byte, default: <code>"00"</code> (Bitcoin).</li><li><code>compressed</code> (<code>Bool</code>): indicator if address should be compressed or not, default: <code>true</code> (compressed).</li></ul>
 
-<p>See <code><a href="../Secp256k1/Bitcoin.html#address_from_public_key(pub:String,version=&quot;00&quot;)-class-method">.address_from_public_key</a></code> and <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> for usage instructions.</p>
+<p>See <code><a href="../Secp256k1/Bitcoin.html#address_from_public_key(pub:String,version=&quot;00&quot;)-class-method">.address_from_public_key</a></code> and <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> for usage instructions.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L512" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L506" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -429,7 +429,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L532" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L526" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -461,7 +461,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L396" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L392" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -491,7 +491,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L254" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L253" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -515,7 +515,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L193" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L193" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -545,7 +545,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L232" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L232" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -575,7 +575,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L343" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L341" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -605,7 +605,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L369" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L366" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -636,7 +636,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L279" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L277" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -664,7 +664,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L312" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L310" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -692,7 +692,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L327" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L325" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -722,7 +722,7 @@ uncompressed keys generate uncompressed addresses.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/bitcoin.cr#L421" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/bitcoin.cr#L416" target="_blank">View source</a>]
         
       </div>
     </div>

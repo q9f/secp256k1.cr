@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.32.0">
+<meta name="generator" content="Crystal Docs 0.31.1">
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
@@ -65,13 +65,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
-      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+      <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
-      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+      <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
@@ -146,7 +146,7 @@
     Overview
   </h2>
 
-  <p>Implements <code><a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a></code> generation and verification for <code><a href="../Secp256k1.html">Secp256k1</a></code>
+  <p>Implements <code><a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a></code> generation and verification for <code><a href="../Secp256k1.html">Secp256k1</a></code>
 elliptic curves.
 Ref: <a href="https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages" target="_blank">cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages</a></p>
 
@@ -173,7 +173,7 @@ Ref: <a href="https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/signature.cr#L18" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/signature.cr#L18" target="_blank">
         signature.cr
       </a>
     
@@ -204,14 +204,14 @@ Ref: <a href="https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-
       </li>
     
       <li class="entry-summary">
-        <a href="#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method" class="signature"><strong>.verify</strong>(msg : String, sig : ECDSA_Signature, pub : EC_Point)</a>
+        <a href="#verify(msg:String,sig:ECDSASignature,pub:ECPoint)-class-method" class="signature"><strong>.verify</strong>(msg : String, sig : ECDSASignature, pub : ECPoint)</a>
         
           <div class="summary"><p>Verifies a signature of a message against a public key.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#verify_hash(hash:BigInt,sig:ECDSA_Signature,pub:EC_Point)-class-method" class="signature"><strong>.verify_hash</strong>(hash : BigInt, sig : ECDSA_Signature, pub : EC_Point)</a>
+        <a href="#verify_hash(hash:BigInt,sig:ECDSASignature,pub:ECPoint)-class-method" class="signature"><strong>.verify_hash</strong>(hash : BigInt, sig : ECDSASignature, pub : ECPoint)</a>
         
           <div class="summary"><p>Verifies a signature of a message hash against a public key.</p></div>
         
@@ -272,17 +272,17 @@ sig.s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/signature.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/signature.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method">
+    <div class="entry-detail" id="verify(msg:String,sig:ECDSASignature,pub:ECPoint)-class-method">
       <div class="signature">
         
-        def self.<strong>verify</strong>(msg : String, sig : <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>, pub : <a href="../Secp256k1/EC_Point.html">EC_Point</a>)
+        def self.<strong>verify</strong>(msg : String, sig : <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>, pub : <a href="../Secp256k1/ECPoint.html">ECPoint</a>)
 
-        <a class="method-permalink" href="#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method">#</a>
+        <a class="method-permalink" href="#verify(msg:String,sig:ECDSASignature,pub:ECPoint)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -295,11 +295,11 @@ corresponding to the signer's private key. The result is boolean.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>msg</code> (<code>String</code>): A message string to verify.</li><li><code>sig</code> (<code><a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a></code>): A signature to verify the message.</li><li><code>pub</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): A public key to verify the signature against.</li></ul>
+<ul><li><code>msg</code> (<code>String</code>): A message string to verify.</li><li><code>sig</code> (<code><a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a></code>): A signature to verify the message.</li><li><code>pub</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): A public key to verify the signature against.</li></ul>
 
 <pre><code>pub <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.restore_public_key <span class="s">&quot;03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a&quot;</span>
 msg <span class="o">=</span> <span class="s">&quot;Hello, World!&quot;</span>
-sig <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">ECDSA_Signature</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;63945398370917837063250848409972066837033757647691696776146735867163610886143&quot;</span>), <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;20291418537568297129028959685291490143232574306335372594306006819765182564103&quot;</span>)
+sig <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">ECDSASignature</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;63945398370917837063250848409972066837033757647691696776146735867163610886143&quot;</span>), <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;20291418537568297129028959685291490143232574306335372594306006819765182564103&quot;</span>)
 
 <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Signature</span>.verify msg, sig, pub
 <span class="c"># =&gt; true</span></code></pre>
@@ -308,36 +308,36 @@ sig <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::<
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/signature.cr#L76" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/signature.cr#L75" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="verify_hash(hash:BigInt,sig:ECDSA_Signature,pub:EC_Point)-class-method">
+    <div class="entry-detail" id="verify_hash(hash:BigInt,sig:ECDSASignature,pub:ECPoint)-class-method">
       <div class="signature">
         
-        def self.<strong>verify_hash</strong>(hash : BigInt, sig : <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>, pub : <a href="../Secp256k1/EC_Point.html">EC_Point</a>)
+        def self.<strong>verify_hash</strong>(hash : BigInt, sig : <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>, pub : <a href="../Secp256k1/ECPoint.html">ECPoint</a>)
 
-        <a class="method-permalink" href="#verify_hash(hash:BigInt,sig:ECDSA_Signature,pub:EC_Point)-class-method">#</a>
+        <a class="method-permalink" href="#verify_hash(hash:BigInt,sig:ECDSASignature,pub:ECPoint)-class-method">#</a>
       </div>
       
         <div class="doc">
           
           <p>Verifies a signature of a message hash against a public key.</p>
 
-<p>Same as <code><a href="../Secp256k1/Signature.html#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method">.verify</a></code>, just using the hashed message directly.</p>
+<p>Same as <code><a href="../Secp256k1/Signature.html#verify(msg:String,sig:ECDSASignature,pub:ECPoint)-class-method">.verify</a></code>, just using the hashed message directly.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>hash</code> (<code>BigInt</code>): A SHA-256 hash of the message to verify.</li><li><code>sig</code> (<code><a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a></code>): A signature to verify the message.</li><li><code>pub</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): A public key to verify the signature against.</li></ul>
+<ul><li><code>hash</code> (<code>BigInt</code>): A SHA-256 hash of the message to verify.</li><li><code>sig</code> (<code><a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a></code>): A signature to verify the message.</li><li><code>pub</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): A public key to verify the signature against.</li></ul>
 
-<p>Returns <em>true</em> if signature is valid. See <code><a href="../Secp256k1/Signature.html#verify(msg:String,sig:ECDSA_Signature,pub:EC_Point)-class-method">.verify</a></code> for usage example.</p>
+<p>Returns <em>true</em> if signature is valid. See <code><a href="../Secp256k1/Signature.html#verify(msg:String,sig:ECDSASignature,pub:ECPoint)-class-method">.verify</a></code> for usage example.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/signature.cr#L92" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/signature.cr#L91" target="_blank">View source</a>]
         
       </div>
     </div>

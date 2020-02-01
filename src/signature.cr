@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Implements `ECDSA_Signature` generation and verification for `Secp256k1`
+# Implements `ECDSASignature` generation and verification for `Secp256k1`
 # elliptic curves.
 # Ref: [cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages](https://cryptobook.nakov.com/digital-signatures/ecdsa-sign-verify-messages)
 module Secp256k1::Signature
@@ -50,8 +50,7 @@ module Secp256k1::Signature
     s = ((hash + r * priv) * k_inv) % EC_ORDER_N
 
     # Return the signature.
-    sig = ECDSA_Signature.new r, s
-    return sig
+    ECDSASignature.new r, s
   end
 
   # Verifies a signature of a message against a public key.
@@ -62,21 +61,21 @@ module Secp256k1::Signature
   #
   # Parameters:
   # * `msg` (`String`): A message string to verify.
-  # * `sig` (`ECDSA_Signature`): A signature to verify the message.
-  # * `pub` (`EC_Point`): A public key to verify the signature against.
+  # * `sig` (`ECDSASignature`): A signature to verify the message.
+  # * `pub` (`ECPoint`): A public key to verify the signature against.
   #
   # ```
   # pub = Secp256k1::Util.restore_public_key "03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a"
   # msg = "Hello, World!"
-  # sig = Secp256k1::ECDSA_Signature.new BigInt.new("63945398370917837063250848409972066837033757647691696776146735867163610886143"), BigInt.new("20291418537568297129028959685291490143232574306335372594306006819765182564103")
+  # sig = Secp256k1::ECDSASignature.new BigInt.new("63945398370917837063250848409972066837033757647691696776146735867163610886143"), BigInt.new("20291418537568297129028959685291490143232574306335372594306006819765182564103")
   #
   # Secp256k1::Signature.verify msg, sig, pub
   # # => true
   # ```
-  def self.verify(msg : String, sig : ECDSA_Signature, pub : EC_Point)
+  def self.verify(msg : String, sig : ECDSASignature, pub : ECPoint)
     # Calculate the message hash, with the same hash function used during the signing.
     hash = BigInt.new Hash.sha256_string(msg), 16
-    return verify_hash hash, sig, pub
+    verify_hash hash, sig, pub
   end
 
   # Verifies a signature of a message hash against a public key.
@@ -85,11 +84,11 @@ module Secp256k1::Signature
   #
   # Parameters:
   # * `hash` (`BigInt`): A SHA-256 hash of the message to verify.
-  # * `sig` (`ECDSA_Signature`): A signature to verify the message.
-  # * `pub` (`EC_Point`): A public key to verify the signature against.
+  # * `sig` (`ECDSASignature`): A signature to verify the message.
+  # * `pub` (`ECPoint`): A public key to verify the signature against.
   #
   # Returns _true_ if signature is valid. See `verify` for usage example.
-  def self.verify_hash(hash : BigInt, sig : ECDSA_Signature, pub : EC_Point)
+  def self.verify_hash(hash : BigInt, sig : ECDSASignature, pub : ECPoint)
     # Calculate the modular inverse of the signature proof: `s1 = s^{-1} % n`.
     s_inv = Core.ec_mod_inv sig.s, EC_ORDER_N
 
@@ -99,6 +98,6 @@ module Secp256k1::Signature
     p = Core.ec_add p0, p1
 
     # Calculate the signature validation result by comparing whether `r' == r`.
-    return sig.r === p.x
+    sig.r === p.x
   end
 end

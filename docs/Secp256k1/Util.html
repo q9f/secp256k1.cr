@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.32.0">
+<meta name="generator" content="Crystal Docs 0.31.1">
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
@@ -65,13 +65,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
-      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+      <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
-      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+      <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
@@ -172,7 +172,7 @@ generation, public key conversions, key formatting, or hex padding.</p>
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L23" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L23" target="_blank">
         util.cr
       </a>
     
@@ -198,7 +198,7 @@ generation, public key conversions, key formatting, or hex padding.</p>
       <li class="entry-summary">
         <a href="#decode_compressed_public_key(pub:String,prime=EC_PRIME_P)-class-method" class="signature"><strong>.decode_compressed_public_key</strong>(pub : String, prime = <span class="t">EC_PRIME_P</span>)</a>
         
-          <div class="summary"><p>Decodes a public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from a compressed public key string.</p></div>
+          <div class="summary"><p>Decodes a public key as <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> from a compressed public key string.</p></div>
         
       </li>
     
@@ -210,9 +210,9 @@ generation, public key conversions, key formatting, or hex padding.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#public_key_compressed_prefix(p:EC_Point)-class-method" class="signature"><strong>.public_key_compressed_prefix</strong>(p : EC_Point)</a>
+        <a href="#public_key_compressed_prefix(p:ECPoint)-class-method" class="signature"><strong>.public_key_compressed_prefix</strong>(p : ECPoint)</a>
         
-          <div class="summary"><p>Exports the compressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with either the prefix <code>"02"</code> or <code>"03"</code>.</p></div>
+          <div class="summary"><p>Exports the compressed public key from an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> with either the prefix <code>"02"</code> or <code>"03"</code>.</p></div>
         
       </li>
     
@@ -224,23 +224,23 @@ generation, public key conversions, key formatting, or hex padding.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#public_key_uncompressed(p:EC_Point)-class-method" class="signature"><strong>.public_key_uncompressed</strong>(p : EC_Point)</a>
+        <a href="#public_key_uncompressed(p:ECPoint)-class-method" class="signature"><strong>.public_key_uncompressed</strong>(p : ECPoint)</a>
         
-          <div class="summary"><p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> without prefix.</p></div>
+          <div class="summary"><p>Exports the uncompressed public key from an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> without prefix.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#public_key_uncompressed_prefix(p:EC_Point)-class-method" class="signature"><strong>.public_key_uncompressed_prefix</strong>(p : EC_Point)</a>
+        <a href="#public_key_uncompressed_prefix(p:ECPoint)-class-method" class="signature"><strong>.public_key_uncompressed_prefix</strong>(p : ECPoint)</a>
         
-          <div class="summary"><p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with prefix <code>"04"</code>.</p></div>
+          <div class="summary"><p>Exports the uncompressed public key from an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> with prefix <code>"04"</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#restore_public_key(pub:String,prime=EC_PRIME_P)-class-method" class="signature"><strong>.restore_public_key</strong>(pub : String, prime = <span class="t">EC_PRIME_P</span>)</a>
         
-          <div class="summary"><p>Detects public key type and tries to restore the <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from it.</p></div>
+          <div class="summary"><p>Detects public key type and tries to restore the <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> from it.</p></div>
         
       </li>
     
@@ -292,7 +292,7 @@ generation, public key conversions, key formatting, or hex padding.</p>
       
         <div class="doc">
           
-          <p>Decodes a public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from a compressed public key string.</p>
+          <p>Decodes a public key as <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> from a compressed public key string.</p>
 
 <p>If unsure, <code><a href="../Secp256k1/Util.html#restore_public_key(pub:String,prime=EC_PRIME_P)-class-method">.restore_public_key</a></code> should be used.</p>
 
@@ -302,7 +302,7 @@ generation, public key conversions, key formatting, or hex padding.</p>
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.decode_compressed_public_key <span class="s">&quot;03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a&quot;</span></code></pre>
 
-<p>Returns an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> containing the public key.</p>
+<p>Returns an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> containing the public key.</p>
 
 <p>Raises if compressed public key is malformed or comes with invalid prefix.</p>
         </div>
@@ -310,7 +310,7 @@ generation, public key conversions, key formatting, or hex padding.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L163" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L163" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -335,22 +335,22 @@ curve field size of <code><a href="../Secp256k1.html#EC_ORDER_N">EC_ORDER_N</a><
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L66" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="public_key_compressed_prefix(p:EC_Point)-class-method">
+    <div class="entry-detail" id="public_key_compressed_prefix(p:ECPoint)-class-method">
       <div class="signature">
         
-        def self.<strong>public_key_compressed_prefix</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>)
+        def self.<strong>public_key_compressed_prefix</strong>(p : <a href="../Secp256k1/ECPoint.html">ECPoint</a>)
 
-        <a class="method-permalink" href="#public_key_compressed_prefix(p:EC_Point)-class-method">#</a>
+        <a class="method-permalink" href="#public_key_compressed_prefix(p:ECPoint)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Exports the compressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with either the
+          <p>Exports the compressed public key from an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> with either the
 prefix <code>"02"</code> or <code>"03"</code>.</p>
 
 <p>The prefix can be later used to recover the <code>y</code> coordinate of the public key,
@@ -359,7 +359,7 @@ to generate shorter addresses as compared to using uncompressed keys.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key point which shall be compressed.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the public key point which shall be compressed.</li></ul>
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix my_public_key
 <span class="c"># =&gt; &quot;03d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a&quot;</span></code></pre>
@@ -368,7 +368,7 @@ to generate shorter addresses as compared to using uncompressed keys.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L109" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -394,35 +394,35 @@ multiplication with the generator point <code>g</code> and a provided private ke
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268&quot;</span>, <span class="n">16</span>)</code></pre>
 
-<p>Returns an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> containing the public key.</p>
+<p>Returns an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> containing the public key.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L264" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L258" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="public_key_uncompressed(p:EC_Point)-class-method">
+    <div class="entry-detail" id="public_key_uncompressed(p:ECPoint)-class-method">
       <div class="signature">
         
-        def self.<strong>public_key_uncompressed</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>)
+        def self.<strong>public_key_uncompressed</strong>(p : <a href="../Secp256k1/ECPoint.html">ECPoint</a>)
 
-        <a class="method-permalink" href="#public_key_uncompressed(p:EC_Point)-class-method">#</a>
+        <a class="method-permalink" href="#public_key_uncompressed(p:ECPoint)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> without prefix.</p>
+          <p>Exports the uncompressed public key from an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> without prefix.</p>
 
 <p><code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> uses this format to generate addresses. For prefixed
-uncompressed public keys, see <code><a href="../Secp256k1/Util.html#public_key_uncompressed_prefix(p:EC_Point)-class-method">.public_key_uncompressed_prefix</a></code>.</p>
+uncompressed public keys, see <code><a href="../Secp256k1/Util.html#public_key_uncompressed_prefix(p:ECPoint)-class-method">.public_key_uncompressed_prefix</a></code>.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key point which shall be uncompressed.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the public key point which shall be uncompressed.</li></ul>
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_uncompressed my_public_key
 <span class="c"># =&gt; &quot;d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span></code></pre>
@@ -431,29 +431,29 @@ uncompressed public keys, see <code><a href="../Secp256k1/Util.html#public_key_u
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L126" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L126" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="public_key_uncompressed_prefix(p:EC_Point)-class-method">
+    <div class="entry-detail" id="public_key_uncompressed_prefix(p:ECPoint)-class-method">
       <div class="signature">
         
-        def self.<strong>public_key_uncompressed_prefix</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>)
+        def self.<strong>public_key_uncompressed_prefix</strong>(p : <a href="../Secp256k1/ECPoint.html">ECPoint</a>)
 
-        <a class="method-permalink" href="#public_key_uncompressed_prefix(p:EC_Point)-class-method">#</a>
+        <a class="method-permalink" href="#public_key_uncompressed_prefix(p:ECPoint)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Exports the uncompressed public key from an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> with prefix <code>"04"</code>.</p>
+          <p>Exports the uncompressed public key from an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> with prefix <code>"04"</code>.</p>
 
 <p><code><a href="../Secp256k1/Bitcoin.html">Bitcoin</a></code> uses this format to generate uncompressed addresses.
-For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key_uncompressed(p:EC_Point)-class-method">.public_key_uncompressed</a></code>.</p>
+For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key_uncompressed(p:ECPoint)-class-method">.public_key_uncompressed</a></code>.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the public key point which shall be uncompressed.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the public key point which shall be uncompressed.</li></ul>
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_uncompressed_prefix my_public_key
 <span class="c"># =&gt; &quot;04d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span></code></pre>
@@ -462,7 +462,7 @@ For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L144" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L144" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -477,7 +477,7 @@ For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key
       
         <div class="doc">
           
-          <p>Detects public key type and tries to restore the <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> from it.</p>
+          <p>Detects public key type and tries to restore the <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> from it.</p>
 
 <p>Parameters:</p>
 
@@ -485,7 +485,7 @@ For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key
 
 <pre><code><span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.restore_public_key <span class="s">&quot;d885aed4bcaf3a8c95a57e3be08caa1bd6a060a68b9795c03129073597fcb19a67299d1cf25955e9b6425583cbc33f4ab831f5a31ef88c7167e9eb714cc758a5&quot;</span></code></pre>
 
-<p>Returns an <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> containing the public key.</p>
+<p>Returns an <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> containing the public key.</p>
 
 <p>Raises if public key format is unknown.</p>
         </div>
@@ -493,7 +493,7 @@ For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L238" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L234" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -521,7 +521,7 @@ For unprefixed public keys, see <code><a href="../Secp256k1/Util.html#public_key
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L33" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -550,7 +550,7 @@ it pads the number with leading zeros if it's shorter.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/util.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/util.cr#L51" target="_blank">View source</a>]
         
       </div>
     </div>

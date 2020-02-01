@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.32.0">
+<meta name="generator" content="Crystal Docs 0.31.1">
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
@@ -65,13 +65,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
-      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+      <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
-      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+      <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
@@ -171,7 +171,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/ethereum.cr#L19" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/ethereum.cr#L19" target="_blank">
         ethereum.cr
       </a>
     
@@ -216,9 +216,9 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#address_from_public_point(p:Secp256k1::EC_Point)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::EC_Point)</a>
+        <a href="#address_from_public_point(p:Secp256k1::ECPoint)-class-method" class="signature"><strong>.address_from_public_point</strong>(p : Secp256k1::ECPoint)</a>
         
-          <div class="summary"><p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p></div>
+          <div class="summary"><p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from an public key as <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>.</p></div>
         
       </li>
     
@@ -273,7 +273,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/ethereum.cr#L210" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/ethereum.cr#L210" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -303,7 +303,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/ethereum.cr#L299" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/ethereum.cr#L297" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -335,34 +335,34 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/ethereum.cr#L257" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/ethereum.cr#L256" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="address_from_public_point(p:Secp256k1::EC_Point)-class-method">
+    <div class="entry-detail" id="address_from_public_point(p:Secp256k1::ECPoint)-class-method">
       <div class="signature">
         
-        def self.<strong>address_from_public_point</strong>(p : <a href="../Secp256k1/EC_Point.html">Secp256k1::EC_Point</a>)
+        def self.<strong>address_from_public_point</strong>(p : <a href="../Secp256k1/ECPoint.html">Secp256k1::ECPoint</a>)
 
-        <a class="method-permalink" href="#address_from_public_point(p:Secp256k1::EC_Point)-class-method">#</a>
+        <a class="method-permalink" href="#address_from_public_point(p:Secp256k1::ECPoint)-class-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from an public key as <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>.</p>
+          <p>Generates a checksummed <code><a href="../Secp256k1/Ethereum.html">Ethereum</a></code> address from an public key as <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>.</p>
 
 <p>Parameters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): a public key point with <code>x</code> and <code>y</code> coordinates.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): a public key point with <code>x</code> and <code>y</code> coordinates.</li></ul>
 
-<p>See <code><a href="../Secp256k1/Ethereum.html#address_from_public_key(pub:String)-class-method">.address_from_public_key</a></code> and <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> for usage instructions.</p>
+<p>See <code><a href="../Secp256k1/Ethereum.html#address_from_public_key(pub:String)-class-method">.address_from_public_key</a></code> and <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> for usage instructions.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/ethereum.cr#L282" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/ethereum.cr#L280" target="_blank">View source</a>]
         
       </div>
     </div>
