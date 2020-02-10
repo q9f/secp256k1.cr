@@ -14,6 +14,176 @@
 
 # Implements the `Bitcoin` address space for the `Secp256k1` library.
 module Secp256k1::Bitcoin
+  # Implements a `Bitcoin` account containing a `Keypair`, a Wallet-Import Format,
+  # and an address.
+  #
+  # Properties:
+  # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
+  # * `version` (`String`): the version byte determining the used network encoding.
+  # * `compressed` (`Bool`): an indicator whether a compressed format should be used.
+  # * `address` (`String`): the public `Bitcoin` address.
+  # * `wif` (`String`): the private Wallet-Import Format (WIF).
+  #
+  # ```
+  # btc = Secp256k1::Bitcoin::Account.new
+  # btc.wif
+  # # => "5JTDCfWtwBsA26NcrJJdb7xvBPvJY9jKTdppXckp3SVTrBe6pg1"
+  # btc.address
+  # # => "1Gbxhju13BpwpzzFRgNr2TDYCRTg94kgFC"
+  # ```
+  class Account
+    # The `Keypair` containing the secret key.
+    property key_pair : Keypair
+    # The version byte determining the used network encoding.
+    property version : String
+    # An indicator whether a compressed format should be used.
+    property compressed : Bool
+    # The public `Bitcoin` address.
+    property address : String
+    # The private Wallet-Import Format (WIF).
+    property wif : String
+
+    # Generates a new `Bitcoin::Account` from a fresh random `Keypair`.
+    #
+    # ```
+    # btc = Secp256k1::Bitcoin::Account.new
+    # # => #<Secp256k1::Bitcoin::Account:0x7f81ef21ab80>
+    # ```
+    #
+    # Note, this always generates an uncompressed mainnet Bitcoin account.
+    def initialize
+      @key_pair = Keypair.new
+      @version = "00"
+      @compressed = false
+      @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+      @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
+    end
+
+    # Generates a `Bitcoin::Account` from a provided `Keypair`.
+    #
+    # Parameters:
+    # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
+    #
+    # ```
+    # key = Secp256k1::Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
+    # btc = Secp256k1::Bitcoin::Account.new key
+    # # => #<Secp256k1::Bitcoin::Account:0x7f81ef21ab80>
+    # ```
+    #
+    # Note, this always generates an uncompressed mainnet Bitcoin account.
+    def initialize(@key_pair)
+      @version = "00"
+      @compressed = false
+      @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+      @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
+    end
+
+    # Generates a `Bitcoin::Account` from a provided `Keypair` allowing for a custom
+    # network version byte.
+    #
+    # Parameters:
+    # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
+    # * `version` (`String`): the version byte determining the used network encoding.
+    #
+    # ```
+    # key = Secp256k1::Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
+    # btc = Secp256k1::Bitcoin::Account.new key, "1e"
+    # # => #<Secp256k1::Bitcoin::Account:0x7f81ef21ab80>
+    # ```
+    #
+    # Note, this always generates an uncompressed account for the specified network.
+    #
+    # Raises if the version byte is out of range.
+    def initialize(@key_pair, @version)
+      v = @version.to_i 16
+
+      # Ensures a valid public key version byte (not WIF version byte).
+      if !v.nil? && v >= 0 && v < 128
+        @compressed = false
+        @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+        @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
+      else
+        raise "invalid version byte provided (out of range: #{@version})"
+      end
+    end
+
+    # Generates a `Bitcoin::Account` from a provided `Keypair` allowing for a custom
+    # network version byte and compression.
+    #
+    # Parameters:
+    # * `key_pair` (`Keypair`): the `Keypair` containing the secret key.
+    # * `version` (`String`): the version byte determining the used network encoding.
+    # * `compressed` (`Bool`): an indicator whether a compressed format should be used.
+    #
+    # ```
+    # key = Secp256k1::Keypair.new BigInt.new("53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97", 16)
+    # btc = Secp256k1::Bitcoin::Account.new key, "00", true
+    # # => #<Secp256k1::Bitcoin::Account:0x7f81ef21ab80>
+    # ```
+    #
+    # Raises if the version byte is out of range.
+    def initialize(@key_pair, @version, @compressed)
+      v = @version.to_i 16
+
+      # Ensures a valid public key version byte (not WIF version byte).
+      if !v.nil? && v >= 0 && v < 128
+        @address = Bitcoin.address_from_private @key_pair.private_key, @version, @compressed
+
+        # Checks whether we want a compressed or uncompressed account.
+        if compressed
+          @wif = Bitcoin.wif_from_private_compressed @key_pair.private_key, version_wif
+        else
+          @wif = Bitcoin.wif_from_private_uncompressed @key_pair.private_key, version_wif
+        end
+      else
+        raise "invalid version byte provided (out of range: #{@version})"
+      end
+    end
+
+    # Tells if the `Bitcoin::Account` is compressed.
+    #
+    # ```
+    # btc.is_compressed?
+    # # => false
+    # ```
+    #
+    # Returns _true_ if the compressed format is used.
+    def is_compressed?
+      return @compressed
+    end
+
+    # Computes the version byte for the private Wallet-Import Format which is
+    # offset by `+ 0x80` from the public address `version` byte.
+    #
+    # ```
+    # btc.version_wif
+    # # => "80"
+    # ```
+    def version_wif
+      return Util.to_padded_hex_01(@version.to_i(16) + 128)
+    end
+
+    # Gets the private key as hexadecimal formatted string literal.
+    #
+    # ```
+    # btc.get_secret
+    # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
+    # ```
+    def get_secret
+      return Util.to_padded_hex_32 @key_pair.private_key
+    end
+
+    # Gets the account formatted as `Bitcoin` address.
+    #
+    # ```
+    # btc.to_s
+    # # => "1Gbxhju13BpwpzzFRgNr2TDYCRTg94kgFC"
+    # ```
+    def to_s
+      return @address
+    end
+  end
+
   # Generates a new mini-private key (30 characters length, Base-56 encoded).
   #
   # ```

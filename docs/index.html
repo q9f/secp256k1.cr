@@ -40,13 +40,23 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
+  <li class="parent open" data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
       <a href="Secp256k1.html">Secp256k1</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
       <a href="Secp256k1/Bitcoin.html">Bitcoin</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin/Account" data-name="secp256k1::bitcoin::account">
+      <a href="Secp256k1/Bitcoin/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -65,13 +75,33 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
       <a href="Secp256k1/Ethereum.html">Ethereum</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum/Account" data-name="secp256k1::ethereum::account">
+      <a href="Secp256k1/Ethereum/Account.html">Account</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum/Enode" data-name="secp256k1::ethereum::enode">
+      <a href="Secp256k1/Ethereum/Enode.html">Enode</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
   <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
       <a href="Secp256k1/Hash.html">Hash</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Keypair" data-name="secp256k1::keypair">
+      <a href="Secp256k1/Keypair.html">Keypair</a>
       
     </li>
   
@@ -121,7 +151,7 @@
 
 <p>furthermore, this library allows for:</p>
 
-<ul><li>signing <code>(r, s)</code> and verification of arbitrary messages and message-hashes (with key pairs)</li></ul>
+<ul><li>signing <code>(r, s)</code> and verification of arbitrary messages and message-hashes (with key pairs)</li><li>managing <code>enode</code> addresses as per <code>devp2p</code> specification for ethereum nodes</li></ul>
 
 <h1><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
@@ -149,42 +179,67 @@
 
 <p>this library exposes the following modules (in logical order):</p>
 
-<ul><li><code><a href="Secp256k1.html">Secp256k1</a></code>: necessary constants and data structures</li><li><code><a href="Secp256k1/Core.html">Secp256k1::Core</a></code>: the entire core mathematics behind the elliptic curve cryptography</li><li><code><a href="Secp256k1/Util.html">Secp256k1::Util</a></code>: all tools for the handling of private-public key-pairs</li><li><code><a href="Secp256k1/Hash.html">Secp256k1::Hash</a></code>: implementation of various hashing algorithms for convenience</li><li><code><a href="Secp256k1/Signature.html">Secp256k1::Signature</a></code>: allows for signing messages and verifying signatures</li><li><code><a href="Secp256k1/Bitcoin.html">Secp256k1::Bitcoin</a></code>: for the generation of bitcoin addresses</li><li><code><a href="Secp256k1/Ethereum.html">Secp256k1::Ethereum</a></code>: for the generation of ethereum addresses</li></ul>
+<ul><li><code><a href="Secp256k1.html">Secp256k1</a></code>: necessary constants and data structures, including:</li></ul>
+
+<ul><li><code><a href="Secp256k1/Keypair.html">Secp256k1::Keypair</a></code>: for managing private-public key-pairs</li><li><code><a href="Secp256k1/EC_Point.html">Secp256k1::EC_Point</a></code>: for handling of secp256k1 elliptic curve points (public keys)</li><li><code><a href="Secp256k1/ECDSA_Signature.html">Secp256k1::ECDSA_Signature</a></code>: for secp256k1 ecdsa signatures</li></ul></ul>
+
+<ul><li><code><a href="Secp256k1/Core.html">Secp256k1::Core</a></code>: the entire core mathematics behind the elliptic curve cryptography</li><li><code><a href="Secp256k1/Util.html">Secp256k1::Util</a></code>: all tools for the handling of private-public key-pairs</li><li><code><a href="Secp256k1/Hash.html">Secp256k1::Hash</a></code>: implementation of various hashing algorithms for convenience</li><li><code><a href="Secp256k1/Signature.html">Secp256k1::Signature</a></code>: allows for signing messages and verifying signatures</li><li><code><a href="Secp256k1/Bitcoin.html">Secp256k1::Bitcoin</a></code>: for the generation of bitcoin addresses, including:</li></ul>
+
+<ul><li><code><a href="Secp256k1/Bitcoin/Account.html">Secp256k1::Bitcoin::Account</a></code>: for bitcoin account management</li></ul></ul>
+
+<ul><li><code><a href="Secp256k1/Ethereum.html">Secp256k1::Ethereum</a></code>: for the generation of ethereum addresses, including</li></ul>
+
+<ul><li><code><a href="Secp256k1/Ethereum/Account.html">Secp256k1::Ethereum::Account</a></code>: for ethereum account management</li><li><code><a href="Secp256k1/Ethereum/Enode.html">Secp256k1::Ethereum::Enode</a></code>: for devp2p enode address management</li></ul></ul>
 
 <p>basic usage:</p>
 
-<pre><code class="language-crystal"><span class="c"># generate a keypair</span>
-private_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
-public_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private private_key
+<pre><code class="language-crystal"><span class="c"># generates a new keypair</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f8be5611d80&gt;</span>
 
-<span class="c"># display the compressed public key with prefix</span>
-puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix public_key
+<span class="c"># gets the private key</span>
+key.get_secret
+<span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>
 
-<span class="c"># &gt; 02b3c141fba20c129806290f04cee097305fb7391abfde01b3bb3affcd935332a1</span></code></pre>
+<span class="c"># gets the compressed public key with prefix</span>
+compressed <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix key.public_key
+<span class="c"># =&gt; &quot;03e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b&quot;</span></code></pre>
 
 <p>generate a compressed bitcoin mainnet address:</p>
 
-<pre><code class="language-crystal"><span class="c"># generate a keypair</span>
-private_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
-public_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private private_key
-compressed <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix public_key
+<pre><code class="language-crystal"><span class="c"># generates a new keypair</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f8be5611d80&gt;</span>
 
-<span class="c"># display the bitcoin address (version &quot;00&quot; for bitcoin mainnet)</span>
-puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span>.address_from_public_key compressed, <span class="s">&quot;00&quot;</span>
+<span class="c"># generates a compressed bitcoin account from the keypair</span>
+btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key, <span class="s">&quot;00&quot;</span>, <span class="n">true</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Bitcoin::Account:0x7f81ef21ab80&gt;</span>
 
-<span class="c"># &gt; &quot;1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs&quot;</span></code></pre>
+<span class="c"># gets the wallet-import format (checksummed private key)</span>
+btc.wif
+<span class="c"># =&gt; &quot;Kz2grUzxEAxNopiREbNpVbjoitAGQVXnUZY4n8pNdmWdVqub99qu&quot;</span>
+
+<span class="c"># gets the compressed bitcoin addresss</span>
+btc.address
+<span class="c"># =&gt; &quot;1Q1zbmPZtS2chwxpviqz6qHgoM8UUuviGN&quot;</span></code></pre>
 
 <p>generate a checksummed ethereum address:</p>
 
-<pre><code class="language-crystal"><span class="c"># generate a keypair</span>
-private_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.new_private_key
-public_key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_from_private private_key
-uncompressed <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_uncompressed public_key
+<pre><code class="language-crystal"><span class="c"># generates a new keypair</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f81ef21ad00&gt;</span>
 
-<span class="c"># display the ethereum address</span>
-puts <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span>.address_from_public_key uncompressed
+<span class="c"># generates an ethereum account from the keypair</span>
+eth <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key
+<span class="c"># =&gt; #&lt;Secp256k1::Ethereum::Account:0x7f81ef1faac0&gt;</span>
 
-<span class="c"># &gt; &quot;0x2Ef1f605AF5d03874eE88773f41c1382ac71C239&quot;</span></code></pre>
+<span class="c"># gets the private key</span>
+eth.get_secret
+<span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>
+
+<span class="c"># gets the ethereum addresss</span>
+eth.address
+<span class="c"># =&gt; &quot;0x224008a0F3d3cB989c807F568c7f99Bf451328A6&quot;</span></code></pre>
 
 <h1><a id="documentation" class="anchor" href="#documentation">
   <svg class="octicon-link" aria-hidden="true">
