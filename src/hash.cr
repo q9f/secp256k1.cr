@@ -46,10 +46,10 @@ module Secp256k1::Hash
   # * `h` (`String`): the string literal to be hashed.
   #
   # ```
-  # Secp256k1::Hash.sha3_string "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
+  # Secp256k1::Hash.sha3 "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
   # # => "aedc012933679615eb93fb0063f53010e6f0034e92aaccf97dacc46e338037e9"
   # ```
-  def self.sha3_string(h : String)
+  def self.sha3(h : String)
     sha3 = Digest::SHA3.new(256)
     return sha3.update(h).hexdigest
   end
@@ -74,10 +74,10 @@ module Secp256k1::Hash
   # * `h` (`String`): the string literal to be hashed.
   #
   # ```
-  # Secp256k1::Hash.keccak256_string "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
+  # Secp256k1::Hash.keccak256 "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
   # # => "99cfa79866ec88f87f8e25a98a4b9873f3f8ee82482a317a5494572b00f51cec"
   # ```
-  def self.keccak256_string(h : String)
+  def self.keccak256(h : String)
     keccak = Digest::Keccak3.new(256)
     return keccak.update(h).hexdigest
   end
@@ -101,10 +101,10 @@ module Secp256k1::Hash
   # * `h` (`String`): the string literal to be hashed.
   #
   # ```
-  # Secp256k1::Hash.sha256_string "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
+  # Secp256k1::Hash.sha256 "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
   # # => "452a41c28c9981faebb402095a5d553de28dc212338057aed27081110dfb907a"
   # ```
-  def self.sha256_string(h : String)
+  def self.sha256(h : String)
     return OpenSSL::Digest.new("SHA256").update(h).hexdigest
   end
 
@@ -127,10 +127,10 @@ module Secp256k1::Hash
   # * `h` (`String`): the string literal to be hashed.
   #
   # ```
-  # Secp256k1::Hash.ripemd160_string "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
+  # Secp256k1::Hash.ripemd160 "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
   # # => "46dff6cd5666c8e67db26ac0dfaf685bf71fc5f6"
   # ```
-  def self.ripemd160_string(h : String)
+  def self.ripemd160(h : String)
     return OpenSSL::Digest.new("RIPEMD160").update(h).hexdigest
   end
 

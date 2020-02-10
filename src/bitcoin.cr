@@ -232,7 +232,7 @@ module Secp256k1::Bitcoin
   def self.private_key_from_mini(m : String)
     if mini_is_valid? m
       # The private key is just the SHA-256 hash.
-      private_key = Hash.sha256_string m
+      private_key = Hash.sha256 m
       return BigInt.new private_key, 16
     else
       raise "mini private key is not valid (invalid checksum for: #{m})"
@@ -257,7 +257,7 @@ module Secp256k1::Bitcoin
     valid = valid && m[0, 1] === "S"
 
     # It's only a valid mini-private key if the hash of `#{key}?` starts with `"00"`.
-    checksum = Hash.sha256_string "#{m}?"
+    checksum = Hash.sha256 "#{m}?"
     valid = valid && checksum[0, 2] === "00"
     return valid
   end
