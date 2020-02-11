@@ -75,7 +75,7 @@ describe Secp256k1::Hash do
 
     # invalid base58 should raise
     expect_raises Exception, "cannot decode, invalid base58 character: 'l'" do
-      inv = Secp256k1::Hash.base58_decode "1PMycacnJaSqwwJqjawXBErnlsZ7RkXUAs"
+      Secp256k1::Hash.base58_decode "1PMycacnJaSqwwJqjawXBErnlsZ7RkXUAs"
     end
   end
 end

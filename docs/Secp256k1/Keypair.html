@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.32.0">
+<meta name="generator" content="Crystal Docs 0.31.1">
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
@@ -65,13 +65,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
-      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+      <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
-      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+      <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
@@ -152,7 +152,7 @@
 
 <p>Properties:</p>
 
-<ul><li><code><a href="../Secp256k1/Keypair.html#private_key:BigInt-instance-method">#private_key</a></code> (<code>BigInt</code>): the secret as known as the private key.</li><li><code><a href="../Secp256k1/Keypair.html#public_key:EC_Point-instance-method">#public_key</a></code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point on the elliptic curve as known as the public key.</li></ul>
+<ul><li><code><a href="../Secp256k1/Keypair.html#private_key:BigInt-instance-method">#private_key</a></code> (<code>BigInt</code>): the secret as known as the private key.</li><li><code><a href="../Secp256k1/Keypair.html#public_key:ECPoint-instance-method">#public_key</a></code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the point on the elliptic curve as known as the public key.</li></ul>
 
 <pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
 key.get_secret
@@ -183,7 +183,7 @@ key.to_s
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L34" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L34" target="_blank">
         structs.cr
       </a>
     
@@ -256,14 +256,14 @@ key.to_s
       </li>
     
       <li class="entry-summary">
-        <a href="#public_key:EC_Point-instance-method" class="signature"><strong>#public_key</strong> : EC_Point</a>
+        <a href="#public_key:ECPoint-instance-method" class="signature"><strong>#public_key</strong> : ECPoint</a>
         
           <div class="summary"><p>The point on the elliptic curve as known as the public key.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#public_key=(public_key:EC_Point)-instance-method" class="signature"><strong>#public_key=</strong>(public_key : EC_Point)</a>
+        <a href="#public_key=(public_key:ECPoint)-instance-method" class="signature"><strong>#public_key=</strong>(public_key : ECPoint)</a>
         
           <div class="summary"><p>The point on the elliptic curve as known as the public key.</p></div>
         
@@ -339,7 +339,7 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -363,7 +363,7 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L47" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -401,7 +401,7 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L71" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -422,7 +422,7 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -443,17 +443,17 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L36" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="public_key:EC_Point-instance-method">
+    <div class="entry-detail" id="public_key:ECPoint-instance-method">
       <div class="signature">
         
-        def <strong>public_key</strong> : <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+        def <strong>public_key</strong> : <a href="../Secp256k1/ECPoint.html">ECPoint</a>
 
-        <a class="method-permalink" href="#public_key:EC_Point-instance-method">#</a>
+        <a class="method-permalink" href="#public_key:ECPoint-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -464,17 +464,17 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="public_key=(public_key:EC_Point)-instance-method">
+    <div class="entry-detail" id="public_key=(public_key:ECPoint)-instance-method">
       <div class="signature">
         
-        def <strong>public_key=</strong>(public_key : <a href="../Secp256k1/EC_Point.html">EC_Point</a>)
+        def <strong>public_key=</strong>(public_key : <a href="../Secp256k1/ECPoint.html">ECPoint</a>)
 
-        <a class="method-permalink" href="#public_key=(public_key:EC_Point)-instance-method">#</a>
+        <a class="method-permalink" href="#public_key=(public_key:ECPoint)-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -485,7 +485,7 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -509,7 +509,7 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/structs.cr#L81" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.32.0">
+<meta name="generator" content="Crystal Docs 0.31.1">
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
@@ -65,13 +65,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/EC_Point" data-name="secp256k1::ec_point">
-      <a href="../Secp256k1/EC_Point.html">EC_Point</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+      <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSA_Signature" data-name="secp256k1::ecdsa_signature">
-      <a href="../Secp256k1/ECDSA_Signature.html">ECDSA_Signature</a>
+  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+      <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
@@ -175,7 +175,7 @@ Ref: <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">en.bitcoin.i
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/core.cr#L20" target="_blank">
+      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/core.cr#L20" target="_blank">
         core.cr
       </a>
     
@@ -199,14 +199,14 @@ Ref: <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">en.bitcoin.i
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_add</strong>(p : EC_Point, q : EC_Point, prime = <span class="t">EC_PRIME_P</span>)</a>
+        <a href="#ec_add(p:ECPoint,q:ECPoint,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_add</strong>(p : ECPoint, q : ECPoint, prime = <span class="t">EC_PRIME_P</span>)</a>
         
           <div class="summary"><p>The elliptic curve jive addition of point <code>p(x, y)</code> and <code>q(x, y)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ec_double(p:EC_Point,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_double</strong>(p : EC_Point, prime = <span class="t">EC_PRIME_P</span>)</a>
+        <a href="#ec_double(p:ECPoint,prime=EC_PRIME_P)-class-method" class="signature"><strong>.ec_double</strong>(p : ECPoint, prime = <span class="t">EC_PRIME_P</span>)</a>
         
           <div class="summary"><p>The elliptic curve juke point doubling of <code>p(x, y)</code>.</p></div>
         
@@ -220,7 +220,7 @@ Ref: <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">en.bitcoin.i
       </li>
     
       <li class="entry-summary">
-        <a href="#ec_mul(p:EC_Point,s:BigInt)-class-method" class="signature"><strong>.ec_mul</strong>(p : EC_Point, s : BigInt)</a>
+        <a href="#ec_mul(p:ECPoint,s:BigInt)-class-method" class="signature"><strong>.ec_mul</strong>(p : ECPoint, s : BigInt)</a>
         
           <div class="summary"><p>The elliptic curve sequence multiplication of point <code>p(x, y)</code> and a skalar <code>s</code>.</p></div>
         
@@ -250,12 +250,12 @@ Ref: <a href="https://en.bitcoin.it/wiki/Secp256k1" target="_blank">en.bitcoin.i
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="ec_add(p:EC_Point,q:EC_Point,prime=EC_PRIME_P)-class-method">
+    <div class="entry-detail" id="ec_add(p:ECPoint,q:ECPoint,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>ec_add</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, q : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PRIME_P</span>)
+        def self.<strong>ec_add</strong>(p : <a href="../Secp256k1/ECPoint.html">ECPoint</a>, q : <a href="../Secp256k1/ECPoint.html">ECPoint</a>, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#ec_add(p:EC_Point,q:EC_Point,prime=EC_PRIME_P)-class-method">#</a>
+        <a class="method-permalink" href="#ec_add(p:ECPoint,q:ECPoint,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -267,25 +267,25 @@ curve in the point <code>r</code> which will be mirrored over the <code>x</code>
 
 <p>Paramters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>p(x, y)</code> to be used in the jive addition.</li><li><code>q</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>q(x, y)</code> to be used in the jive addition.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the point <code>p(x, y)</code> to be used in the jive addition.</li><li><code>q</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the point <code>q(x, y)</code> to be used in the jive addition.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
 
-<p>Returns another <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> as result.</p>
+<p>Returns another <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> as result.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/core.cr#L60" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/core.cr#L60" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="ec_double(p:EC_Point,prime=EC_PRIME_P)-class-method">
+    <div class="entry-detail" id="ec_double(p:ECPoint,prime=EC_PRIME_P)-class-method">
       <div class="signature">
         
-        def self.<strong>ec_double</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, prime = <span class="t">EC_PRIME_P</span>)
+        def self.<strong>ec_double</strong>(p : <a href="../Secp256k1/ECPoint.html">ECPoint</a>, prime = <span class="t">EC_PRIME_P</span>)
 
-        <a class="method-permalink" href="#ec_double(p:EC_Point,prime=EC_PRIME_P)-class-method">#</a>
+        <a class="method-permalink" href="#ec_double(p:ECPoint,prime=EC_PRIME_P)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -298,15 +298,15 @@ at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
 
 <p>Paramters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>p(x, y)</code> to be used in the juke doubling.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the point <code>p(x, y)</code> to be used in the juke doubling.</li><li><code>prime</code> (<code>BigInt</code>): the prime number that shapes the field, default: <code><a href="../Secp256k1.html#EC_PRIME_P">EC_PRIME_P</a></code>.</li></ul>
 
-<p>Returns another <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> as result.</p>
+<p>Returns another <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> as result.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/core.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/core.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -333,17 +333,17 @@ at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/core.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/core.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="ec_mul(p:EC_Point,s:BigInt)-class-method">
+    <div class="entry-detail" id="ec_mul(p:ECPoint,s:BigInt)-class-method">
       <div class="signature">
         
-        def self.<strong>ec_mul</strong>(p : <a href="../Secp256k1/EC_Point.html">EC_Point</a>, s : BigInt)
+        def self.<strong>ec_mul</strong>(p : <a href="../Secp256k1/ECPoint.html">ECPoint</a>, s : BigInt)
 
-        <a class="method-permalink" href="#ec_mul(p:EC_Point,s:BigInt)-class-method">#</a>
+        <a class="method-permalink" href="#ec_mul(p:ECPoint,s:BigInt)-class-method">#</a>
       </div>
       
         <div class="doc">
@@ -355,15 +355,15 @@ a skalar <code>s</code>.</p>
 
 <p>Paramters:</p>
 
-<ul><li><code>p</code> (<code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code>): the point <code>p(x, y)</code> to be used in the sequencing.</li><li><code>s</code> (<code>BigInt</code>): a skalar, in most cases a private key.</li></ul>
+<ul><li><code>p</code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the point <code>p(x, y)</code> to be used in the sequencing.</li><li><code>s</code> (<code>BigInt</code>): a skalar, in most cases a private key.</li></ul>
 
-<p>Returns another <code><a href="../Secp256k1/EC_Point.html">EC_Point</a></code> as result, in most cases a public key.</p>
+<p>Returns another <code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code> as result, in most cases a public key.</p>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/22fc923228949b495a7c4842683d270569e2151c/src/core.cr#L105" target="_blank">View source</a>]
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/core.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>

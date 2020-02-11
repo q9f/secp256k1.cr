@@ -43,7 +43,7 @@ describe Secp256k1::Core do
     r.y.should eq BigInt.new "83121579216557378445487899878180864668798711284981320763518679672151497189239"
 
     # adding the generator point to a reverse generator point x, y = y, x
-    q = Secp256k1::EC_Point.new Secp256k1::EC_BASE_G_Y, Secp256k1::EC_BASE_G_X
+    q = Secp256k1::ECPoint.new Secp256k1::EC_BASE_G_Y, Secp256k1::EC_BASE_G_X
     s = Secp256k1::Core.ec_add Secp256k1::EC_BASE_G, q
 
     # python: `print ECadd((Gx, Gy), (Gy, Gx))`
