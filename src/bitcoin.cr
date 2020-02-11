@@ -256,7 +256,7 @@ module Secp256k1::Bitcoin
     valid = valid && m[0, 1] === "S"
 
     # It's only a valid mini-private key if the hash of `#{key}?` starts with `"00"`.
-    checksum = Hash.sha256_string "#{m}?"
+    checksum = Hash.sha256 "#{m}?"
     valid && checksum[0, 2] === "00"
   end
 
