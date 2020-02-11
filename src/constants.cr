@@ -42,7 +42,7 @@ module Secp256k1
 
   # The commonly used base point `G` coordinates `x`, `y`;
   # any other point that satisfies `y^2 = x^3 + 7` would also do.
-  EC_BASE_G = EC_Point.new EC_BASE_G_X, EC_BASE_G_Y
+  EC_BASE_G = ECPoint.new EC_BASE_G_X, EC_BASE_G_Y
 
   # The base point `G` in compressed form.
   EC_BASE_G_COMPRESSED = BigInt.new (Secp256k1::Util.public_key_compressed_prefix EC_BASE_G), 16

@@ -22,7 +22,7 @@ module Secp256k1
   #
   # Properties:
   # * `private_key` (`BigInt`): the secret as known as the private key.
-  # * `public_key` (`EC_Point`): the point on the elliptic curve as known as the public key.
+  # * `public_key` (`ECPoint`): the point on the elliptic curve as known as the public key.
   #
   # ```
   # key = Secp256k1::Keypair.new
@@ -36,7 +36,7 @@ module Secp256k1
     property private_key : BigInt
 
     # The point on the elliptic curve as known as the public key.
-    property public_key : EC_Point
+    property public_key : ECPoint
 
     # Generates a new keypair using a fresh random private key.
     #
@@ -69,7 +69,7 @@ module Secp256k1
     # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
     # ```
     def get_secret
-      return Util.to_padded_hex_32 @private_key
+      Util.to_padded_hex_32 @private_key
     end
 
     # Gets the key formatted as uncompressed public key string.
@@ -79,7 +79,7 @@ module Secp256k1
     # # => "e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f"
     # ```
     def to_s
-      return Util.public_key_uncompressed @public_key
+      Util.public_key_uncompressed @public_key
     end
   end
 
@@ -90,20 +90,20 @@ module Secp256k1
   # * `y` (`BigInt`): the position on the y-axis.
   #
   # ```
-  # p = EC_Point.new BigInt.new(0), BigInt.new(0)
+  # p = ECPoint.new BigInt.new(0), BigInt.new(0)
   # p.x
   # # => 0
   # p.y
   # # => 0
   # ```
-  struct EC_Point
+  struct ECPoint
     # The position on the x-axis.
     property x : BigInt
 
     # The position on the y-axis.
     property y : BigInt
 
-    # An EC_Point always requires two coordinates `x`, `y`.
+    # An ECPoint always requires two coordinates `x`, `y`.
     #
     # Parameters:
     # * `x` (`BigInt`): the position on the x-axis.
@@ -122,9 +122,9 @@ module Secp256k1
   # * `s` (`BigInt`): the signature proof of a message.
   #
   # ```
-  # sig = ECDSA_Signature.new r.x, proof
+  # sig = ECDSASignature.new r.x, proof
   # ```
-  struct ECDSA_Signature
+  struct ECDSASignature
     # The `x` coordinate of a random point `R`.
     property r : BigInt
 
