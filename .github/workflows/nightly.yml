@@ -19,5 +19,5 @@ jobs:
       run: |
         shards build --verbose
         crystal tool format --check
-        crystal spec --verbose
-        crystal run ./try.cr
+        crystal spec --verbose --error-trace --time -Dpreview_mt
+        crystal run --verbose --error-trace --stats -Dpreview_mt ./try.cr
