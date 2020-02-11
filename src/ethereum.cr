@@ -65,7 +65,7 @@ module Secp256k1::Ethereum
     # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
     # ```
     def get_secret
-      return Util.to_padded_hex_32 @key_pair.private_key
+      Util.to_padded_hex_32 @key_pair.private_key
     end
 
     # Gets the account formatted as `Ethereum` address.
@@ -75,7 +75,7 @@ module Secp256k1::Ethereum
     # # => "0x224008a0F3d3cB989c807F568c7f99Bf451328A6"
     # ```
     def to_s
-      return Ethereum.address_checksum @address
+      Ethereum.address_checksum @address
     end
   end
 
@@ -170,7 +170,7 @@ module Secp256k1::Ethereum
         # Ensures any IP is set. Falls back to localhost if not.
         ip = "127.0.0.1" if ip.nil? || ip.size < 2
       end
-      return ip
+      ip
     end
 
     # Gets the private key as hexadecimal formatted string literal.
@@ -180,7 +180,7 @@ module Secp256k1::Ethereum
     # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
     # ```
     def get_secret
-      return Util.to_padded_hex_32 @key_pair.private_key
+      Util.to_padded_hex_32 @key_pair.private_key
     end
 
     # Gets the `Enode` formatted as devp2p enode address.
@@ -190,7 +190,7 @@ module Secp256k1::Ethereum
     # # => "enode://e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f@84.160.86.205:30303"
     # ```
     def to_s
-      return "enode://#{@key_pair.to_s}@#{@address.to_s}"
+      "enode://#{@key_pair.to_s}@#{@address.to_s}"
     end
   end
 
@@ -234,11 +234,10 @@ module Secp256k1::Ethereum
         end
         i += 1
       end
-      return address
+      address
     else
       raise "malformed ethereum address (invalid size: #{adr.size})"
     end
-    return "-999"
   end
 
   # Generates a checksummed `Ethereum` address for an uncompressed public key.
@@ -266,23 +265,22 @@ module Secp256k1::Ethereum
       keccak = Hash.keccak256 Hash.hex_to_bin pub
 
       # Takes the last 20 bytes from the hash
-      return address_checksum keccak[24, 40]
+      address_checksum keccak[24, 40]
     else
       raise "malformed public key (invalid key size: #{pub.size})"
     end
-    return "-999"
   end
 
-  # Generates a checksummed `Ethereum` address from an public key as `EC_Point`.
+  # Generates a checksummed `Ethereum` address from an public key as `ECPoint`.
   #
   # Parameters:
-  # * `p` (`EC_Point`): a public key point with `x` and `y` coordinates.
+  # * `p` (`ECPoint`): a public key point with `x` and `y` coordinates.
   #
-  # See `address_from_public_key` and `EC_Point` for usage instructions.
-  def self.address_from_public_point(p : Secp256k1::EC_Point)
+  # See `address_from_public_key` and `ECPoint` for usage instructions.
+  def self.address_from_public_point(p : Secp256k1::ECPoint)
     # Takes the corresponding public key generated with it.
     pub = Secp256k1::Util.public_key_uncompressed p
-    return address_from_public_key pub
+    address_from_public_key pub
   end
 
   # Generates a checksummed `Ethereum` address from a private key.
@@ -299,6 +297,6 @@ module Secp256k1::Ethereum
   def self.address_from_private(priv : BigInt)
     # Takes the corresponding public key generated with it.
     p = Secp256k1::Util.public_key_from_private priv
-    return address_from_public_point p
+    address_from_public_point p
   end
 end

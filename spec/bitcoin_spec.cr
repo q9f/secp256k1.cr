@@ -97,7 +97,7 @@ describe Secp256k1::Bitcoin do
 
     # should not allow invalid wif
     expect_raises Exception, "invalid wallet import format (invalid wif size: 50)" do
-      inv = Secp256k1::Bitcoin.private_key_from_wif "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
+      Secp256k1::Bitcoin.private_key_from_wif "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
     end
   end
 

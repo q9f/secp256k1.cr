@@ -37,7 +37,7 @@ module Secp256k1::Hash
   # ```
   def self.sha3(b : Bytes)
     sha3 = Digest::SHA3.new(256)
-    return sha3.update(b).hexdigest
+    sha3.update(b).hexdigest
   end
 
   # Operating a SHA3-256 hash on an actual string literal.
@@ -51,7 +51,7 @@ module Secp256k1::Hash
   # ```
   def self.sha3(h : String)
     sha3 = Digest::SHA3.new(256)
-    return sha3.update(h).hexdigest
+    sha3.update(h).hexdigest
   end
 
   # Operating a Keccak-256 hash on a byte array.
@@ -65,7 +65,7 @@ module Secp256k1::Hash
   # ```
   def self.keccak256(b : Bytes)
     keccak = Digest::Keccak3.new(256)
-    return keccak.update(b).hexdigest
+    keccak.update(b).hexdigest
   end
 
   # Operating a Keccak-256 hash on an actual string literal.
@@ -79,7 +79,7 @@ module Secp256k1::Hash
   # ```
   def self.keccak256(h : String)
     keccak = Digest::Keccak3.new(256)
-    return keccak.update(h).hexdigest
+    keccak.update(h).hexdigest
   end
 
   # Operating a SHA2-256 hash on a byte array.
@@ -92,7 +92,7 @@ module Secp256k1::Hash
   # # => "2739cc5f45c0e05236527e4e687dc54f0d5e88be64b9a90e5264a6721c0c71f2"
   # ```
   def self.sha256(b : Bytes)
-    return OpenSSL::Digest.new("SHA256").update(b).hexdigest
+    OpenSSL::Digest.new("SHA256").update(b).hexdigest
   end
 
   # Operating a SHA2-256 hash on an actual string literal.
@@ -105,7 +105,7 @@ module Secp256k1::Hash
   # # => "452a41c28c9981faebb402095a5d553de28dc212338057aed27081110dfb907a"
   # ```
   def self.sha256(h : String)
-    return OpenSSL::Digest.new("SHA256").update(h).hexdigest
+    OpenSSL::Digest.new("SHA256").update(h).hexdigest
   end
 
   # Operating a RIPEMD-160 hash on a byte array.
@@ -118,7 +118,7 @@ module Secp256k1::Hash
   # # => "5f3455f9ac58e25be08c99a7090108751b4796b9"
   # ```
   def self.ripemd160(b : Bytes)
-    return OpenSSL::Digest.new("RIPEMD160").update(b).hexdigest
+    OpenSSL::Digest.new("RIPEMD160").update(b).hexdigest
   end
 
   # Operating a RIPEMD-160 hash on an actual string literal.
@@ -131,7 +131,7 @@ module Secp256k1::Hash
   # # => "46dff6cd5666c8e67db26ac0dfaf685bf71fc5f6"
   # ```
   def self.ripemd160(h : String)
-    return OpenSSL::Digest.new("RIPEMD160").update(h).hexdigest
+    OpenSSL::Digest.new("RIPEMD160").update(h).hexdigest
   end
 
   # Decodes a hexadecimal string from a Base-58 encoded string.
@@ -155,7 +155,6 @@ module Secp256k1::Hash
         index += 1
       else
         raise "cannot decode, invalid base58 character: '#{s[index]}'"
-        return "-999"
       end
     end
 
@@ -166,7 +165,7 @@ module Secp256k1::Hash
       leading += 1
       hex = "00#{hex}"
     end
-    return hex
+    hex
   end
 
   # Encodes a Base-58 string from a hexadecimal string.
@@ -197,7 +196,7 @@ module Secp256k1::Hash
     end
 
     # Reverse because we did the entire conversion backwards.
-    return adr.reverse
+    adr.reverse
   end
 
   # Gets a character from the Base-56 alphabet at position `i`.
@@ -211,7 +210,7 @@ module Secp256k1::Hash
   # ```
   def self.base56_char(i : Int32)
     i = i % 56
-    return BASE_56[i]
+    BASE_56[i]
   end
 
   # Gets a character from the Base-58 alphabet at position `i`.
@@ -225,7 +224,7 @@ module Secp256k1::Hash
   # ```
   def self.base58_char(i : Int32)
     i = i % 58
-    return BASE_58[i]
+    BASE_58[i]
   end
 
   # Helper function to convert byte arrays to hexadecimal strings.
@@ -238,7 +237,7 @@ module Secp256k1::Hash
   # => "b795cd2c5ce0cc632ca1f65e921b9c751b363e97fcaeec81c02a85b763448268"
   # ```
   def self.bin_to_hex(b : Bytes)
-    return b.hexstring
+    b.hexstring
   end
 
   # Helper function to convert hexadecimal strings to byte arrays.
@@ -251,6 +250,6 @@ module Secp256k1::Hash
   # => Bytes[183, 149, 205, 44, 92, 224, 204, 99, 44, 161, 246, 94, 146, 27, 156, 117, 27, 54, 62, 151, 252, 174, 236, 129, 192, 42, 133, 183, 99, 68, 130, 104]
   # ```
   def self.hex_to_bin(h : String)
-    return h.hexbytes
+    h.hexbytes
   end
 end
