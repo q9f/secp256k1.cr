@@ -49,7 +49,7 @@ describe Secp256k1::Bitcoin do
     mini.size.should eq 30
 
     # the hash of the mini key with question mark should start with "00"
-    sha2 = Secp256k1::Hash.sha256_string "#{mini}?"
+    sha2 = Secp256k1::Hash.sha256 "#{mini}?"
     sha2[0, 2].should eq "00"
   end
 
@@ -59,7 +59,7 @@ describe Secp256k1::Bitcoin do
     mini = "S6c56bnXQiBjk9mqSYE7ykVQ7NzrRy"
     priv = Secp256k1::Bitcoin.private_key_from_mini mini
     priv.should eq BigInt.new "4c7a9640c72dc2099f23715d0c8a0d8a35f8906e3cab61dd3f78b67bf887c9ab", 16
-    sha2 = Secp256k1::Hash.sha256_string "#{mini}?"
+    sha2 = Secp256k1::Hash.sha256 "#{mini}?"
     sha2.should eq "000f2453798ad4f951eecced2242eaef3e1cbc8a7c813c203ac7ffe57060355d"
   end
 

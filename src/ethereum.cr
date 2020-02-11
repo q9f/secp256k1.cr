@@ -218,7 +218,7 @@ module Secp256k1::Ethereum
 
     if adr.size === 40
       # Gets a Keccak-256 hash to operate on according to EIP-55.
-      keccak = Hash.keccak256_string adr
+      keccak = Hash.keccak256 adr
 
       # Prefixes the address with `"0x"`.
       address = "0x"
