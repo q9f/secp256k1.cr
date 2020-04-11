@@ -19,5 +19,5 @@
 # Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
 module Secp256k1
   # The `VERSION` of the `Secp256k1` module.
-  VERSION = "0.3.1"
+  VERSION = "0.3.2"
 end
