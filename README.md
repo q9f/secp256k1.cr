@@ -166,4 +166,4 @@ honerable mention for the [bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page) a
 
 license: apache license v2.0
 
-contributors: [**@q9f**](https://github.com/q9f/), [**@cserb**](https://github.com/cserb)
+contributors: [**@q9f**](https://github.com/q9f/), [@cserb](https://github.com/cserb), [MrSorcus](https://github.com/MrSorcus)
