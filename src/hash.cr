@@ -92,7 +92,7 @@ module Secp256k1::Hash
   # # => "2739cc5f45c0e05236527e4e687dc54f0d5e88be64b9a90e5264a6721c0c71f2"
   # ```
   def self.sha256(b : Bytes)
-    OpenSSL::Digest.new("SHA256").update(b).hexdigest
+    OpenSSL::Digest.new("SHA256").update(b).final.hexstring
   end
 
   # Operating a SHA2-256 hash on an actual string literal.
@@ -105,7 +105,7 @@ module Secp256k1::Hash
   # # => "452a41c28c9981faebb402095a5d553de28dc212338057aed27081110dfb907a"
   # ```
   def self.sha256(h : String)
-    OpenSSL::Digest.new("SHA256").update(h).hexdigest
+    OpenSSL::Digest.new("SHA256").update(h).final.hexstring
   end
 
   # Operating a RIPEMD-160 hash on a byte array.
@@ -118,7 +118,7 @@ module Secp256k1::Hash
   # # => "5f3455f9ac58e25be08c99a7090108751b4796b9"
   # ```
   def self.ripemd160(b : Bytes)
-    OpenSSL::Digest.new("RIPEMD160").update(b).hexdigest
+    OpenSSL::Digest.new("RIPEMD160").update(b).final.hexstring
   end
 
   # Operating a RIPEMD-160 hash on an actual string literal.
@@ -131,7 +131,7 @@ module Secp256k1::Hash
   # # => "46dff6cd5666c8e67db26ac0dfaf685bf71fc5f6"
   # ```
   def self.ripemd160(h : String)
-    OpenSSL::Digest.new("RIPEMD160").update(h).hexdigest
+    OpenSSL::Digest.new("RIPEMD160").update(h).final.hexstring
   end
 
   # Decodes a hexadecimal string from a Base-58 encoded string.
