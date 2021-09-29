@@ -1,11 +1,11 @@
 name: Nightly
+
 on: [pull_request]
-# on:
-#   push:
-#     branches:
-#     - main
-#   schedule:
-#     - cron: 0 1 * * *
+  # push:
+  #   branches:
+  #   - main
+  # schedule:
+  #   - cron: 0 1 * * *
 
 jobs:
   build:
@@ -30,6 +30,4 @@ jobs:
     - uses: actions/checkout@v2
     - uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
         directory: ./.github/coverage
-        verbose: true
