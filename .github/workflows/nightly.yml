@@ -31,7 +31,10 @@ jobs:
     - name: Install Dependencies
       run: |
         apt update -y
-        apt install -y sudo
+        apt install -y sudo gnupg ca-certificates apt-transport-https
+        curl -fsSL https://crystal-lang.org/install.sh | sudo bash -y
+        sudo apt update -y
+        sudo apt full-upgrade -y
         shards install --verbose
         crystal build ./run_tests.cr -D skip-integrations
         crystal run --verbose --error-trace --stats -Dpreview_mt ./run_tests.cr
@@ -39,8 +42,6 @@ jobs:
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: |
-        sudo apt update -y
-        sudo apt full-upgrade -y
         sudo apt install -y kcov
         sudo kcov --clean --include-path=./src ./coverage ./run_tests
         bash <(curl -s https://codecov.io/bash) -s ./coverage
