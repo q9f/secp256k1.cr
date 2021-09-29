@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-04.dtd'>
-<coverage line-rate="0.971" lines-covered="332" lines-valid="342" branch-rate="1.0" branches-covered="1.0" branches-rate="1.0" complexity="1.0" version="1.9" timestamp="1632917910">
+<coverage line-rate="0.971" lines-covered="332" lines-valid="342" branch-rate="1.0" branches-covered="1.0" branches-rate="1.0" complexity="1.0" version="1.9" timestamp="1632918650">
 	<sources>
 		<source>/home/user/.opt/q9f/secp256k1.cr/src/</source>
 	</sources>
