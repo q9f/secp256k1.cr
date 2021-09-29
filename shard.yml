@@ -1,11 +1,11 @@
 name: secp256k1
-version: 0.3.5
-description: "a native library implementing secp256k1 for the crystal language"
+version: 0.3.6
+description: "A native library implementing the Secp256k1 curve for the Crystal programming language."
 
 authors:
-  - /raw PONG _GHMoaCXLT <58883403+q9f@users.noreply.github.com>
+  - Afr Schoe <crystal@q9f.cc>
 
-crystal: 0.36.1
+crystal: 1.1.1
 
 license: APLv2
 
