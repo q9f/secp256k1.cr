@@ -1,2 +1,2 @@
-.github/* linguist-vendored
-.docs/* linguist-vendored
+.github/** linguist-detectable=false
+.docs/** linguist-detectable=false
