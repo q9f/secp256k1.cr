@@ -31,8 +31,8 @@ jobs:
     - name: Install Dependencies
       run: |
         apt update -y
-        apt install -y sudo gnupg ca-certificates apt-transport-https
-        curl -fsSL https://crystal-lang.org/install.sh | sudo bash -y
+        apt install -y sudo curl gnupg ca-certificates apt-transport-https
+        curl -fsSL https://crystal-lang.org/install.sh | sudo bash
         sudo apt update -y
         sudo apt full-upgrade -y
         shards install --verbose
