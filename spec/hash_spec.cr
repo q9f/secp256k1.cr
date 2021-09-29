@@ -19,7 +19,7 @@ describe Secp256k1::Hash do
   it "can hash sha3-256 correctly" do
     # sha3-256 hash taken from the crystal-sha3 readme
     # ref: https://github.com/OscarBarrett/crystal-sha3/blob/7b6f6e02196b106ecf0be01da207dbf1e269009b/README.md
-    sha3 = Secp256k1::Hash.sha3_string "abc123"
+    sha3 = Secp256k1::Hash.sha3 "abc123"
     sha3.should eq "f58fa3df820114f56e1544354379820cff464c9c41cb3ca0ad0b0843c9bb67ee"
 
     # hash the previous hash again as bytes array instead of a string input
@@ -30,7 +30,7 @@ describe Secp256k1::Hash do
   it "can hash keccak-256 correctly" do
     # keccak-256 hash taken from the crystal-sha3 readme
     # ref: https://github.com/OscarBarrett/crystal-sha3/blob/7b6f6e02196b106ecf0be01da207dbf1e269009b/README.md
-    keccak = Secp256k1::Hash.keccak256_string "abc123"
+    keccak = Secp256k1::Hash.keccak256 "abc123"
     keccak.should eq "719accc61a9cc126830e5906f9d672d06eab6f8597287095a2c55a8b775e7016"
 
     # hash the previous hash again as bytes array instead of a string input
@@ -45,7 +45,7 @@ describe Secp256k1::Hash do
     sha2.should eq "0b7c28c9b7290c98d7438e70b3d3f7c848fbd7d1dc194ff83f4f7cc9b1378e98"
 
     # hash the previous hash again as string input instead of a bytes array
-    sha2 = Secp256k1::Hash.sha256_string sha2
+    sha2 = Secp256k1::Hash.sha256 sha2
     sha2.should eq "996db65b7f53189aa426cb8166859988d44b4e89eb4305951ababcf79ea3afe0"
   end
 
@@ -65,7 +65,7 @@ describe Secp256k1::Hash do
     ripe.should eq "f54a5851e9372b87810a8e60cdd2e7cfd80b6e31"
 
     # hash the previous hash again as string input instead of a bytes array
-    ripe = Secp256k1::Hash.ripemd160_string ripe
+    ripe = Secp256k1::Hash.ripemd160 ripe
     ripe.should eq "a653c746b9df6f1f21196bf6f80da734073cdc03"
   end
 
@@ -84,7 +84,7 @@ describe Secp256k1::Hash do
 
     # invalid base58 should raise
     expect_raises Exception, "cannot decode, invalid base58 character: 'l'" do
-      inv = Secp256k1::Hash.base58_decode "1PMycacnJaSqwwJqjawXBErnlsZ7RkXUAs"
+      Secp256k1::Hash.base58_decode "1PMycacnJaSqwwJqjawXBErnlsZ7RkXUAs"
     end
   end
 end

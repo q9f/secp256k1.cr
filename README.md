@@ -34,7 +34,7 @@ add the `secp256k1` library to your `shard.yml`
 dependencies:
   secp256k1:
     github: q9f/secp256k1.cr
-    version: "~> 0.2"
+    version: "~> 0.3"
 ```
 
 # usage
@@ -51,8 +51,8 @@ this library exposes the following modules (in logical order):
 
 * `Secp256k1`: necessary constants and data structures, including:
   - `Secp256k1::Keypair`: for managing private-public key-pairs
-  - `Secp256k1::EC_Point`: for handling of secp256k1 elliptic curve points (public keys)
-  - `Secp256k1::ECDSA_Signature`: for secp256k1 ecdsa signatures
+  - `Secp256k1::ECPoint`: for handling of secp256k1 elliptic curve points (public keys)
+  - `Secp256k1::ECDSASignature`: for secp256k1 ecdsa signatures
 * `Secp256k1::Core`: the entire core mathematics behind the elliptic curve cryptography
 * `Secp256k1::Util`: all tools for the handling of private-public key-pairs
 * `Secp256k1::Hash`: implementation of various hashing algorithms for convenience
@@ -166,4 +166,4 @@ honerable mention for the [bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page) a
 
 license: apache license v2.0
 
-contributors: [**@q9f**](https://github.com/q9f/)
+contributors: [**@q9f**](https://github.com/q9f/), [@cserb](https://github.com/cserb), [MrSorcus](https://github.com/MrSorcus)

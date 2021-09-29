@@ -43,7 +43,7 @@ module Secp256k1::Core
       v_low = v
     end
 
-    return m_low % prime
+    m_low % prime
   end
 
   # The elliptic curve jive addition of point `p(x, y)` and `q(x, y)`.
@@ -52,12 +52,12 @@ module Secp256k1::Core
   # curve in the point `r` which will be mirrored over the `x`-axis.
   #
   # Paramters:
-  # * `p` (`EC_Point`): the point `p(x, y)` to be used in the jive addition.
-  # * `q` (`EC_Point`): the point `q(x, y)` to be used in the jive addition.
+  # * `p` (`ECPoint`): the point `p(x, y)` to be used in the jive addition.
+  # * `q` (`ECPoint`): the point `q(x, y)` to be used in the jive addition.
   # * `prime` (`BigInt`): the prime number that shapes the field, default: `EC_PRIME_P`.
   #
-  # Returns another `EC_Point` as result.
-  def self.ec_add(p : EC_Point, q : EC_Point, prime = EC_PRIME_P)
+  # Returns another `ECPoint` as result.
+  def self.ec_add(p : ECPoint, q : ECPoint, prime = EC_PRIME_P)
     x_delta = q.x - p.x
     x_inv = ec_mod_inv x_delta
     y_delta = q.y - p.y
@@ -66,7 +66,7 @@ module Secp256k1::Core
     y = (m * (p.x - x) - p.y) % prime
     x = BigInt.new x
     y = BigInt.new y
-    return EC_Point.new x, y
+    ECPoint.new x, y
   end
 
   # The elliptic curve juke point doubling of `p(x, y)`.
@@ -76,11 +76,11 @@ module Secp256k1::Core
   # at point `r` which will be mirrored over the `x`-axis.
   #
   # Paramters:
-  # * `p` (`EC_Point`): the point `p(x, y)` to be used in the juke doubling.
+  # * `p` (`ECPoint`): the point `p(x, y)` to be used in the juke doubling.
   # * `prime` (`BigInt`): the prime number that shapes the field, default: `EC_PRIME_P`.
   #
-  # Returns another `EC_Point` as result.
-  def self.ec_double(p : EC_Point, prime = EC_PRIME_P)
+  # Returns another `ECPoint` as result.
+  def self.ec_double(p : ECPoint, prime = EC_PRIME_P)
     lam_numer = 3 * p.x * p.x + EC_FACTOR_A
     lam_denom = 2 * p.y
     lam_inv = ec_mod_inv lam_denom
@@ -89,7 +89,7 @@ module Secp256k1::Core
     y = (lam * (p.x - x) - p.y) % prime
     x = BigInt.new x
     y = BigInt.new y
-    return EC_Point.new x, y
+    ECPoint.new x, y
   end
 
   # The elliptic curve sequence multiplication of point `p(x, y)` and
@@ -98,15 +98,14 @@ module Secp256k1::Core
   # With `s` being a private key within the elliptic curve field size of `EC_ORDER_N`.
   #
   # Paramters:
-  # * `p` (`EC_Point`): the point `p(x, y)` to be used in the sequencing.
+  # * `p` (`ECPoint`): the point `p(x, y)` to be used in the sequencing.
   # * `s` (`BigInt`): a skalar, in most cases a private key.
   #
-  # Returns another `EC_Point` as result, in most cases a public key.
-  def self.ec_mul(p : EC_Point, s : BigInt)
+  # Returns another `ECPoint` as result, in most cases a public key.
+  def self.ec_mul(p : ECPoint, s : BigInt)
     # catch skalars outside of the ec field size and exit
     if s === 0 || s >= EC_ORDER_N
       raise "invalid private key: outside of ec field size."
-      exit 1
     end
     s_bin = s.to_s 2
     q = p
@@ -117,6 +116,6 @@ module Secp256k1::Core
         q = ec_add q, p
       end
     end
-    return q
+    q
   end
 end

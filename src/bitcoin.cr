@@ -149,7 +149,7 @@ module Secp256k1::Bitcoin
     #
     # Returns _true_ if the compressed format is used.
     def is_compressed?
-      return @compressed
+      @compressed
     end
 
     # Computes the version byte for the private Wallet-Import Format which is
@@ -160,7 +160,7 @@ module Secp256k1::Bitcoin
     # # => "80"
     # ```
     def version_wif
-      return Util.to_padded_hex_01(@version.to_i(16) + 128)
+      Util.to_padded_hex_01(@version.to_i(16) + 128)
     end
 
     # Gets the private key as hexadecimal formatted string literal.
@@ -170,7 +170,7 @@ module Secp256k1::Bitcoin
     # # => "53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97"
     # ```
     def get_secret
-      return Util.to_padded_hex_32 @key_pair.private_key
+      Util.to_padded_hex_32 @key_pair.private_key
     end
 
     # Gets the account formatted as `Bitcoin` address.
@@ -180,7 +180,7 @@ module Secp256k1::Bitcoin
     # # => "1Gbxhju13BpwpzzFRgNr2TDYCRTg94kgFC"
     # ```
     def to_s
-      return @address
+      @address
     end
   end
 
@@ -215,7 +215,7 @@ module Secp256k1::Bitcoin
         valid = valid && priv === priv % Secp256k1::EC_ORDER_N
       end
     end
-    return key
+    key
   end
 
   # Gets a private key from a mini-private key if the key is valid.
@@ -232,12 +232,11 @@ module Secp256k1::Bitcoin
   def self.private_key_from_mini(m : String)
     if mini_is_valid? m
       # The private key is just the SHA-256 hash.
-      private_key = Hash.sha256_string m
-      return BigInt.new private_key, 16
+      private_key = Hash.sha256 m
+      BigInt.new private_key, 16
     else
       raise "mini private key is not valid (invalid checksum for: #{m})"
     end
-    return BigInt.new "-999"
   end
 
   # Validates wether a mini-private key has a correct checksum and formatting.
@@ -257,9 +256,8 @@ module Secp256k1::Bitcoin
     valid = valid && m[0, 1] === "S"
 
     # It's only a valid mini-private key if the hash of `#{key}?` starts with `"00"`.
-    checksum = Hash.sha256_string "#{m}?"
-    valid = valid && checksum[0, 2] === "00"
-    return valid
+    checksum = Hash.sha256 "#{m}?"
+    valid && checksum[0, 2] === "00"
   end
 
   # Gets a Base-58 Wallet-Import Format (WIF) from a private key.
@@ -296,7 +294,7 @@ module Secp256k1::Bitcoin
 
     # Converts the result from a byte string into a Base-58 string.
     # This is the Wallet-Import Format (WIF).
-    return Hash.base58_encode binary
+    Hash.base58_encode binary
   end
 
   # Gets a compressed Base-58 Wallet-Import Format (WIF) from a private key.
@@ -311,7 +309,7 @@ module Secp256k1::Bitcoin
   # ```
   def self.wif_from_private_compressed(k : BigInt, version = "80")
     # To indicate a compressed key to be used, append a `"01"` byte.
-    return wif_from_private k, version, "01"
+    wif_from_private k, version, "01"
   end
 
   # Gets an uncompressed Base-58 Wallet-Import Format (WIF) from a private key.
@@ -326,7 +324,7 @@ module Secp256k1::Bitcoin
   # ```
   def self.wif_from_private_uncompressed(k : BigInt, version = "80")
     # To indicate an uncompressed key to be used, don't append a compression byte.
-    return wif_from_private k, version, ""
+    wif_from_private k, version, ""
   end
 
   # Gets a private key from a Base-58 Wallet-Import Format (WIF).
@@ -348,10 +346,9 @@ module Secp256k1::Bitcoin
     if checksum_key.size == 74 || checksum_key.size == 76
       # Drops the version byte, checksum, and compressed byte.
       private_key = BigInt.new checksum_key[2, 64], 16
-      return Secp256k1::Util.to_padded_hex_32 private_key
+      Secp256k1::Util.to_padded_hex_32 private_key
     else
       raise "invalid wallet import format (invalid wif size: #{checksum_key.size})"
-      return "-999"
     end
   end
 
@@ -373,10 +370,9 @@ module Secp256k1::Bitcoin
     # The key must be 37 bytes (uncompressed) or 38 bytes (compressed).
     if versioned.size === 74 || versioned.size === 76
       # Extracts the version byte.
-      return versioned[0, 2]
+      versioned[0, 2]
     else
       raise "invalid wallet import format (invalid wif size: #{versioned.size})"
-      return "-999"
     end
   end
 
@@ -400,10 +396,9 @@ module Secp256k1::Bitcoin
     # The key must be 37 bytes (uncompressed) or 38 bytes (compressed).
     if versioned.size === 74 || versioned.size === 76
       # Returns _true_ if the key is compressed.
-      return versioned.size === 76
+      versioned.size === 76
     else
       raise "invalid wallet import format (invalid wif size: #{versioned.size})"
-      return "-999"
     end
   end
 
@@ -451,7 +446,7 @@ module Secp256k1::Bitcoin
       pk_checksum = hashed_twice[0, 8]
       valid = valid && wif_checksum === pk_checksum
     end
-    return valid
+    valid
   end
 
   # Generates a `Bitcoin` address for any public key, compressed or uncompressed.
@@ -494,28 +489,27 @@ module Secp256k1::Bitcoin
 
       # Converts the result from a hex string into a Base-58 encoded string.
       # This is the most commonly used Bitcoin address format.
-      return Hash.base58_encode binary
+      Hash.base58_encode binary
     else
       raise "malformed public key (invalid key size: #{pub.size})"
     end
-    return "-999"
   end
 
-  # Generates a `Bitcoin` address from an public key as `EC_Point`.
+  # Generates a `Bitcoin` address from an public key as `ECPoint`.
   #
   # Parameters:
-  # * `p` (`EC_Point`): the public key as point with `x` and `y` coordinates.
+  # * `p` (`ECPoint`): the public key as point with `x` and `y` coordinates.
   # * `version` (`String`): the version byte, default: `"00"` (Bitcoin).
   # * `compressed` (`Bool`): indicator if address should be compressed or not, default: `true` (compressed).
   #
-  # See `address_from_public_key` and `EC_Point` for usage instructions.
-  def self.address_from_public_point(p : Secp256k1::EC_Point, version = "00", compressed = true)
+  # See `address_from_public_key` and `ECPoint` for usage instructions.
+  def self.address_from_public_point(p : Secp256k1::ECPoint, version = "00", compressed = true)
     # Takes the corresponding uncompressed public key.
     pub = Secp256k1::Util.public_key_uncompressed_prefix p
 
     # Generates a compressed address if specified.
     pub = Secp256k1::Util.public_key_compressed_prefix p if compressed
-    return address_from_public_key pub, version
+    address_from_public_key pub, version
   end
 
   # Gets a `Bitcoin` address from a Base-58 Wallet-Import Format (WIF).
@@ -549,10 +543,9 @@ module Secp256k1::Bitcoin
       # Checks wether we want a compressed or an uncompressed address.
       comp = is_wif_compressed? wif
 
-      return address_from_private priv, vers, comp
+      address_from_private priv, vers, comp
     else
       raise "invalid wallet import format (invalid wif: #{wif})"
-      return "-999"
     end
   end
 
@@ -570,6 +563,6 @@ module Secp256k1::Bitcoin
   def self.address_from_private(priv : BigInt, version = "00", compressed = true)
     # Having a private ECDSA key; take the corresponding public key generated with it.
     p = Secp256k1::Util.public_key_from_private priv
-    return address_from_public_point p, version, compressed
+    address_from_public_point p, version, compressed
   end
 end
