@@ -1,4 +1,5 @@
 name: Nightly
+
 on:
   push:
     branches:
@@ -12,12 +13,16 @@ jobs:
     container:
       image: crystallang/crystal
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install Dependencies
       run: |
         shards install --verbose
+        crystal build .github/run_coverage.cr -D skip-integrations -o .github/run_coverage
     - name: Run Test Suite
       run: |
         crystal tool format --check
         crystal spec --verbose --error-trace --time -Dpreview_mt
         crystal run --verbose --error-trace --stats -Dpreview_mt ./try.cr
+    - uses: codecov/codecov-action@v2
+      with:
+        directory: ./.github/coverage
