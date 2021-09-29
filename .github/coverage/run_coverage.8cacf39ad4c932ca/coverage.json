@@ -1,0 +1,20 @@
+{
+  "files": [
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/signature.cr", "percent_covered": "100.00", "covered_lines": "16", "total_lines": "16"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/hash.cr", "percent_covered": "96.43", "covered_lines": "54", "total_lines": "56"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/bitcoin.cr", "percent_covered": "96.58", "covered_lines": "113", "total_lines": "117"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/core.cr", "percent_covered": "100.00", "covered_lines": "45", "total_lines": "45"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/ethereum.cr", "percent_covered": "94.12", "covered_lines": "32", "total_lines": "34"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/util.cr", "percent_covered": "96.49", "covered_lines": "55", "total_lines": "57"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/version.cr", "percent_covered": "100.00", "covered_lines": "1", "total_lines": "1"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/structs.cr", "percent_covered": "100.00", "covered_lines": "6", "total_lines": "6"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/constants.cr", "percent_covered": "100.00", "covered_lines": "10", "total_lines": "10"}
+  ],
+  "percent_covered": "97.08",
+  "covered_lines": 332,
+  "total_lines": 342,
+  "percent_low": 25,
+  "percent_high": 75,
+  "command": "run_coverage",
+  "date": "2021-09-29 14:42:48"
+}
