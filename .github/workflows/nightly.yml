@@ -31,7 +31,7 @@ jobs:
     - name: Install Dependencies
       run: |
         apt update -y
-        apt install -y sudo curl gnupg ca-certificates apt-transport-https
+        apt install -y sudo curl gnupg ca-certificates apt-transport-https git
         sudo ln -snf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
         echo Europe/Amsterdam > /etc/timezone
         curl -fsSL https://crystal-lang.org/install.sh | sudo bash
