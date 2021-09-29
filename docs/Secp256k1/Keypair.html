@@ -3,54 +3,65 @@
 <head>
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Crystal Docs 0.31.1">
+<meta name="generator" content="Crystal Docs 1.1.0">
+<meta name="crystal_docs.project_version" content="0.3.5-dev">
+<meta name="crystal_docs.project_name" content="secp256k1">
+
+
 
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="secp256k1">
+  <title>Secp256k1::Keypair - secp256k1 0.3.5-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
 
 <svg class="hidden">
   <symbol id="octicon-link" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
   </symbol>
 </svg>
-
-  <meta id="repository-name" content="github.com/q9f/secp256k1.cr">
-  <title>Secp256k1::Keypair - github.com/q9f/secp256k1.cr</title>
-  <script type="text/javascript">
-    CrystalDoc.base_path = "../";
-  </script>
-</head>
-<body>
-
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="search-box">
       <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
     </div>
 
-    <div class="repository-links">
-      <a href="../index.html">README</a>
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          secp256k1
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.3.5-dev
+      </span>
     </div>
   </div>
 
-  <div class="search-results" class="hidden">
+  <div class="search-results hidden">
     <ul class="search-list"></ul>
   </div>
 
   <div class="types-list">
     <ul>
   
-  <li class="parent open current" data-id="github.com/q9f/secp256k1.cr/Secp256k1" data-name="secp256k1">
+  <li class="parent open current" data-id="secp256k1/Secp256k1" data-name="secp256k1">
       <a href="../Secp256k1.html">Secp256k1</a>
       
         <ul>
   
-  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
+  <li class="parent " data-id="secp256k1/Secp256k1/Bitcoin" data-name="secp256k1::bitcoin">
       <a href="../Secp256k1/Bitcoin.html">Bitcoin</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Bitcoin/Account" data-name="secp256k1::bitcoin::account">
+  <li class=" " data-id="secp256k1/Secp256k1/Bitcoin/Account" data-name="secp256k1::bitcoin::account">
       <a href="../Secp256k1/Bitcoin/Account.html">Account</a>
       
     </li>
@@ -60,32 +71,32 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Core" data-name="secp256k1::core">
+  <li class=" " data-id="secp256k1/Secp256k1/Core" data-name="secp256k1::core">
       <a href="../Secp256k1/Core.html">Core</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
+  <li class=" " data-id="secp256k1/Secp256k1/ECDSASignature" data-name="secp256k1::ecdsasignature">
       <a href="../Secp256k1/ECDSASignature.html">ECDSASignature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
+  <li class=" " data-id="secp256k1/Secp256k1/ECPoint" data-name="secp256k1::ecpoint">
       <a href="../Secp256k1/ECPoint.html">ECPoint</a>
       
     </li>
   
-  <li class="parent " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
+  <li class="parent " data-id="secp256k1/Secp256k1/Ethereum" data-name="secp256k1::ethereum">
       <a href="../Secp256k1/Ethereum.html">Ethereum</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum/Account" data-name="secp256k1::ethereum::account">
+  <li class=" " data-id="secp256k1/Secp256k1/Ethereum/Account" data-name="secp256k1::ethereum::account">
       <a href="../Secp256k1/Ethereum/Account.html">Account</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Ethereum/Enode" data-name="secp256k1::ethereum::enode">
+  <li class=" " data-id="secp256k1/Secp256k1/Ethereum/Enode" data-name="secp256k1::ethereum::enode">
       <a href="../Secp256k1/Ethereum/Enode.html">Enode</a>
       
     </li>
@@ -95,22 +106,22 @@
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Hash" data-name="secp256k1::hash">
+  <li class=" " data-id="secp256k1/Secp256k1/Hash" data-name="secp256k1::hash">
       <a href="../Secp256k1/Hash.html">Hash</a>
       
     </li>
   
-  <li class=" current" data-id="github.com/q9f/secp256k1.cr/Secp256k1/Keypair" data-name="secp256k1::keypair">
+  <li class=" current" data-id="secp256k1/Secp256k1/Keypair" data-name="secp256k1::keypair">
       <a href="../Secp256k1/Keypair.html">Keypair</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Signature" data-name="secp256k1::signature">
+  <li class=" " data-id="secp256k1/Secp256k1/Signature" data-name="secp256k1::signature">
       <a href="../Secp256k1/Signature.html">Signature</a>
       
     </li>
   
-  <li class=" " data-id="github.com/q9f/secp256k1.cr/Secp256k1/Util" data-name="secp256k1::util">
+  <li class=" " data-id="secp256k1/Secp256k1/Util" data-name="secp256k1::util">
       <a href="../Secp256k1/Util.html">Util</a>
       
     </li>
@@ -154,7 +165,7 @@
 
 <ul><li><code><a href="../Secp256k1/Keypair.html#private_key:BigInt-instance-method">#private_key</a></code> (<code>BigInt</code>): the secret as known as the private key.</li><li><code><a href="../Secp256k1/Keypair.html#public_key:ECPoint-instance-method">#public_key</a></code> (<code><a href="../Secp256k1/ECPoint.html">ECPoint</a></code>): the point on the elliptic curve as known as the public key.</li></ul>
 
-<pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
+<pre><code class="language-crystal">key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
 key.get_secret
 <span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>
 key.to_s
@@ -183,9 +194,7 @@ key.to_s
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L34" target="_blank">
-        structs.cr
-      </a>
+      structs.cr
     
     <br/>
   
@@ -332,14 +341,12 @@ key.to_s
 
 <ul><li><code><a href="../Secp256k1/Keypair.html#private_key:BigInt-instance-method">#private_key</a></code> (<code>BigInt</code>): the secret as known as the private key.</li></ul>
 
-<pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
+<pre><code class="language-crystal">key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span>(<span class="s">&quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>, <span class="n">16</span>)
 <span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f8be5611d80&gt;</span></code></pre>
         </div>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L61" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -356,14 +363,12 @@ key.to_s
           
           <p>Generates a new keypair using a fresh random private key.</p>
 
-<pre><code>key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
+<pre><code class="language-crystal">key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
 <span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f8be5611d80&gt;</span></code></pre>
         </div>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L47" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -394,14 +399,12 @@ key.to_s
           
           <p>Gets the private key as hexadecimal formatted string literal.</p>
 
-<pre><code>key.get_secret
+<pre><code class="language-crystal">key.get_secret
 <span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L71" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -422,8 +425,6 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L36" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -442,8 +443,6 @@ key.to_s
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -464,8 +463,6 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L39" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -485,8 +482,6 @@ key.to_s
       <br/>
       <div>
         
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L39" target="_blank">View source</a>]
-        
       </div>
     </div>
   
@@ -502,14 +497,12 @@ key.to_s
           
           <p>Gets the key formatted as uncompressed public key string.</p>
 
-<pre><code>key.to_s
+<pre><code class="language-crystal">key.to_s
 <span class="c"># =&gt; &quot;e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b7d9011bb589e883d8a7947cfb37dc6b3c8beae9c614cab4a83009bd9d8732a9f&quot;</span></code></pre>
         </div>
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/f6ea8e70d50b6270fa3f31c07fb97831baff6d5b/src/structs.cr#L81" target="_blank">View source</a>]
         
       </div>
     </div>
