@@ -29,11 +29,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install Dependencies
-      env:
-        DEBIAN_FRONTEND: "noninteractive"
       run: |
         apt update -y
         apt install -y sudo curl gnupg ca-certificates apt-transport-https
+        sudo ln -snf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+        echo Europe/Amsterdam > /etc/timezone
         curl -fsSL https://crystal-lang.org/install.sh | sudo bash
         sudo apt update -y
         sudo apt full-upgrade -y
