@@ -4,4 +4,4 @@ var data = {files:[
 ], merged_files:[{"link":"kcov-merged/index.html","title":"[merged]","summary_name":"[merged]","covered_class":"lineCov","covered":"97.1","covered_lines":"332","uncovered_lines":"10","total_lines" : "342"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2021-09-29 14:06:26", "instrumented" : 684, "covered" : 664,};
+var header = { "command" : "run_coverage", "date" : "2021-09-29 14:18:30", "instrumented" : 684, "covered" : 664,};

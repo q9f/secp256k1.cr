@@ -10,5 +10,5 @@ var data = {files:[
 {"link":"constants.cr.19853008.html","title":"constants.cr","summary_name":"[...]/secp256k1.cr/src/constants.cr","covered_class":"lineCov","covered":"100.0","covered_lines":"10","uncovered_lines":"0","total_lines" : "10"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2021-09-29 14:06:26", "instrumented" : 342, "covered" : 332,};
+var header = { "command" : "run_coverage", "date" : "2021-09-29 14:18:30", "instrumented" : 342, "covered" : 332,};
 var merged_data = [];
