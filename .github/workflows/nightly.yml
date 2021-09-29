@@ -30,8 +30,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install Dependencies
       run: |
-        sudo apt update -y
-        sudo apt install -y kcov
+        apt update -y
+        apt install -y kcov
         shards install --verbose
     - name: Code Coverage
       env:
