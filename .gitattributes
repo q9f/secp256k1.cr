@@ -1,0 +1,3 @@
+.github/** linguist-detectable=false
+.vscode/** linguist-detectable=false
+docs/** linguist-detectable=false
