@@ -5,11 +5,13 @@
 
 require "./src/*"
 
+mnemonic = Secp256k1::Bip39.new 256
+
 # everything starts with a new key pair
-key_pair = Secp256k1::Keypair.new
+key_pair = Secp256k1::Keypair.new mnemonic.seed
 
 # if you feel fancy, you can use a mini private key
-fancy = true
+fancy = false
 if fancy
   private_mini = Secp256k1::Bitcoin.new_mini_private_key
   private_key = Secp256k1::Bitcoin.private_key_from_mini private_mini
@@ -53,7 +55,8 @@ exit 105 if !valid
 # let's have a look
 puts "Key Magic
 ---------
-                 New private key :   #{Secp256k1::Util.to_padded_hex_32 key_pair.private_key}"
+                    New Mnemonic : #{mnemonic.to_words}
+             Derived private key :   #{Secp256k1::Util.to_padded_hex_32 key_pair.private_key}"
 puts "                Mini private key :   #{private_mini}" if fancy
 puts "
            Compressed public key : #{public_compr}

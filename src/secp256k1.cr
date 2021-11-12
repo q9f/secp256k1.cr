@@ -22,7 +22,6 @@ require "./signature.cr"
 require "./structs.cr"
 require "./util.cr"
 require "./version.cr"
-require "./words.cr"
 
 # Implements 256-bit `Secp256k1` Koblitz elliptic curve.
 # Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)

@@ -12,5 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-module Secp256k1::BIP39
+require "bip39"
+
+module Secp256k1
+  class Bip39 < Bip0039::Mnemonic
+  end
 end

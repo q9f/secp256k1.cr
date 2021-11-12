@@ -12,4 +12,7 @@ license: APLv2
 dependencies:
   sha3:
     github: OscarBarrett/crystal-sha3
-    version: ~> 0.3
+    version: "~> 0.3"
+  bip39:
+    github: q9f/bip39.cr
+    version: "~> 0.1"

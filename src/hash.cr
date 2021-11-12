@@ -117,9 +117,9 @@ module Secp256k1::Hash
   # Secp256k1::Hash.sha512 Bytes[183, 149, 205, 44, 92, 224, 204, 99, 44, 161, 246, 94, 146, 27, 156, 117, 27, 54, 62, 151, 252, 174, 236, 129, 192, 42, 133, 183, 99, 68, 130, 104]
   # # => "c3c4dd794c193fa9cd08ebb2f9ffd42cd10bc7a7ccc07b3b02aab3a5fa142e296a423504c72957ed2d228e29d03a2f0478a2f9a3fd8d8331a653628b3eebb0b9"
   # ```
-  def self.sha512(b : Bytes)
-    return OpenSSL::Digest.new("SHA512").update(b).hexdigest
-  end
+  # def self.sha512(b : Bytes)
+  #   return OpenSSL::Digest.new("SHA512").update(b).hexdigest
+  # end
 
   # Operating a SHA2-512 hash on an actual string literal.
   #
@@ -130,9 +130,9 @@ module Secp256k1::Hash
   # Secp256k1::Hash.sha512_string ""
   # # => "90a8166a2dd1a8014d4c1f13ead5ce651ff4f86b5b47b70e5d78d401f65374d12eb3436ac624a9313b86f461beded0f5e9272eb7930ad8c680fb0af40cb59b99"
   # ```
-  def self.sha512_string(h : String)
-    return OpenSSL::Digest.new("SHA512").update(h).hexdigest
-  end
+  # def self.sha512_string(h : String)
+  #   return OpenSSL::Digest.new("SHA512").update(h).hexdigest
+  # end
 
   # Operating a RIPEMD-160 hash on a byte array.
   #
