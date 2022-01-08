@@ -16,7 +16,7 @@ require "./spec_helper"
 
 # tests for the Secp256k1::Signature module
 describe Secp256k1::Signature do # signs and verifies a message using the private key from the python blackboard 101
-# ref: https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py#L11
+  # ref: https://github.com/wobine/blackboard101/blob/master/EllipticCurvesPart5-TheMagic-SigningAndVerifying.py#L11
   it "can sign a message" do
     priv = BigInt.new "75263518707598184987916378021939673586055614731957507592904438851787542395619"
     msg = "Hello, World!"
