@@ -43,14 +43,34 @@ module Secp256k1::Signature
     k = Util.new_private_key
 
     # Calculate the random point `r = k * g` and take its `x`-coordinate: `r = r.x`.
-    r = Core.ec_mul(EC_BASE_G, k).x % EC_ORDER_N
+    point = Core.ec_mul(EC_BASE_G, k)
+    r = point.x % EC_ORDER_N
 
     # Calculate the signature proof `s = k^-1 * (h + r * priv) % n`.
     k_inv = Core.ec_mod_inv k, EC_ORDER_N
     s = ((hash + r * priv) * k_inv) % EC_ORDER_N
 
+    # Factor: The X value of the point R being more than the curve order.
+    x_factor = point.x > EC_ORDER_N
+
+    # Parity: The Y value of the point R being even.
+    y_parity = (point.y % 2) == 0
+
+    # Recovery ID
+    # ref https://github.com/fivepiece/sign-verify-message/blob/master/signverifymessage.md#encoding-of-a-recoverable-signature
+    rec_id : Int8 = -1
+    if y_parity && !x_factor
+      rec_id = 0
+    elsif !y_parity && !x_factor
+      rec_id = 1
+    elsif y_parity && x_factor
+      rec_id = 2
+    elsif !y_parity && x_factor
+      rec_id = 3
+    end
+
     # Return the signature.
-    ECDSASignature.new r, s
+    ECDSASignature.new r, s, rec_id
   end
 
   # Verifies a signature of a message against a public key.

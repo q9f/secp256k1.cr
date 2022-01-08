@@ -120,6 +120,7 @@ module Secp256k1
   # Properties:
   # * `r` (`BigInt`): the `x` coordinate of a random point `R`.
   # * `s` (`BigInt`): the signature proof of a message.
+  # * `rec_id` (`Int8`): the signature's recovery ID.
   #
   # ```
   # sig = ECDSASignature.new r.x, proof
@@ -131,12 +132,16 @@ module Secp256k1
     # The signature proof of a message.
     property s : BigInt
 
+    # The signature's recovery ID.
+    property rec_id : Int8
+
     # A signature always requires the random point `r` and the signature proof `s`.
     #
     # Parameters:
     # * `r` (`BigInt`): the `x` coordinate of a random point `R`.
     # * `s` (`BigInt`): the signature proof of a message.
-    def initialize(@r : BigInt, @s : BigInt)
+    # * `rec_id` (`Int8`): the signature's recovery ID.
+    def initialize(@r : BigInt, @s : BigInt, @rec_id : Int8)
     end
   end
 end
