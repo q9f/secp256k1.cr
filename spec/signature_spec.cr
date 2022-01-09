@@ -53,4 +53,23 @@ describe Secp256k1::Signature do # signs and verifies a message using the privat
     valid = Secp256k1::Signature.verify hash, sig, pub
     valid.should eq true
   end
+
+  it "can handle r,s,v properly" do
+    # ref https://github.com/q9f/eth.rb/blob/33b757c34c53200645444eb8f8797376ae304bb9/spec/eth/key_spec.rb#L69
+    priv = BigInt.new "8e091dfb95a1b03cdd22890248c3f1b0f048186f2f3aa93257bc5271339eb306", 16
+    key = Secp256k1::Keypair.new priv
+    eth = Secp256k1::Ethereum::Account.new key
+    eth.address.should eq "0x4cbeFF8966586874362ce4313D8f80cD404838a3"
+    msg = "Lorem, Ipsum!"
+    hash = Secp256k1::Hash.keccak256 msg
+    hash.should eq "938ec6af3576cd774c0dd9c1b45ddc7980ae78a08be1f3f6826f71cb66611cef"
+    hash = BigInt.new hash, 16
+    sig = Secp256k1::Signature.sign hash, priv
+    expected_r = BigInt.new "84a96dcf08f901a887cef46ecd8de8246012993b5b2a4a46ab3f8036fe57c53937", 16
+    expected_s = BigInt.new "37106b3e04ec557e4614ebe87dc1678c3d49402009f4fd0a8d1b5e24a5577b392e", 16
+    expected_v = BigInt.new "2e", 16
+    sig.r.should eq expected_r
+    sig.s.should eq expected_s
+    sig.rec_id.should eq expected_v % 2
+  end
 end
