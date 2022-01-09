@@ -50,7 +50,7 @@ describe Secp256k1::Signature do # signs and verifies a message using the privat
     hash = BigInt.new "86032112319101611046176971828093669637772856272773459297323797145286374828050"
 
     # should be valid
-    valid = Secp256k1::Signature.verify_hash hash, sig, pub
+    valid = Secp256k1::Signature.verify hash, sig, pub
     valid.should eq true
   end
 end

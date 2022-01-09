@@ -37,7 +37,17 @@ module Secp256k1::Signature
   def self.sign(msg : String, priv : BigInt)
     # Calculate the message hash, using the cryptographic hash function SHA-256.
     hash = BigInt.new Hash.sha256(msg), 16
+    sign hash, priv
+  end
 
+  # Signs a message and creates a signature proof using a private key.
+  #
+  # Overloards `sign`, just using the hashed message directly.
+  #
+  # Parameters:
+  # * `hash` (`BigInt`): A message hash to sign.
+  # * `priv` (`BigInt`): A private key to sign with.
+  def self.sign(hash : BigInt, priv : BigInt)
     # Securely generate a random number `k` in the range `[1..n-1]`;
     # here: a new private key is the exact implementation of this requirement.
     k = Util.new_private_key
@@ -95,7 +105,7 @@ module Secp256k1::Signature
   def self.verify(msg : String, sig : ECDSASignature, pub : ECPoint)
     # Calculate the message hash, with the same hash function used during the signing.
     hash = BigInt.new Hash.sha256(msg), 16
-    verify_hash hash, sig, pub
+    verify hash, sig, pub
   end
 
   # Verifies a signature of a message hash against a public key.
@@ -108,7 +118,7 @@ module Secp256k1::Signature
   # * `pub` (`ECPoint`): A public key to verify the signature against.
   #
   # Returns _true_ if signature is valid. See `verify` for usage example.
-  def self.verify_hash(hash : BigInt, sig : ECDSASignature, pub : ECPoint)
+  def self.verify(hash : BigInt, sig : ECDSASignature, pub : ECPoint)
     # Calculate the modular inverse of the signature proof: `s1 = s^{-1} % n`.
     s_inv = Core.ec_mod_inv sig.s, EC_ORDER_N
 
