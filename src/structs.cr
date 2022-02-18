@@ -144,6 +144,7 @@ module Secp256k1
     def initialize(@r : BigInt, @s : BigInt, @v : Int32)
     end
 
+    # Gets a serialized signature `r|s|v` hex-string.
     def to_s
       "#{Util.to_padded_hex_32 @r}#{Util.to_padded_hex_32 @s}#{Util.to_padded_hex_01 @v}"
     end
