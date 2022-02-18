@@ -63,4 +63,25 @@ describe Secp256k1::Ethereum do
       Secp256k1::Ethereum.address_checksum "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51"
     end
   end
+
+  it "can handle r,s,v properly" do
+    # ref https://github.com/q9f/eth.rb/blob/33b757c34c53200645444eb8f8797376ae304bb9/spec/eth/key_spec.rb#L69
+    priv = BigInt.new "8e091dfb95a1b03cdd22890248c3f1b0f048186f2f3aa93257bc5271339eb306", 16
+    key = Secp256k1::Keypair.new priv
+    eth = Secp256k1::Ethereum::Account.new key
+    eth.address.should eq "0x4cbeFF8966586874362ce4313D8f80cD404838a3"
+    msg = "Lorem, Ipsum!"
+    sig = eth.personal_sign msg, priv, 1
+    expected_r = BigInt.new "83456641650431978396409163408327293713417920469844290225578553689609335539463"
+    expected_s = BigInt.new "105121634897190108012533348460722927364827186380080232150571278011929803075236"
+    expected_v = 37
+    sig.r.should eq expected_r
+    sig.s.should eq expected_s
+    sig.v.should eq expected_v
+    sig.to_s.should eq "b882c90541469501e20712af000b56976bb8acdc6d49c9ca15a7a5f13cad0707e868bca34f4bcb111c88b43f2251064dfc9bced7e3e337312d53d114c507aea425"
+    prefixed = "\x19Ethereum Signed Message:\n#{msg.size}#{msg}"
+    hash = BigInt.new Secp256k1::Hash.keccak256(prefixed), 16
+    valid = Secp256k1::Signature.verify hash, sig, key.public_key
+    valid.should eq true
+  end
 end

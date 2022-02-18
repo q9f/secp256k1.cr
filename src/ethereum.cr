@@ -68,6 +68,43 @@ module Secp256k1::Ethereum
       Util.to_padded_hex_32 @key_pair.private_key
     end
 
+    # Signs arbitrary data without validation. Implements EIP-155 replay
+    # protection.
+    #
+    # Parameters:
+    # * `hash` (`BigInt`): A message hash to sign.
+    # * `priv` (`BigInt`): A private key to sign with.
+    # * `chain_id` (`Int32`): The chain id the signature should be generated on.
+    def sign(hash : BigInt, priv : BigInt, chain_id : Int32)
+      sig = Signature.sign hash, priv
+
+      # Valid on all chains, even Bitcoin
+      v = sig.v + 27
+
+      # EIP-155, only valid on chain with `chain_id`
+      if !chain_id.nil? && chain_id > 0
+        v = sig.v + chain_id * 2 + 35
+      end
+
+      # Same signature but set the proper `v`
+      ECDSASignature.new sig.r, sig.s, v
+    end
+
+    # Prefixes a message with `\x19Ethereum Signed Message:` and signs
+    # it in the common way used by many web3 wallets. Complies with
+    # EIP-191 prefix `0x19` and version byte `0x45` (`E`).
+    # Ref: https://eips.ethereum.org/EIPS/eip-191
+    #
+    # Parameters:
+    # * `msg` (`String`): A message to sign.
+    # * `priv` (`BigInt`): A private key to sign with.
+    # * `chain_id` (`Int32`): The chain id the signature should be generated on.
+    def personal_sign(msg : String, priv : BigInt, chain_id : Int32)
+      prefixed_msg = "\x19Ethereum Signed Message:\n#{msg.size}#{msg}"
+      hashed_msg = BigInt.new Hash.keccak256(prefixed_msg), 16
+      sign(hashed_msg, priv, chain_id)
+    end
+
     # Gets the account formatted as `Ethereum` address.
     #
     # ```

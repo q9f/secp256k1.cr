@@ -20,14 +20,15 @@ describe Secp256k1::Signature do # signs and verifies a message using the privat
   it "can sign a message" do
     priv = BigInt.new "75263518707598184987916378021939673586055614731957507592904438851787542395619"
     msg = "Hello, World!"
-    sig = Secp256k1::Signature.sign msg, priv
+    hash = BigInt.new Secp256k1::Hash.sha256(msg), 16
+    sig = Secp256k1::Signature.sign hash, priv
     iter = 0
 
     # generate 10 random signatures for the same message and key
     while iter < 10
-      sig = Secp256k1::Signature.sign msg, priv
+      sig = Secp256k1::Signature.sign hash, priv
       pub = Secp256k1::Util.public_key_from_private priv
-      valid = Secp256k1::Signature.verify msg, sig, pub
+      valid = Secp256k1::Signature.verify hash, sig, pub
       valid.should eq true
       iter += 1
     end
@@ -65,11 +66,14 @@ describe Secp256k1::Signature do # signs and verifies a message using the privat
     hash.should eq "938ec6af3576cd774c0dd9c1b45ddc7980ae78a08be1f3f6826f71cb66611cef"
     hash = BigInt.new hash, 16
     sig = Secp256k1::Signature.sign hash, priv
-    expected_r = BigInt.new "84a96dcf08f901a887cef46ecd8de8246012993b5b2a4a46ab3f8036fe57c53937", 16
-    expected_s = BigInt.new "37106b3e04ec557e4614ebe87dc1678c3d49402009f4fd0a8d1b5e24a5577b392e", 16
-    expected_v = BigInt.new "2e", 16
+    expected_r = BigInt.new "38700298787902284748938991901689563523885206540000648681804878489415479415396"
+    expected_s = BigInt.new "67764913120607324759067066395188979631461833258214618300301773087492537760752"
+    expected_v = 1
     sig.r.should eq expected_r
     sig.s.should eq expected_s
-    sig.rec_id.should eq expected_v % 2
+    sig.v.should eq expected_v
+    sig.to_s.should eq "558f97c6f9ac0636cf977ae4fc4982688286e78db45f0f92f15490898247526495d194e57a40ffd8a69dd94a21ddb9133e3b584ef351fe750250ff964b16bbf001"
+    valid = Secp256k1::Signature.verify hash, sig, key.public_key
+    valid.should eq true
   end
 end
