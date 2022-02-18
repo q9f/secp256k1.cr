@@ -44,8 +44,9 @@ exit 104 if !Secp256k1::Bitcoin.wif_is_valid? dog_compr.wif
 
 # let's sign a message
 msg = "Hello, World; I am #{btc_compr.address} and #{eth.address}!"
-sig = Secp256k1::Signature.sign(msg, key_pair.private_key)
-valid = Secp256k1::Signature.verify(msg, sig, key_pair.public_key)
+hash = BigInt.new Secp256k1::Hash.sha256(msg), 16
+sig = Secp256k1::Signature.sign(hash, key_pair.private_key)
+valid = Secp256k1::Signature.verify(hash, sig, key_pair.public_key)
 
 # do not proceed if the signature does not verify
 exit 105 if !valid
@@ -78,6 +79,6 @@ Compr. DOGE Wallet-Import Format :   #{dog_compr.wif}
 Crypto Magic
 ------------
                      New Message : #{msg}
-                       Signature : r=#{Secp256k1::Util.to_padded_hex_32 sig.r}, s=#{Secp256k1::Util.to_padded_hex_32 sig.s}
+                       Signature : #{sig.to_s}
                  Valid Signature : #{valid}
 "
