@@ -40,4 +40,22 @@ describe Secp256k1::Context do
     valid = ctx.verify sig, hash, key.public_key
     valid.should be_true
   end
+
+  it "can handle r,s,v properly" do
+    ctx = Context.new
+    priv = Num.new "8e091dfb95a1b03cdd22890248c3f1b0f048186f2f3aa93257bc5271339eb306"
+    key = Key.new priv
+    msg = "Lorem, Ipsum!"
+    hash = Util.keccak msg
+    sig = ctx.sign key, hash
+    expected_r = "87d391aca9b28b18f22f1fd997da380390270a8a1b0f4dcf63c272f56fa979ce"
+    expected_s = "292330bd311a838a1b7a105624e81d127d53d4ece580832f65c59688aec6203a"
+    expected_v = "00"
+    sig.r.hex.should eq expected_r
+    sig.s.hex.should eq expected_s
+    sig.v.hex.should eq expected_v
+    sig.compact.should eq "87d391aca9b28b18f22f1fd997da380390270a8a1b0f4dcf63c272f56fa979ce292330bd311a838a1b7a105624e81d127d53d4ece580832f65c59688aec6203a00"
+    valid = ctx.verify sig, hash, key.public_key
+    valid.should eq true
+  end
 end
