@@ -22,7 +22,6 @@ jobs:
       run: |
         crystal tool format --check
         crystal spec --verbose --error-trace --time -Dpreview_mt
-        crystal run --verbose --error-trace --stats -Dpreview_mt ./try.cr
     - uses: codecov/codecov-action@v2
       with:
         directory: ./.github/coverage
