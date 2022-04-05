@@ -50,4 +50,15 @@ module Secp256k1::Util
       return Num.new ripemd.update(data.to_bytes).final.hexstring
     end
   end
+
+  def concat_bytes(x : Bytes, y : Bytes)
+    z = IO::Memory.new x.bytesize + y.bytesize
+    x.each do |b|
+      z.write_bytes UInt8.new b
+    end
+    y.each do |b|
+      z.write_bytes UInt8.new b
+    end
+    return z.to_slice
+  end
 end

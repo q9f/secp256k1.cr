@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.0">
-<meta name="crystal_docs.project_version" content="q9f/rewrite">
+<meta name="crystal_docs.project_version" content="q9f/rewrite-dev">
 <meta name="crystal_docs.project_name" content="secp256k1">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="secp256k1">
-  <title>Secp256k1::Context - secp256k1 q9f/rewrite</title>
+  <title>Secp256k1::Context - secp256k1 q9f/rewrite-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        q9f/rewrite
+        q9f/rewrite-dev
       </span>
     </div>
   </div>
@@ -138,9 +138,7 @@
   </h2>
   
     
-      <a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/context.cr#L15" target="_blank">
-        secp256k1/context.cr
-      </a>
+      secp256k1/context.cr
     
     <br/>
   
@@ -162,6 +160,11 @@
     Instance Method Summary
   </h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#deterministic_k%28priv%3ANum%2Chash%3ANum%2Corder%3DN%29-instance-method" class="signature"><strong>#deterministic_k</strong>(priv : Num, hash : Num, order = <span class="t">N</span>)</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#sign%28key%3AKey%2Chash%3ANum%29-instance-method" class="signature"><strong>#sign</strong>(key : Key, hash : Num)</a>
@@ -217,6 +220,20 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="deterministic_k(priv:Num,hash:Num,order=N)-instance-method">
+      <div class="signature">
+        
+        def <strong>deterministic_k</strong>(priv : <a href="../Secp256k1/Num.html">Num</a>, hash : <a href="../Secp256k1/Num.html">Num</a>, order = <span class="t">N</span>)
+
+        <a class="method-permalink" href="#deterministic_k%28priv%3ANum%2Chash%3ANum%2Corder%3DN%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="sign(key:Key,hash:Num)-instance-method">
       <div class="signature">
         
@@ -227,8 +244,6 @@
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/context.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -243,8 +258,6 @@
       
       <br/>
       <div>
-        
-          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/context.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>

@@ -17,6 +17,11 @@
 		<lineToCover lineNumber="46" covered="true"/>
 		<lineToCover lineNumber="48" covered="true"/>
 		<lineToCover lineNumber="50" covered="true"/>
+		<lineToCover lineNumber="54" covered="true"/>
+		<lineToCover lineNumber="55" covered="true"/>
+		<lineToCover lineNumber="57" covered="true"/>
+		<lineToCover lineNumber="60" covered="true"/>
+		<lineToCover lineNumber="62" covered="true"/>
 	</file>
 	<file path="/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/curve.cr">
 		<lineToCover lineNumber="21" covered="true"/>
@@ -89,12 +94,11 @@
 		<lineToCover lineNumber="25" covered="true"/>
 		<lineToCover lineNumber="26" covered="true"/>
 		<lineToCover lineNumber="27" covered="true"/>
-		<lineToCover lineNumber="28" covered="true"/>
+		<lineToCover lineNumber="28" covered="false"/>
 		<lineToCover lineNumber="29" covered="true"/>
-		<lineToCover lineNumber="30" covered="true"/>
-		<lineToCover lineNumber="31" covered="false"/>
-		<lineToCover lineNumber="32" covered="false"/>
-		<lineToCover lineNumber="33" covered="false"/>
+		<lineToCover lineNumber="30" covered="false"/>
+		<lineToCover lineNumber="31" covered="true"/>
+		<lineToCover lineNumber="32" covered="true"/>
 		<lineToCover lineNumber="34" covered="true"/>
 		<lineToCover lineNumber="36" covered="true"/>
 		<lineToCover lineNumber="37" covered="true"/>
@@ -111,33 +115,24 @@
 		<lineToCover lineNumber="52" covered="true"/>
 		<lineToCover lineNumber="53" covered="true"/>
 		<lineToCover lineNumber="54" covered="true"/>
+		<lineToCover lineNumber="55" covered="true"/>
 		<lineToCover lineNumber="56" covered="true"/>
+		<lineToCover lineNumber="57" covered="true"/>
 		<lineToCover lineNumber="58" covered="true"/>
+		<lineToCover lineNumber="59" covered="true"/>
 		<lineToCover lineNumber="60" covered="true"/>
+		<lineToCover lineNumber="61" covered="true"/>
+		<lineToCover lineNumber="62" covered="true"/>
 		<lineToCover lineNumber="63" covered="true"/>
 		<lineToCover lineNumber="65" covered="true"/>
 		<lineToCover lineNumber="66" covered="true"/>
 		<lineToCover lineNumber="67" covered="true"/>
-		<lineToCover lineNumber="69" covered="true"/>
+		<lineToCover lineNumber="68" covered="true"/>
+		<lineToCover lineNumber="70" covered="true"/>
 		<lineToCover lineNumber="71" covered="true"/>
-		<lineToCover lineNumber="73" covered="true"/>
-		<lineToCover lineNumber="76" covered="true"/>
-		<lineToCover lineNumber="78" covered="true"/>
-		<lineToCover lineNumber="79" covered="true"/>
-		<lineToCover lineNumber="81" covered="true"/>
-		<lineToCover lineNumber="82" covered="true"/>
-		<lineToCover lineNumber="83" covered="true"/>
-		<lineToCover lineNumber="84" covered="true"/>
-		<lineToCover lineNumber="86" covered="false"/>
-		<lineToCover lineNumber="89" covered="true"/>
-		<lineToCover lineNumber="91" covered="true"/>
-		<lineToCover lineNumber="93" covered="true"/>
-		<lineToCover lineNumber="94" covered="true"/>
-		<lineToCover lineNumber="97" covered="false"/>
-		<lineToCover lineNumber="99" covered="false"/>
-		<lineToCover lineNumber="101" covered="false"/>
-		<lineToCover lineNumber="102" covered="false"/>
-		<lineToCover lineNumber="103" covered="false"/>
+		<lineToCover lineNumber="74" covered="false"/>
+		<lineToCover lineNumber="75" covered="false"/>
+		<lineToCover lineNumber="76" covered="false"/>
 	</file>
 	<file path="/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/point.cr">
 		<lineToCover lineNumber="24" covered="true"/>
