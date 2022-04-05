@@ -1,4 +1,4 @@
-# Copyright 2019-2020 @q9f
+# Copyright 2019-2022 Afr Schoe @q9f
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Implements 256-bit `Secp256k1` Koblitz elliptic curve.
-# Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
-#
-# `Secp256k1` has the characteristic prime `p`, it is defined over the prime field ℤ_p.
-# Ref: [en.bitcoin.it/wiki/Secp256k1](https://en.bitcoin.it/wiki/Secp256k1)
-module Secp256k1
-  # The `VERSION` of the `Secp256k1` module.
-  VERSION = "0.3.7"
+class Secp256k1::Signature
+  property r : Num
+  property s : Num
+  property v : Num
+
+  def initialize(r : Num, s : Num, v : Num)
+    @r = r
+    @s = s
+    @v = v
+  end
+
+  def compact
+    "#{r.to_zpadded_hex}#{s.to_zpadded_hex}#{v.to_hex}"
+  end
 end

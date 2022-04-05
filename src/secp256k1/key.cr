@@ -12,7 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "spec"
-require "../src/secp256k1"
+class Secp256k1::Key
+  property private_key : Num
+  property public_key : Point
 
-include Secp256k1
+  def initialize
+    @private_key = Num.new
+    @public_key = Point.new @private_key
+  end
+
+  def initialize(priv : Num)
+    @private_key = priv
+    @public_key = Point.new @private_key
+  end
+
+  def private_hex
+    @private_key.to_zpadded_hex
+  end
+
+  def private_bytes
+    @private_key.to_zpadded_bytes
+  end
+
+  def public_hex
+    @public_key.uncompressed
+  end
+
+  def public_bytes
+    Num.new(@public_key.uncompressed).to_bytes
+  end
+end
