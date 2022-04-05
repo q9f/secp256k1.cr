@@ -58,4 +58,11 @@ describe Util do
     ripe = Util.ripemd160 ripe.to_hex
     ripe.to_hex.should eq "a653c746b9df6f1f21196bf6f80da734073cdc03"
   end
+
+  it "can concenate byte slices" do
+    x = Bytes[132, 33, 202, 29, 169, 60, 229, 241, 142, 31]
+    y = Bytes[58, 174, 20, 102, 8, 54, 78, 214, 14, 170]
+    z = Util.concat_bytes x, y
+    z.should eq Bytes[132, 33, 202, 29, 169, 60, 229, 241, 142, 31, 58, 174, 20, 102, 8, 54, 78, 214, 14, 170]
+  end
 end

@@ -29,7 +29,6 @@ describe Secp256k1::Context do
   end
 
   it "can verify a public signature" do
-    ctx = Context.new
     priv = Num.new "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
     key = Key.new priv
     r = Num.new "efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5"
@@ -37,7 +36,7 @@ describe Secp256k1::Context do
     v = Num.new "0"
     sig = Signature.new r, s, v
     hash = Num.new "be347331b4d87273e674b30384985c639069f852246e8c128417dbb1ca8ba812"
-    valid = ctx.verify sig, hash, key.public_key
+    valid = Context.new.verify sig, hash, key.public_key
     valid.should be_true
   end
 
@@ -57,5 +56,13 @@ describe Secp256k1::Context do
     sig.compact.should eq "87d391aca9b28b18f22f1fd997da380390270a8a1b0f4dcf63c272f56fa979ce292330bd311a838a1b7a105624e81d127d53d4ece580832f65c59688aec6203a00"
     valid = ctx.verify sig, hash, key.public_key
     valid.should eq true
+  end
+
+  it "can determine k" do
+    priv = Num.new "3b74fcc0b0c419a00d2d9e88b15fbd99e03920138da22e2a00c327b88d24cf45"
+    hash = Util.sha256 "Henlo, Wordl"
+    secret = BigInt.new "83193606619515454920331057246310791124858301167609726617990890481932799590618"
+    k = Context.new.deterministic_k(priv, hash).dec
+    k.should eq secret
   end
 end

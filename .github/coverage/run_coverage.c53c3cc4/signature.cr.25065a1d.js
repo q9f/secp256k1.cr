@@ -24,11 +24,11 @@ var data = {lines:[
 {"lineNum":"   23","line":"    @v = v","class":"lineCov","hits":"1","order":"153","possible_hits":"1",},
 {"lineNum":"   24","line":"  end"},
 {"lineNum":"   25","line":""},
-{"lineNum":"   26","line":"  def compact","class":"lineCov","hits":"2","order":"164","possible_hits":"2",},
-{"lineNum":"   27","line":"    \"#{r.to_zpadded_hex}#{s.to_zpadded_hex}#{v.to_hex}\"","class":"lineCov","hits":"1","order":"165","possible_hits":"1",},
+{"lineNum":"   26","line":"  def compact","class":"lineCov","hits":"2","order":"163","possible_hits":"2",},
+{"lineNum":"   27","line":"    \"#{r.to_zpadded_hex}#{s.to_zpadded_hex}#{v.to_hex}\"","class":"lineCov","hits":"1","order":"164","possible_hits":"1",},
 {"lineNum":"   28","line":"  end"},
 {"lineNum":"   29","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-05 12:59:49", "instrumented" : 6, "covered" : 6,};
+var header = { "command" : "run_coverage", "date" : "2022-04-05 14:23:53", "instrumented" : 6, "covered" : 6,};
 var merged_data = [];

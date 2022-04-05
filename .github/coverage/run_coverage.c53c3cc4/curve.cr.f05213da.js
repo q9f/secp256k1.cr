@@ -73,9 +73,9 @@ var data = {lines:[
 {"lineNum":"   72","line":"  end"},
 {"lineNum":"   73","line":""},
 {"lineNum":"   74","line":"  def mul(p : Point, s : Num | BigInt)","class":"lineCov","hits":"4","order":"35","possible_hits":"4",},
-{"lineNum":"   75","line":"    s = s.to_big if s.is_a? Num","class":"lineCov","hits":"1","order":"135","possible_hits":"1",},
+{"lineNum":"   75","line":"    s = s.to_big if s.is_a? Num","class":"lineCov","hits":"1","order":"134","possible_hits":"1",},
 {"lineNum":"   76","line":"    if s === 0 || s >= N.to_big","class":"linePartCov","hits":"3","order":"36","possible_hits":"4",},
-{"lineNum":"   77","line":"      raise \"Invalid scalar: outside of Secp256k1 field dimension.\"","class":"linePartCov","hits":"1","order":"204","possible_hits":"2",},
+{"lineNum":"   77","line":"      raise \"Invalid scalar: outside of Secp256k1 field dimension.\"","class":"linePartCov","hits":"1","order":"203","possible_hits":"2",},
 {"lineNum":"   78","line":"    end"},
 {"lineNum":"   79","line":"    s_bin = s.to_s 2","class":"lineCov","hits":"2","order":"37","possible_hits":"2",},
 {"lineNum":"   80","line":"    q = p","class":"lineCov","hits":"2","order":"38","possible_hits":"2",},
@@ -91,5 +91,5 @@ var data = {lines:[
 {"lineNum":"   90","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-05 12:59:49", "instrumented" : 56, "covered" : 56,};
+var header = { "command" : "run_coverage", "date" : "2022-04-05 14:23:53", "instrumented" : 56, "covered" : 56,};
 var merged_data = [];
