@@ -47,8 +47,60 @@ class Secp256k1::Context
     sig.r.to_big === p.x.to_big
   end
 
-  private def deterministic_k(priv : Num, hash : Num)
-    determined = (hash.to_big + priv.to_big) % N.to_big
-    Util.sha256 Num.new determined
+  private def deterministic_k(priv : Num, hash : Num, order = N)
+    order_size = order.hex.size // 2
+    v = Num.new Bytes.new order_size, 0x01
+    k = Num.new Bytes.new order_size, 0x00
+    io = IO::Memory.new v.bin.bytesize + 1 + priv.bin.bytesize + hash.bin.bytesize
+    v.bin.each do |b|
+      io.write_bytes UInt8.new b
+    end
+    io.write_bytes UInt8.new 0x00
+    priv.bin.each do |b|
+      io.write_bytes UInt8.new b
+    end
+    hash.bin.each do |b|
+      io.write_bytes UInt8.new b
+    end
+    k = OpenSSL::HMAC.digest(:sha256, k.bin, io.to_slice)
+    v = OpenSSL::HMAC.digest(:sha256, k, v.bin)
+    io = IO::Memory.new v.bytesize + 1 + priv.bin.bytesize + hash.bin.bytesize
+    v.each do |b|
+      io.write_bytes UInt8.new b
+    end
+    io.write_bytes UInt8.new 0x00
+    priv.bin.each do |b|
+      io.write_bytes UInt8.new b
+    end
+    hash.bin.each do |b|
+      io.write_bytes UInt8.new b
+    end
+    k = OpenSSL::HMAC.digest(:sha256, k, io.to_slice)
+    v = OpenSSL::HMAC.digest(:sha256, k, v)
+    while true
+      t = IO::Memory.new.to_slice
+      while t.size < order_size
+        v = OpenSSL::HMAC.digest(:sha256, k, v)
+        io = IO::Memory.new t.size + v.bytesize
+        t.each do |b|
+          io.write_bytes UInt8.new b
+        end
+        v.each do |b|
+          io.write_bytes UInt8.new b
+        end
+        t = io.to_slice
+      end
+      secret = Num.new t
+      if secret.dec < order.dec && secret.dec > 0
+        return secret
+      end
+      io = IO::Memory.new v.bytesize + 1
+      v.each do |b|
+        io.write_bytes UInt8.new b
+      end
+      io.write_bytes UInt8.new 0x00
+      k = OpenSSL::HMAC.digest(:sha256, k, io.to_slice)
+      v = OpenSSL::HMAC.digest(:sha256, k, v)
+    end
   end
 end
