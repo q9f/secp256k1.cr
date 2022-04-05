@@ -13,7 +13,8 @@
 # limitations under the License.
 
 require "big/big_int"
-require "openssl"
+require "openssl/digest"
+require "openssl/hmac"
 require "sha3"
 
 require "./secp256k1/context"
