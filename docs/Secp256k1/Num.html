@@ -115,6 +115,26 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Provides a class to conveniently handle big numbers on the elliptic
+curve. It allows to easily access decimal, hexadecimal, and binary
+representations of the numeric. In addition, it implements some
+utilities such as zpadding or asserting hexadecimal strings.</p>
+<p>Properties:</p>
+<ul>
+<li><code><a href="../Secp256k1/Num.html#hex%3AString-instance-method">#hex</a></code> (<code>String</code>): the hexadecimal string representation of the number.</li>
+<li><code><a href="../Secp256k1/Num.html#dec%3ABigInt-instance-method">#dec</a></code> (<code>BigInt</code>): the decimal big-integer representation of the number.</li>
+<li><code><a href="../Secp256k1/Num.html#bin%3ASlice%28UInt8%29-instance-method">#bin</a></code> (<code>Bytes</code>): the binary bytes-slice represenation of the number.</li>
+</ul>
+
 
 
 
@@ -160,20 +180,28 @@
       <li class="entry-summary">
         <a href="#new%28hex%3AString%29-class-method" class="signature"><strong>.new</strong>(hex : String)</a>
         
+          <div class="summary"><p>Creates a number from a hexadecimal string literal.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new%28num%3ABigInt%29-class-method" class="signature"><strong>.new</strong>(num : BigInt)</a>
+        
+          <div class="summary"><p>Creates a number from a big integer numeric.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new%28bin%3ASlice%28UInt8%29%29-class-method" class="signature"><strong>.new</strong>(bin : Slice(UInt8))</a>
         
+          <div class="summary"><p>Creates a number from a binary bytes slice.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+          <div class="summary"><p>Creates a random number using <code>Random::Secure</code> that can be used as a secret (private key).</p></div>
         
       </li>
     
@@ -196,60 +224,84 @@
       <li class="entry-summary">
         <a href="#bin%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#bin</strong> : Slice(UInt8)</a>
         
+          <div class="summary"><p>The binary bytes-slice represenation of the number.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#bin%3D%28bin%3ASlice%28UInt8%29%29-instance-method" class="signature"><strong>#bin=</strong>(bin : Slice(UInt8))</a>
+        
+          <div class="summary"><p>The binary bytes-slice represenation of the number.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#dec%3ABigInt-instance-method" class="signature"><strong>#dec</strong> : BigInt</a>
         
+          <div class="summary"><p>The decimal big-integer representation of the number.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#dec%3D%28dec%3ABigInt%29-instance-method" class="signature"><strong>#dec=</strong>(dec : BigInt)</a>
+        
+          <div class="summary"><p>The decimal big-integer representation of the number.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#hex%3AString-instance-method" class="signature"><strong>#hex</strong> : String</a>
         
+          <div class="summary"><p>The hexadecimal string representation of the number.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#hex%3D%28hex%3AString%29-instance-method" class="signature"><strong>#hex=</strong>(hex : String)</a>
+        
+          <div class="summary"><p>The hexadecimal string representation of the number.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_big%3ABigInt-instance-method" class="signature"><strong>#to_big</strong> : BigInt</a>
         
+          <div class="summary"><p>Returns a big-integer representation of the number.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#to_bytes%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#to_bytes</strong> : Slice(UInt8)</a>
+        
+          <div class="summary"><p>Returns a binary byte-slice representation of the number.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_hex%3AString-instance-method" class="signature"><strong>#to_hex</strong> : String</a>
         
+          <div class="summary"><p>Returns an unprefixed hexadecimal string representation.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#to_prefixed_hex-instance-method" class="signature"><strong>#to_prefixed_hex</strong></a>
+        
+          <div class="summary"><p>Returns an <code>0x</code>-prefixed hexadecimal string representation.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_zpadded_bytes%28length%3D32%29-instance-method" class="signature"><strong>#to_zpadded_bytes</strong>(length = <span class="n">32</span>)</a>
         
+          <div class="summary"><p>Returns a z-padded byte-slice binary representation.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#to_zpadded_hex%28length%3D32%29-instance-method" class="signature"><strong>#to_zpadded_hex</strong>(length = <span class="n">32</span>)</a>
+        
+          <div class="summary"><p>Returns a z-padded hexadecimal string representation.</p></div>
         
       </li>
     
@@ -301,6 +353,20 @@
         <a class="method-permalink" href="#new%28hex%3AString%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Creates a number from a hexadecimal string literal.</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Secp256k1/Num.html#hex%3AString-instance-method">#hex</a></code> (<code>String</code>): a hexadecimal string representating the number.</li>
+</ul>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;568a0f505bde902db4a6afd207c794c7845fe7715da5999bb276d453c702a46d&quot;</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Num:0x7fb934585480</span>
+<span class="c">#          @hex=&quot;568a0f505bde902db4a6afd207c794c7845fe7715da5999bb276d453c702a46d&quot;,</span>
+<span class="c">#          @dec=39142835565766237398843902819171565157710677457569850027793715608438337348717,</span>
+<span class="c">#          @bin=Bytes[86, 138, 15, 80, 91, 222, 144, 45, 180, 166, 175, 210, 7, 199, 148, 199, 132, 95, 231, 113, 93, 165, 153, 155, 178, 118, 212, 83, 199, 2, 164, 109]&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -314,6 +380,20 @@
 
         <a class="method-permalink" href="#new%28num%3ABigInt%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Creates a number from a big integer numeric.</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Secp256k1/Num.html#dec%3ABigInt-instance-method">#dec</a></code> (<code>BigInt</code>): the decimal big-integer representating the number.</li>
+</ul>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span> <span class="t">BigInt</span>.<span class="k">new</span> <span class="s">&quot;39142835565766237398843902819171565157710677457569850027793715608438337348717&quot;</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Num:0x7fb934585480</span>
+<span class="c">#          @hex=&quot;568a0f505bde902db4a6afd207c794c7845fe7715da5999bb276d453c702a46d&quot;,</span>
+<span class="c">#          @dec=39142835565766237398843902819171565157710677457569850027793715608438337348717,</span>
+<span class="c">#          @bin=Bytes[86, 138, 15, 80, 91, 222, 144, 45, 180, 166, 175, 210, 7, 199, 148, 199, 132, 95, 231, 113, 93, 165, 153, 155, 178, 118, 212, 83, 199, 2, 164, 109]&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -329,6 +409,20 @@
         <a class="method-permalink" href="#new%28bin%3ASlice%28UInt8%29%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Creates a number from a binary bytes slice.</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Secp256k1/Num.html#bin%3ASlice%28UInt8%29-instance-method">#bin</a></code> (<code>Bytes</code>): the binary bytes-slice represenating the number.</li>
+</ul>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span> <span class="t">Bytes</span>[<span class="n">86</span>, <span class="n">138</span>, <span class="n">15</span>, <span class="n">80</span>, <span class="n">91</span>, <span class="n">222</span>, <span class="n">144</span>, <span class="n">45</span>, <span class="n">180</span>, <span class="n">166</span>, <span class="n">175</span>, <span class="n">210</span>, <span class="n">7</span>, <span class="n">199</span>, <span class="n">148</span>, <span class="n">199</span>, <span class="n">132</span>, <span class="n">95</span>, <span class="n">231</span>, <span class="n">113</span>, <span class="n">93</span>, <span class="n">165</span>, <span class="n">153</span>, <span class="n">155</span>, <span class="n">178</span>, <span class="n">118</span>, <span class="n">212</span>, <span class="n">83</span>, <span class="n">199</span>, <span class="n">2</span>, <span class="n">164</span>, <span class="n">109</span>]
+<span class="c"># =&gt; #&lt;Secp256k1::Num:0x7fb934585480</span>
+<span class="c">#          @hex=&quot;568a0f505bde902db4a6afd207c794c7845fe7715da5999bb276d453c702a46d&quot;,</span>
+<span class="c">#          @dec=39142835565766237398843902819171565157710677457569850027793715608438337348717,</span>
+<span class="c">#          @bin=Bytes[86, 138, 15, 80, 91, 222, 144, 45, 180, 166, 175, 210, 7, 199, 148, 199, 132, 95, 231, 113, 93, 165, 153, 155, 178, 118, 212, 83, 199, 2, 164, 109]&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -342,6 +436,17 @@
 
         <a class="method-permalink" href="#new-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Creates a random number using <code>Random::Secure</code> that can be used as
+a secret (private key).</p>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Num:0x7ff3d98013c0</span>
+<span class="c">#          @hex=&quot;568a0f505bde902db4a6afd207c794c7845fe7715da5999bb276d453c702a46d&quot;,</span>
+<span class="c">#          @dec=39142835565766237398843902819171565157710677457569850027793715608438337348717,</span>
+<span class="c">#          @bin=Bytes[86, 138, 15, 80, 91, 222, 144, 45, 180, 166, 175, 210, 7, 199, 148, 199, 132, 95, 231, 113, 93, 165, 153, 155, 178, 118, 212, 83, 199, 2, 164, 109]&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -371,6 +476,11 @@
         <a class="method-permalink" href="#bin%3ASlice%28UInt8%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The binary bytes-slice represenation of the number.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -384,6 +494,11 @@
 
         <a class="method-permalink" href="#bin%3D%28bin%3ASlice%28UInt8%29%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The binary bytes-slice represenation of the number.</p>
+        </div>
       
       <br/>
       <div>
@@ -399,6 +514,11 @@
         <a class="method-permalink" href="#dec%3ABigInt-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The decimal big-integer representation of the number.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -412,6 +532,11 @@
 
         <a class="method-permalink" href="#dec%3D%28dec%3ABigInt%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The decimal big-integer representation of the number.</p>
+        </div>
       
       <br/>
       <div>
@@ -427,6 +552,11 @@
         <a class="method-permalink" href="#hex%3AString-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The hexadecimal string representation of the number.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -440,6 +570,11 @@
 
         <a class="method-permalink" href="#hex%3D%28hex%3AString%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The hexadecimal string representation of the number.</p>
+        </div>
       
       <br/>
       <div>
@@ -455,6 +590,13 @@
         <a class="method-permalink" href="#to_big%3ABigInt-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns a big-integer representation of the number.</p>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">137</span>]).to_big
+<span class="c"># =&gt; 137</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -468,6 +610,13 @@
 
         <a class="method-permalink" href="#to_bytes%3ASlice%28UInt8%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns a binary byte-slice representation of the number.</p>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;0x89&quot;</span>).to_bytes
+<span class="c"># =&gt; Bytes[137]</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -483,6 +632,13 @@
         <a class="method-permalink" href="#to_hex%3AString-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns an unprefixed hexadecimal string representation.</p>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">137</span>]).to_hex
+<span class="c"># =&gt; &quot;89&quot;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -496,6 +652,13 @@
 
         <a class="method-permalink" href="#to_prefixed_hex-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns an <code>0x</code>-prefixed hexadecimal string representation.</p>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">137</span>]).to_prefixed_hex
+<span class="c"># =&gt; &quot;0x89&quot;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -511,6 +674,17 @@
         <a class="method-permalink" href="#to_zpadded_bytes%28length%3D32%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns a z-padded byte-slice binary representation.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>length</code> (<code>Int</code>): the byte-size of the final z-padded slice (default <code>32</code>).</li>
+</ul>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">137</span>]).to_zpadded_bytes
+<span class="c"># =&gt; Bytes[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 137]</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -524,6 +698,17 @@
 
         <a class="method-permalink" href="#to_zpadded_hex%28length%3D32%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns a z-padded hexadecimal string representation.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>length</code> (<code>Int</code>): the byte-size of the final z-padded hex-string (default <code>32</code>).</li>
+</ul>
+<pre><code class="language-crystal"><span class="t">Num</span>.<span class="k">new</span>(<span class="t">Bytes</span>[<span class="n">137</span>]).to_zpadded_hex
+<span class="c"># =&gt; &quot;0000000000000000000000000000000000000000000000000000000000000089&quot;</span></code></pre>
+        </div>
       
       <br/>
       <div>

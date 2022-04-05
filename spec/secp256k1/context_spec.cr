@@ -57,12 +57,4 @@ describe Secp256k1::Context do
     valid = ctx.verify sig, hash, key.public_key
     valid.should eq true
   end
-
-  it "can determine k" do
-    priv = Num.new "3b74fcc0b0c419a00d2d9e88b15fbd99e03920138da22e2a00c327b88d24cf45"
-    hash = Util.sha256 "Henlo, Wordl"
-    secret = BigInt.new "83193606619515454920331057246310791124858301167609726617990890481932799590618"
-    k = Context.new.deterministic_k(priv, hash).dec
-    k.should eq secret
-  end
 end

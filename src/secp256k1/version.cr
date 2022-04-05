@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Provides the `Secp256k1` module with the elliptic curve  parameters
+# used by the `Bitcoin`, `Ethereum`, and `Polkadot` blockchains. It's
+# primarily used to generate key-pairs as well as signing messages and
+# recoverying signatures.
+#
+# Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
 module Secp256k1
+  # The `VERSION` of the `Secp256k1` module.
   VERSION = "0.5.0"
 end

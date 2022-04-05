@@ -115,6 +115,23 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Provides a <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair containing a secret number (private key)
+and a public point on the elliptic curve (public key).</p>
+<p>Properties:</p>
+<ul>
+<li><code><a href="../Secp256k1/Key.html#private_key%3ANum-instance-method">#private_key</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the secret number representing the private key.</li>
+<li><code><a href="../Secp256k1/Key.html#public_key%3APoint-instance-method">#public_key</a></code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the point on the elliptic curve representing the public key.</li>
+</ul>
+
 
 
 
@@ -160,10 +177,14 @@
       <li class="entry-summary">
         <a href="#new%28priv%3ANum%29-class-method" class="signature"><strong>.new</strong>(priv : Num)</a>
         
+          <div class="summary"><p>Creates a public-private keypair from an existing private key.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+          <div class="summary"><p>Creates a new, random <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair.</p></div>
         
       </li>
     
@@ -186,40 +207,70 @@
       <li class="entry-summary">
         <a href="#private_bytes-instance-method" class="signature"><strong>#private_bytes</strong></a>
         
+          <div class="summary"><p>Returns the private key as binary byte slice.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#private_hex-instance-method" class="signature"><strong>#private_hex</strong></a>
+        
+          <div class="summary"><p>Returns the private key as hexadecimal string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#private_key%3ANum-instance-method" class="signature"><strong>#private_key</strong> : Num</a>
         
+          <div class="summary"><p>The secret number representing the private key.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#private_key%3D%28private_key%3ANum%29-instance-method" class="signature"><strong>#private_key=</strong>(private_key : Num)</a>
+        
+          <div class="summary"><p>The secret number representing the private key.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#public_bytes-instance-method" class="signature"><strong>#public_bytes</strong></a>
         
+          <div class="summary"><p>Returns the public key as uncompressed, binary byte slice.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#public_bytes_compressed-instance-method" class="signature"><strong>#public_bytes_compressed</strong></a>
+        
+          <div class="summary"><p>Returns the public key as compressed, binary byte slice.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#public_hex-instance-method" class="signature"><strong>#public_hex</strong></a>
+        
+          <div class="summary"><p>Returns the public key as uncompressed, hexadecimal string literal.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#public_hex_compressed-instance-method" class="signature"><strong>#public_hex_compressed</strong></a>
+        
+          <div class="summary"><p>Returns the public key as compressed, hexadecimal string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#public_key%3APoint-instance-method" class="signature"><strong>#public_key</strong> : Point</a>
         
+          <div class="summary"><p>The point on the elliptic curve representing the public key.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#public_key%3D%28public_key%3APoint%29-instance-method" class="signature"><strong>#public_key=</strong>(public_key : Point)</a>
+        
+          <div class="summary"><p>The point on the elliptic curve representing the public key.</p></div>
         
       </li>
     
@@ -271,6 +322,31 @@
         <a class="method-permalink" href="#new%28priv%3ANum%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Creates a public-private keypair from an existing private key.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>priv</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the private key for the keypair.</li>
+</ul>
+<pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>
+<span class="t">Key</span>.<span class="k">new</span> priv
+<span class="c"># =&gt; #&lt;Secp256k1::Key:0x7fc6b2f54ee0</span>
+<span class="c">#          @private_key=#&lt;Secp256k1::Num:0x7fad7235d300</span>
+<span class="c">#              @hex=&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;,</span>
+<span class="c">#              @dec=27505422793993207218034260454067205887515304192802142316084292370834437241648,</span>
+<span class="c">#              @bin=Bytes[60, 207, 132, 130, 12, 32, 213, 232, 197, 54, 186, 132, 197, 43, 164, 16, 55, 91, 41, 177, 129, 43, 95, 126, 114, 36, 69, 201, 105, 160, 251, 48]&gt;,</span>
+<span class="c">#          @public_key=#&lt;Secp256k1::Point:0x7fad7235ad20</span>
+<span class="c">#              @x=#&lt;Secp256k1::Num:0x7fad69294ec0</span>
+<span class="c">#                  @hex=&quot;cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba2&quot;,</span>
+<span class="c">#                  @dec=92855812888509048668847240903552964511053624688683992093822247249407942908834,</span>
+<span class="c">#                  @bin=Bytes[205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162]&gt;,</span>
+<span class="c">#              @y=#&lt;Secp256k1::Num:0x7fad69294e80</span>
+<span class="c">#                  @hex=&quot;81363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c&quot;,</span>
+<span class="c">#                  @dec=58444189335609256006902338825877424261513225250255958585656342678587884156524,</span>
+<span class="c">#                  @bin=Bytes[129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]&gt;&gt;&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -284,6 +360,26 @@
 
         <a class="method-permalink" href="#new-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Creates a new, random <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Key:0x7fad7235aee0</span>
+<span class="c">#          @private_key=#&lt;Secp256k1::Num:0x7fad7235d300</span>
+<span class="c">#              @hex=&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;,</span>
+<span class="c">#              @dec=27505422793993207218034260454067205887515304192802142316084292370834437241648,</span>
+<span class="c">#              @bin=Bytes[60, 207, 132, 130, 12, 32, 213, 232, 197, 54, 186, 132, 197, 43, 164, 16, 55, 91, 41, 177, 129, 43, 95, 126, 114, 36, 69, 201, 105, 160, 251, 48]&gt;,</span>
+<span class="c">#          @public_key=#&lt;Secp256k1::Point:0x7fad7235ad20</span>
+<span class="c">#              @x=#&lt;Secp256k1::Num:0x7fad69294ec0</span>
+<span class="c">#                  @hex=&quot;cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba2&quot;,</span>
+<span class="c">#                  @dec=92855812888509048668847240903552964511053624688683992093822247249407942908834,</span>
+<span class="c">#                  @bin=Bytes[205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162]&gt;,</span>
+<span class="c">#              @y=#&lt;Secp256k1::Num:0x7fad69294e80</span>
+<span class="c">#                  @hex=&quot;81363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c&quot;,</span>
+<span class="c">#                  @dec=58444189335609256006902338825877424261513225250255958585656342678587884156524,</span>
+<span class="c">#                  @bin=Bytes[129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]&gt;&gt;&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -313,6 +409,13 @@
         <a class="method-permalink" href="#private_bytes-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns the private key as binary byte slice.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>).private_bytes
+<span class="c"># =&gt; Bytes[60, 207, 132, 130, 12, 32, 213, 232, 197, 54, 186, 132, 197, 43, 164, 16, 55, 91, 41, 177, 129, 43, 95, 126, 114, 36, 69, 201, 105, 160, 251, 48]</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -326,6 +429,13 @@
 
         <a class="method-permalink" href="#private_hex-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns the private key as hexadecimal string literal.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>).private_hex
+<span class="c"># =&gt; &quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -341,6 +451,11 @@
         <a class="method-permalink" href="#private_key%3ANum-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The secret number representing the private key.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -354,6 +469,11 @@
 
         <a class="method-permalink" href="#private_key%3D%28private_key%3ANum%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The secret number representing the private key.</p>
+        </div>
       
       <br/>
       <div>
@@ -369,6 +489,34 @@
         <a class="method-permalink" href="#public_bytes-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns the public key as uncompressed, binary byte slice.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>).public_bytes
+<span class="c"># =&gt; Bytes[4, 205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162, 129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="public_bytes_compressed-instance-method">
+      <div class="signature">
+        
+        def <strong>public_bytes_compressed</strong>
+
+        <a class="method-permalink" href="#public_bytes_compressed-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the public key as compressed, binary byte slice.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>).public_bytes_compressed
+<span class="c"># =&gt; Bytes[2, 205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162]</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -382,6 +530,34 @@
 
         <a class="method-permalink" href="#public_hex-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns the public key as uncompressed, hexadecimal string literal.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>).public_hex
+<span class="c"># =&gt; &quot;04cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba281363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c&quot;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="public_hex_compressed-instance-method">
+      <div class="signature">
+        
+        def <strong>public_hex_compressed</strong>
+
+        <a class="method-permalink" href="#public_hex_compressed-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Returns the public key as compressed, hexadecimal string literal.</p>
+<pre><code class="language-crystal"><span class="t">Key</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>).public_hex_compressed
+<span class="c"># =&gt; &quot;02cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba2&quot;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -397,6 +573,11 @@
         <a class="method-permalink" href="#public_key%3APoint-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The point on the elliptic curve representing the public key.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -410,6 +591,11 @@
 
         <a class="method-permalink" href="#public_key%3D%28public_key%3APoint%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The point on the elliptic curve representing the public key.</p>
+        </div>
       
       <br/>
       <div>

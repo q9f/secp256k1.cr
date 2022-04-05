@@ -113,6 +113,18 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Implements 256-bit <code><a href="../Secp256k1.html">Secp256k1</a></code> Koblitz elliptic curve operations.</p>
+<p>Ref: <a href="https://www.secg.org/sec2-v2.pdf">secg.org/sec2-v2.pdf</a></p>
+
 
 
 
@@ -176,25 +188,28 @@
       <li class="entry-summary">
         <a href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29-instance-method" class="signature"><strong>#add</strong>(p : Point, q : Point, prime = <span class="t">P</span>)</a>
         
+          <div class="summary"><p>Computes the elliptic curve jive addition of point <code>p(x, y)</code> and <code>q(x, y)</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#double%28p%3APoint%2Cprime%3DP%29-instance-method" class="signature"><strong>#double</strong>(p : Point, prime = <span class="t">P</span>)</a>
+        
+          <div class="summary"><p>Computes the elliptic curve juke point doubling of <code>p(x, y)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29-instance-method" class="signature"><strong>#mod_inv</strong>(a : Num | BigInt, prime = <span class="t">P</span>)</a>
         
+          <div class="summary"><p>Computes the elliptic curve modular multiplicative inverse of <code>a</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29-instance-method" class="signature"><strong>#mul</strong>(p : Point, s : Num | BigInt)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#sign%28hash%3ANum%29-instance-method" class="signature"><strong>#sign</strong>(hash : Num)</a>
+          <div class="summary"><p>Computes the elliptic curve sequence multiplication of point <code>p(x, y)</code> and a skalar <code>s</code>; with <code>s</code> being a private key within the elliptic curve field size of <code>N</code>.</p></div>
         
       </li>
     
@@ -230,6 +245,31 @@
         <a class="method-permalink" href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Computes the elliptic curve jive addition of point <code>p(x, y)</code> and <code>q(x, y)</code>.
+It <em>draws</em> a line between <code>p</code> and <code>q</code> which will intersect the
+curve in the point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
+<p>Paramters:</p>
+<ul>
+<li><code>p</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the point <code>p(x, y)</code> to be used in the jive addition.</li>
+<li><code>q</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the point <code>q(x, y)</code> to be used in the jive addition.</li>
+<li><code>prime</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the prime number that shapes the field (default <code>P</code>).</li>
+</ul>
+<pre><code class="language-crystal">p <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d&quot;</span>
+q <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;7e17f60baa7b8dc8581a55f7be1ea263c6a88452cf3f0a3f710651767654946c&quot;</span>
+<span class="t">Curve</span>.add p, q
+<span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f9cb270f5e0</span>
+<span class="c">#          @x=#&lt;Secp256k1::Num:0x7f9cb26e8580</span>
+<span class="c">#              @hex=&quot;462691876380f2b744fbeaac38c69b61f6fc0c09c88161d95a6c121ff939a62b&quot;,</span>
+<span class="c">#              @dec=31730043992582273538171659139596419882010265215932424156945250658252958049835,</span>
+<span class="c">#              @bin=Bytes[70, 38, 145, 135, 99, 128, 242, 183, 68, 251, 234, 172, 56, 198, 155, 97, 246, 252, 12, 9, 200, 129, 97, 217, 90, 108, 18, 31, 249, 57, 166, 43]&gt;,</span>
+<span class="c">#          @y=#&lt;Secp256k1::Num:0x7f9cb26e8540</span>
+<span class="c">#              @hex=&quot;5ab931d6727872d33ea0491705680f5fbcb7409ba80541470673c4fce4dfeea4&quot;,</span>
+<span class="c">#              @dec=41035367046532706466310839850976742216202985567094126989716802462994340507300,</span>
+<span class="c">#              @bin=Bytes[90, 185, 49, 214, 114, 120, 114, 211, 62, 160, 73, 23, 5, 104, 15, 95, 188, 183, 64, 155, 168, 5, 65, 71, 6, 115, 196, 252, 228, 223, 238, 164]&gt;&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -243,6 +283,30 @@
 
         <a class="method-permalink" href="#double%28p%3APoint%2Cprime%3DP%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Computes the elliptic curve juke point doubling of <code>p(x, y)</code>.
+This is a special case of addition where both points are the same.
+It <em>draws</em> a tangent line at <code>p</code> which will intersect the curve
+at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
+<p>Paramters:</p>
+<ul>
+<li><code>p</code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the point <code>p(x, y)</code> to be used in the juke doubling.</li>
+<li><code>prime</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the prime number that shapes the field (default <code>P</code>).</li>
+</ul>
+<pre><code class="language-crystal">p <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d&quot;</span>
+<span class="t">Curve</span>.double p
+<span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f58a244e860</span>
+<span class="c">#          @x=#&lt;Secp256k1::Num:0x7f58a240fdc0</span>
+<span class="c">#              @hex=&quot;a4a5f515981b6375a8f95c60607ca5ad5fee99bfc1615dabc9340f67e71bbfd0&quot;,</span>
+<span class="c">#              @dec=74472528443376700120710890798997658581940283975604946405194317381666873262032,</span>
+<span class="c">#              @bin=Bytes[164, 165, 245, 21, 152, 27, 99, 117, 168, 249, 92, 96, 96, 124, 165, 173, 95, 238, 153, 191, 193, 97, 93, 171, 201, 52, 15, 103, 231, 27, 191, 208]&gt;,</span>
+<span class="c">#          @y=#&lt;Secp256k1::Num:0x7f58a240fd80</span>
+<span class="c">#              @hex=&quot;0fa62813ae49d71dd3a19fbd17516e7e9dcdd5753d69cb13d87051d8d327253c&quot;,</span>
+<span class="c">#              @dec=7078265941949780810129057229376739925018916922271301049726817038887681467708,</span>
+<span class="c">#              @bin=Bytes[15, 166, 40, 19, 174, 73, 215, 29, 211, 161, 159, 189, 23, 81, 110, 126, 157, 205, 213, 117, 61, 105, 203, 19, 216, 112, 81, 216, 211, 39, 37, 60]&gt;&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -258,6 +322,22 @@
         <a class="method-permalink" href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Computes the elliptic curve modular multiplicative inverse of <code>a</code>.</p>
+<p>Paremeters:</p>
+<ul>
+<li><code>a</code> (<code><a href="../Secp256k1/Num.html">Num</a> | BigInt</code>): the integer that we want the modular inverse of.</li>
+<li><code>prime</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the prime number that shapes the field (default <code>P</code>).</li>
+</ul>
+<pre><code class="language-crystal">a <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;ea678c668356d16d8bf5c69f95c1055e39bd24174605f64846e27c3ae6a88d81&quot;</span>
+<span class="t">Curve</span>.mod_inv a
+<span class="c"># =&gt; #&lt;Secp256k1::Num:0x7fe839493480</span>
+<span class="c">#          @hex=&quot;2901bbb12fcb64e9887e699e69e6b0b3811db18f6b4f94dfb26084e5cb38cac7&quot;,</span>
+<span class="c">#          @dec=18547889042489459453149555262266367802647896593999507743600711803155665963719,</span>
+<span class="c">#          @bin=Bytes[41, 1, 187, 177, 47, 203, 100, 233, 136, 126, 105, 158, 105, 230, 176, 179, 129, 29, 177, 143, 107, 79, 148, 223, 178, 96, 132, 229, 203, 56, 202, 199]&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -272,19 +352,29 @@
         <a class="method-permalink" href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29-instance-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="sign(hash:Num)-instance-method">
-      <div class="signature">
-        
-        def <strong>sign</strong>(hash : <a href="../Secp256k1/Num.html">Num</a>)
-
-        <a class="method-permalink" href="#sign%28hash%3ANum%29-instance-method">#</a>
-      </div>
+        <div class="doc">
+          
+          <p>Computes the elliptic curve sequence multiplication of point <code>p(x, y)</code>
+and a skalar <code>s</code>; with <code>s</code> being a private key within the elliptic
+curve field size of <code>N</code>.</p>
+<p>Paramters:</p>
+<ul>
+<li><code>p</code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the point <code>p(x, y)</code> to be used in the sequencing.</li>
+<li><code>s</code> (<code><a href="../Secp256k1/Num.html">Num</a> | BigInt</code>): a skalar, in most cases a private key.</li>
+</ul>
+<pre><code class="language-crystal">p <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d&quot;</span>
+s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;f51ad125548b7a283ebf15ab830a25c850d4d863078c48cc9993b79ee18ee11e&quot;</span>
+<span class="t">Curve</span>.mul p, s
+<span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f4b6f6da940</span>
+<span class="c">#          @x=#&lt;Secp256k1::Num:0x7f4b6f6cef00</span>
+<span class="c">#              @hex=&quot;748f267620fa2cbf67c925db79a9bef6f9025e642d9c15c1d34b4961471636b5&quot;,</span>
+<span class="c">#              @dec=52721215017030004050607035413180757873535914286730888523429593251155658815157,</span>
+<span class="c">#              @bin=Bytes[116, 143, 38, 118, 32, 250, 44, 191, 103, 201, 37, 219, 121, 169, 190, 246, 249, 2, 94, 100, 45, 156, 21, 193, 211, 75, 73, 97, 71, 22, 54, 181]&gt;,</span>
+<span class="c">#          @y=#&lt;Secp256k1::Num:0x7f4b6f6cee00</span>
+<span class="c">#              @hex=&quot;73832331979d89d395912061e341f8468cfb3e619da06a057e4a5ca95bb95e77&quot;,</span>
+<span class="c">#              @dec=52247677450688090944696492452353217603423545532791062178926183551888078233207,</span>
+<span class="c">#              @bin=Bytes[115, 131, 35, 49, 151, 157, 137, 211, 149, 145, 32, 97, 227, 65, 248, 70, 140, 251, 62, 97, 157, 160, 106, 5, 126, 74, 92, 169, 91, 185, 94, 119]&gt;&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
