@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.3.0">
+<meta name="crystal_docs.project_version" content="q9f/rewrite">
+<meta name="crystal_docs.project_name" content="secp256k1">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="secp256k1">
+  <title>Secp256k1::Curve - secp256k1 q9f/rewrite</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          secp256k1
+        </a>
+      </h1>
+
+      <span class="project-version">
+        q9f/rewrite
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="secp256k1/Secp256k1" data-name="secp256k1">
+      <a href="../Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Context" data-name="secp256k1::context">
+      <a href="../Secp256k1/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" current" data-id="secp256k1/Secp256k1/Curve" data-name="secp256k1::curve">
+      <a href="../Secp256k1/Curve.html">Curve</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Key" data-name="secp256k1::key">
+      <a href="../Secp256k1/Key.html">Key</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Num" data-name="secp256k1::num">
+      <a href="../Secp256k1/Num.html">Num</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Point" data-name="secp256k1::point">
+      <a href="../Secp256k1/Point.html">Point</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="../Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="../Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Secp256k1::Curve
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="extended-modules" class="anchor" href="#extended-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Extended Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Secp256k1/Curve.html">Secp256k1::Curve</a></li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/curve.cr#L15" target="_blank">
+        secp256k1/curve.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29-instance-method" class="signature"><strong>#add</strong>(p : Point, q : Point, prime = <span class="t">P</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#double%28p%3APoint%2Cprime%3DP%29-instance-method" class="signature"><strong>#double</strong>(p : Point, prime = <span class="t">P</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29-instance-method" class="signature"><strong>#mod_inv</strong>(a : Num | BigInt, prime = <span class="t">P</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29-instance-method" class="signature"><strong>#mul</strong>(p : Point, s : Num | BigInt)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#sign%28hash%3ANum%29-instance-method" class="signature"><strong>#sign</strong>(hash : Num)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="add(p:Point,q:Point,prime=P)-instance-method">
+      <div class="signature">
+        
+        def <strong>add</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, q : <a href="../Secp256k1/Point.html">Point</a>, prime = <span class="t">P</span>)
+
+        <a class="method-permalink" href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/curve.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="double(p:Point,prime=P)-instance-method">
+      <div class="signature">
+        
+        def <strong>double</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, prime = <span class="t">P</span>)
+
+        <a class="method-permalink" href="#double%28p%3APoint%2Cprime%3DP%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/curve.cr#L59" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mod_inv(a:Num|BigInt,prime=P)-instance-method">
+      <div class="signature">
+        
+        def <strong>mod_inv</strong>(a : <a href="../Secp256k1/Num.html">Num</a> | BigInt, prime = <span class="t">P</span>)
+
+        <a class="method-permalink" href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/curve.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="mul(p:Point,s:Num|BigInt)-instance-method">
+      <div class="signature">
+        
+        def <strong>mul</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, s : <a href="../Secp256k1/Num.html">Num</a> | BigInt)
+
+        <a class="method-permalink" href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/curve.cr#L74" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="sign(hash:Num)-instance-method">
+      <div class="signature">
+        
+        def <strong>sign</strong>(hash : <a href="../Secp256k1/Num.html">Num</a>)
+
+        <a class="method-permalink" href="#sign%28hash%3ANum%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/q9f/secp256k1.cr/blob/8ea5e685d46ebc82260caa03afa17766ca484292/src/secp256k1/curve.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
