@@ -115,6 +115,20 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Provides a <code><a href="../Secp256k1.html">Secp256k1</a></code> context to allow signing arbitrary data,
+recovering public keys, and verifying signatures.</p>
+<pre><code class="language-crystal">ctx <span class="o">=</span> <span class="t">Context</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Context:0x7fc855a23e60&gt;</span></code></pre>
+
 
 
 
@@ -162,17 +176,16 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#deterministic_k%28priv%3ANum%2Chash%3ANum%2Corder%3DN%29-instance-method" class="signature"><strong>#deterministic_k</strong>(priv : Num, hash : Num, order = <span class="t">N</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#sign%28key%3AKey%2Chash%3ANum%29-instance-method" class="signature"><strong>#sign</strong>(key : Key, hash : Num)</a>
+        
+          <div class="summary"><p>Signs a message hash or any other arbitrary data with a given keypair.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#verify%28sig%3ASignature%2Chash%3ANum%2Cpubl%3APoint%29-instance-method" class="signature"><strong>#verify</strong>(sig : Signature, hash : Num, publ : Point)</a>
+        
+          <div class="summary"><p>Verifies that a given signature for a given message hash matches the provided public key.</p></div>
         
       </li>
     
@@ -220,20 +233,6 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="deterministic_k(priv:Num,hash:Num,order=N)-instance-method">
-      <div class="signature">
-        
-        def <strong>deterministic_k</strong>(priv : <a href="../Secp256k1/Num.html">Num</a>, hash : <a href="../Secp256k1/Num.html">Num</a>, order = <span class="t">N</span>)
-
-        <a class="method-permalink" href="#deterministic_k%28priv%3ANum%2Chash%3ANum%2Corder%3DN%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="sign(key:Key,hash:Num)-instance-method">
       <div class="signature">
         
@@ -241,6 +240,33 @@
 
         <a class="method-permalink" href="#sign%28key%3AKey%2Chash%3ANum%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Signs a message hash or any other arbitrary data with a given keypair.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>key</code> (<code><a href="../Secp256k1/Key.html">Key</a></code>): the keypair containing a secret to sign the data.</li>
+<li><code>hash</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the message or arbirtrary data hash.</li>
+</ul>
+<pre><code class="language-crystal">ctx <span class="o">=</span> <span class="t">Context</span>.<span class="k">new</span>
+key <span class="o">=</span> <span class="t">Key</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;1f0c122d41ff536b19bfd83537c0dfc290e45cd3c375a43237c8b8fff7ac8af7&quot;</span>
+hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s">&quot;Henlo, Wordl&quot;</span>
+sig <span class="o">=</span> ctx.sign key, hash
+<span class="c"># =&gt; #&lt;Secp256k1::Signature:0x7f5332e1d9c0</span>
+<span class="c">#          @r=#&lt;Secp256k1::Num:0x7f5332decac0</span>
+<span class="c">#              @hex=&quot;c4079db44240b7afe94985c69fc89602e33629fd9b8623d711c30ce6378b33df&quot;,</span>
+<span class="c">#              @dec=88666774685717741514025410921892109286073075687452443491001272268566542627807,</span>
+<span class="c">#              @bin=Bytes[196, 7, 157, 180, 66, 64, 183, 175, 233, 73, 133, 198, 159, 200, 150, 2, 227, 54, 41, 253, 155, 134, 35, 215, 17, 195, 12, 230, 55, 139, 51, 223]&gt;,</span>
+<span class="c">#          @s=#&lt;Secp256k1::Num:0x7f5332deca80</span>
+<span class="c">#              @hex=&quot;6842c1b63c94bdb8e4f5ae88fb65f7a98b77b197c8323004fb47ef57fab29053&quot;,</span>
+<span class="c">#              @dec=47158485109070227797431103290229472044663017260590156038384319099500326195283,</span>
+<span class="c">#              @bin=Bytes[104, 66, 193, 182, 60, 148, 189, 184, 228, 245, 174, 136, 251, 101, 247, 169, 139, 119, 177, 151, 200, 50, 48, 4, 251, 71, 239, 87, 250, 178, 144, 83]&gt;,</span>
+<span class="c">#          @v=#&lt;Secp256k1::Num:0x7f5332deca40</span>
+<span class="c">#              @hex=&quot;00&quot;,</span>
+<span class="c">#              @dec=0,</span>
+<span class="c">#              @bin=Bytes[0]&gt;&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -255,6 +281,27 @@
 
         <a class="method-permalink" href="#verify%28sig%3ASignature%2Chash%3ANum%2Cpubl%3APoint%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Verifies that a given signature for a given message hash matches
+the provided public key.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>sig</code> (<code><a href="../Secp256k1/Signature.html">Signature</a></code>): the signature to be verified.</li>
+<li><code>hash</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the message or arbirtrary data hash.</li>
+<li><code>publ</code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the public key to match.</li>
+</ul>
+<pre><code class="language-crystal">ctx <span class="o">=</span> <span class="t">Context</span>.<span class="k">new</span>
+r <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;c4079db44240b7afe94985c69fc89602e33629fd9b8623d711c30ce6378b33df&quot;</span>
+s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;6842c1b63c94bdb8e4f5ae88fb65f7a98b77b197c8323004fb47ef57fab29053&quot;</span>
+v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;00&quot;</span>
+sig <span class="o">=</span> <span class="t">Signature</span>.<span class="k">new</span> r, s, v
+hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s">&quot;Henlo, Wordl&quot;</span>
+publ <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="s">&quot;0416008a369439f1a8a75cf974860bed5b10180518d6b1dd3ac847f423fd375d6aa29474394f0cd79d2ea543507d069e97339284f01bdbfd27392daec0ec553816&quot;</span>
+ctx.verify sig, hash, publ
+<span class="c"># =&gt; true</span></code></pre>
+        </div>
       
       <br/>
       <div>

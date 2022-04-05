@@ -59,6 +59,14 @@ describe Util do
     ripe.to_hex.should eq "a653c746b9df6f1f21196bf6f80da734073cdc03"
   end
 
+  it "can determine k" do
+    priv = Num.new "3b74fcc0b0c419a00d2d9e88b15fbd99e03920138da22e2a00c327b88d24cf45"
+    hash = Util.sha256 "Henlo, Wordl"
+    secret = BigInt.new "83193606619515454920331057246310791124858301167609726617990890481932799590618"
+    k = Util.deterministic_k(priv, hash).dec
+    k.should eq secret
+  end
+
   it "can concenate byte slices" do
     x = Bytes[132, 33, 202, 29, 169, 60, 229, 241, 142, 31]
     y = Bytes[58, 174, 20, 102, 8, 54, 78, 214, 14, 170]

@@ -113,6 +113,21 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Provides the <code><a href="Secp256k1.html">Secp256k1</a></code> module with the elliptic curve  parameters
+used by the <code>Bitcoin</code>, <code>Ethereum</code>, and <code>Polkadot</code> blockchains. It's
+primarily used to generate key-pairs as well as signing messages and
+recoverying signatures.</p>
+<p>Ref: <a href="https://www.secg.org/sec2-v2.pdf">secg.org/sec2-v2.pdf</a></p>
+
 
 
 
@@ -169,20 +184,40 @@
         <strong>G</strong> = <code><span class="t">Point</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798&quot;</span>), <span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8&quot;</span>))</code>
       </dt>
       
+      <dd class="entry-const-doc">
+        <p>A commonly used base point <code>G</code> with coordinates <code>x</code> and <code>y</code>
+satisfying <code>y^2 = x^3 + 7</code>.</p>
+      </dd>
+      
     
       <dt class="entry-const" id="N">
         <strong>N</strong> = <code><span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141&quot;</span>)</code>
       </dt>
+      
+      <dd class="entry-const-doc">
+        <p>The order <code>n</code> of <code>G</code> defines the finite size of the Secp256k1 field <code>E</code>.</p>
+      </dd>
       
     
       <dt class="entry-const" id="P">
         <strong>P</strong> = <code><span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f&quot;</span>)</code>
       </dt>
       
+      <dd class="entry-const-doc">
+        <p>The elliptic curve domain parameters over <code>F_p</code> associated with a
+Koblitz curve <code><a href="Secp256k1.html">Secp256k1</a></code> are specified by the sextuple
+<code>T = (p, a, b, G, n, h)</code> where the finite field <code>F_p</code> is defined by
+the prime <code>p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1</code>.</p>
+      </dd>
+      
     
       <dt class="entry-const" id="VERSION">
         <strong>VERSION</strong> = <code><span class="s">&quot;0.5.0&quot;</span></code>
       </dt>
+      
+      <dd class="entry-const-doc">
+        <p>The <code><a href="Secp256k1.html#VERSION">VERSION</a></code> of the <code><a href="Secp256k1.html">Secp256k1</a></code> module.</p>
+      </dd>
       
     
   </dl>

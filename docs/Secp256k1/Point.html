@@ -115,6 +115,22 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Provides a point in the two-dimensional space of any elliptic curve.</p>
+<p>Properties:</p>
+<ul>
+<li><code><a href="../Secp256k1/Point.html#x%3ANum-instance-method">#x</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the position on the x-axis.</li>
+<li><code><a href="../Secp256k1/Point.html#y%3ANum-instance-method">#y</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the position on the y-axis.</li>
+</ul>
+
 
 
 
@@ -160,15 +176,21 @@
       <li class="entry-summary">
         <a href="#new%28x%3ANum%2Cy%3ANum%29-class-method" class="signature"><strong>.new</strong>(x : Num, y : Num)</a>
         
+          <div class="summary"><p>Provides a public point in the two-dimensional space on the given elliptic curve by passing the x- and y-coordinates (public key).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new%28priv%3ANum%29-class-method" class="signature"><strong>.new</strong>(priv : Num)</a>
         
+          <div class="summary"><p>Provides a public point in the two-dimensional space on the given elliptic curve by passing a random number (private key).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#new%28pub%3AString%29-class-method" class="signature"><strong>.new</strong>(pub : String)</a>
+        
+          <div class="summary"><p>Provides a public point in the two-dimensional space on the given elliptic curve by passing a compressed or uncompressed public key.</p></div>
         
       </li>
     
@@ -191,30 +213,42 @@
       <li class="entry-summary">
         <a href="#compressed-instance-method" class="signature"><strong>#compressed</strong></a>
         
+          <div class="summary"><p>Returns a prefixed, compressed public key string for th given point in the format <code>prefix|x|y</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#uncompressed-instance-method" class="signature"><strong>#uncompressed</strong></a>
+        
+          <div class="summary"><p>Returns a prefixed, uncompressed public key string for th given point in the format <code>04|x|y</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#x%3ANum-instance-method" class="signature"><strong>#x</strong> : Num</a>
         
+          <div class="summary"><p>The position on the x-axis.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#x%3D%28x%3ANum%29-instance-method" class="signature"><strong>#x=</strong>(x : Num)</a>
+        
+          <div class="summary"><p>The position on the x-axis.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#y%3ANum-instance-method" class="signature"><strong>#y</strong> : Num</a>
         
+          <div class="summary"><p>The position on the y-axis.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#y%3D%28y%3ANum%29-instance-method" class="signature"><strong>#y=</strong>(y : Num)</a>
+        
+          <div class="summary"><p>The position on the y-axis.</p></div>
         
       </li>
     
@@ -266,6 +300,29 @@
         <a class="method-permalink" href="#new%28x%3ANum%2Cy%3ANum%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Provides a public point in the two-dimensional space on the given
+elliptic curve by passing the x- and y-coordinates (public key).</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Secp256k1/Point.html#x%3ANum-instance-method">#x</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the position on the x-axis.</li>
+<li><code><a href="../Secp256k1/Point.html#y%3ANum-instance-method">#y</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the position on the y-axis.</li>
+</ul>
+<pre><code class="language-crystal">x <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5&quot;</span>
+y <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae0&quot;</span>
+<span class="t">Point</span>.<span class="k">new</span> x, y
+<span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f47952e6f00</span>
+<span class="c">#          @x=#&lt;Secp256k1::Num:0x7f47952e9480</span>
+<span class="c">#              @hex=&quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5&quot;,</span>
+<span class="c">#              @dec=108450790312736419148091503336190989867379581793003243037811027177541631669413,</span>
+<span class="c">#              @bin=Bytes[239, 196, 248, 216, 191, 199, 120, 70, 62, 77, 73, 22, 216, 139, 243, 240, 87, 230, 220, 150, 203, 42, 220, 38, 223, 185, 25, 89, 196, 190, 244, 165]&gt;,</span>
+<span class="c">#          @y=#&lt;Secp256k1::Num:0x7f47952e93c0</span>
+<span class="c">#              @hex=&quot;cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae0&quot;,</span>
+<span class="c">#              @dec=93539716883975436131751270446270238300906572229893209404647676230869395610336,</span>
+<span class="c">#              @bin=Bytes[206, 205, 154, 131, 254, 250, 252, 179, 207, 153, 253, 224, 195, 64, 187, 226, 254, 217, 205, 208, 210, 91, 83, 244, 224, 130, 84, 172, 239, 182, 154, 224]&gt;&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -280,6 +337,27 @@
         <a class="method-permalink" href="#new%28priv%3ANum%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Provides a public point in the two-dimensional space on the given
+elliptic curve by passing a random number (private key).</p>
+<p>Parameters:</p>
+<ul>
+<li><code>priv</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the random number giving access to the point.</li>
+</ul>
+<pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;e50932676c9901f259659d62f0c56fd899feca3f57ecab147a5ef8a0b59defc3&quot;</span>
+<span class="t">Point</span>.<span class="k">new</span> priv
+<span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f7377407ee0</span>
+<span class="c">#          @x=#&lt;Secp256k1::Num:0x7f736e341b00</span>
+<span class="c">#              @hex=&quot;aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f&quot;,</span>
+<span class="c">#              @dec=79593639541256659698952500103746656102855706770414568473917856266058507588367,</span>
+<span class="c">#              @bin=Bytes[175, 248, 103, 77, 107, 150, 166, 197, 141, 186, 176, 139, 144, 53, 101, 54, 50, 113, 48, 136, 136, 52, 10, 44, 173, 223, 136, 229, 97, 101, 147, 15]&gt;,</span>
+<span class="c">#          @y=#&lt;Secp256k1::Num:0x7f736e341ac0</span>
+<span class="c">#              @hex=&quot;21f4c49cfe90da39c254a51b8ee8afcdd8c02dd566f13582c23e104c7ed5936b&quot;,</span>
+<span class="c">#              @dec=15358791661898278541670676806913272995387450360720708081975214114817468371819,</span>
+<span class="c">#              @bin=Bytes[33, 244, 196, 156, 254, 144, 218, 57, 194, 84, 165, 27, 142, 232, 175, 205, 216, 192, 45, 213, 102, 241, 53, 130, 194, 62, 16, 76, 126, 213, 147, 107]&gt;&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -293,6 +371,27 @@
 
         <a class="method-permalink" href="#new%28pub%3AString%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Provides a public point in the two-dimensional space on the given
+elliptic curve by passing a compressed or uncompressed public key.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>pub</code> (<code>String</code>): the public key string (compressed or uncompressed).</li>
+</ul>
+<pre><code class="language-crystal">pub <span class="o">=</span> <span class="s">&quot;03aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f&quot;</span>
+<span class="t">Point</span>.<span class="k">new</span> pub
+<span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f3b1b9aaf00</span>
+<span class="c">#          @x=#&lt;Secp256k1::Num:0x7f3b1b9ad380</span>
+<span class="c">#              @hex=&quot;aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f&quot;,</span>
+<span class="c">#              @dec=79593639541256659698952500103746656102855706770414568473917856266058507588367,</span>
+<span class="c">#              @bin=Bytes[175, 248, 103, 77, 107, 150, 166, 197, 141, 186, 176, 139, 144, 53, 101, 54, 50, 113, 48, 136, 136, 52, 10, 44, 173, 223, 136, 229, 97, 101, 147, 15]&gt;,</span>
+<span class="c">#          @y=#&lt;Secp256k1::Num:0x7f3b1b9ad340</span>
+<span class="c">#              @hex=&quot;21f4c49cfe90da39c254a51b8ee8afcdd8c02dd566f13582c23e104c7ed5936b&quot;,</span>
+<span class="c">#              @dec=15358791661898278541670676806913272995387450360720708081975214114817468371819,</span>
+<span class="c">#              @bin=Bytes[33, 244, 196, 156, 254, 144, 218, 57, 194, 84, 165, 27, 142, 232, 175, 205, 216, 192, 45, 213, 102, 241, 53, 130, 194, 62, 16, 76, 126, 213, 147, 107]&gt;&gt;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -322,6 +421,15 @@
         <a class="method-permalink" href="#compressed-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns a prefixed, compressed public key string for th given point
+in the format <code>prefix|x|y</code>.</p>
+<pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;e50932676c9901f259659d62f0c56fd899feca3f57ecab147a5ef8a0b59defc3&quot;</span>
+<span class="t">Point</span>.<span class="k">new</span>(priv).compressed
+<span class="c"># =&gt; &quot;03aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f&quot;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -335,6 +443,15 @@
 
         <a class="method-permalink" href="#uncompressed-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns a prefixed, uncompressed public key string for th given point
+in the format <code>04|x|y</code>.</p>
+<pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;e50932676c9901f259659d62f0c56fd899feca3f57ecab147a5ef8a0b59defc3&quot;</span>
+<span class="t">Point</span>.<span class="k">new</span>(priv).uncompressed
+<span class="c"># =&gt; &quot;04aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f21f4c49cfe90da39c254a51b8ee8afcdd8c02dd566f13582c23e104c7ed5936b&quot;</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -350,6 +467,11 @@
         <a class="method-permalink" href="#x%3ANum-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The position on the x-axis.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -363,6 +485,11 @@
 
         <a class="method-permalink" href="#x%3D%28x%3ANum%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The position on the x-axis.</p>
+        </div>
       
       <br/>
       <div>
@@ -378,6 +505,11 @@
         <a class="method-permalink" href="#y%3ANum-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The position on the y-axis.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -391,6 +523,11 @@
 
         <a class="method-permalink" href="#y%3D%28y%3ANum%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The position on the y-axis.</p>
+        </div>
       
       <br/>
       <div>

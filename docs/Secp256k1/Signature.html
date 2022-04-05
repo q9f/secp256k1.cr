@@ -115,6 +115,24 @@
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Provides an ECDSA Signature containing the random point <code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code>, the
+signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code>, and the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
+<p>Properties:</p>
+<ul>
+<li><code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the <code>x</code> coordinate of a random point <code>R</code>.</li>
+<li><code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the signature proof of a message.</li>
+<li><code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</li>
+</ul>
+
 
 
 
@@ -160,6 +178,8 @@
       <li class="entry-summary">
         <a href="#new%28r%3ANum%2Cs%3ANum%2Cv%3ANum%29-class-method" class="signature"><strong>.new</strong>(r : Num, s : Num, v : Num)</a>
         
+          <div class="summary"><p>Provides an ECDSA Signature containing the random point <code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code>, the signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code>, and the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p></div>
+        
       </li>
     
   </ul>
@@ -181,35 +201,49 @@
       <li class="entry-summary">
         <a href="#compact-instance-method" class="signature"><strong>#compact</strong></a>
         
+          <div class="summary"><p>Returns a compact string containing the concatenated signature in the form <code>r|s|v</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#r%3ANum-instance-method" class="signature"><strong>#r</strong> : Num</a>
+        
+          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#r%3D%28r%3ANum%29-instance-method" class="signature"><strong>#r=</strong>(r : Num)</a>
         
+          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#s%3ANum-instance-method" class="signature"><strong>#s</strong> : Num</a>
+        
+          <div class="summary"><p>The signature proof of a message.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#s%3D%28s%3ANum%29-instance-method" class="signature"><strong>#s=</strong>(s : Num)</a>
         
+          <div class="summary"><p>The signature proof of a message.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#v%3ANum-instance-method" class="signature"><strong>#v</strong> : Num</a>
         
+          <div class="summary"><p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#v%3D%28v%3ANum%29-instance-method" class="signature"><strong>#v=</strong>(v : Num)</a>
+        
+          <div class="summary"><p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p></div>
         
       </li>
     
@@ -261,6 +295,35 @@
         <a class="method-permalink" href="#new%28r%3ANum%2Cs%3ANum%2Cv%3ANum%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Provides an ECDSA Signature containing the random point <code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code>, the
+signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code>, and the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the <code>x</code> coordinate of a random point <code>R</code>.</li>
+<li><code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the signature proof of a message.</li>
+<li><code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</li>
+</ul>
+<pre><code class="language-crystal">r <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5&quot;</span>
+s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae0&quot;</span>
+v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;00&quot;</span>
+<span class="t">Signature</span>.<span class="k">new</span> r, s, v
+<span class="c"># =&gt; #&lt;Secp256k1::Signature:0x7f67a3f97e40</span>
+<span class="c">#          @r=#&lt;Secp256k1::Num:0x7f67a3f91480</span>
+<span class="c">#              @hex=&quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5&quot;,</span>
+<span class="c">#              @dec=108450790312736419148091503336190989867379581793003243037811027177541631669413,</span>
+<span class="c">#              @bin=Bytes[239, 196, 248, 216, 191, 199, 120, 70, 62, 77, 73, 22, 216, 139, 243, 240, 87, 230, 220, 150, 203, 42, 220, 38, 223, 185, 25, 89, 196, 190, 244, 165]&gt;,</span>
+<span class="c">#          @s=#&lt;Secp256k1::Num:0x7f67a3f913c0</span>
+<span class="c">#              @hex=&quot;cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae0&quot;,</span>
+<span class="c">#              @dec=93539716883975436131751270446270238300906572229893209404647676230869395610336,</span>
+<span class="c">#              @bin=Bytes[206, 205, 154, 131, 254, 250, 252, 179, 207, 153, 253, 224, 195, 64, 187, 226, 254, 217, 205, 208, 210, 91, 83, 244, 224, 130, 84, 172, 239, 182, 154, 224]&gt;,</span>
+<span class="c">#          @v=#&lt;Secp256k1::Num:0x7f67a3f91380</span>
+<span class="c">#              @hex=&quot;00&quot;,</span>
+<span class="c">#              @dec=0,</span>
+<span class="c">#              @bin=Bytes[0]&gt;&gt;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -289,6 +352,17 @@
         <a class="method-permalink" href="#compact-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Returns a compact string containing the concatenated signature
+in the form <code>r|s|v</code>.</p>
+<pre><code class="language-crystal">r <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5&quot;</span>
+s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae0&quot;</span>
+v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;00&quot;</span>
+<span class="t">Signature</span>.<span class="k">new</span>(r, s, v).compact
+<span class="c"># =&gt; &quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae000&quot;</span></code></pre>
+        </div>
+      
       <br/>
       <div>
         
@@ -302,6 +376,11 @@
 
         <a class="method-permalink" href="#r%3ANum-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The <code>x</code> coordinate of a random point <code>R</code>.</p>
+        </div>
       
       <br/>
       <div>
@@ -317,6 +396,11 @@
         <a class="method-permalink" href="#r%3D%28r%3ANum%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The <code>x</code> coordinate of a random point <code>R</code>.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -330,6 +414,11 @@
 
         <a class="method-permalink" href="#s%3ANum-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The signature proof of a message.</p>
+        </div>
       
       <br/>
       <div>
@@ -345,6 +434,11 @@
         <a class="method-permalink" href="#s%3D%28s%3ANum%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The signature proof of a message.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -359,6 +453,11 @@
         <a class="method-permalink" href="#v%3ANum-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -372,6 +471,11 @@
 
         <a class="method-permalink" href="#v%3D%28v%3ANum%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
+        </div>
       
       <br/>
       <div>
