@@ -178,15 +178,8 @@ class Secp256k1::Num
   # ```
   def to_zpadded_bytes(length = 32) : Bytes
     zpadded_bytes = @bin
-    byte_zero = Bytes[0]
     while zpadded_bytes.size < length
-      slice_size = zpadded_bytes.size + 1
-      zpadded_slice = Slice(UInt8).new slice_size
-      slice_pointer = zpadded_slice.to_unsafe
-      byte_zero.copy_to(slice_pointer, 0)
-      slice_pointer += 1
-      zpadded_bytes.copy_to(slice_pointer, zpadded_bytes.size)
-      zpadded_bytes = zpadded_slice
+      zpadded_bytes = Util.concat_bytes Bytes[0x00], zpadded_bytes
     end
     zpadded_bytes
   end

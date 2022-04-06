@@ -224,25 +224,18 @@
 		<lineToCover lineNumber="180" covered="true"/>
 		<lineToCover lineNumber="181" covered="true"/>
 		<lineToCover lineNumber="182" covered="true"/>
-		<lineToCover lineNumber="183" covered="false"/>
-		<lineToCover lineNumber="184" covered="true"/>
-		<lineToCover lineNumber="185" covered="true"/>
-		<lineToCover lineNumber="186" covered="true"/>
-		<lineToCover lineNumber="187" covered="true"/>
 		<lineToCover lineNumber="188" covered="true"/>
 		<lineToCover lineNumber="189" covered="true"/>
-		<lineToCover lineNumber="195" covered="true"/>
-		<lineToCover lineNumber="196" covered="true"/>
-		<lineToCover lineNumber="197" covered="true"/>
-		<lineToCover lineNumber="205" covered="true"/>
-		<lineToCover lineNumber="206" covered="true"/>
+		<lineToCover lineNumber="190" covered="true"/>
+		<lineToCover lineNumber="198" covered="true"/>
+		<lineToCover lineNumber="199" covered="true"/>
+		<lineToCover lineNumber="200" covered="true"/>
 		<lineToCover lineNumber="207" covered="true"/>
-		<lineToCover lineNumber="214" covered="true"/>
+		<lineToCover lineNumber="208" covered="true"/>
+		<lineToCover lineNumber="209" covered="true"/>
+		<lineToCover lineNumber="211" covered="true"/>
+		<lineToCover lineNumber="212" covered="true"/>
 		<lineToCover lineNumber="215" covered="true"/>
-		<lineToCover lineNumber="216" covered="true"/>
-		<lineToCover lineNumber="218" covered="true"/>
-		<lineToCover lineNumber="219" covered="true"/>
-		<lineToCover lineNumber="222" covered="true"/>
 	</file>
 	<file path="/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/signature.cr">
 		<lineToCover lineNumber="59" covered="true"/>

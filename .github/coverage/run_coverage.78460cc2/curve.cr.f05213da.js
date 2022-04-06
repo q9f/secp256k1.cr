@@ -163,7 +163,7 @@ var data = {lines:[
 {"lineNum":"  162","line":"  def mul(p : Point, s : Num | BigInt) : Point","class":"lineCov","hits":"4","order":"37","possible_hits":"4",},
 {"lineNum":"  163","line":"    s = s.to_big if s.is_a? Num","class":"lineCov","hits":"1","order":"136","possible_hits":"1",},
 {"lineNum":"  164","line":"    if s === 0 || s >= N.to_big","class":"linePartCov","hits":"3","order":"38","possible_hits":"4",},
-{"lineNum":"  165","line":"      raise \"Invalid scalar: outside of Secp256k1 field dimension.\"","class":"linePartCov","hits":"1","order":"205","possible_hits":"2",},
+{"lineNum":"  165","line":"      raise \"Invalid scalar: outside of Secp256k1 field dimension.\"","class":"linePartCov","hits":"1","order":"199","possible_hits":"2",},
 {"lineNum":"  166","line":"    end"},
 {"lineNum":"  167","line":"    s_bin = s.to_s 2","class":"lineCov","hits":"2","order":"39","possible_hits":"2",},
 {"lineNum":"  168","line":"    q = p","class":"lineCov","hits":"2","order":"40","possible_hits":"2",},
@@ -179,5 +179,5 @@ var data = {lines:[
 {"lineNum":"  178","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-06 11:52:18", "instrumented" : 56, "covered" : 56,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 12:16:54", "instrumented" : 56, "covered" : 56,};
 var merged_data = [];
