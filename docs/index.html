@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.0">
-<meta name="crystal_docs.project_version" content="q9f/examples-dev">
+<meta name="crystal_docs.project_version" content="q9f/ethereum-dev">
 <meta name="crystal_docs.project_name" content="secp256k1">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="secp256k1">
-  <title>secp256k1 q9f/examples-dev</title>
+  <title>secp256k1 q9f/ethereum-dev</title>
   <script type="text/javascript">
   CrystalDocs.base_path = "";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        q9f/examples-dev
+        q9f/ethereum-dev
       </span>
     </div>
   </div>
@@ -66,8 +66,18 @@
       
     </li>
   
-  <li class=" " data-id="secp256k1/Ethereum" data-name="ethereum">
+  <li class="parent " data-id="secp256k1/Ethereum" data-name="ethereum">
       <a href="Ethereum.html">Ethereum</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Ethereum/Account" data-name="ethereum::account">
+      <a href="Ethereum/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -229,6 +239,7 @@ hash <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::
 publ <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Point</span>.<span class="k">new</span> <span class="s">&quot;0416008a369439f1a8a75cf974860bed5b10180518d6b1dd3ac847f423fd375d6aa29474394f0cd79d2ea543507d069e97339284f01bdbfd27392daec0ec553816&quot;</span>
 ctx.verify sig, hash, publ
 <span class="c"># =&gt; true</span></code></pre>
+<p>There are example scripts for generating <code><a href="Bitcoin.html">Bitcoin</a></code> and <code><a href="Ethereum.html">Ethereum</a></code> accounts in <code>src/bitcoin.cr</code> and <code>src/ethereum.cr</code>.</p>
 <h1><a id="documentation" class="anchor" href="#documentation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>

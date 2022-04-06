@@ -15,4 +15,10 @@
 require "./spec_helper"
 
 describe Ethereum do
+  it "can generate valid ethereum addresses" do
+    prv = Num.new "d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51"
+    key = Key.new prv
+    eth = Ethereum::Account.new key
+    eth.address.should eq "0x2Ef1f605AF5d03874eE88773f41c1382ac71C239"
+  end
 end

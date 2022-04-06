@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.3.0">
+<meta name="crystal_docs.project_version" content="q9f/ethereum-dev">
+<meta name="crystal_docs.project_name" content="secp256k1">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="secp256k1">
+  <title>Ethereum::Account - secp256k1 q9f/ethereum-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          secp256k1
+        </a>
+      </h1>
+
+      <span class="project-version">
+        q9f/ethereum-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="secp256k1/Bitcoin" data-name="bitcoin">
+      <a href="../Bitcoin.html">Bitcoin</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Bitcoin/Account" data-name="bitcoin::account">
+      <a href="../Bitcoin/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="secp256k1/Ethereum" data-name="ethereum">
+      <a href="../Ethereum.html">Ethereum</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="secp256k1/Ethereum/Account" data-name="ethereum::account">
+      <a href="../Ethereum/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="secp256k1/Secp256k1" data-name="secp256k1">
+      <a href="../Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Context" data-name="secp256k1::context">
+      <a href="../Secp256k1/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Curve" data-name="secp256k1::curve">
+      <a href="../Secp256k1/Curve.html">Curve</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Key" data-name="secp256k1::key">
+      <a href="../Secp256k1/Key.html">Key</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Num" data-name="secp256k1::num">
+      <a href="../Secp256k1/Num.html">Num</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Point" data-name="secp256k1::point">
+      <a href="../Secp256k1/Point.html">Point</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="../Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="../Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Ethereum::Account
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Ethereum/Account.html">Ethereum::Account</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>An example implementation of an <code><a href="../Ethereum.html">Ethereum</a></code> account using an <code><a href="../Secp256k1.html">Secp256k1</a></code>
+keypair; only for educational purposes and should not be used in production.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      ethereum.cr
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28key%3DKey.new%29-class-method" class="signature"><strong>.new</strong>(key = <span class="t">Key</span>.<span class="k">new</span>)</a>
+        
+          <div class="summary"><p>Creates an Ethereum account from a given <code><a href="../Secp256k1/Key.html">Secp256k1::Key</a></code> keypair.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#address%3AString-instance-method" class="signature"><strong>#address</strong> : String</a>
+        
+          <div class="summary"><p>The checksummed Ethereum account address.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#key%3AKey-instance-method" class="signature"><strong>#key</strong> : Key</a>
+        
+          <div class="summary"><p>The <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair for the account.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(key=Key.new)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(key = <span class="t">Key</span>.<span class="k">new</span>)
+
+        <a class="method-permalink" href="#new%28key%3DKey.new%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates an Ethereum account from a given <code><a href="../Secp256k1/Key.html">Secp256k1::Key</a></code> keypair.
+It creates a random account if no keys are supplied.</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Ethereum/Account.html#key%3AKey-instance-method">#key</a></code> (<code><a href="../Secp256k1/Key.html">Secp256k1::Key</a></code>): the <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair for the account.</li>
+</ul>
+<pre><code class="language-crystal">prv <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51&quot;</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Key</span>.<span class="k">new</span> prv
+<span class="t">Ethereum</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key
+<span class="c"># =&gt; #&lt;Ethereum::Account:0x7fcc10726a60</span>
+<span class="c">#         @key=#&lt;Secp256k1::Key:0x7fcc19799ee0</span>
+<span class="c">#             @private_key=#&lt;Secp256k1::Num:0x7fcc1979c300</span>
+<span class="c">#                 @hex=&quot;d6c8ace470ab0ce03125cac6abf2779c199d21a47d3e75e93c212b1ec23cfe51&quot;,</span>
+<span class="c">#                 @dec=97149512268879514742361644313413872500736768173592718417281501971026009718353,</span>
+<span class="c">#                 @bin=Bytes[214, 200, 172, 228, 112, 171, 12, 224, 49, 37, 202, 198, 171, 242, 119, 156, 25, 157, 33, 164, 125, 62, 117, 233, 60, 33, 43, 30, 194, 60, 254, 81]&gt;,</span>
+<span class="c">#             @public_key=#&lt;Secp256k1::Point:0x7fcc19799d20</span>
+<span class="c">#                 @x=#&lt;Secp256k1::Num:0x7fcc1979c240</span>
+<span class="c">#                     @hex=&quot;bf0cf8c934bd3c57e962fdf2a47e99d6136b047f987ee2e0cb03110cafd92afc&quot;,</span>
+<span class="c">#                     @dec=86414673301778591173569328850396232566766657919369855130423318525027519376124,</span>
+<span class="c">#                     @bin=Bytes[191, 12, 248, 201, 52, 189, 60, 87, 233, 98, 253, 242, 164, 126, 153, 214, 19, 107, 4, 127, 152, 126, 226, 224, 203, 3, 17, 12, 175, 217, 42, 252]&gt;,</span>
+<span class="c">#                 @y=#&lt;Secp256k1::Num:0x7fcc1979c200</span>
+<span class="c">#                     @hex=&quot;981974428f8162d3f8fce2f58d4e56341478e87d092aeb3a0edf8af97d638d04&quot;,</span>
+<span class="c">#                     @dec=68796526558321542419405677832866288094027461232937174622925256896107946151172,</span>
+<span class="c">#                     @bin=Bytes[152, 25, 116, 66, 143, 129, 98, 211, 248, 252, 226, 245, 141, 78, 86, 52, 20, 120, 232, 125, 9, 42, 235, 58, 14, 223, 138, 249, 125, 99, 141, 4]&gt;&gt;&gt;,</span>
+<span class="c">#         @address=&quot;0x2Ef1f605AF5d03874eE88773f41c1382ac71C239&quot;&gt;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="address:String-instance-method">
+      <div class="signature">
+        
+        def <strong>address</strong> : String
+
+        <a class="method-permalink" href="#address%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The checksummed Ethereum account address.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="key:Key-instance-method">
+      <div class="signature">
+        
+        def <strong>key</strong> : <a href="../Secp256k1/Key.html">Key</a>
+
+        <a class="method-permalink" href="#key%3AKey-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair for the account.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

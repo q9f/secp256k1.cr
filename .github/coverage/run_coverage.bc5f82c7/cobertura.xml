@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-04.dtd'>
-<coverage line-rate="0.975" lines-covered="275" lines-valid="282" branch-rate="1.0" branches-covered="1.0" branches-rate="1.0" complexity="1.0" version="1.9" timestamp="1649247962">
+<coverage line-rate="0.977" lines-covered="292" lines-valid="299" branch-rate="1.0" branches-covered="1.0" branches-rate="1.0" complexity="1.0" version="1.9" timestamp="1649256987">
 	<sources>
 		<source>/home/user/.opt/q9f/secp256k1.cr/src/</source>
 	</sources>
 	<packages>
-		<package name="run_coverage" line-rate="0.975" lines-covered="275" lines-valid="282" branch-rate="1.0" complexity="1.0">
+		<package name="run_coverage" line-rate="0.977" lines-covered="292" lines-valid="299" branch-rate="1.0" complexity="1.0">
 			<classes>
 				<class name="context_cr" filename="secp256k1/context.cr" branch-rate="1.0" complexity="1.0" line-rate="0.929">
 					<lines>
@@ -37,6 +37,27 @@
 						<line number="100" hits="1"/>
 						<line number="101" hits="1"/>
 						<line number="102" hits="1"/>
+					</lines>
+				</class>
+				<class name="ethereum_cr" filename="ethereum.cr" branch-rate="1.0" complexity="1.0" line-rate="1.000">
+					<lines>
+						<line number="56" hits="3"/>
+						<line number="57" hits="1"/>
+						<line number="58" hits="1"/>
+						<line number="62" hits="2"/>
+						<line number="63" hits="1"/>
+						<line number="64" hits="1"/>
+						<line number="68" hits="2"/>
+						<line number="69" hits="1"/>
+						<line number="70" hits="1"/>
+						<line number="71" hits="1"/>
+						<line number="72" hits="1"/>
+						<line number="73" hits="1"/>
+						<line number="74" hits="1"/>
+						<line number="75" hits="2"/>
+						<line number="76" hits="1"/>
+						<line number="78" hits="1"/>
+						<line number="80" hits="1"/>
 					</lines>
 				</class>
 				<class name="bitcoin_cr" filename="bitcoin.cr" branch-rate="1.0" complexity="1.0" line-rate="0.955">
@@ -89,10 +110,10 @@
 				</class>
 				<class name="util_cr" filename="secp256k1/util.cr" branch-rate="1.0" complexity="1.0" line-rate="0.932">
 					<lines>
-						<line number="35" hits="6"/>
-						<line number="36" hits="2"/>
+						<line number="35" hits="10"/>
+						<line number="36" hits="3"/>
 						<line number="38" hits="1"/>
-						<line number="40" hits="1"/>
+						<line number="40" hits="2"/>
 						<line number="59" hits="6"/>
 						<line number="60" hits="2"/>
 						<line number="62" hits="1"/>

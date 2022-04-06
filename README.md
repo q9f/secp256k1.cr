@@ -110,6 +110,8 @@ ctx.verify sig, hash, publ
 # => true
 ```
 
+There are example scripts for generating `Bitcoin` and `Ethereum` accounts in `src/bitcoin.cr` and `src/ethereum.cr`.
+
 # Documentation
 
 The full library documentation can be found here: [q9f.github.io/secp256k1.cr](https://q9f.github.io/secp256k1.cr/)
