@@ -124,7 +124,9 @@
     Overview
   </h2>
 
-  <p>Provides a point in the two-dimensional space of any elliptic curve.</p>
+  <p>Provides a point in the two-dimensional space of any elliptic curve.
+In most cases, such a point on a given curve represents a public key.
+However, for keypairs, a <code><a href="../Secp256k1/Key.html">Key</a></code> type shall be used!</p>
 <p>Properties:</p>
 <ul>
 <li><code><a href="../Secp256k1/Point.html#x%3ANum-instance-method">#x</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the position on the x-axis.</li>
@@ -176,21 +178,21 @@
       <li class="entry-summary">
         <a href="#new%28x%3ANum%2Cy%3ANum%29-class-method" class="signature"><strong>.new</strong>(x : Num, y : Num)</a>
         
-          <div class="summary"><p>Provides a public point in the two-dimensional space on the given elliptic curve by passing the x- and y-coordinates (public key).</p></div>
+          <div class="summary"><p>Provides a public point in the two-dimensional space on the given <code><a href="../Secp256k1.html">Secp256k1</a></code> elliptic curve by passing the x- and y-coordinates (public key).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new%28priv%3ANum%29-class-method" class="signature"><strong>.new</strong>(priv : Num)</a>
         
-          <div class="summary"><p>Provides a public point in the two-dimensional space on the given elliptic curve by passing a random number (private key).</p></div>
+          <div class="summary"><p>Provides a public point in the two-dimensional space on the given <code><a href="../Secp256k1.html">Secp256k1</a></code> elliptic curve by passing a random number (private key).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new%28pub%3AString%29-class-method" class="signature"><strong>.new</strong>(pub : String)</a>
         
-          <div class="summary"><p>Provides a public point in the two-dimensional space on the given elliptic curve by passing a compressed or uncompressed public key.</p></div>
+          <div class="summary"><p>Provides a public point in the two-dimensional space on the given <code><a href="../Secp256k1.html">Secp256k1</a></code> elliptic curve by passing a compressed or uncompressed public key.</p></div>
         
       </li>
     
@@ -211,16 +213,16 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#compressed-instance-method" class="signature"><strong>#compressed</strong></a>
+        <a href="#compressed%3AString-instance-method" class="signature"><strong>#compressed</strong> : String</a>
         
-          <div class="summary"><p>Returns a prefixed, compressed public key string for th given point in the format <code>prefix|x|y</code>.</p></div>
+          <div class="summary"><p>Returns a prefixed, compressed public key string for the given point in the format <code>prefix|x|y</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#uncompressed-instance-method" class="signature"><strong>#uncompressed</strong></a>
+        <a href="#uncompressed%3AString-instance-method" class="signature"><strong>#uncompressed</strong> : String</a>
         
-          <div class="summary"><p>Returns a prefixed, uncompressed public key string for th given point in the format <code>04|x|y</code>.</p></div>
+          <div class="summary"><p>Returns a prefixed, uncompressed public key string for the given point in the format <code>04|x|y</code>.</p></div>
         
       </li>
     
@@ -302,7 +304,7 @@
       
         <div class="doc">
           
-          <p>Provides a public point in the two-dimensional space on the given
+          <p>Provides a public point in the two-dimensional space on the given <code><a href="../Secp256k1.html">Secp256k1</a></code>
 elliptic curve by passing the x- and y-coordinates (public key).</p>
 <p>Parameters:</p>
 <ul>
@@ -339,8 +341,10 @@ y <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span>
       
         <div class="doc">
           
-          <p>Provides a public point in the two-dimensional space on the given
-elliptic curve by passing a random number (private key).</p>
+          <p>Provides a public point in the two-dimensional space on the given <code><a href="../Secp256k1.html">Secp256k1</a></code>
+elliptic curve by passing a random number (private key). Note, that the
+private key will be consumed by this constructor and should only be used
+to retrieve a public key. To manage keypairs, use the <code><a href="../Secp256k1/Key.html">Key</a></code> type instead.</p>
 <p>Parameters:</p>
 <ul>
 <li><code>priv</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the random number giving access to the point.</li>
@@ -374,7 +378,7 @@ elliptic curve by passing a random number (private key).</p>
       
         <div class="doc">
           
-          <p>Provides a public point in the two-dimensional space on the given
+          <p>Provides a public point in the two-dimensional space on the given <code><a href="../Secp256k1.html">Secp256k1</a></code>
 elliptic curve by passing a compressed or uncompressed public key.</p>
 <p>Parameters:</p>
 <ul>
@@ -413,17 +417,17 @@ elliptic curve by passing a compressed or uncompressed public key.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="compressed-instance-method">
+    <div class="entry-detail" id="compressed:String-instance-method">
       <div class="signature">
         
-        def <strong>compressed</strong>
+        def <strong>compressed</strong> : String
 
-        <a class="method-permalink" href="#compressed-instance-method">#</a>
+        <a class="method-permalink" href="#compressed%3AString-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Returns a prefixed, compressed public key string for th given point
+          <p>Returns a prefixed, compressed public key string for the given point
 in the format <code>prefix|x|y</code>.</p>
 <pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;e50932676c9901f259659d62f0c56fd899feca3f57ecab147a5ef8a0b59defc3&quot;</span>
 <span class="t">Point</span>.<span class="k">new</span>(priv).compressed
@@ -436,17 +440,17 @@ in the format <code>prefix|x|y</code>.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="uncompressed-instance-method">
+    <div class="entry-detail" id="uncompressed:String-instance-method">
       <div class="signature">
         
-        def <strong>uncompressed</strong>
+        def <strong>uncompressed</strong> : String
 
-        <a class="method-permalink" href="#uncompressed-instance-method">#</a>
+        <a class="method-permalink" href="#uncompressed%3AString-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Returns a prefixed, uncompressed public key string for th given point
+          <p>Returns a prefixed, uncompressed public key string for the given point
 in the format <code>04|x|y</code>.</p>
 <pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;e50932676c9901f259659d62f0c56fd899feca3f57ecab147a5ef8a0b59defc3&quot;</span>
 <span class="t">Point</span>.<span class="k">new</span>(priv).uncompressed

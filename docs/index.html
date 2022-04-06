@@ -113,160 +113,148 @@
 <a href="https://github.com/q9f/secp256k1.cr/releases/latest"><img src="https://img.shields.io/github/v/release/q9f/secp256k1.cr?include_prereleases&amp;color=black" alt="Release" /></a>
 <a href="https://github.com/q9f/secp256k1.cr/search?l=crystal"><img src="https://img.shields.io/github/languages/top/q9f/secp256k1.cr?color=black" alt="Language" /></a>
 <a href="LICENSE"><img src="https://img.shields.io/github/license/q9f/secp256k1.cr.svg?color=black" alt="License" /></a></p>
-<p>a native library implementing <code>secp256k1</code> purely for the crystal language. <code>secp256k1</code> is the elliptic curve used in the public-private-key cryptography required by bitcoin and ethereum.</p>
-<p>this library allows for key generation of:</p>
+<p>A library implementing the <code><a href="Secp256k1.html">Secp256k1</a></code> elliptic curve natively in pure Crystal.
+<code><a href="Secp256k1.html">Secp256k1</a></code> is the elliptic curve used in the public-private-key cryptography required by <code>Bitcoin</code>, <code>Ethereum</code>, and <code>Polkadot</code>.</p>
+<p>This library allows for:</p>
 <ul>
-<li>private keys (from secure random within the elliptic curve field size)</li>
-<li>mini private keys (short 30-char base-56 keys)</li>
-<li>wallet import format (checksummed base-58 private keys)</li>
-<li>public keys, prefixed, compressed (from private)</li>
-<li>public keys, unprefixed and prefixed, uncompressed (from private)</li>
-<li>conversion between the different public key formats</li>
-</ul>
-<p>this library allows for address generation of:</p>
-<ul>
-<li>bitcoin address, compressed and uncompressed (from private or public key)</li>
-<li>any other bitcoin-based address by passing a <code>version</code> byte</li>
-<li>ethereum address, checksummed and unchecksummed (from private or public key)</li>
-<li>any other ethereum-based address</li>
-</ul>
-<p>furthermore, this library allows for:</p>
-<ul>
-<li>signing <code>(r, s)</code> and verification of arbitrary messages and message-hashes (with key pairs)</li>
-<li>managing <code>enode</code> addresses as per <code>devp2p</code> specification for ethereum nodes</li>
+<li>providing a <code><a href="Secp256k1.html">Secp256k1</a></code> cryptographic context, see <code><a href="Secp256k1/Context.html">Secp256k1::Context</a></code></li>
+<li>managing <code><a href="Secp256k1.html">Secp256k1</a></code> signatures and verification, see <code><a href="Secp256k1/Signature.html">Secp256k1::Signature</a></code></li>
+<li>managing private-public keypairs, see <code><a href="Secp256k1/Key.html">Secp256k1::Key</a></code></li>
+<li>generating public keys, see <code><a href="Secp256k1/Point.html">Secp256k1::Point</a></code></li>
+<li>generating private keys, see <code><a href="Secp256k1/Num.html">Secp256k1::Num</a></code></li>
 </ul>
 <h1><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>installation</h1>
-<p>add the <code>secp256k1</code> library to your <code>shard.yml</code></p>
+</a>Installation</h1>
+<p>Add the <code><a href="Secp256k1.html">Secp256k1</a></code> library to your <code>shard.yml</code></p>
 <pre><code class="language-yaml">dependencies:
   secp256k1:
     github: q9f/secp256k1.cr
-    version: &quot;~&gt; 0.3&quot;</code></pre>
+    version: &quot;~&gt; 0.5&quot;</code></pre>
 <h1><a id="usage" class="anchor" href="#usage">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>usage</h1>
-<p><em>tl;dr,</em> check out <a href="./try.cr"><code>crystal run ./try.cr</code></a>!</p>
-<pre><code class="language-crystal"><span class="c"># import secp256k1</span>
-<span class="k">require</span> <span class="s">&quot;secp256k1&quot;</span></code></pre>
-<p>this library exposes the following modules (in logical order):</p>
+</a>Usage</h1>
+<p>Import and expose the <code><a href="Secp256k1.html">Secp256k1</a></code> module.</p>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;secp256k1&quot;</span></code></pre>
+<p>This library exposes the following modules and classes (in logical order):</p>
 <ul>
 <li><code><a href="Secp256k1.html">Secp256k1</a></code>: necessary constants and data structures, including:
 <ul>
-<li><code>Secp256k1::Keypair</code>: for managing private-public key-pairs</li>
-<li><code>Secp256k1::ECPoint</code>: for handling of secp256k1 elliptic curve points (public keys)</li>
-<li><code>Secp256k1::ECDSASignature</code>: for secp256k1 ecdsa signatures</li>
+<li><code><a href="Secp256k1/Num.html">Secp256k1::Num</a></code>: for managing big numerics (private keys)</li>
+<li><code><a href="Secp256k1/Point.html">Secp256k1::Point</a></code>: for handling of elliptic curve points (public keys)</li>
+<li><code><a href="Secp256k1/Key.html">Secp256k1::Key</a></code>: for managing private-public keypairs (accounts)</li>
+<li><code><a href="Secp256k1/Signature.html">Secp256k1::Signature</a></code>: for handling ECDSA signatures (r, s, v)</li>
 </ul>
 </li>
-<li><code>Secp256k1::Core</code>: the entire core mathematics behind the elliptic curve cryptography</li>
-<li><code><a href="Secp256k1/Util.html">Secp256k1::Util</a></code>: all tools for the handling of private-public key-pairs</li>
-<li><code>Secp256k1::Hash</code>: implementation of various hashing algorithms for convenience</li>
-<li><code><a href="Secp256k1/Signature.html">Secp256k1::Signature</a></code>: allows for signing messages and verifying signatures</li>
-<li><code>Secp256k1::Bitcoin</code>: for the generation of bitcoin addresses, including:
-<ul>
-<li><code>Secp256k1::Bitcoin::Account</code>: for bitcoin account management</li>
+<li><code><a href="Secp256k1/Context.html">Secp256k1::Context</a></code>: providing a cryptographic context for signing and verification</li>
+<li><code><a href="Secp256k1/Curve.html">Secp256k1::Curve</a></code>: the entire core mathematics behind the elliptic curve cryptography</li>
+<li><code><a href="Secp256k1/Util.html">Secp256k1::Util</a></code>: binding of various hashing algorithms for convenience</li>
 </ul>
-</li>
-<li><code>Secp256k1::Ethereum</code>: for the generation of ethereum addresses, including
-<ul>
-<li><code>Secp256k1::Ethereum::Account</code>: for ethereum account management</li>
-<li><code>Secp256k1::Ethereum::Enode</code>: for devp2p enode address management</li>
-</ul>
-</li>
-</ul>
-<p>basic usage:</p>
-<pre><code class="language-crystal"><span class="c"># generates a new keypair</span>
-key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
-<span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f8be5611d80&gt;</span>
+<p>Basic usage:</p>
+<pre><code class="language-crystal"><span class="c"># generates a new, random keypair</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Key</span>.<span class="k">new</span>
+<span class="c"># =&gt; #&lt;Secp256k1::Key:0x7fad7235aee0</span>
+<span class="c">#          @private_key=#&lt;Secp256k1::Num:0x7fad7235d300</span>
+<span class="c">#              @hex=&quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;,</span>
+<span class="c">#              @dec=27505422793993207218034260454067205887515304192802142316084292370834437241648,</span>
+<span class="c">#              @bin=Bytes[60, 207, 132, 130, 12, 32, 213, 232, 197, 54, 186, 132, 197, 43, 164, 16, 55, 91, 41, 177, 129, 43, 95, 126, 114, 36, 69, 201, 105, 160, 251, 48]&gt;,</span>
+<span class="c">#          @public_key=#&lt;Secp256k1::Point:0x7fad7235ad20</span>
+<span class="c">#              @x=#&lt;Secp256k1::Num:0x7fad69294ec0</span>
+<span class="c">#                  @hex=&quot;cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba2&quot;,</span>
+<span class="c">#                  @dec=92855812888509048668847240903552964511053624688683992093822247249407942908834,</span>
+<span class="c">#                  @bin=Bytes[205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162]&gt;,</span>
+<span class="c">#              @y=#&lt;Secp256k1::Num:0x7fad69294e80</span>
+<span class="c">#                  @hex=&quot;81363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c&quot;,</span>
+<span class="c">#                  @dec=58444189335609256006902338825877424261513225250255958585656342678587884156524,</span>
+<span class="c">#                  @bin=Bytes[129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]&gt;&gt;&gt;</span>
 
 <span class="c"># gets the private key</span>
-key.get_secret
-<span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>
+key.private_hex
+<span class="c"># =&gt; &quot;3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30&quot;</span>
 
 <span class="c"># gets the compressed public key with prefix</span>
-compressed <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.public_key_compressed_prefix key.public_key
-<span class="c"># =&gt; &quot;03e097fc69f0b92f711620511c07fefdd648e469df46b1e4385a00a1786f6bc55b&quot;</span></code></pre>
-<p>generate a compressed bitcoin mainnet address:</p>
-<pre><code class="language-crystal"><span class="c"># generates a new keypair</span>
-key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
-<span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f8be5611d80&gt;</span>
+key.public_hex_compressed
+<span class="c"># =&gt; &quot;02cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba2&quot;</span></code></pre>
+<p>Signature generation and verification:</p>
+<pre><code class="language-crystal"><span class="c"># sign a message with a private key</span>
+ctx <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Context</span>.<span class="k">new</span>
+priv <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;1f0c122d41ff536b19bfd83537c0dfc290e45cd3c375a43237c8b8fff7ac8af7&quot;</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Key</span>.<span class="k">new</span> priv
+hash <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.sha256 <span class="s">&quot;Henlo, Wordl&quot;</span>
+sig <span class="o">=</span> ctx.sign key, hash
+<span class="c"># =&gt; #&lt;Secp256k1::Signature:0x7f5332e1d9c0</span>
+<span class="c">#          @r=#&lt;Secp256k1::Num:0x7f5332decac0</span>
+<span class="c">#              @hex=&quot;c4079db44240b7afe94985c69fc89602e33629fd9b8623d711c30ce6378b33df&quot;,</span>
+<span class="c">#              @dec=88666774685717741514025410921892109286073075687452443491001272268566542627807,</span>
+<span class="c">#              @bin=Bytes[196, 7, 157, 180, 66, 64, 183, 175, 233, 73, 133, 198, 159, 200, 150, 2, 227, 54, 41, 253, 155, 134, 35, 215, 17, 195, 12, 230, 55, 139, 51, 223]&gt;,</span>
+<span class="c">#          @s=#&lt;Secp256k1::Num:0x7f5332deca80</span>
+<span class="c">#              @hex=&quot;6842c1b63c94bdb8e4f5ae88fb65f7a98b77b197c8323004fb47ef57fab29053&quot;,</span>
+<span class="c">#              @dec=47158485109070227797431103290229472044663017260590156038384319099500326195283,</span>
+<span class="c">#              @bin=Bytes[104, 66, 193, 182, 60, 148, 189, 184, 228, 245, 174, 136, 251, 101, 247, 169, 139, 119, 177, 151, 200, 50, 48, 4, 251, 71, 239, 87, 250, 178, 144, 83]&gt;,</span>
+<span class="c">#          @v=#&lt;Secp256k1::Num:0x7f5332deca40</span>
+<span class="c">#              @hex=&quot;00&quot;,</span>
+<span class="c">#              @dec=0,</span>
+<span class="c">#              @bin=Bytes[0]&gt;&gt;</span>
 
-<span class="c"># generates a compressed bitcoin account from the keypair</span>
-btc <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key, <span class="s">&quot;00&quot;</span>, <span class="n">true</span>
-<span class="c"># =&gt; #&lt;Secp256k1::Bitcoin::Account:0x7f81ef21ab80&gt;</span>
-
-<span class="c"># gets the wallet-import format (checksummed private key)</span>
-btc.wif
-<span class="c"># =&gt; &quot;Kz2grUzxEAxNopiREbNpVbjoitAGQVXnUZY4n8pNdmWdVqub99qu&quot;</span>
-
-<span class="c"># gets the compressed bitcoin addresss</span>
-btc.address
-<span class="c"># =&gt; &quot;1Q1zbmPZtS2chwxpviqz6qHgoM8UUuviGN&quot;</span></code></pre>
-<p>generate a checksummed ethereum address:</p>
-<pre><code class="language-crystal"><span class="c"># generates a new keypair</span>
-key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Keypair</span>.<span class="k">new</span>
-<span class="c"># =&gt; #&lt;Secp256k1::Keypair:0x7f81ef21ad00&gt;</span>
-
-<span class="c"># generates an ethereum account from the keypair</span>
-eth <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Ethereum</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key
-<span class="c"># =&gt; #&lt;Secp256k1::Ethereum::Account:0x7f81ef1faac0&gt;</span>
-
-<span class="c"># gets the private key</span>
-eth.get_secret
-<span class="c"># =&gt; &quot;53d77137b39427a35d8c4b187f532d3912e1e7135985e730633e1e3c1b87ce97&quot;</span>
-
-<span class="c"># gets the ethereum addresss</span>
-eth.address
-<span class="c"># =&gt; &quot;0x224008a0F3d3cB989c807F568c7f99Bf451328A6&quot;</span></code></pre>
+<span class="c"># verify a signature with a public key</span>
+r <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;c4079db44240b7afe94985c69fc89602e33629fd9b8623d711c30ce6378b33df&quot;</span>
+s <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;6842c1b63c94bdb8e4f5ae88fb65f7a98b77b197c8323004fb47ef57fab29053&quot;</span>
+v <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;00&quot;</span>
+sig <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Signature</span>.<span class="k">new</span> r, s, v
+hash <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Util</span>.sha256 <span class="s">&quot;Henlo, Wordl&quot;</span>
+publ <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Point</span>.<span class="k">new</span> <span class="s">&quot;0416008a369439f1a8a75cf974860bed5b10180518d6b1dd3ac847f423fd375d6aa29474394f0cd79d2ea543507d069e97339284f01bdbfd27392daec0ec553816&quot;</span>
+ctx.verify sig, hash, publ
+<span class="c"># =&gt; true</span></code></pre>
 <h1><a id="documentation" class="anchor" href="#documentation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>documentation</h1>
-<p>the full library documentation can be found here: <a href="https://q9f.github.io/secp256k1.cr/">q9f.github.io/secp256k1.cr</a></p>
-<p>generate a local copy with:</p>
-<pre><code class="language-crystal">crystal docs</code></pre>
+</a>Documentation</h1>
+<p>The full library documentation can be found here: <a href="https://q9f.github.io/secp256k1.cr/">q9f.github.io/secp256k1.cr</a></p>
+<p>Generate a local copy with:</p>
+<pre><code class="language-shell">crystal docs</code></pre>
 <h1><a id="testing" class="anchor" href="#testing">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>testing</h1>
-<p>the library is entirely specified through tests in <code>./spec</code>; run:</p>
-<pre><code class="language-bash">crystal spec --verbose</code></pre>
+</a>Testing</h1>
+<p>The library is entirely specified through tests in <code>./spec</code>; run:</p>
+<pre><code class="language-shell">crystal spec --verbose</code></pre>
 <h1><a id="understand" class="anchor" href="#understand">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>understand</h1>
-<p>private keys are just scalars and public keys are points with <code>x</code> and <code>y</code> coordinates.</p>
-<p>bitcoin public keys can be uncompressed <code>#{p}#{x}#{y}</code> or compressed <code>#{p}#{x}</code>. both come with a prefix <code>p</code> which is useless for uncompressed keys but necessary for compressed keys to recover the <code>y</code> coordinate on the <code>secp256k1</code> elliptic curve.</p>
-<p>ethereum public keys are uncompressed <code>#{x}#{y}</code> without any prefix. the last 20 bytes slice of the <code>y</code> coordinate is actually used as address without any checksum. a checksum was later added in eip-55 using a <code>keccak256</code> hash and indicating character capitalization.</p>
-<p>neither bitcoin nor ethereum allow for recovering public keys from an address unless there exists a transaction with a valid signature on the blockchain.</p>
+</a>Understand</h1>
+<p>Private keys are just scalars (<code><a href="Secp256k1/Num.html">Secp256k1::Num</a></code>) and public keys are points (<code><a href="Secp256k1/Point.html">Secp256k1::Point</a></code>) with <code>x</code> and <code>y</code> coordinates.</p>
+<p>Bitcoin public keys can be uncompressed <code>p|x|y</code> or compressed <code>p|x</code>. both come with a prefix <code>p</code> which is useless for uncompressed keys but necessary for compressed keys to recover the <code>y</code> coordinate on the <code><a href="Secp256k1.html">Secp256k1</a></code> elliptic curve field.</p>
+<p>Ethereum public keys are uncompressed <code>x|y</code> without any prefix. The last 20 bytes slice of the <code>y</code> coordinate is actually used as address without any checksum. A checksum was later added in EIP-55 using a <code>keccak256</code> hash and indicating character capitalization.</p>
+<p>Neither Bitcoin nor Ethereum allow for recovering public keys from an address unless there exists a transaction with a valid signature on the blockchain.</p>
 <h1><a id="known-issues" class="anchor" href="#known-issues">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>known issues</h1>
-<p><em>note: this library should not be used in production without proper auditing.</em></p>
+</a>Known issues</h1>
+<p><em>Note: this library should not be used in production without proper auditing. It should be considered slow and insecure.</em></p>
 <ul>
-<li>this library is not constant time and might be subject to side-channel attacks. (<a href="https://github.com/q9f/secp256k1.cr/issues/4">#4</a>)</li>
-<li>this library does unnecessary big-integer math and should someday rather correctly implement the secp256k1 prime field (<a href="https://github.com/q9f/secp256k1.cr/issues/5">#5</a>)</li>
+<li>This library is not constant time and might be subject to side-channel attacks. (<a href="https://github.com/q9f/secp256k1.cr/issues/4">#4</a>)</li>
+<li>This library does unnecessary big-integer math and should someday rather correctly implement the <code><a href="Secp256k1.html">Secp256k1</a></code> prime field (<a href="https://github.com/q9f/secp256k1.cr/issues/5">#5</a>)</li>
+<li>This library is slow in recovering signatures. Future versions should respect the recovery ID to quickly identify the correct public key from a signature.</li>
 </ul>
-<p>found another issue? report it: <a href="https://github.com/q9f/secp256k1.cr/issues">github.com/q9f/secp256k1.cr/issues</a></p>
+<p>Found any other issue? Report it: <a href="https://github.com/q9f/secp256k1.cr/issues">github.com/q9f/secp256k1.cr/issues</a></p>
 <h1><a id="contribute" class="anchor" href="#contribute">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>contribute</h1>
-<p>create a pull request, and make sure tests and linter passes.</p>
-<p>this pure crystal implementation is based on the python implementation <a href="https://github.com/wobine/blackboard101">wobine/blackboard101</a> which is also used as reference to write tests against. it's a complete rewrite of the abandoned <a href="https://github.com/packetzero/bitcoinutils">packetzero/bitcoinutils</a> for educational purposes.</p>
-<p>honerable mention for the <a href="https://en.bitcoin.it/wiki/Main_Page">bitcoin wiki</a> and the <a href="https://ethereum.stackexchange.com/">ethereum stackexchange</a> for providing so many in-depth resources that supported this project in reimplementing everything.</p>
-<p>license: apache license v2.0</p>
-<p>contributors: <a href="https://github.com/q9f/"><strong>@q9f</strong></a>, <a href="https://github.com/cserb">@cserb</a>, <a href="https://github.com/MrSorcus">MrSorcus</a></p>
+</a>Contribute</h1>
+<p>Create a pull request, and make sure tests and linter pass.</p>
+<p>This pure crystal implementation is based on the python implementation <a href="https://github.com/wobine/blackboard101">wobine/blackboard101</a> which is also used as reference to write tests against. It's a complete rewrite of the abandoned <a href="https://github.com/packetzero/bitcoinutils">packetzero/bitcoinutils</a> for educational purposes.</p>
+<p>Honerable mention for the <a href="https://en.bitcoin.it/wiki/Main_Page">bitcoin wiki</a> and the <a href="https://ethereum.stackexchange.com/">ethereum stackexchange</a> for providing so many in-depth resources that supported this project in reimplementing everything.</p>
+<p>License: Apache License v2.0</p>
+<p>Contributors: <a href="https://github.com/q9f/"><strong>@q9f</strong></a>, <a href="https://github.com/cserb">@cserb</a>, <a href="https://github.com/MrSorcus">MrSorcus</a></p>
 </div>
 </body>
 </html>

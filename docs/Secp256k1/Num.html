@@ -127,7 +127,8 @@
   <p>Provides a class to conveniently handle big numbers on the elliptic
 curve. It allows to easily access decimal, hexadecimal, and binary
 representations of the numeric. In addition, it implements some
-utilities such as zpadding or asserting hexadecimal strings.</p>
+utilities such as zpadding or asserting hexadecimal strings. It's suited
+to temporarily handle unencrypted private keys.</p>
 <p>Properties:</p>
 <ul>
 <li><code><a href="../Secp256k1/Num.html#hex%3AString-instance-method">#hex</a></code> (<code>String</code>): the hexadecimal string representation of the number.</li>
@@ -271,7 +272,7 @@ utilities such as zpadding or asserting hexadecimal strings.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_bytes%3ASlice%28UInt8%29-instance-method" class="signature"><strong>#to_bytes</strong> : Slice(UInt8)</a>
+        <a href="#to_bytes%3ABytes-instance-method" class="signature"><strong>#to_bytes</strong> : Bytes</a>
         
           <div class="summary"><p>Returns a binary byte-slice representation of the number.</p></div>
         
@@ -285,21 +286,21 @@ utilities such as zpadding or asserting hexadecimal strings.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#to_prefixed_hex-instance-method" class="signature"><strong>#to_prefixed_hex</strong></a>
+        <a href="#to_prefixed_hex%3AString-instance-method" class="signature"><strong>#to_prefixed_hex</strong> : String</a>
         
           <div class="summary"><p>Returns an <code>0x</code>-prefixed hexadecimal string representation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_zpadded_bytes%28length%3D32%29-instance-method" class="signature"><strong>#to_zpadded_bytes</strong>(length = <span class="n">32</span>)</a>
+        <a href="#to_zpadded_bytes%28length%3D32%29%3ABytes-instance-method" class="signature"><strong>#to_zpadded_bytes</strong>(length = <span class="n">32</span>) : Bytes</a>
         
           <div class="summary"><p>Returns a z-padded byte-slice binary representation.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#to_zpadded_hex%28length%3D32%29-instance-method" class="signature"><strong>#to_zpadded_hex</strong>(length = <span class="n">32</span>)</a>
+        <a href="#to_zpadded_hex%28length%3D32%29%3AString-instance-method" class="signature"><strong>#to_zpadded_hex</strong>(length = <span class="n">32</span>) : String</a>
         
           <div class="summary"><p>Returns a z-padded hexadecimal string representation.</p></div>
         
@@ -603,12 +604,12 @@ a secret (private key).</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_bytes:Slice(UInt8)-instance-method">
+    <div class="entry-detail" id="to_bytes:Bytes-instance-method">
       <div class="signature">
         
-        def <strong>to_bytes</strong> : Slice(UInt8)
+        def <strong>to_bytes</strong> : Bytes
 
-        <a class="method-permalink" href="#to_bytes%3ASlice%28UInt8%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_bytes%3ABytes-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -645,12 +646,12 @@ a secret (private key).</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_prefixed_hex-instance-method">
+    <div class="entry-detail" id="to_prefixed_hex:String-instance-method">
       <div class="signature">
         
-        def <strong>to_prefixed_hex</strong>
+        def <strong>to_prefixed_hex</strong> : String
 
-        <a class="method-permalink" href="#to_prefixed_hex-instance-method">#</a>
+        <a class="method-permalink" href="#to_prefixed_hex%3AString-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -666,12 +667,12 @@ a secret (private key).</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_zpadded_bytes(length=32)-instance-method">
+    <div class="entry-detail" id="to_zpadded_bytes(length=32):Bytes-instance-method">
       <div class="signature">
         
-        def <strong>to_zpadded_bytes</strong>(length = <span class="n">32</span>)
+        def <strong>to_zpadded_bytes</strong>(length = <span class="n">32</span>) : Bytes
 
-        <a class="method-permalink" href="#to_zpadded_bytes%28length%3D32%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_zpadded_bytes%28length%3D32%29%3ABytes-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -691,12 +692,12 @@ a secret (private key).</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="to_zpadded_hex(length=32)-instance-method">
+    <div class="entry-detail" id="to_zpadded_hex(length=32):String-instance-method">
       <div class="signature">
         
-        def <strong>to_zpadded_hex</strong>(length = <span class="n">32</span>)
+        def <strong>to_zpadded_hex</strong>(length = <span class="n">32</span>) : String
 
-        <a class="method-permalink" href="#to_zpadded_hex%28length%3D32%29-instance-method">#</a>
+        <a class="method-permalink" href="#to_zpadded_hex%28length%3D32%29%3AString-instance-method">#</a>
       </div>
       
         <div class="doc">

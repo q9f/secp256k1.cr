@@ -176,14 +176,14 @@ recovering public keys, and verifying signatures.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#sign%28key%3AKey%2Chash%3ANum%29-instance-method" class="signature"><strong>#sign</strong>(key : Key, hash : Num)</a>
+        <a href="#sign%28key%3AKey%2Chash%3ANum%29%3ASignature-instance-method" class="signature"><strong>#sign</strong>(key : Key, hash : Num) : Signature</a>
         
           <div class="summary"><p>Signs a message hash or any other arbitrary data with a given keypair.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#verify%28sig%3ASignature%2Chash%3ANum%2Cpubl%3APoint%29-instance-method" class="signature"><strong>#verify</strong>(sig : Signature, hash : Num, publ : Point)</a>
+        <a href="#verify%28sig%3ASignature%2Chash%3ANum%2Cpubl%3APoint%29%3ABool-instance-method" class="signature"><strong>#verify</strong>(sig : Signature, hash : Num, publ : Point) : Bool</a>
         
           <div class="summary"><p>Verifies that a given signature for a given message hash matches the provided public key.</p></div>
         
@@ -233,12 +233,12 @@ recovering public keys, and verifying signatures.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="sign(key:Key,hash:Num)-instance-method">
+    <div class="entry-detail" id="sign(key:Key,hash:Num):Signature-instance-method">
       <div class="signature">
         
-        def <strong>sign</strong>(key : <a href="../Secp256k1/Key.html">Key</a>, hash : <a href="../Secp256k1/Num.html">Num</a>)
+        def <strong>sign</strong>(key : <a href="../Secp256k1/Key.html">Key</a>, hash : <a href="../Secp256k1/Num.html">Num</a>) : <a href="../Secp256k1/Signature.html">Signature</a>
 
-        <a class="method-permalink" href="#sign%28key%3AKey%2Chash%3ANum%29-instance-method">#</a>
+        <a class="method-permalink" href="#sign%28key%3AKey%2Chash%3ANum%29%3ASignature-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -249,6 +249,7 @@ recovering public keys, and verifying signatures.</p>
 <li><code>key</code> (<code><a href="../Secp256k1/Key.html">Key</a></code>): the keypair containing a secret to sign the data.</li>
 <li><code>hash</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the message or arbirtrary data hash.</li>
 </ul>
+<p>Returns a <code><a href="../Secp256k1/Signature.html">Signature</a></code> proving the given key signed the message hash.</p>
 <pre><code class="language-crystal">ctx <span class="o">=</span> <span class="t">Context</span>.<span class="k">new</span>
 key <span class="o">=</span> <span class="t">Key</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;1f0c122d41ff536b19bfd83537c0dfc290e45cd3c375a43237c8b8fff7ac8af7&quot;</span>
 hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s">&quot;Henlo, Wordl&quot;</span>
@@ -274,12 +275,12 @@ sig <span class="o">=</span> ctx.sign key, hash
       </div>
     </div>
   
-    <div class="entry-detail" id="verify(sig:Signature,hash:Num,publ:Point)-instance-method">
+    <div class="entry-detail" id="verify(sig:Signature,hash:Num,publ:Point):Bool-instance-method">
       <div class="signature">
         
-        def <strong>verify</strong>(sig : <a href="../Secp256k1/Signature.html">Signature</a>, hash : <a href="../Secp256k1/Num.html">Num</a>, publ : <a href="../Secp256k1/Point.html">Point</a>)
+        def <strong>verify</strong>(sig : <a href="../Secp256k1/Signature.html">Signature</a>, hash : <a href="../Secp256k1/Num.html">Num</a>, publ : <a href="../Secp256k1/Point.html">Point</a>) : Bool
 
-        <a class="method-permalink" href="#verify%28sig%3ASignature%2Chash%3ANum%2Cpubl%3APoint%29-instance-method">#</a>
+        <a class="method-permalink" href="#verify%28sig%3ASignature%2Chash%3ANum%2Cpubl%3APoint%29%3ABool-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -292,6 +293,7 @@ the provided public key.</p>
 <li><code>hash</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the message or arbirtrary data hash.</li>
 <li><code>publ</code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the public key to match.</li>
 </ul>
+<p>Returns <em>true</em> if the signature verifies.</p>
 <pre><code class="language-crystal">ctx <span class="o">=</span> <span class="t">Context</span>.<span class="k">new</span>
 r <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;c4079db44240b7afe94985c69fc89602e33629fd9b8623d711c30ce6378b33df&quot;</span>
 s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;6842c1b63c94bdb8e4f5ae88fb65f7a98b77b197c8323004fb47ef57fab29053&quot;</span>

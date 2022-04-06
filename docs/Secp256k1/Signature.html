@@ -128,7 +128,7 @@
 signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code>, and the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
 <p>Properties:</p>
 <ul>
-<li><code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the <code>x</code> coordinate of a random point <code>R</code>.</li>
+<li><code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the <code>x</code> coordinate of a random point <code>R</code> on the curve.</li>
 <li><code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the signature proof of a message.</li>
 <li><code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</li>
 </ul>
@@ -199,23 +199,23 @@ signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-meth
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#compact-instance-method" class="signature"><strong>#compact</strong></a>
+        <a href="#compact%3AString-instance-method" class="signature"><strong>#compact</strong> : String</a>
         
-          <div class="summary"><p>Returns a compact string containing the concatenated signature in the form <code>r|s|v</code>.</p></div>
+          <div class="summary"><p>Returns a compact <code>String</code> containing the concatenated signature in the form <code>r|s|v</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#r%3ANum-instance-method" class="signature"><strong>#r</strong> : Num</a>
         
-          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code>.</p></div>
+          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code> on the curve.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#r%3D%28r%3ANum%29-instance-method" class="signature"><strong>#r=</strong>(r : Num)</a>
         
-          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code>.</p></div>
+          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code> on the curve.</p></div>
         
       </li>
     
@@ -301,7 +301,7 @@ signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-meth
 signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code>, and the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
 <p>Parameters:</p>
 <ul>
-<li><code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the <code>x</code> coordinate of a random point <code>R</code>.</li>
+<li><code><a href="../Secp256k1/Signature.html#r%3ANum-instance-method">#r</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the <code>x</code> coordinate of a random point <code>R</code> on the curve.</li>
 <li><code><a href="../Secp256k1/Signature.html#s%3ANum-instance-method">#s</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the signature proof of a message.</li>
 <li><code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</li>
 </ul>
@@ -344,17 +344,17 @@ v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="compact-instance-method">
+    <div class="entry-detail" id="compact:String-instance-method">
       <div class="signature">
         
-        def <strong>compact</strong>
+        def <strong>compact</strong> : String
 
-        <a class="method-permalink" href="#compact-instance-method">#</a>
+        <a class="method-permalink" href="#compact%3AString-instance-method">#</a>
       </div>
       
         <div class="doc">
           
-          <p>Returns a compact string containing the concatenated signature
+          <p>Returns a compact <code>String</code> containing the concatenated signature
 in the form <code>r|s|v</code>.</p>
 <pre><code class="language-crystal">r <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5&quot;</span>
 s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae0&quot;</span>
@@ -379,7 +379,7 @@ v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span>
       
         <div class="doc">
           
-          <p>The <code>x</code> coordinate of a random point <code>R</code>.</p>
+          <p>The <code>x</code> coordinate of a random point <code>R</code> on the curve.</p>
         </div>
       
       <br/>
@@ -398,7 +398,7 @@ v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span>
       
         <div class="doc">
           
-          <p>The <code>x</code> coordinate of a random point <code>R</code>.</p>
+          <p>The <code>x</code> coordinate of a random point <code>R</code> on the curve.</p>
         </div>
       
       <br/>

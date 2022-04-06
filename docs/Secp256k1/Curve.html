@@ -186,28 +186,28 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29-instance-method" class="signature"><strong>#add</strong>(p : Point, q : Point, prime = <span class="t">P</span>)</a>
+        <a href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29%3APoint-instance-method" class="signature"><strong>#add</strong>(p : Point, q : Point, prime = <span class="t">P</span>) : Point</a>
         
           <div class="summary"><p>Computes the elliptic curve jive addition of point <code>p(x, y)</code> and <code>q(x, y)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#double%28p%3APoint%2Cprime%3DP%29-instance-method" class="signature"><strong>#double</strong>(p : Point, prime = <span class="t">P</span>)</a>
+        <a href="#double%28p%3APoint%2Cprime%3DP%29%3APoint-instance-method" class="signature"><strong>#double</strong>(p : Point, prime = <span class="t">P</span>) : Point</a>
         
           <div class="summary"><p>Computes the elliptic curve juke point doubling of <code>p(x, y)</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29-instance-method" class="signature"><strong>#mod_inv</strong>(a : Num | BigInt, prime = <span class="t">P</span>)</a>
+        <a href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29%3ANum-instance-method" class="signature"><strong>#mod_inv</strong>(a : Num | BigInt, prime = <span class="t">P</span>) : Num</a>
         
           <div class="summary"><p>Computes the elliptic curve modular multiplicative inverse of <code>a</code>.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29-instance-method" class="signature"><strong>#mul</strong>(p : Point, s : Num | BigInt)</a>
+        <a href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29%3APoint-instance-method" class="signature"><strong>#mul</strong>(p : Point, s : Num | BigInt) : Point</a>
         
           <div class="summary"><p>Computes the elliptic curve sequence multiplication of point <code>p(x, y)</code> and a skalar <code>s</code>; with <code>s</code> being a private key within the elliptic curve field size of <code>N</code>.</p></div>
         
@@ -237,12 +237,12 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="add(p:Point,q:Point,prime=P)-instance-method">
+    <div class="entry-detail" id="add(p:Point,q:Point,prime=P):Point-instance-method">
       <div class="signature">
         
-        def <strong>add</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, q : <a href="../Secp256k1/Point.html">Point</a>, prime = <span class="t">P</span>)
+        def <strong>add</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, q : <a href="../Secp256k1/Point.html">Point</a>, prime = <span class="t">P</span>) : <a href="../Secp256k1/Point.html">Point</a>
 
-        <a class="method-permalink" href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29-instance-method">#</a>
+        <a class="method-permalink" href="#add%28p%3APoint%2Cq%3APoint%2Cprime%3DP%29%3APoint-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -256,6 +256,7 @@ curve in the point <code>r</code> which will be mirrored over the <code>x</code>
 <li><code>q</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the point <code>q(x, y)</code> to be used in the jive addition.</li>
 <li><code>prime</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the prime number that shapes the field (default <code>P</code>).</li>
 </ul>
+<p>Returns a <code><a href="../Secp256k1/Point.html">Point</a></code> containing the result of the intersection.</p>
 <pre><code class="language-crystal">p <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d&quot;</span>
 q <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;7e17f60baa7b8dc8581a55f7be1ea263c6a88452cf3f0a3f710651767654946c&quot;</span>
 <span class="t">Curve</span>.add p, q
@@ -276,12 +277,12 @@ q <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</spa
       </div>
     </div>
   
-    <div class="entry-detail" id="double(p:Point,prime=P)-instance-method">
+    <div class="entry-detail" id="double(p:Point,prime=P):Point-instance-method">
       <div class="signature">
         
-        def <strong>double</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, prime = <span class="t">P</span>)
+        def <strong>double</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, prime = <span class="t">P</span>) : <a href="../Secp256k1/Point.html">Point</a>
 
-        <a class="method-permalink" href="#double%28p%3APoint%2Cprime%3DP%29-instance-method">#</a>
+        <a class="method-permalink" href="#double%28p%3APoint%2Cprime%3DP%29%3APoint-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -295,6 +296,7 @@ at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
 <li><code>p</code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the point <code>p(x, y)</code> to be used in the juke doubling.</li>
 <li><code>prime</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the prime number that shapes the field (default <code>P</code>).</li>
 </ul>
+<p>Returns a <code><a href="../Secp256k1/Point.html">Point</a></code> as a result of the intersection.</p>
 <pre><code class="language-crystal">p <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d&quot;</span>
 <span class="t">Curve</span>.double p
 <span class="c"># =&gt; #&lt;Secp256k1::Point:0x7f58a244e860</span>
@@ -314,12 +316,12 @@ at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="mod_inv(a:Num|BigInt,prime=P)-instance-method">
+    <div class="entry-detail" id="mod_inv(a:Num|BigInt,prime=P):Num-instance-method">
       <div class="signature">
         
-        def <strong>mod_inv</strong>(a : <a href="../Secp256k1/Num.html">Num</a> | BigInt, prime = <span class="t">P</span>)
+        def <strong>mod_inv</strong>(a : <a href="../Secp256k1/Num.html">Num</a> | BigInt, prime = <span class="t">P</span>) : <a href="../Secp256k1/Num.html">Num</a>
 
-        <a class="method-permalink" href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29-instance-method">#</a>
+        <a class="method-permalink" href="#mod_inv%28a%3ANum%7CBigInt%2Cprime%3DP%29%3ANum-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -330,6 +332,7 @@ at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
 <li><code>a</code> (<code><a href="../Secp256k1/Num.html">Num</a> | BigInt</code>): the integer that we want the modular inverse of.</li>
 <li><code>prime</code> (<code><a href="../Secp256k1/Num.html">Num</a></code>): the prime number that shapes the field (default <code>P</code>).</li>
 </ul>
+<p>Returns a <code><a href="../Secp256k1/Num.html">Num</a></code> containing the mod inverse.</p>
 <pre><code class="language-crystal">a <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;ea678c668356d16d8bf5c69f95c1055e39bd24174605f64846e27c3ae6a88d81&quot;</span>
 <span class="t">Curve</span>.mod_inv a
 <span class="c"># =&gt; #&lt;Secp256k1::Num:0x7fe839493480</span>
@@ -344,12 +347,12 @@ at point <code>r</code> which will be mirrored over the <code>x</code>-axis.</p>
       </div>
     </div>
   
-    <div class="entry-detail" id="mul(p:Point,s:Num|BigInt)-instance-method">
+    <div class="entry-detail" id="mul(p:Point,s:Num|BigInt):Point-instance-method">
       <div class="signature">
         
-        def <strong>mul</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, s : <a href="../Secp256k1/Num.html">Num</a> | BigInt)
+        def <strong>mul</strong>(p : <a href="../Secp256k1/Point.html">Point</a>, s : <a href="../Secp256k1/Num.html">Num</a> | BigInt) : <a href="../Secp256k1/Point.html">Point</a>
 
-        <a class="method-permalink" href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29-instance-method">#</a>
+        <a class="method-permalink" href="#mul%28p%3APoint%2Cs%3ANum%7CBigInt%29%3APoint-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -362,6 +365,7 @@ curve field size of <code>N</code>.</p>
 <li><code>p</code> (<code><a href="../Secp256k1/Point.html">Point</a></code>): the point <code>p(x, y)</code> to be used in the sequencing.</li>
 <li><code>s</code> (<code><a href="../Secp256k1/Num.html">Num</a> | BigInt</code>): a skalar, in most cases a private key.</li>
 </ul>
+<p>Returns a <code><a href="../Secp256k1/Point.html">Point</a></code> as a result of the multiplication.</p>
 <pre><code class="language-crystal">p <span class="o">=</span> <span class="t">Point</span>.<span class="k">new</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d&quot;</span>
 s <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;f51ad125548b7a283ebf15ab830a25c850d4d863078c48cc9993b79ee18ee11e&quot;</span>
 <span class="t">Curve</span>.mul p, s
