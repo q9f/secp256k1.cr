@@ -103,8 +103,8 @@ var data = {lines:[
 {"lineNum":"  102","line":"  # Key.new(Num.new \"3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30\").public_hex"},
 {"lineNum":"  103","line":"  # # => \"04cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba281363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c\""},
 {"lineNum":"  104","line":"  # ```"},
-{"lineNum":"  105","line":"  def public_hex : String","class":"lineCov","hits":"2","order":"188","possible_hits":"2",},
-{"lineNum":"  106","line":"    @public_key.uncompressed","class":"lineCov","hits":"1","order":"189","possible_hits":"1",},
+{"lineNum":"  105","line":"  def public_hex : String","class":"lineCov","hits":"2","order":"186","possible_hits":"2",},
+{"lineNum":"  106","line":"    @public_key.uncompressed","class":"lineCov","hits":"1","order":"187","possible_hits":"1",},
 {"lineNum":"  107","line":"  end"},
 {"lineNum":"  108","line":""},
 {"lineNum":"  109","line":"  # Returns the public key as compressed, hexadecimal string literal."},
@@ -123,8 +123,8 @@ var data = {lines:[
 {"lineNum":"  122","line":"  # Key.new(Num.new \"3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30\").public_bytes"},
 {"lineNum":"  123","line":"  # # => Bytes[4, 205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162, 129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]"},
 {"lineNum":"  124","line":"  # ```"},
-{"lineNum":"  125","line":"  def public_bytes : Bytes","class":"lineCov","hits":"2","order":"190","possible_hits":"2",},
-{"lineNum":"  126","line":"    Num.new(@public_key.uncompressed).to_bytes","class":"lineCov","hits":"1","order":"191","possible_hits":"1",},
+{"lineNum":"  125","line":"  def public_bytes : Bytes","class":"lineCov","hits":"2","order":"188","possible_hits":"2",},
+{"lineNum":"  126","line":"    Num.new(@public_key.uncompressed).to_bytes","class":"lineCov","hits":"1","order":"189","possible_hits":"1",},
 {"lineNum":"  127","line":"  end"},
 {"lineNum":"  128","line":""},
 {"lineNum":"  129","line":"  # Returns the public key as compressed, binary byte slice."},
@@ -139,5 +139,5 @@ var data = {lines:[
 {"lineNum":"  138","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-06 11:52:18", "instrumented" : 14, "covered" : 14,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 12:16:54", "instrumented" : 14, "covered" : 14,};
 var merged_data = [];

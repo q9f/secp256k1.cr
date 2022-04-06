@@ -25,7 +25,7 @@ describe Secp256k1::Key do
     end
   end
 
-  it "generates valid kai-pairs from private key" do
+  it "generates valid key-pairs from private key" do
     priv = Num.new "a0dc65ffca799873cbea0ac274015b9526505daaaed385155425f7337704883e"
     key = Key.new priv
     key.private_hex.should eq "a0dc65ffca799873cbea0ac274015b9526505daaaed385155425f7337704883e"
