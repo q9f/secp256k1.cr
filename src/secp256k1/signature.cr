@@ -21,13 +21,13 @@
 # * `v` (`Num`): the recovery id or `v` value.
 class Secp256k1::Signature
   # The `x` coordinate of a random point `R` on the curve.
-  property r : Num
+  getter r : Num
 
   # The signature proof of a message.
-  property s : Num
+  getter s : Num
 
   # The recovery id or `v` value.
-  property v : Num
+  getter v : Num
 
   # Provides an ECDSA Signature containing the random point `r`, the
   # signature proof `s`, and the recovery id or `v` value.

@@ -24,11 +24,11 @@
 # * `bin` (`Bytes`): the binary bytes-slice represenation of the number.
 class Secp256k1::Num
   # The hexadecimal string representation of the number.
-  property hex : String
+  getter hex : String
   # The decimal big-integer representation of the number.
-  property dec : BigInt
+  getter dec : BigInt
   # The binary bytes-slice represenation of the number.
-  property bin : Slice(UInt8)
+  getter bin : Slice(UInt8)
 
   # Creates a random number using `Random::Secure` that can be used as
   # a secret (private key).

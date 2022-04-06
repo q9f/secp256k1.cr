@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.0">
-<meta name="crystal_docs.project_version" content="q9f/rewrite-dev">
+<meta name="crystal_docs.project_version" content="q9f/examples-dev">
 <meta name="crystal_docs.project_name" content="secp256k1">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="secp256k1">
-  <title>Secp256k1::Util - secp256k1 q9f/rewrite-dev</title>
+  <title>Secp256k1::Util - secp256k1 q9f/examples-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        q9f/rewrite-dev
+        q9f/examples-dev
       </span>
     </div>
   </div>
@@ -50,6 +50,26 @@
 
   <div class="types-list">
     <ul>
+  
+  <li class="parent " data-id="secp256k1/Bitcoin" data-name="bitcoin">
+      <a href="../Bitcoin.html">Bitcoin</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Bitcoin/Account" data-name="bitcoin::account">
+      <a href="../Bitcoin/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Ethereum" data-name="ethereum">
+      <a href="../Ethereum.html">Ethereum</a>
+      
+    </li>
   
   <li class="parent open current" data-id="secp256k1/Secp256k1" data-name="secp256k1">
       <a href="../Secp256k1.html">Secp256k1</a>
@@ -200,28 +220,28 @@ relevant hashing algorithms, or to concatenate byte slices.</p>
       </li>
     
       <li class="entry-summary">
-        <a href="#keccak%28data%3ANum%7CString%2Centropy%3D256%29%3ANum-instance-method" class="signature"><strong>#keccak</strong>(data : Num | String, entropy = <span class="n">256</span>) : Num</a>
+        <a href="#keccak%28data%3ANum%7CBytes%7CString%2Centropy%3D256%29%3ANum-instance-method" class="signature"><strong>#keccak</strong>(data : Num | Bytes | String, entropy = <span class="n">256</span>) : Num</a>
         
           <div class="summary"><p>Operating a Keccak hash on a binary/number or string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#ripemd160%28data%3ANum%7CString%29%3ANum-instance-method" class="signature"><strong>#ripemd160</strong>(data : Num | String) : Num</a>
+        <a href="#ripemd160%28data%3ANum%7CBytes%7CString%29%3ANum-instance-method" class="signature"><strong>#ripemd160</strong>(data : Num | Bytes | String) : Num</a>
         
           <div class="summary"><p>Operating a RIPEMD-160 hash on a binary/number or string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sha256%28data%3ANum%7CString%29%3ANum-instance-method" class="signature"><strong>#sha256</strong>(data : Num | String) : Num</a>
+        <a href="#sha256%28data%3ANum%7CBytes%7CString%29%3ANum-instance-method" class="signature"><strong>#sha256</strong>(data : Num | Bytes | String) : Num</a>
         
           <div class="summary"><p>Operating a SHA2-256 hash on a binary/number or string literal.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#sha3%28data%3ANum%7CString%2Centropy%3D256%29%3ANum-instance-method" class="signature"><strong>#sha3</strong>(data : Num | String, entropy = <span class="n">256</span>) : Num</a>
+        <a href="#sha3%28data%3ANum%7CBytes%7CString%2Centropy%3D256%29%3ANum-instance-method" class="signature"><strong>#sha3</strong>(data : Num | Bytes | String, entropy = <span class="n">256</span>) : Num</a>
         
           <div class="summary"><p>Operating a SHA3 hash on a binary/number or string literal.</p></div>
         
@@ -313,12 +333,12 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
       </div>
     </div>
   
-    <div class="entry-detail" id="keccak(data:Num|String,entropy=256):Num-instance-method">
+    <div class="entry-detail" id="keccak(data:Num|Bytes|String,entropy=256):Num-instance-method">
       <div class="signature">
         
-        def <strong>keccak</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | String, entropy = <span class="n">256</span>) : <a href="../Secp256k1/Num.html">Num</a>
+        def <strong>keccak</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | Bytes | String, entropy = <span class="n">256</span>) : <a href="../Secp256k1/Num.html">Num</a>
 
-        <a class="method-permalink" href="#keccak%28data%3ANum%7CString%2Centropy%3D256%29%3ANum-instance-method">#</a>
+        <a class="method-permalink" href="#keccak%28data%3ANum%7CBytes%7CString%2Centropy%3D256%29%3ANum-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -326,7 +346,7 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
           <p>Operating a Keccak hash on a binary/number or string literal.</p>
 <p>Parameters:</p>
 <ul>
-<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | String</code>): the binary numeric or string literal to be hashed.</li>
+<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | Bytes | String</code>): the binary numeric or string literal to be hashed.</li>
 <li><code>entropy</code> (<code>Int32</code>): the required entropy (default <code>256</code>).</li>
 </ul>
 <p>Returns a <code><a href="../Secp256k1/Num.html">Num</a></code> representing the Keccak hash.</p>
@@ -343,12 +363,12 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
       </div>
     </div>
   
-    <div class="entry-detail" id="ripemd160(data:Num|String):Num-instance-method">
+    <div class="entry-detail" id="ripemd160(data:Num|Bytes|String):Num-instance-method">
       <div class="signature">
         
-        def <strong>ripemd160</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | String) : <a href="../Secp256k1/Num.html">Num</a>
+        def <strong>ripemd160</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | Bytes | String) : <a href="../Secp256k1/Num.html">Num</a>
 
-        <a class="method-permalink" href="#ripemd160%28data%3ANum%7CString%29%3ANum-instance-method">#</a>
+        <a class="method-permalink" href="#ripemd160%28data%3ANum%7CBytes%7CString%29%3ANum-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -356,7 +376,7 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
           <p>Operating a RIPEMD-160 hash on a binary/number or string literal.</p>
 <p>Parameters:</p>
 <ul>
-<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | String</code>): the binary numeric or string literal to be hashed.</li>
+<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | Bytes | String</code>): the binary numeric or string literal to be hashed.</li>
 </ul>
 <p>Returns a <code><a href="../Secp256k1/Num.html">Num</a></code> representing the RIPEMD hash.</p>
 <pre><code class="language-crystal"><span class="t">Util</span>.ripemd160(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;0xdeadbeef&quot;</span>).hex
@@ -372,12 +392,12 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
       </div>
     </div>
   
-    <div class="entry-detail" id="sha256(data:Num|String):Num-instance-method">
+    <div class="entry-detail" id="sha256(data:Num|Bytes|String):Num-instance-method">
       <div class="signature">
         
-        def <strong>sha256</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | String) : <a href="../Secp256k1/Num.html">Num</a>
+        def <strong>sha256</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | Bytes | String) : <a href="../Secp256k1/Num.html">Num</a>
 
-        <a class="method-permalink" href="#sha256%28data%3ANum%7CString%29%3ANum-instance-method">#</a>
+        <a class="method-permalink" href="#sha256%28data%3ANum%7CBytes%7CString%29%3ANum-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -385,7 +405,7 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
           <p>Operating a SHA2-256 hash on a binary/number or string literal.</p>
 <p>Parameters:</p>
 <ul>
-<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | String</code>): the binary numeric or string literal to be hashed.</li>
+<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | Bytes | String</code>): the binary numeric or string literal to be hashed.</li>
 </ul>
 <p>Returns a <code><a href="../Secp256k1/Num.html">Num</a></code> representing the SHA2 hash.</p>
 <pre><code class="language-crystal"><span class="t">Util</span>.sha256(<span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;0xdeadbeef&quot;</span>).hex
@@ -401,12 +421,12 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
       </div>
     </div>
   
-    <div class="entry-detail" id="sha3(data:Num|String,entropy=256):Num-instance-method">
+    <div class="entry-detail" id="sha3(data:Num|Bytes|String,entropy=256):Num-instance-method">
       <div class="signature">
         
-        def <strong>sha3</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | String, entropy = <span class="n">256</span>) : <a href="../Secp256k1/Num.html">Num</a>
+        def <strong>sha3</strong>(data : <a href="../Secp256k1/Num.html">Num</a> | Bytes | String, entropy = <span class="n">256</span>) : <a href="../Secp256k1/Num.html">Num</a>
 
-        <a class="method-permalink" href="#sha3%28data%3ANum%7CString%2Centropy%3D256%29%3ANum-instance-method">#</a>
+        <a class="method-permalink" href="#sha3%28data%3ANum%7CBytes%7CString%2Centropy%3D256%29%3ANum-instance-method">#</a>
       </div>
       
         <div class="doc">
@@ -414,7 +434,7 @@ hash <span class="o">=</span> <span class="t">Util</span>.sha256 <span class="s"
           <p>Operating a SHA3 hash on a binary/number or string literal.</p>
 <p>Parameters:</p>
 <ul>
-<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | String</code>): the binary numeric or string literal to be hashed.</li>
+<li><code>data</code> (<code><a href="../Secp256k1/Num.html">Num</a> | Bytes | String</code>): the binary numeric or string literal to be hashed.</li>
 <li><code>entropy</code> (<code>Int32</code>): the required entropy (default <code>256</code>).</li>
 </ul>
 <p>Returns a <code><a href="../Secp256k1/Num.html">Num</a></code> representing the SHA3 hash.</p>
