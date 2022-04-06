@@ -17,11 +17,11 @@ var data = {lines:[
 {"lineNum":"   16","line":"# signature proof `s`, and the recovery id or `v` value."},
 {"lineNum":"   17","line":"#"},
 {"lineNum":"   18","line":"# Properties:"},
-{"lineNum":"   19","line":"# * `r` (`Num`): the `x` coordinate of a random point `R`."},
+{"lineNum":"   19","line":"# * `r` (`Num`): the `x` coordinate of a random point `R` on the curve."},
 {"lineNum":"   20","line":"# * `s` (`Num`): the signature proof of a message."},
 {"lineNum":"   21","line":"# * `v` (`Num`): the recovery id or `v` value."},
 {"lineNum":"   22","line":"class Secp256k1::Signature"},
-{"lineNum":"   23","line":"  # The `x` coordinate of a random point `R`."},
+{"lineNum":"   23","line":"  # The `x` coordinate of a random point `R` on the curve."},
 {"lineNum":"   24","line":"  property r : Num"},
 {"lineNum":"   25","line":""},
 {"lineNum":"   26","line":"  # The signature proof of a message."},
@@ -34,7 +34,7 @@ var data = {lines:[
 {"lineNum":"   33","line":"  # signature proof `s`, and the recovery id or `v` value."},
 {"lineNum":"   34","line":"  #"},
 {"lineNum":"   35","line":"  # Parameters:"},
-{"lineNum":"   36","line":"  # * `r` (`Num`): the `x` coordinate of a random point `R`."},
+{"lineNum":"   36","line":"  # * `r` (`Num`): the `x` coordinate of a random point `R` on the curve."},
 {"lineNum":"   37","line":"  # * `s` (`Num`): the signature proof of a message."},
 {"lineNum":"   38","line":"  # * `v` (`Num`): the recovery id or `v` value."},
 {"lineNum":"   39","line":"  #"},
@@ -63,7 +63,7 @@ var data = {lines:[
 {"lineNum":"   62","line":"    @v = v","class":"lineCov","hits":"1","order":"155","possible_hits":"1",},
 {"lineNum":"   63","line":"  end"},
 {"lineNum":"   64","line":""},
-{"lineNum":"   65","line":"  # Returns a compact string containing the concatenated signature"},
+{"lineNum":"   65","line":"  # Returns a compact `String` containing the concatenated signature"},
 {"lineNum":"   66","line":"  # in the form `r|s|v`."},
 {"lineNum":"   67","line":"  #"},
 {"lineNum":"   68","line":"  # ```"},
@@ -73,11 +73,11 @@ var data = {lines:[
 {"lineNum":"   72","line":"  # Signature.new(r, s, v).compact"},
 {"lineNum":"   73","line":"  # # => \"efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae000\""},
 {"lineNum":"   74","line":"  # ```"},
-{"lineNum":"   75","line":"  def compact","class":"lineCov","hits":"2","order":"165","possible_hits":"2",},
+{"lineNum":"   75","line":"  def compact : String","class":"lineCov","hits":"2","order":"165","possible_hits":"2",},
 {"lineNum":"   76","line":"    \"#{r.to_zpadded_hex}#{s.to_zpadded_hex}#{v.to_hex}\"","class":"lineCov","hits":"1","order":"166","possible_hits":"1",},
 {"lineNum":"   77","line":"  end"},
 {"lineNum":"   78","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-05 19:02:46", "instrumented" : 6, "covered" : 6,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 11:52:18", "instrumented" : 6, "covered" : 6,};
 var merged_data = [];

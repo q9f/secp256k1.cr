@@ -9,5 +9,5 @@ var data = {files:[
 {"link":"secp256k1.cr.30592eb4.html","title":"secp256k1.cr","summary_name":"[...]/src/secp256k1.cr","covered_class":"lineCov","covered":"100.0","covered_lines":"5","uncovered_lines":"0","total_lines" : "5"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-05 19:02:46", "instrumented" : 243, "covered" : 237,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 11:52:18", "instrumented" : 243, "covered" : 237,};
 var merged_data = [];
