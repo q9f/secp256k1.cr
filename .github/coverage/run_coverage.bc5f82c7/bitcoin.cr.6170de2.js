@@ -17,7 +17,7 @@ var data = {lines:[
 {"lineNum":"   16","line":"include Secp256k1"},
 {"lineNum":"   17","line":""},
 {"lineNum":"   18","line":"# An example implementation of a `Bitcoin` account using an `Secp256k1`"},
-{"lineNum":"   19","line":"# key-pair and a Bitcoin network version identifier; only for educational"},
+{"lineNum":"   19","line":"# keypair and a Bitcoin network version identifier; only for educational"},
 {"lineNum":"   20","line":"# purposes and should not be used in production."},
 {"lineNum":"   21","line":"module Bitcoin"},
 {"lineNum":"   22","line":"  # The Base-58 alphabet for `Bitcoin` addresses is a Base-64 alphabet without"},
@@ -25,7 +25,7 @@ var data = {lines:[
 {"lineNum":"   24","line":"  BASE_58 = \"123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz\""},
 {"lineNum":"   25","line":""},
 {"lineNum":"   26","line":"  # An example implementation of a `Bitcoin` account using an `Secp256k1`"},
-{"lineNum":"   27","line":"  # key-pair and a Bitcoin network version identifier; only for educational"},
+{"lineNum":"   27","line":"  # keypair and a Bitcoin network version identifier; only for educational"},
 {"lineNum":"   28","line":"  # purposes and should not be used in production."},
 {"lineNum":"   29","line":"  class Account"},
 {"lineNum":"   30","line":"    # The `Secp256k1` keypair for the account."},
@@ -41,7 +41,7 @@ var data = {lines:[
 {"lineNum":"   40","line":"    # The private, compressed wallet-import format."},
 {"lineNum":"   41","line":"    getter wif_compressed : String"},
 {"lineNum":"   42","line":""},
-{"lineNum":"   43","line":"    # Creates a Bitcoin account from a given `Secp256k1::Key` keypay and for the"},
+{"lineNum":"   43","line":"    # Creates a Bitcoin account from a given `Secp256k1::Key` keypair and for the"},
 {"lineNum":"   44","line":"    # specified network version, e.g., `00` for Bitcoin main network. It creates"},
 {"lineNum":"   45","line":"    # a random account if no parameters are supplied."},
 {"lineNum":"   46","line":"    #"},
@@ -140,5 +140,5 @@ var data = {lines:[
 {"lineNum":"  139","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-06 14:26:02", "instrumented" : 44, "covered" : 42,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 16:56:27", "instrumented" : 44, "covered" : 42,};
 var merged_data = [];

@@ -161,9 +161,9 @@ var data = {lines:[
 {"lineNum":"  160","line":"  # #              @bin=Bytes[115, 131, 35, 49, 151, 157, 137, 211, 149, 145, 32, 97, 227, 65, 248, 70, 140, 251, 62, 97, 157, 160, 106, 5, 126, 74, 92, 169, 91, 185, 94, 119]>>"},
 {"lineNum":"  161","line":"  # ```"},
 {"lineNum":"  162","line":"  def mul(p : Point, s : Num | BigInt) : Point","class":"lineCov","hits":"4","order":"27","possible_hits":"4",},
-{"lineNum":"  163","line":"    s = s.to_big if s.is_a? Num","class":"lineCov","hits":"1","order":"195","possible_hits":"1",},
+{"lineNum":"  163","line":"    s = s.to_big if s.is_a? Num","class":"lineCov","hits":"1","order":"215","possible_hits":"1",},
 {"lineNum":"  164","line":"    if s === 0 || s >= N.to_big","class":"linePartCov","hits":"3","order":"28","possible_hits":"4",},
-{"lineNum":"  165","line":"      raise \"Invalid scalar: outside of Secp256k1 field dimension.\"","class":"linePartCov","hits":"1","order":"247","possible_hits":"2",},
+{"lineNum":"  165","line":"      raise \"Invalid scalar: outside of Secp256k1 field dimension.\"","class":"linePartCov","hits":"1","order":"264","possible_hits":"2",},
 {"lineNum":"  166","line":"    end"},
 {"lineNum":"  167","line":"    s_bin = s.to_s 2","class":"lineCov","hits":"2","order":"29","possible_hits":"2",},
 {"lineNum":"  168","line":"    q = p","class":"lineCov","hits":"2","order":"30","possible_hits":"2",},
@@ -179,5 +179,5 @@ var data = {lines:[
 {"lineNum":"  178","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-06 14:26:02", "instrumented" : 56, "covered" : 56,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 16:56:27", "instrumented" : 56, "covered" : 56,};
 var merged_data = [];

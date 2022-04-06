@@ -13,13 +13,12 @@
 # limitations under the License.
 
 require "./spec_helper"
-include Bitcoin
 
 describe Bitcoin do
   it "can generate valid bitcoin addresses" do
     prv = Num.new "18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725"
     key = Key.new prv
-    btc = Account.new key
+    btc = Bitcoin::Account.new key
     btc.version.hex.should eq "00"
     btc.address.should eq "16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM"
     btc.address_compressed.should eq "1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs"
@@ -30,7 +29,7 @@ describe Bitcoin do
   it "can generate valid dogecoin addresses" do
     prv = Num.new "8c2b790d6645847fb70cdd7c14404f4c0a59966527c21aa286fc6f6d802e7d18"
     key = Key.new prv
-    btc = Account.new key, Num.new "1e"
+    btc = Bitcoin::Account.new key, Num.new "1e"
     btc.version.hex.should eq "1e"
     btc.address.should eq "DDh3RAMeWnTWfH6q11uWkF74vMbMxqxa8X"
     btc.address_compressed.should eq "DP9Q6DP1GVjUAtcJcaCeR1psedXoC12Jtu"

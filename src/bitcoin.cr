@@ -16,7 +16,7 @@ require "./secp256k1"
 include Secp256k1
 
 # An example implementation of a `Bitcoin` account using an `Secp256k1`
-# key-pair and a Bitcoin network version identifier; only for educational
+# keypair and a Bitcoin network version identifier; only for educational
 # purposes and should not be used in production.
 module Bitcoin
   # The Base-58 alphabet for `Bitcoin` addresses is a Base-64 alphabet without
@@ -24,7 +24,7 @@ module Bitcoin
   BASE_58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
   # An example implementation of a `Bitcoin` account using an `Secp256k1`
-  # key-pair and a Bitcoin network version identifier; only for educational
+  # keypair and a Bitcoin network version identifier; only for educational
   # purposes and should not be used in production.
   class Account
     # The `Secp256k1` keypair for the account.
@@ -40,7 +40,7 @@ module Bitcoin
     # The private, compressed wallet-import format.
     getter wif_compressed : String
 
-    # Creates a Bitcoin account from a given `Secp256k1::Key` keypay and for the
+    # Creates a Bitcoin account from a given `Secp256k1::Key` keypair and for the
     # specified network version, e.g., `00` for Bitcoin main network. It creates
     # a random account if no parameters are supplied.
     #

@@ -44,9 +44,9 @@ var data = {lines:[
 {"lineNum":"   43","line":"  # #                  @dec=58444189335609256006902338825877424261513225250255958585656342678587884156524,"},
 {"lineNum":"   44","line":"  # #                  @bin=Bytes[129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]>>>"},
 {"lineNum":"   45","line":"  # ```"},
-{"lineNum":"   46","line":"  def initialize","class":"lineCov","hits":"3","order":"226","possible_hits":"3",},
-{"lineNum":"   47","line":"    @private_key = Num.new","class":"lineCov","hits":"1","order":"227","possible_hits":"1",},
-{"lineNum":"   48","line":"    @public_key = Point.new @private_key","class":"lineCov","hits":"1","order":"237","possible_hits":"1",},
+{"lineNum":"   46","line":"  def initialize","class":"lineCov","hits":"3","order":"243","possible_hits":"3",},
+{"lineNum":"   47","line":"    @private_key = Num.new","class":"lineCov","hits":"1","order":"244","possible_hits":"1",},
+{"lineNum":"   48","line":"    @public_key = Point.new @private_key","class":"lineCov","hits":"1","order":"254","possible_hits":"1",},
 {"lineNum":"   49","line":"  end"},
 {"lineNum":"   50","line":""},
 {"lineNum":"   51","line":"  # Creates a public-private keypair from an existing private key."},
@@ -93,8 +93,8 @@ var data = {lines:[
 {"lineNum":"   92","line":"  # Key.new(Num.new \"3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30\").private_bytes"},
 {"lineNum":"   93","line":"  # # => Bytes[60, 207, 132, 130, 12, 32, 213, 232, 197, 54, 186, 132, 197, 43, 164, 16, 55, 91, 41, 177, 129, 43, 95, 126, 114, 36, 69, 201, 105, 160, 251, 48]"},
 {"lineNum":"   94","line":"  # ```"},
-{"lineNum":"   95","line":"  def private_bytes : Bytes","class":"lineCov","hits":"2","order":"238","possible_hits":"2",},
-{"lineNum":"   96","line":"    @private_key.to_zpadded_bytes","class":"lineCov","hits":"1","order":"239","possible_hits":"1",},
+{"lineNum":"   95","line":"  def private_bytes : Bytes","class":"lineCov","hits":"2","order":"255","possible_hits":"2",},
+{"lineNum":"   96","line":"    @private_key.to_zpadded_bytes","class":"lineCov","hits":"1","order":"256","possible_hits":"1",},
 {"lineNum":"   97","line":"  end"},
 {"lineNum":"   98","line":""},
 {"lineNum":"   99","line":"  # Returns the public key as uncompressed, hexadecimal string literal."},
@@ -103,8 +103,8 @@ var data = {lines:[
 {"lineNum":"  102","line":"  # Key.new(Num.new \"3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30\").public_hex"},
 {"lineNum":"  103","line":"  # # => \"04cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba281363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c\""},
 {"lineNum":"  104","line":"  # ```"},
-{"lineNum":"  105","line":"  def public_hex : String","class":"lineCov","hits":"2","order":"240","possible_hits":"2",},
-{"lineNum":"  106","line":"    @public_key.uncompressed","class":"lineCov","hits":"1","order":"241","possible_hits":"1",},
+{"lineNum":"  105","line":"  def public_hex : String","class":"lineCov","hits":"2","order":"257","possible_hits":"2",},
+{"lineNum":"  106","line":"    @public_key.uncompressed","class":"lineCov","hits":"1","order":"258","possible_hits":"1",},
 {"lineNum":"  107","line":"  end"},
 {"lineNum":"  108","line":""},
 {"lineNum":"  109","line":"  # Returns the public key as compressed, hexadecimal string literal."},
@@ -139,5 +139,5 @@ var data = {lines:[
 {"lineNum":"  138","line":"end"},
 ]};
 var percent_low = 25;var percent_high = 75;
-var header = { "command" : "run_coverage", "date" : "2022-04-06 14:26:02", "instrumented" : 16, "covered" : 16,};
+var header = { "command" : "run_coverage", "date" : "2022-04-06 16:56:27", "instrumented" : 16, "covered" : 16,};
 var merged_data = [];

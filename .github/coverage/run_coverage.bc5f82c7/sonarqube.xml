@@ -30,6 +30,25 @@
 		<lineToCover lineNumber="101" covered="true"/>
 		<lineToCover lineNumber="102" covered="true"/>
 	</file>
+	<file path="/home/user/.opt/q9f/secp256k1.cr/src/ethereum.cr">
+		<lineToCover lineNumber="56" covered="true"/>
+		<lineToCover lineNumber="57" covered="true"/>
+		<lineToCover lineNumber="58" covered="true"/>
+		<lineToCover lineNumber="62" covered="true"/>
+		<lineToCover lineNumber="63" covered="true"/>
+		<lineToCover lineNumber="64" covered="true"/>
+		<lineToCover lineNumber="68" covered="true"/>
+		<lineToCover lineNumber="69" covered="true"/>
+		<lineToCover lineNumber="70" covered="true"/>
+		<lineToCover lineNumber="71" covered="true"/>
+		<lineToCover lineNumber="72" covered="true"/>
+		<lineToCover lineNumber="73" covered="true"/>
+		<lineToCover lineNumber="74" covered="true"/>
+		<lineToCover lineNumber="75" covered="true"/>
+		<lineToCover lineNumber="76" covered="true"/>
+		<lineToCover lineNumber="78" covered="true"/>
+		<lineToCover lineNumber="80" covered="true"/>
+	</file>
 	<file path="/home/user/.opt/q9f/secp256k1.cr/src/bitcoin.cr">
 		<lineToCover lineNumber="79" covered="true"/>
 		<lineToCover lineNumber="80" covered="true"/>
