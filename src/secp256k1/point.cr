@@ -21,6 +21,8 @@ lib LibGMP
 end
 
 # Provides a point in the two-dimensional space of any elliptic curve.
+# In most cases, such a point on a given curve represents a public key.
+# However, for keypairs, a `Key` type shall be used!
 #
 # Properties:
 # * `x` (`Num`): the position on the x-axis.
@@ -32,7 +34,7 @@ class Secp256k1::Point
   # The position on the y-axis.
   property y : Num
 
-  # Provides a public point in the two-dimensional space on the given
+  # Provides a public point in the two-dimensional space on the given `Secp256k1`
   # elliptic curve by passing the x- and y-coordinates (public key).
   #
   # Parameters:
@@ -58,8 +60,10 @@ class Secp256k1::Point
     @y = y
   end
 
-  # Provides a public point in the two-dimensional space on the given
-  # elliptic curve by passing a random number (private key).
+  # Provides a public point in the two-dimensional space on the given `Secp256k1`
+  # elliptic curve by passing a random number (private key). Note, that the
+  # private key will be consumed by this constructor and should only be used
+  # to retrieve a public key. To manage keypairs, use the `Key` type instead.
   #
   # Parameters:
   # * `priv` (`Num`): the random number giving access to the point.
@@ -83,7 +87,7 @@ class Secp256k1::Point
     @y = pub.y
   end
 
-  # Provides a public point in the two-dimensional space on the given
+  # Provides a public point in the two-dimensional space on the given `Secp256k1`
   # elliptic curve by passing a compressed or uncompressed public key.
   #
   # Parameters:
@@ -133,7 +137,7 @@ class Secp256k1::Point
     end
   end
 
-  # Returns a prefixed, uncompressed public key string for th given point
+  # Returns a prefixed, uncompressed public key string for the given point
   # in the format `04|x|y`.
   #
   # ```
@@ -141,12 +145,12 @@ class Secp256k1::Point
   # Point.new(priv).uncompressed
   # # => "04aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f21f4c49cfe90da39c254a51b8ee8afcdd8c02dd566f13582c23e104c7ed5936b"
   # ```
-  def uncompressed
+  def uncompressed : String
     prefix = "04"
     "#{prefix}#{@x.to_zpadded_hex}#{@y.to_zpadded_hex}"
   end
 
-  # Returns a prefixed, compressed public key string for th given point
+  # Returns a prefixed, compressed public key string for the given point
   # in the format `prefix|x|y`.
   #
   # ```
@@ -154,7 +158,7 @@ class Secp256k1::Point
   # Point.new(priv).compressed
   # # => "03aff8674d6b96a6c58dbab08b903565363271308888340a2caddf88e56165930f"
   # ```
-  def compressed
+  def compressed : String
     prefix = 2 + @y.to_big % 2
     prefix = "0#{prefix}"
     "#{prefix}#{@x.to_zpadded_hex}"

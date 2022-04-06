@@ -24,6 +24,8 @@ module Secp256k1::Curve
   # * `a` (`Num | BigInt`): the integer that we want the modular inverse of.
   # * `prime` (`Num`): the prime number that shapes the field (default `P`).
   #
+  # Returns a `Num` containing the mod inverse.
+  #
   # ```
   # a = Num.new "ea678c668356d16d8bf5c69f95c1055e39bd24174605f64846e27c3ae6a88d81"
   # Curve.mod_inv a
@@ -32,7 +34,7 @@ module Secp256k1::Curve
   # #          @dec=18547889042489459453149555262266367802647896593999507743600711803155665963719,
   # #          @bin=Bytes[41, 1, 187, 177, 47, 203, 100, 233, 136, 126, 105, 158, 105, 230, 176, 179, 129, 29, 177, 143, 107, 79, 148, 223, 178, 96, 132, 229, 203, 56, 202, 199]>
   # ```
-  def mod_inv(a : Num | BigInt, prime = P)
+  def mod_inv(a : Num | BigInt, prime = P) : Num
     a = a.to_big if a.is_a? Num
     prime = prime.to_big if prime.is_a? Num
     m_low = 1
@@ -62,6 +64,7 @@ module Secp256k1::Curve
   # * `q` (`Num`): the point `q(x, y)` to be used in the jive addition.
   # * `prime` (`Num`): the prime number that shapes the field (default `P`).
   #
+  # Returns a `Point` containing the result of the intersection.
   # ```
   # p = Point.new Num.new "5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d"
   # q = Point.new Num.new "7e17f60baa7b8dc8581a55f7be1ea263c6a88452cf3f0a3f710651767654946c"
@@ -76,7 +79,7 @@ module Secp256k1::Curve
   # #              @dec=41035367046532706466310839850976742216202985567094126989716802462994340507300,
   # #              @bin=Bytes[90, 185, 49, 214, 114, 120, 114, 211, 62, 160, 73, 23, 5, 104, 15, 95, 188, 183, 64, 155, 168, 5, 65, 71, 6, 115, 196, 252, 228, 223, 238, 164]>>
   # ```
-  def add(p : Point, q : Point, prime = P)
+  def add(p : Point, q : Point, prime = P) : Point
     prime = prime.to_big if prime.is_a? Num
     p_x = p.x.to_big
     p_y = p.y.to_big
@@ -102,6 +105,8 @@ module Secp256k1::Curve
   # * `p` (`Point`): the point `p(x, y)` to be used in the juke doubling.
   # * `prime` (`Num`): the prime number that shapes the field (default `P`).
   #
+  # Returns a `Point` as a result of the intersection.
+  #
   # ```
   # p = Point.new Num.new "5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d"
   # Curve.double p
@@ -115,7 +120,7 @@ module Secp256k1::Curve
   # #              @dec=7078265941949780810129057229376739925018916922271301049726817038887681467708,
   # #              @bin=Bytes[15, 166, 40, 19, 174, 73, 215, 29, 211, 161, 159, 189, 23, 81, 110, 126, 157, 205, 213, 117, 61, 105, 203, 19, 216, 112, 81, 216, 211, 39, 37, 60]>>
   # ```
-  def double(p : Point, prime = P)
+  def double(p : Point, prime = P) : Point
     prime = prime.to_big if prime.is_a? Num
     p_x = p.x.to_big
     p_y = p.y.to_big
@@ -138,6 +143,8 @@ module Secp256k1::Curve
   # * `p` (`Point`): the point `p(x, y)` to be used in the sequencing.
   # * `s` (`Num | BigInt`): a skalar, in most cases a private key.
   #
+  # Returns a `Point` as a result of the multiplication.
+  #
   # ```
   # p = Point.new Num.new "5cb1eec17e38b004a8fd90fa8e423432430f60d76c30bb33f4091243c029e86d"
   # s = Num.new "f51ad125548b7a283ebf15ab830a25c850d4d863078c48cc9993b79ee18ee11e"
@@ -152,7 +159,7 @@ module Secp256k1::Curve
   # #              @dec=52247677450688090944696492452353217603423545532791062178926183551888078233207,
   # #              @bin=Bytes[115, 131, 35, 49, 151, 157, 137, 211, 149, 145, 32, 97, 227, 65, 248, 70, 140, 251, 62, 97, 157, 160, 106, 5, 126, 74, 92, 169, 91, 185, 94, 119]>>
   # ```
-  def mul(p : Point, s : Num | BigInt)
+  def mul(p : Point, s : Num | BigInt) : Point
     s = s.to_big if s.is_a? Num
     if s === 0 || s >= N.to_big
       raise "Invalid scalar: outside of Secp256k1 field dimension."

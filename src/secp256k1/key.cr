@@ -82,7 +82,7 @@ class Secp256k1::Key
   # Key.new(Num.new "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30").private_hex
   # # => "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30"
   # ```
-  def private_hex
+  def private_hex : String
     @private_key.to_zpadded_hex
   end
 
@@ -92,7 +92,7 @@ class Secp256k1::Key
   # Key.new(Num.new "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30").private_bytes
   # # => Bytes[60, 207, 132, 130, 12, 32, 213, 232, 197, 54, 186, 132, 197, 43, 164, 16, 55, 91, 41, 177, 129, 43, 95, 126, 114, 36, 69, 201, 105, 160, 251, 48]
   # ```
-  def private_bytes
+  def private_bytes : Bytes
     @private_key.to_zpadded_bytes
   end
 
@@ -102,7 +102,7 @@ class Secp256k1::Key
   # Key.new(Num.new "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30").public_hex
   # # => "04cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba281363d298e4a40ebcb13f1afa85a0b94b967f243ee59a59010cb5deaf0d7b66c"
   # ```
-  def public_hex
+  def public_hex : String
     @public_key.uncompressed
   end
 
@@ -112,7 +112,7 @@ class Secp256k1::Key
   # Key.new(Num.new "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30").public_hex_compressed
   # # => "02cd4a8712ee6efc15b5abe37c0dbfa979d89c427d3fe24b076008decefe94dba2"
   # ```
-  def public_hex_compressed
+  def public_hex_compressed : String
     @public_key.compressed
   end
 
@@ -122,7 +122,7 @@ class Secp256k1::Key
   # Key.new(Num.new "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30").public_bytes
   # # => Bytes[4, 205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162, 129, 54, 61, 41, 142, 74, 64, 235, 203, 19, 241, 175, 168, 90, 11, 148, 185, 103, 242, 67, 238, 89, 165, 144, 16, 203, 93, 234, 240, 215, 182, 108]
   # ```
-  def public_bytes
+  def public_bytes : Bytes
     Num.new(@public_key.uncompressed).to_bytes
   end
 
@@ -132,7 +132,7 @@ class Secp256k1::Key
   # Key.new(Num.new "3ccf84820c20d5e8c536ba84c52ba410375b29b1812b5f7e722445c969a0fb30").public_bytes_compressed
   # # => Bytes[2, 205, 74, 135, 18, 238, 110, 252, 21, 181, 171, 227, 124, 13, 191, 169, 121, 216, 156, 66, 125, 63, 226, 75, 7, 96, 8, 222, 206, 254, 148, 219, 162]
   # ```
-  def public_bytes_compressed
+  def public_bytes_compressed : Bytes
     Num.new(@public_key.compressed).to_bytes
   end
 end

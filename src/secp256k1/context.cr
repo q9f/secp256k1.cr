@@ -26,6 +26,8 @@ class Secp256k1::Context
   # * `key` (`Key`): the keypair containing a secret to sign the data.
   # * `hash` (`Num`): the message or arbirtrary data hash.
   #
+  # Returns a `Signature` proving the given key signed the message hash.
+  #
   # ```
   # ctx = Context.new
   # key = Key.new Num.new "1f0c122d41ff536b19bfd83537c0dfc290e45cd3c375a43237c8b8fff7ac8af7"
@@ -45,7 +47,7 @@ class Secp256k1::Context
   # #              @dec=0,
   # #              @bin=Bytes[0]>>
   # ```
-  def sign(key : Key, hash : Num)
+  def sign(key : Key, hash : Num) : Signature
     k = Util.deterministic_k key.private_key, hash
     hash = hash.to_big
     priv = key.private_key.to_big
@@ -79,6 +81,8 @@ class Secp256k1::Context
   # * `hash` (`Num`): the message or arbirtrary data hash.
   # * `publ` (`Point`): the public key to match.
   #
+  # Returns _true_ if the signature verifies.
+  #
   # ```
   # ctx = Context.new
   # r = Num.new "c4079db44240b7afe94985c69fc89602e33629fd9b8623d711c30ce6378b33df"
@@ -90,7 +94,7 @@ class Secp256k1::Context
   # ctx.verify sig, hash, publ
   # # => true
   # ```
-  def verify(sig : Signature, hash : Num, publ : Point)
+  def verify(sig : Signature, hash : Num, publ : Point) : Bool
     s_inv = Curve.mod_inv sig.s, N
     p0 = Curve.mul G, (hash.to_big * s_inv.to_big) % N.to_big
     p1 = Curve.mul publ, (sig.r.to_big * s_inv.to_big) % N.to_big
