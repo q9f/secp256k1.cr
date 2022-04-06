@@ -20,7 +20,7 @@ module Secp256k1::Util
   # Operating a Keccak hash on a binary/number or string literal.
   #
   # Parameters:
-  # * `data` (`Num | String`): the binary numeric or string literal to be hashed.
+  # * `data` (`Num | Bytes | String`): the binary numeric or string literal to be hashed.
   # * `entropy` (`Int32`): the required entropy (default `256`).
   #
   # Returns a `Num` representing the Keccak hash.
@@ -32,19 +32,19 @@ module Secp256k1::Util
   # Util.keccak("0xdeadbeef").hex
   # # => "4f440a001006a49f24a7de53c04eca3f79aef851ac58e460c9630d044277c8b0"
   # ```
-  def keccak(data : Num | String, entropy = 256) : Num
+  def keccak(data : Num | Bytes | String, entropy = 256) : Num
     keccak = Digest::Keccak3.new entropy
-    if data.is_a? String
-      return Num.new keccak.update(data).hexdigest
-    else
+    if data.is_a? Num
       return Num.new keccak.update(data.to_bytes).hexdigest
+    else
+      return Num.new keccak.update(data).hexdigest
     end
   end
 
   # Operating a SHA3 hash on a binary/number or string literal.
   #
   # Parameters:
-  # * `data` (`Num | String`): the binary numeric or string literal to be hashed.
+  # * `data` (`Num | Bytes | String`): the binary numeric or string literal to be hashed.
   # * `entropy` (`Int32`): the required entropy (default `256`).
   #
   # Returns a `Num` representing the SHA3 hash.
@@ -56,19 +56,19 @@ module Secp256k1::Util
   # Util.sha3("0xdeadbeef").hex
   # # => "c12811e13ed75afe3e0945ef34e8a25b9d321a46e131c6463731de25a21b39eb"
   # ```
-  def sha3(data : Num | String, entropy = 256) : Num
+  def sha3(data : Num | Bytes | String, entropy = 256) : Num
     sha3 = Digest::SHA3.new entropy
-    if data.is_a? String
-      return Num.new sha3.update(data).hexdigest
-    else
+    if data.is_a? Num
       return Num.new sha3.update(data.to_bytes).hexdigest
+    else
+      return Num.new sha3.update(data).hexdigest
     end
   end
 
   # Operating a SHA2-256 hash on a binary/number or string literal.
   #
   # Parameters:
-  # * `data` (`Num | String`): the binary numeric or string literal to be hashed.
+  # * `data` (`Num | Bytes | String`): the binary numeric or string literal to be hashed.
   #
   # Returns a `Num` representing the SHA2 hash.
   #
@@ -79,19 +79,19 @@ module Secp256k1::Util
   # Util.sha256("0xdeadbeef").hex
   # # => "4142710b9b4caaeb000b8e5de271bbebac7f509aab2f5e61d1ed1958bfe6d583"
   # ```
-  def sha256(data : Num | String) : Num
+  def sha256(data : Num | Bytes | String) : Num
     sha2 = OpenSSL::Digest.new "SHA256"
-    if data.is_a? String
-      return Num.new sha2.update(data).final.hexstring
-    else
+    if data.is_a? Num
       return Num.new sha2.update(data.to_bytes).final.hexstring
+    else
+      return Num.new sha2.update(data).final.hexstring
     end
   end
 
   # Operating a RIPEMD-160 hash on a binary/number or string literal.
   #
   # Parameters:
-  # * `data` (`Num | String`): the binary numeric or string literal to be hashed.
+  # * `data` (`Num | Bytes | String`): the binary numeric or string literal to be hashed.
   #
   # Returns a `Num` representing the RIPEMD hash.
   #
@@ -102,12 +102,12 @@ module Secp256k1::Util
   # Util.ripemd160("0xdeadbeef").hex
   # # => "4caf817f14e84b564e47afd19966e5d123ee0183"
   # ```
-  def ripemd160(data : Num | String) : Num
+  def ripemd160(data : Num | Bytes | String) : Num
     ripemd = OpenSSL::Digest.new "RIPEMD160"
-    if data.is_a? String
-      return Num.new ripemd.update(data).final.hexstring
-    else
+    if data.is_a? Num
       return Num.new ripemd.update(data.to_bytes).final.hexstring
+    else
+      return Num.new ripemd.update(data).final.hexstring
     end
   end
 

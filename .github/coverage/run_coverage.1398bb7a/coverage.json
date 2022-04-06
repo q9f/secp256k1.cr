@@ -1,19 +1,20 @@
 {
   "files": [
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/context.cr", "percent_covered": "92.86", "covered_lines": "26", "total_lines": "28"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/bitcoin.cr", "percent_covered": "95.45", "covered_lines": "42", "total_lines": "44"},
     {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/util.cr", "percent_covered": "93.18", "covered_lines": "41", "total_lines": "44"},
     {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/curve.cr", "percent_covered": "100.00", "covered_lines": "56", "total_lines": "56"},
-    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/context.cr", "percent_covered": "92.86", "covered_lines": "26", "total_lines": "28"},
     {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/point.cr", "percent_covered": "100.00", "covered_lines": "36", "total_lines": "36"},
-    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/key.cr", "percent_covered": "100.00", "covered_lines": "14", "total_lines": "14"},
+    {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/key.cr", "percent_covered": "100.00", "covered_lines": "16", "total_lines": "16"},
     {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/num.cr", "percent_covered": "100.00", "covered_lines": "47", "total_lines": "47"},
     {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1/signature.cr", "percent_covered": "100.00", "covered_lines": "6", "total_lines": "6"},
     {"file": "/home/user/.opt/q9f/secp256k1.cr/src/secp256k1.cr", "percent_covered": "100.00", "covered_lines": "5", "total_lines": "5"}
   ],
-  "percent_covered": "97.88",
-  "covered_lines": 231,
-  "total_lines": 236,
+  "percent_covered": "97.52",
+  "covered_lines": 275,
+  "total_lines": 282,
   "percent_low": 25,
   "percent_high": 75,
   "command": "run_coverage",
-  "date": "2022-04-06 12:16:54"
+  "date": "2022-04-06 14:26:02"
 }

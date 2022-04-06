@@ -1,5 +1,7 @@
 # wrapper to compile all tests into one binary for code coverage reporting
 require "../spec/spec_helper.cr"
+require "../spec/bitcoin_spec.cr"
+require "../spec/ethereum_spec.cr"
 require "../spec/secp256k1_spec.cr"
 require "../spec/secp256k1/context_spec.cr"
 require "../spec/secp256k1/curve_spec.cr"

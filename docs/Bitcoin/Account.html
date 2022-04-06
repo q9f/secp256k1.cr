@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.3.0">
+<meta name="crystal_docs.project_version" content="q9f/examples-dev">
+<meta name="crystal_docs.project_name" content="secp256k1">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="secp256k1">
+  <title>Bitcoin::Account - secp256k1 q9f/examples-dev</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          secp256k1
+        </a>
+      </h1>
+
+      <span class="project-version">
+        q9f/examples-dev
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="secp256k1/Bitcoin" data-name="bitcoin">
+      <a href="../Bitcoin.html">Bitcoin</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="secp256k1/Bitcoin/Account" data-name="bitcoin::account">
+      <a href="../Bitcoin/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Ethereum" data-name="ethereum">
+      <a href="../Ethereum.html">Ethereum</a>
+      
+    </li>
+  
+  <li class="parent " data-id="secp256k1/Secp256k1" data-name="secp256k1">
+      <a href="../Secp256k1.html">Secp256k1</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Context" data-name="secp256k1::context">
+      <a href="../Secp256k1/Context.html">Context</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Curve" data-name="secp256k1::curve">
+      <a href="../Secp256k1/Curve.html">Curve</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Key" data-name="secp256k1::key">
+      <a href="../Secp256k1/Key.html">Key</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Num" data-name="secp256k1::num">
+      <a href="../Secp256k1/Num.html">Num</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Point" data-name="secp256k1::point">
+      <a href="../Secp256k1/Point.html">Point</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Signature" data-name="secp256k1::signature">
+      <a href="../Secp256k1/Signature.html">Signature</a>
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Secp256k1/Util" data-name="secp256k1::util">
+      <a href="../Secp256k1/Util.html">Util</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Bitcoin::Account
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Bitcoin/Account.html">Bitcoin::Account</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>An example implementation of a <code><a href="../Bitcoin.html">Bitcoin</a></code> account using an <code><a href="../Secp256k1.html">Secp256k1</a></code>
+key-pair and a Bitcoin network version identifier; only for educational
+purposes and should not be used in production.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      bitcoin.cr
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28key%3DKey.new%2Cversion%3DNum.new%28%220x00%22%29%29-class-method" class="signature"><strong>.new</strong>(key = <span class="t">Key</span>.<span class="k">new</span>, version = <span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;0x00&quot;</span>))</a>
+        
+          <div class="summary"><p>Creates a Bitcoin account from a given <code><a href="../Secp256k1/Key.html">Secp256k1::Key</a></code> keypay and for the specified network version, e.g., <code>00</code> for Bitcoin main network.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#address%3AString-instance-method" class="signature"><strong>#address</strong> : String</a>
+        
+          <div class="summary"><p>The public, uncompressed Bitcoin account address.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#address_compressed%3AString-instance-method" class="signature"><strong>#address_compressed</strong> : String</a>
+        
+          <div class="summary"><p>The public, compressed Bitcoin account address.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#key%3AKey-instance-method" class="signature"><strong>#key</strong> : Key</a>
+        
+          <div class="summary"><p>The <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair for the account.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#version%3ANum-instance-method" class="signature"><strong>#version</strong> : Num</a>
+        
+          <div class="summary"><p>The network version indicator.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif%3AString-instance-method" class="signature"><strong>#wif</strong> : String</a>
+        
+          <div class="summary"><p>The private, uncompressed wallet-import format.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wif_compressed%3AString-instance-method" class="signature"><strong>#wif_compressed</strong> : String</a>
+        
+          <div class="summary"><p>The private, compressed wallet-import format.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(key=Key.new,version=Num.new(&quot;0x00&quot;))-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(key = <span class="t">Key</span>.<span class="k">new</span>, version = <span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;0x00&quot;</span>))
+
+        <a class="method-permalink" href="#new%28key%3DKey.new%2Cversion%3DNum.new%28%220x00%22%29%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Creates a Bitcoin account from a given <code><a href="../Secp256k1/Key.html">Secp256k1::Key</a></code> keypay and for the
+specified network version, e.g., <code>00</code> for Bitcoin main network. It creates
+a random account if no parameters are supplied.</p>
+<p>Parameters:</p>
+<ul>
+<li><code><a href="../Bitcoin/Account.html#key%3AKey-instance-method">#key</a></code> (<code><a href="../Secp256k1/Key.html">Secp256k1::Key</a></code>): the <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair for the account.</li>
+<li><code><a href="../Bitcoin/Account.html#version%3ANum-instance-method">#version</a></code> (<code><a href="../Secp256k1/Num.html">Secp256k1::Num</a></code>): the network version indicator.</li>
+</ul>
+<pre><code class="language-crystal">priv <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Num</span>.<span class="k">new</span> <span class="s">&quot;18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725&quot;</span>
+key <span class="o">=</span> <span class="t">Secp256k1</span><span class="t">::</span><span class="t">Key</span>.<span class="k">new</span> priv
+account <span class="o">=</span> <span class="t">Bitcoin</span><span class="t">::</span><span class="t">Account</span>.<span class="k">new</span> key
+<span class="c"># =&gt; #&lt;Bitcoin::Account:0x7f2611dcab40</span>
+<span class="c">#         @key=#&lt;Secp256k1::Key:0x7f261ae90ee0</span>
+<span class="c">#               @private_key=#&lt;Secp256k1::Num:0x7f261ae93300</span>
+<span class="c">#                   @hex=&quot;18e14a7b6a307f426a94f8114701e7c8e774e7f9a47e2c2035db29a206321725&quot;,</span>
+<span class="c">#                   @dec=11253563012059685825953619222107823549092147699031672238385790369351542642469,</span>
+<span class="c">#                   @bin=Bytes[24, 225, 74, 123, 106, 48, 127, 66, 106, 148, 248, 17, 71, 1, 231, 200, 231, 116, 231, 249, 164, 126, 44, 32, 53, 219, 41, 162, 6, 50, 23, 37]&gt;,</span>
+<span class="c">#               @public_key=#&lt;Secp256k1::Point:0x7f261ae90d20</span>
+<span class="c">#                   @x=#&lt;Secp256k1::Num:0x7f2611dcabc0</span>
+<span class="c">#                       @hex=&quot;50863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352&quot;,</span>
+<span class="c">#                       @dec=36422191471907241029883925342251831624200921388586025344128047678873736520530,</span>
+<span class="c">#                       @bin=Bytes[80, 134, 58, 214, 74, 135, 174, 138, 47, 232, 60, 26, 241, 168, 64, 60, 181, 63, 83, 228, 134, 216, 81, 29, 173, 138, 4, 136, 126, 91, 35, 82]&gt;,</span>
+<span class="c">#                   @y=#&lt;Secp256k1::Num:0x7f2611dcab80</span>
+<span class="c">#                       @hex=&quot;2cd470243453a299fa9e77237716103abc11a1df38855ed6f2ee187e9c582ba6&quot;,</span>
+<span class="c">#                       @dec=20277110887056303803699431755396003735040374760118964734768299847012543114150,</span>
+<span class="c">#                       @bin=Bytes[44, 212, 112, 36, 52, 83, 162, 153, 250, 158, 119, 35, 119, 22, 16, 58, 188, 17, 161, 223, 56, 133, 94, 214, 242, 238, 24, 126, 156, 88, 43, 166]&gt;&gt;&gt;,</span>
+<span class="c">#         @version=#&lt;Secp256k1::Num:0x7f2611dcab00</span>
+<span class="c">#               @hex=&quot;00&quot;,</span>
+<span class="c">#               @dec=0,</span>
+<span class="c">#               @bin=Bytes[0]&gt;,</span>
+<span class="c">#         @address=&quot;16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM&quot;,</span>
+<span class="c">#         @address_compressed=&quot;1PMycacnJaSqwwJqjawXBErnLsZ7RkXUAs&quot;,</span>
+<span class="c">#         @wif=&quot;5J1F7GHadZG3sCCKHCwg8Jvys9xUbFsjLnGec4H125Ny1V9nR6V&quot;,</span>
+<span class="c">#         @wif_compressed=&quot;Kx45GeUBSMPReYQwgXiKhG9FzNXrnCeutJp4yjTd5kKxCitadm3C&quot;&gt;</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="address:String-instance-method">
+      <div class="signature">
+        
+        def <strong>address</strong> : String
+
+        <a class="method-permalink" href="#address%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The public, uncompressed Bitcoin account address.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="address_compressed:String-instance-method">
+      <div class="signature">
+        
+        def <strong>address_compressed</strong> : String
+
+        <a class="method-permalink" href="#address_compressed%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The public, compressed Bitcoin account address.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="key:Key-instance-method">
+      <div class="signature">
+        
+        def <strong>key</strong> : <a href="../Secp256k1/Key.html">Key</a>
+
+        <a class="method-permalink" href="#key%3AKey-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The <code><a href="../Secp256k1.html">Secp256k1</a></code> keypair for the account.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="version:Num-instance-method">
+      <div class="signature">
+        
+        def <strong>version</strong> : <a href="../Secp256k1/Num.html">Num</a>
+
+        <a class="method-permalink" href="#version%3ANum-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The network version indicator.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif:String-instance-method">
+      <div class="signature">
+        
+        def <strong>wif</strong> : String
+
+        <a class="method-permalink" href="#wif%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The private, uncompressed wallet-import format.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wif_compressed:String-instance-method">
+      <div class="signature">
+        
+        def <strong>wif_compressed</strong> : String
+
+        <a class="method-permalink" href="#wif_compressed%3AString-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>The private, compressed wallet-import format.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

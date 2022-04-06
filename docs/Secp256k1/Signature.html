@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.3.0">
-<meta name="crystal_docs.project_version" content="q9f/rewrite-dev">
+<meta name="crystal_docs.project_version" content="q9f/examples-dev">
 <meta name="crystal_docs.project_name" content="secp256k1">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="secp256k1">
-  <title>Secp256k1::Signature - secp256k1 q9f/rewrite-dev</title>
+  <title>Secp256k1::Signature - secp256k1 q9f/examples-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        q9f/rewrite-dev
+        q9f/examples-dev
       </span>
     </div>
   </div>
@@ -50,6 +50,26 @@
 
   <div class="types-list">
     <ul>
+  
+  <li class="parent " data-id="secp256k1/Bitcoin" data-name="bitcoin">
+      <a href="../Bitcoin.html">Bitcoin</a>
+      
+        <ul>
+  
+  <li class=" " data-id="secp256k1/Bitcoin/Account" data-name="bitcoin::account">
+      <a href="../Bitcoin/Account.html">Account</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="secp256k1/Ethereum" data-name="ethereum">
+      <a href="../Ethereum.html">Ethereum</a>
+      
+    </li>
   
   <li class="parent open current" data-id="secp256k1/Secp256k1" data-name="secp256k1">
       <a href="../Secp256k1.html">Secp256k1</a>
@@ -213,13 +233,6 @@ signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-meth
       </li>
     
       <li class="entry-summary">
-        <a href="#r%3D%28r%3ANum%29-instance-method" class="signature"><strong>#r=</strong>(r : Num)</a>
-        
-          <div class="summary"><p>The <code>x</code> coordinate of a random point <code>R</code> on the curve.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#s%3ANum-instance-method" class="signature"><strong>#s</strong> : Num</a>
         
           <div class="summary"><p>The signature proof of a message.</p></div>
@@ -227,21 +240,7 @@ signature proof <code><a href="../Secp256k1/Signature.html#s%3ANum-instance-meth
       </li>
     
       <li class="entry-summary">
-        <a href="#s%3D%28s%3ANum%29-instance-method" class="signature"><strong>#s=</strong>(s : Num)</a>
-        
-          <div class="summary"><p>The signature proof of a message.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#v%3ANum-instance-method" class="signature"><strong>#v</strong> : Num</a>
-        
-          <div class="summary"><p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#v%3D%28v%3ANum%29-instance-method" class="signature"><strong>#v=</strong>(v : Num)</a>
         
           <div class="summary"><p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p></div>
         
@@ -388,25 +387,6 @@ v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span>
       </div>
     </div>
   
-    <div class="entry-detail" id="r=(r:Num)-instance-method">
-      <div class="signature">
-        
-        def <strong>r=</strong>(r : <a href="../Secp256k1/Num.html">Num</a>)
-
-        <a class="method-permalink" href="#r%3D%28r%3ANum%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>The <code>x</code> coordinate of a random point <code>R</code> on the curve.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="s:Num-instance-method">
       <div class="signature">
         
@@ -426,50 +406,12 @@ v <span class="o">=</span> <span class="t">Num</span>.<span class="k">new</span>
       </div>
     </div>
   
-    <div class="entry-detail" id="s=(s:Num)-instance-method">
-      <div class="signature">
-        
-        def <strong>s=</strong>(s : <a href="../Secp256k1/Num.html">Num</a>)
-
-        <a class="method-permalink" href="#s%3D%28s%3ANum%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>The signature proof of a message.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="v:Num-instance-method">
       <div class="signature">
         
         def <strong>v</strong> : <a href="../Secp256k1/Num.html">Num</a>
 
         <a class="method-permalink" href="#v%3ANum-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-          <p>The recovery id or <code><a href="../Secp256k1/Signature.html#v%3ANum-instance-method">#v</a></code> value.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="v=(v:Num)-instance-method">
-      <div class="signature">
-        
-        def <strong>v=</strong>(v : <a href="../Secp256k1/Num.html">Num</a>)
-
-        <a class="method-permalink" href="#v%3D%28v%3ANum%29-instance-method">#</a>
       </div>
       
         <div class="doc">

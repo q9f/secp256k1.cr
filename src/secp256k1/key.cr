@@ -20,9 +20,9 @@
 # * `public_key` (`Point`): the point on the elliptic curve representing the public key.
 class Secp256k1::Key
   # The secret number representing the private key.
-  property private_key : Num
+  getter private_key : Num
   # The point on the elliptic curve representing the public key.
-  property public_key : Point
+  getter public_key : Point
 
   # Creates a new, random `Secp256k1` keypair.
   #

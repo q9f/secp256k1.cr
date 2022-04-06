@@ -13,7 +13,7 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="secp256k1">
-  <title>Secp256k1 - secp256k1 q9f/examples-dev</title>
+  <title>Bitcoin - secp256k1 q9f/examples-dev</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "";
   </script>
@@ -51,7 +51,7 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent " data-id="secp256k1/Bitcoin" data-name="bitcoin">
+  <li class="parent open current" data-id="secp256k1/Bitcoin" data-name="bitcoin">
       <a href="Bitcoin.html">Bitcoin</a>
       
         <ul>
@@ -71,7 +71,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="secp256k1/Secp256k1" data-name="secp256k1">
+  <li class="parent " data-id="secp256k1/Secp256k1" data-name="secp256k1">
       <a href="Secp256k1.html">Secp256k1</a>
       
         <ul>
@@ -125,7 +125,7 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Secp256k1
+  <span class="kind">module</span> Bitcoin
 
 </h1>
 
@@ -142,11 +142,9 @@
     Overview
   </h2>
 
-  <p>Provides the <code><a href="Secp256k1.html">Secp256k1</a></code> module with the elliptic curve  parameters
-used by the <code><a href="Bitcoin.html">Bitcoin</a></code>, <code><a href="Ethereum.html">Ethereum</a></code>, and <code>Polkadot</code> blockchains. It's
-primarily used to generate key-pairs as well as signing messages and
-recoverying signatures.</p>
-<p>Ref: <a href="https://www.secg.org/sec2-v2.pdf">secg.org/sec2-v2.pdf</a></p>
+  <p>An example implementation of a <code><a href="Bitcoin.html">Bitcoin</a></code> account using an <code><a href="Secp256k1.html">Secp256k1</a></code>
+key-pair and a Bitcoin network version identifier; only for educational
+purposes and should not be used in production.</p>
 
 
 
@@ -171,17 +169,7 @@ recoverying signatures.</p>
   </h2>
   
     
-      secp256k1.cr
-    
-    <br/>
-  
-    
-      secp256k1/context.cr
-    
-    <br/>
-  
-    
-      secp256k1/version.cr
+      bitcoin.cr
     
     <br/>
   
@@ -200,43 +188,13 @@ recoverying signatures.</p>
   
   <dl>
     
-      <dt class="entry-const" id="G">
-        <strong>G</strong> = <code><span class="t">Point</span>.<span class="k">new</span>(<span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798&quot;</span>), <span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8&quot;</span>))</code>
+      <dt class="entry-const" id="BASE_58">
+        <strong>BASE_58</strong> = <code><span class="s">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span></code>
       </dt>
       
       <dd class="entry-const-doc">
-        <p>A commonly used base point <code>G</code> with coordinates <code>x</code> and <code>y</code>
-satisfying <code>y^2 = x^3 + 7</code>.</p>
-      </dd>
-      
-    
-      <dt class="entry-const" id="N">
-        <strong>N</strong> = <code><span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141&quot;</span>)</code>
-      </dt>
-      
-      <dd class="entry-const-doc">
-        <p>The order <code>n</code> of <code>G</code> defines the finite size of the Secp256k1 field <code>E</code>.</p>
-      </dd>
-      
-    
-      <dt class="entry-const" id="P">
-        <strong>P</strong> = <code><span class="t">Num</span>.<span class="k">new</span>(<span class="s">&quot;fffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f&quot;</span>)</code>
-      </dt>
-      
-      <dd class="entry-const-doc">
-        <p>The elliptic curve domain parameters over <code>F_p</code> associated with a
-Koblitz curve <code><a href="Secp256k1.html">Secp256k1</a></code> are specified by the sextuple
-<code>T = (p, a, b, G, n, h)</code> where the finite field <code>F_p</code> is defined by
-the prime <code>p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1</code>.</p>
-      </dd>
-      
-    
-      <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.5.0&quot;</span></code>
-      </dt>
-      
-      <dd class="entry-const-doc">
-        <p>The <code><a href="Secp256k1.html#VERSION">VERSION</a></code> of the <code><a href="Secp256k1.html">Secp256k1</a></code> module.</p>
+        <p>The Base-58 alphabet for <code><a href="Bitcoin.html">Bitcoin</a></code> addresses is a Base-64 alphabet without
+<code>0</code>, <code>O</code>, <code>I</code>, and <code>l</code> to omit similar-looking letters.</p>
       </dd>
       
     
