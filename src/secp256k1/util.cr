@@ -32,7 +32,7 @@ module Secp256k1::Util
   # Util.keccak("0xdeadbeef").hex
   # # => "4f440a001006a49f24a7de53c04eca3f79aef851ac58e460c9630d044277c8b0"
   # ```
-  def keccak(data : Num | String, entropy = 256)
+  def keccak(data : Num | String, entropy = 256) : Num
     keccak = Digest::Keccak3.new entropy
     if data.is_a? String
       return Num.new keccak.update(data).hexdigest
@@ -56,7 +56,7 @@ module Secp256k1::Util
   # Util.sha3("0xdeadbeef").hex
   # # => "c12811e13ed75afe3e0945ef34e8a25b9d321a46e131c6463731de25a21b39eb"
   # ```
-  def sha3(data : Num | String, entropy = 256)
+  def sha3(data : Num | String, entropy = 256) : Num
     sha3 = Digest::SHA3.new entropy
     if data.is_a? String
       return Num.new sha3.update(data).hexdigest
@@ -79,7 +79,7 @@ module Secp256k1::Util
   # Util.sha256("0xdeadbeef").hex
   # # => "4142710b9b4caaeb000b8e5de271bbebac7f509aab2f5e61d1ed1958bfe6d583"
   # ```
-  def sha256(data : Num | String)
+  def sha256(data : Num | String) : Num
     sha2 = OpenSSL::Digest.new "SHA256"
     if data.is_a? String
       return Num.new sha2.update(data).final.hexstring
@@ -102,7 +102,7 @@ module Secp256k1::Util
   # Util.ripemd160("0xdeadbeef").hex
   # # => "4caf817f14e84b564e47afd19966e5d123ee0183"
   # ```
-  def ripemd160(data : Num | String)
+  def ripemd160(data : Num | String) : Num
     ripemd = OpenSSL::Digest.new "RIPEMD160"
     if data.is_a? String
       return Num.new ripemd.update(data).final.hexstring
@@ -121,6 +121,8 @@ module Secp256k1::Util
   # * `hash` (`Num`): the message hash or arbirtrary data hash.
   # * `order` (`Num`): the order of the curve over `G` (default `N`).
   #
+  # Returns a deterministically random number of type `Num`.
+  #
   # ```
   # priv = Num.new "3b74fcc0b0c419a00d2d9e88b15fbd99e03920138da22e2a00c327b88d24cf45"
   # hash = Util.sha256 "Henlo, Wordl"
@@ -130,7 +132,7 @@ module Secp256k1::Util
   # #          @dec=83193606619515454920331057246310791124858301167609726617990890481932799590618,
   # #          @bin=Bytes[183, 237, 233, 165, 181, 179, 40, 172, 104, 11, 230, 118, 82, 19, 199, 181, 178, 146, 4, 105, 189, 170, 248, 7, 12, 31, 180, 60, 181, 196, 64, 218]>
   # ```
-  def deterministic_k(priv : Num, hash : Num, order = N)
+  def deterministic_k(priv : Num, hash : Num, order = N) : Num
     order_size = order.hex.size // 2
     v = Num.new Bytes.new order_size, 0x01
     k = Num.new Bytes.new order_size, 0x00
@@ -172,7 +174,7 @@ module Secp256k1::Util
   # Util.concat_bytes Bytes[1, 2, 3], Bytes[9, 8, 7]
   # # => Bytes[1, 2, 3, 9, 8, 7]
   # ```
-  def concat_bytes(x : Bytes, y : Bytes)
+  def concat_bytes(x : Bytes, y : Bytes) : Bytes
     z = IO::Memory.new x.bytesize + y.bytesize
     x.each do |b|
       z.write_bytes UInt8.new b

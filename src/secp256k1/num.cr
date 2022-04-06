@@ -15,7 +15,8 @@
 # Provides a class to conveniently handle big numbers on the elliptic
 # curve. It allows to easily access decimal, hexadecimal, and binary
 # representations of the numeric. In addition, it implements some
-# utilities such as zpadding or asserting hexadecimal strings.
+# utilities such as zpadding or asserting hexadecimal strings. It's suited
+# to temporarily handle unencrypted private keys.
 #
 # Properties:
 # * `hex` (`String`): the hexadecimal string representation of the number.
@@ -115,7 +116,7 @@ class Secp256k1::Num
   # Num.new(Bytes[137]).to_hex
   # # => "89"
   # ```
-  def to_hex
+  def to_hex : String
     @hex
   end
 
@@ -125,7 +126,7 @@ class Secp256k1::Num
   # Num.new(Bytes[137]).to_prefixed_hex
   # # => "0x89"
   # ```
-  def to_prefixed_hex
+  def to_prefixed_hex : String
     "0x#{@hex}"
   end
 
@@ -138,7 +139,7 @@ class Secp256k1::Num
   # Num.new(Bytes[137]).to_zpadded_hex
   # # => "0000000000000000000000000000000000000000000000000000000000000089"
   # ```
-  def to_zpadded_hex(length = 32)
+  def to_zpadded_hex(length = 32) : String
     zpadded_hex = @hex
     while zpadded_hex.size < length * 2
       zpadded_hex = "0#{zpadded_hex}"
@@ -152,7 +153,7 @@ class Secp256k1::Num
   # Num.new(Bytes[137]).to_big
   # # => 137
   # ```
-  def to_big
+  def to_big : BigInt
     @dec
   end
 
@@ -162,7 +163,7 @@ class Secp256k1::Num
   # Num.new("0x89").to_bytes
   # # => Bytes[137]
   # ```
-  def to_bytes
+  def to_bytes : Bytes
     @bin
   end
 
@@ -175,7 +176,7 @@ class Secp256k1::Num
   # Num.new(Bytes[137]).to_zpadded_bytes
   # # => Bytes[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 137]
   # ```
-  def to_zpadded_bytes(length = 32)
+  def to_zpadded_bytes(length = 32) : Bytes
     zpadded_bytes = @bin
     byte_zero = Bytes[0]
     while zpadded_bytes.size < length
@@ -191,7 +192,7 @@ class Secp256k1::Num
   end
 
   # Assists to determine wether a hex-string is prefixed.
-  private def is_prefixed?(hex : String)
+  private def is_prefixed?(hex : String) : Bool
     prefix_match = /\A0x/.match hex
     unless prefix_match.nil?
       return true
@@ -201,7 +202,7 @@ class Secp256k1::Num
   end
 
   # Assists to remove a `0x`-hex prefix.
-  private def remove_prefix(hex : String)
+  private def remove_prefix(hex : String) : String
     if is_prefixed? hex
       return hex[2..-1]
     else
@@ -210,7 +211,7 @@ class Secp256k1::Num
   end
 
   # Assists to assert wether a `String` is hexadecimal or not.
-  private def assert_hexadecimal(hex : String)
+  private def assert_hexadecimal(hex : String) : String
     if is_prefixed? hex
       hex = remove_prefix hex
     end

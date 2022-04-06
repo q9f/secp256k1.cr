@@ -16,11 +16,11 @@
 # signature proof `s`, and the recovery id or `v` value.
 #
 # Properties:
-# * `r` (`Num`): the `x` coordinate of a random point `R`.
+# * `r` (`Num`): the `x` coordinate of a random point `R` on the curve.
 # * `s` (`Num`): the signature proof of a message.
 # * `v` (`Num`): the recovery id or `v` value.
 class Secp256k1::Signature
-  # The `x` coordinate of a random point `R`.
+  # The `x` coordinate of a random point `R` on the curve.
   property r : Num
 
   # The signature proof of a message.
@@ -33,7 +33,7 @@ class Secp256k1::Signature
   # signature proof `s`, and the recovery id or `v` value.
   #
   # Parameters:
-  # * `r` (`Num`): the `x` coordinate of a random point `R`.
+  # * `r` (`Num`): the `x` coordinate of a random point `R` on the curve.
   # * `s` (`Num`): the signature proof of a message.
   # * `v` (`Num`): the recovery id or `v` value.
   #
@@ -62,7 +62,7 @@ class Secp256k1::Signature
     @v = v
   end
 
-  # Returns a compact string containing the concatenated signature
+  # Returns a compact `String` containing the concatenated signature
   # in the form `r|s|v`.
   #
   # ```
@@ -72,7 +72,7 @@ class Secp256k1::Signature
   # Signature.new(r, s, v).compact
   # # => "efc4f8d8bfc778463e4d4916d88bf3f057e6dc96cb2adc26dfb91959c4bef4a5cecd9a83fefafcb3cf99fde0c340bbe2fed9cdd0d25b53f4e08254acefb69ae000"
   # ```
-  def compact
+  def compact : String
     "#{r.to_zpadded_hex}#{s.to_zpadded_hex}#{v.to_hex}"
   end
 end
