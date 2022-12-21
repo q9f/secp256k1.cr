@@ -1,6 +1,6 @@
 # secp256k1.cr
 
-[![Build Status](https://img.shields.io/github/workflow/status/q9f/secp256k1.cr/Nightly)](https://github.com/q9f/secp256k1.cr/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/q9f/secp256k1.cr/nightly.yml?branch=main)](https://github.com/q9f/secp256k1.cr/actions)
 [![Code Coverage](https://codecov.io/gh/q9f/secp256k1.cr/branch/main/graph/badge.svg?token=ngxRs9HdJA)](https://codecov.io/gh/q9f/secp256k1.cr)
 [![Documentation](https://img.shields.io/badge/docs-html-black)](https://q9f.github.io/secp256k1.cr/)
 [![Release](https://img.shields.io/github/v/release/q9f/secp256k1.cr?include_prereleases&color=black)](https://github.com/q9f/secp256k1.cr/releases/latest)
