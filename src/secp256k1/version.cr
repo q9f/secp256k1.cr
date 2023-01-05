@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Afr Schoe @q9f
+# Copyright 2019-2023 Afri Schoedon @q9f
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,5 +20,5 @@
 # Ref: [secg.org/sec2-v2.pdf](https://www.secg.org/sec2-v2.pdf)
 module Secp256k1
   # The `VERSION` of the `Secp256k1` module.
-  VERSION = "0.5.0"
+  VERSION = "0.5.1"
 end
