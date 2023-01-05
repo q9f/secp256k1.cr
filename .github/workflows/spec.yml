@@ -1,0 +1,35 @@
+name: Spec
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, macos-12]
+        crystal: [latest, nightly]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Crystal
+      uses: crystal-lang/install-crystal@v1
+      with:
+        crystal: ${{ matrix.crystal }}
+    - name: Install Dependencies
+      run: |
+        shards install --verbose
+        crystal build .github/run_coverage.cr -o .github/run_coverage
+    - name: Run Test Suite
+      run: |
+        crystal tool format --check
+        crystal spec --verbose --error-trace --time
+    - uses: codecov/codecov-action@v2
+      with:
+        directory: ./.github/coverage

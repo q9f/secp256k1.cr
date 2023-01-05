@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Afr Schoe @q9f
+# Copyright 2019-2023 Afri Schoedon @q9f
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@ require "./spec_helper"
 
 describe Secp256k1 do
   it "has some version string" do
-    VERSION.should eq "0.5.0"
+    VERSION.should eq "0.5.1"
   end
 
   it "has correct constants" do
