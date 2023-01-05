@@ -11,18 +11,17 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
-    container:
-      image: crystallang/crystal
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-22.04, macos-12]
+        crystal: [latest, nightly]
     steps:
-    - name: MacOs Dependencies
-      run: |
-        brew install --verbose docker
-      if: startsWith(matrix.os, 'macOS')
     - uses: actions/checkout@v3
+    - name: Install Crystal
+      uses: crystal-lang/install-crystal@v1
+      with:
+        crystal: ${{ matrix.crystal }}
     - name: Install Dependencies
       run: |
         shards install --verbose
