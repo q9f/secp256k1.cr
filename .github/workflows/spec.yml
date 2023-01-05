@@ -18,6 +18,10 @@ jobs:
       matrix:
         os: [ubuntu-22.04, macos-12]
     steps:
+    - name: MacOs Dependencies
+      run: |
+        brew install --verbose docker
+      if: startsWith(matrix.os, 'macOS')
     - uses: actions/checkout@v3
     - name: Install Dependencies
       run: |
