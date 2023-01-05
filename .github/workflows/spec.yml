@@ -1,11 +1,12 @@
-name: Nightly
+name: Spec
 
 on:
   push:
     branches:
     - main
-  schedule:
-    - cron: 0 1 * * *
+  pull_request:
+    branches:
+    - main
 
 jobs:
   build:
@@ -13,15 +14,15 @@ jobs:
     container:
       image: crystallang/crystal
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Install Dependencies
       run: |
         shards install --verbose
-        crystal build .github/run_coverage.cr -D skip-integrations -o .github/run_coverage
+        crystal build .github/run_coverage.cr -o .github/run_coverage
     - name: Run Test Suite
       run: |
         crystal tool format --check
-        crystal spec --verbose --error-trace --time -Dpreview_mt
+        crystal spec --verbose --error-trace --time
     - uses: codecov/codecov-action@v2
       with:
         directory: ./.github/coverage
