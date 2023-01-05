@@ -9,10 +9,14 @@ on:
     - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
     container:
       image: crystallang/crystal
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-22.04, macos-12]
     steps:
     - uses: actions/checkout@v3
     - name: Install Dependencies
